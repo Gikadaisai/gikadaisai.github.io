@@ -274,17 +274,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomInstances = {};
 
     const setupZoomForPanel = (mapId) => {
-        if (zoomInstances[mapId] || window.innerWidth > 768 || typeof PinchZoom === 'undefined') {
-            return;
-        }
-
+        // 先にコンテナ要素を取得
         const container = modal.querySelector(`.map-zoom-container[data-map-id="${mapId}"]`);
-        if (container) {
-            const instance = new PinchZoom.default(container, { minZoom: 1 });
-            zoomInstances[mapId] = instance;
+        if (!container) return; // コンテナがなければ処理を中断
 
+        // 画面幅が768px以下（モバイル・タブレット）の場合のみ処理を実行
+        if (window.innerWidth <= 768) {
+            // Part 1: PinchZoomライブラリの初期化（初回のみ）
+            if (!zoomInstances[mapId] && typeof PinchZoom !== 'undefined') {
+                const instance = new PinchZoom.default(container, { minZoom: 1 });
+                zoomInstances[mapId] = instance;
+            }
+
+            // Part 2: 操作ガイドを非表示にするイベントリスナーの設定（毎回）
             const overlay = container.querySelector('.map-instruction-overlay');
             if (overlay) {
+                // { once: true } オプションにより、イベントが一度実行されると自動的にリスナーが削除される
                 container.addEventListener('touchstart', () => {
                     if (!overlay.classList.contains('hidden')) {
                         overlay.classList.add('hidden');
@@ -302,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.toggle('active', button.dataset.mapTarget === target);
         });
         
-        // 遅延初期化
+        // アクティブになったマップに対してセットアップ処理を実行
         setupZoomForPanel(target);
     };
 
@@ -310,11 +315,12 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('modal-open');
         modal.style.display = 'block';
         
-        // ガイドをリセット表示
+        // ガイド表示をリセット（毎回表示させるため）
         modal.querySelectorAll('.map-instruction-overlay').forEach(overlay => {
             overlay.classList.remove('hidden');
         });
 
+        // 初期表示は屋外マップに設定
         setActiveMap('outside');
     };
 
