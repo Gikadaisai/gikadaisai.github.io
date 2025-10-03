@@ -274,11 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomInstances = {};
 
     const setupZoomForPanel = (mapId) => {
-        // 先にコンテナ要素を取得
         const container = modal.querySelector(`.map-zoom-container[data-map-id="${mapId}"]`);
-        if (!container) return; // コンテナがなければ処理を中断
+        if (!container) return;
 
-        // 画面幅が768px以下（モバイル・タブレット）の場合のみ処理を実行
+        // 画面幅が768px以下のモバイル・タブレット環境のみ処理を実行
         if (window.innerWidth <= 768) {
             // Part 1: PinchZoomライブラリの初期化（初回のみ）
             if (!zoomInstances[mapId] && typeof PinchZoom !== 'undefined') {
@@ -286,13 +285,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 zoomInstances[mapId] = instance;
             }
 
-            // Part 2: 操作ガイドを非表示にするイベントリスナーの設定（毎回）
+            // Part 2: 操作ガイドを非表示にするイベントリスナーの設定
             const overlay = container.querySelector('.map-instruction-overlay');
             if (overlay) {
-                // { once: true } オプションにより、イベントが一度実行されると自動的にリスナーが削除される
+                // { once: true } オプションにより、イベントは一度だけ実行される
                 container.addEventListener('touchstart', () => {
                     if (!overlay.classList.contains('hidden')) {
                         overlay.classList.add('hidden');
+                        // ★変更点：ガイドを非表示にした際に、localStorageに記録を保存
+                        localStorage.setItem('mapGuideViewed', 'true');
                     }
                 }, { once: true });
             }
@@ -307,7 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.toggle('active', button.dataset.mapTarget === target);
         });
         
-        // アクティブになったマップに対してセットアップ処理を実行
         setupZoomForPanel(target);
     };
 
@@ -315,12 +315,21 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('modal-open');
         modal.style.display = 'block';
         
-        // ガイド表示をリセット（毎回表示させるため）
-        modal.querySelectorAll('.map-instruction-overlay').forEach(overlay => {
-            overlay.classList.remove('hidden');
-        });
+        // ★変更点：localStorageに記録があるか確認
+        const guideViewed = localStorage.getItem('mapGuideViewed');
 
-        // 初期表示は屋外マップに設定
+        if (guideViewed) {
+            // 記録がある場合（2回目以降）：強制的にガイドを非表示にする
+            modal.querySelectorAll('.map-instruction-overlay').forEach(overlay => {
+                overlay.classList.add('hidden');
+            });
+        } else {
+            // 記録がない場合（初回）：ガイドを表示する
+            modal.querySelectorAll('.map-instruction-overlay').forEach(overlay => {
+                overlay.classList.remove('hidden');
+            });
+        }
+
         setActiveMap('outside');
     };
 
