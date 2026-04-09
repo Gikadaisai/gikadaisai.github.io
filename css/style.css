@@ -708,64 +708,56 @@ p.next-bus-info {
     display: none;
 }
 
-/* ========== Mobile Menu Overlay ========== */
+/* ========== Mobile Dropdown Menu ========== */
 #menubar {
     display: none;
 }
 .small-screen #menubar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: fixed;
-    z-index: 1000;
-    inset: 0;
-    background: var(--dark-color);
+    top: 72px; /* header top-padding(10) + pill-height(56) + gap(6) */
+    left: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(45, 48, 54, 0.10);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(100%);
-    transition: all 0.4s ease-in-out;
+    transform: translateY(-6px);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    z-index: 999;
 }
 .small-screen #menubar.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0);
-}
-.small-screen #menubar nav {
-    width: 100%;
+    transform: translateY(0);
 }
 .small-screen #menubar nav ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0;
+    padding: 0.4rem 0;
+    margin: 0;
     list-style: none;
 }
+.small-screen #menubar nav li + li {
+    border-top: 1px solid rgba(45, 48, 54, 0.06);
+}
 .small-screen #menubar nav a {
-    color: var(--primary-inverse-color);
-    font-size: 2rem;
-    font-weight: 500;
+    display: block;
+    color: var(--text-color);
+    font-size: 1.0rem;
+    font-weight: 600;
+    font-family: "Reddit Sans", "Noto Sans JP", sans-serif;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: background-color 0.3s, opacity 0.3s ease, transform 0.3s ease;
+    padding: 0.85rem 1.4rem;
+    transition: background-color 0.18s, color 0.18s;
 }
-.small-screen #menubar.is-open nav a {
-    opacity: 1;
-    transform: translateY(0);
-}
-.small-screen #menubar.is-open nav li:nth-child(1) a { transition-delay: 0.15s; }
-.small-screen #menubar.is-open nav li:nth-child(2) a { transition-delay: 0.20s; }
-.small-screen #menubar.is-open nav li:nth-child(3) a { transition-delay: 0.25s; }
-.small-screen #menubar.is-open nav li:nth-child(4) a { transition-delay: 0.30s; }
-.small-screen #menubar.is-open nav li:nth-child(5) a { transition-delay: 0.35s; }
-.small-screen #menubar.is-open nav li:nth-child(6) a { transition-delay: 0.40s; }
-.small-screen #menubar.is-open nav li:nth-child(7) a { transition-delay: 0.45s; }
 .small-screen #menubar nav a:hover {
-    color: var(--primary-inverse-color);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--bg-light);
+    color: var(--primary-color);
 }
 
 /* Utility */
