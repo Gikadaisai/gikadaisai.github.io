@@ -175,9 +175,9 @@ header {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(45, 48, 54, 0.10);
     border-radius: var(--radius-pill);
-    padding: 6px 8px 6px 22px;
+    padding: 4px 6px 4px 20px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    height: 56px;
+    height: 48px;
     font-family: "Reddit Sans", "Noto Sans JP", sans-serif;
     font-weight: 700;
 }
@@ -238,15 +238,26 @@ header {
     color: var(--primary-color);
 }
 
-/* "+" indicator before dropdown parent */
+/* "+" icon with circular background, rotates on hover */
 .large-screen #menubar-pc .ddmenu_parent > a::before {
     content: "+";
-    margin-right: 4px;
-    font-weight: 300;
-    font-size: 0.95em;
-    opacity: 0.55;
-    display: inline-block;
+    margin-right: 5px;
+    font-weight: 500;
+    font-size: 0.72em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    vertical-align: middle;
     line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+.large-screen #menubar-pc .ddmenu_parent:hover > a::before {
+    transform: rotate(90deg);
 }
 
 /* Desktop dropdown: base hidden state (mobile uses jQuery slideToggle) */
@@ -257,14 +268,14 @@ header {
 .large-screen #menubar-pc .ddmenu_parent {
     position: relative;
 }
-/* Transparent hover bridge between button and dropdown to prevent gap flicker */
+/* Transparent hover bridge: matches margin-top so no hover gap */
 .large-screen #menubar-pc .ddmenu_parent::after {
     content: "";
     position: absolute;
-    bottom: -8px;
+    bottom: -12px;
     left: 0;
     right: 0;
-    height: 8px;
+    height: 12px;
 }
 .large-screen #menubar-pc .ddmenu_parent > ul {
     display: block;
@@ -272,8 +283,8 @@ header {
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(-6px);
-    margin-top: 8px;
-    min-width: 180px;
+    margin-top: 12px;
+    min-width: 160px;
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -281,7 +292,7 @@ header {
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
     overflow: hidden;
-    padding: 0.4rem 0;
+    padding: 0.3rem 0;
     list-style: none;
     visibility: hidden;
     opacity: 0;
@@ -300,11 +311,12 @@ header {
 }
 .large-screen #menubar-pc ul ul li a {
     display: block;
-    padding: 0.85rem 1.4rem;
-    font-size: 1.0rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-color);
     border-radius: 0;
+    white-space: nowrap;
 }
 .large-screen #menubar-pc ul ul li a:hover {
     background: var(--bg-light);
@@ -766,7 +778,7 @@ p.next-bus-info {
 .small-screen #menubar {
     display: block;
     position: fixed;
-    top: 72px; /* header top-padding(10) + pill-height(56) + gap(6) */
+    top: 64px; /* header top-padding(10) + pill-height(48) + gap(6) */
     left: 16px;
     right: 16px;
     background: rgba(255, 255, 255, 0.96);
