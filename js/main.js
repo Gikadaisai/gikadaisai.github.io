@@ -31,7 +31,6 @@ $(function() {
             // PC表示に切り替えた際に、モバイル用メニューが開いていれば閉じる
             $('#menubar').removeClass('is-open');
             $('#menubar_hdr').removeClass('ham');
-            $('body').removeClass('no-scroll');
         }
     };
 
@@ -48,10 +47,18 @@ $(function() {
     });
 
     // ハンバーガーメニューのクリックイベント
-    $('#menubar_hdr').on('click', function() {
+    $('#menubar_hdr').on('click', function(e) {
+        e.stopPropagation();
         $(this).toggleClass('ham');
         $('#menubar').toggleClass('is-open');
-        $('body').toggleClass('no-scroll'); // メニュー表示中は背景のスクロールを禁止
+    });
+
+    // ドロップダウン外クリックで閉じる
+    $(document).on('click', function(e) {
+        if ($('#menubar').hasClass('is-open') && !$(e.target).closest('header').length) {
+            $('#menubar').removeClass('is-open');
+            $('#menubar_hdr').removeClass('ham');
+        }
     });
 
     // モバイル用のドロップダウンメニュー
