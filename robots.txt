@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ggx7.github.io/gikadaisai/sitemap.xml
