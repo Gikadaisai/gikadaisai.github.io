@@ -61,7 +61,7 @@
             '  <div class="coming-soon-content">',
             '    <p class="coming-soon-label">Coming Soon</p>',
             '    <h1 class="coming-soon-title">準備中</h1>',
-            '    <p class="coming-soon-desc">' + festivalName + 'の情報を<br>鋭意準備中です。<br>今しばらくお待ちください。</p>',
+            '    <p class="coming-soon-desc">' + festivalName + 'の情報は<br>ただいま準備中です。<br>今しばらくお待ちください。</p>',
             linksHtml,
             '  </div>',
             '</section>'
