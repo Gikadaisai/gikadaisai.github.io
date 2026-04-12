@@ -1,21 +1,4 @@
 //===============================================================
-// debounce関数
-//===============================================================
-function debounce(func, wait) {
-    var timeout;
-    return function() {
-        var context = this, args = arguments;
-        var later = function() {
-            timeout = null;
-            func.apply(context, args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-
-//===============================================================
 // メニュー関連 (再デザイン版)
 //===============================================================
 $(function() {
@@ -85,8 +68,6 @@ $(function() {
     var totalHeaderHeight = headerHeight + headerMargin;
     // ページ上部へ戻るボタンのセレクター
     var topButton = $('.pagetop');
-    // ページトップボタン表示用のクラス名
-    var scrollShow = 'pagetop-show';
 
     // スムーススクロールを実行する関数
     // targetにはスクロール先の要素のセレクターまたは'#'（ページトップ）を指定
@@ -131,86 +112,3 @@ $(function() {
         }, 10);
     }
 });
-
-
-//===============================================================
-// 汎用開閉処理
-//===============================================================
-$(function() {
-	$('.openclose-parts').next().hide();
-	$('.openclose-parts').click(function() {
-		$(this).next().slideToggle();
-		$('.openclose-parts').not(this).next().slideUp();
-	});
-});
-
-
-//===============================================================
-// テキストのフェードイン効果
-//===============================================================
-$(function() {
-    $('.fade-in-text').on('inview', function(event, isInView) {
-        // この要素が既にアニメーションされたかどうかを確認
-        if (isInView && !$(this).data('animated')) {
-            // アニメーションがまだ実行されていない場合
-            let innerHTML = '';
-            const text = $(this).text();
-            $(this).text('');
-
-            for (let i = 0; i < text.length; i++) {
-                innerHTML += `<span class="char" style="animation-delay: ${i * 0.2}s;">${text[i]}</span>`;
-            }
-
-            $(this).html(innerHTML).css('visibility', 'visible');
-            // アニメーションが実行されたことをマーク
-            $(this).data('animated', true);
-        }
-    });
-});
-
-
-//===============================================================
-// 詳細ページのサムネイル切り替え
-//===============================================================
-$(function() {
-    // 初期表示: 各 .thumbnail-view に対して、直後の .thumbnail の最初の画像を表示
-    $(".thumbnail-view-parts").each(function() {
-        var firstThumbnailSrc = $(this).next(".thumbnail-parts").find("img:first").attr("src");
-        var defaultImage = $("<img>").attr("src", firstThumbnailSrc);
-        $(this).append(defaultImage);
-    });
-
-    // サムネイルがクリックされたときの動作
-    $(".thumbnail-parts img").click(function() {
-        var imgSrc = $(this).attr("src");
-        var newImage = $("<img>").attr("src", imgSrc).hide();
-
-        // このサムネイルの直前の .thumbnail-view 要素を取得
-        var targetPhoto = $(this).parent(".thumbnail-parts").prev(".thumbnail-view-parts");
-
-        targetPhoto.find("img").fadeOut(400, function() {
-            targetPhoto.empty().append(newImage);
-            newImage.fadeIn(400);
-        });
-    });
-});
-
-
-//===============================================================
-// スライドショー
-//===============================================================
-$(function() {
-	var slides = $('#mainimg .slide');
-	var slideCount = slides.length;
-	var currentIndex = 0;
-
-	slides.eq(currentIndex).css('opacity', 1).addClass('active');
-
-	setInterval(function() {
-		var nextIndex = (currentIndex + 1) % slideCount;
-		slides.eq(currentIndex).css('opacity', 0).removeClass('active');
-		slides.eq(nextIndex).css('opacity', 1).addClass('active');
-		currentIndex = nextIndex;
-	}, 4000); // 4秒ごとにスライドを切り替える
-});
-

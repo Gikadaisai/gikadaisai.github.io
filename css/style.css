@@ -39,9 +39,6 @@ body {
     color: var(--text-color);
     line-height: 2;
 }
-body.no-scroll {
-    overflow: hidden;
-}
 * {
     box-sizing: border-box;
 }
@@ -436,13 +433,6 @@ footer {
     color: #888;
     position: relative;
     z-index: 1;
-}
-.footer-bottom a {
-    color: #aaa;
-    text-decoration: none;
-}
-.footer-bottom a:hover {
-    color: var(--primary-color);
 }
 /* ========== Components ========== */
 
