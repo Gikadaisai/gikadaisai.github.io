@@ -908,16 +908,16 @@ p.next-bus-info {
     line-height: 1.4;
 }
 .sponsor-tier-1 .sponsor-item {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
     font-weight: 900;
     color: var(--dark-color);
 }
 .sponsor-tier-2 .sponsor-item {
-    font-size: 1.3rem;
+    font-size: clamp(0.7rem, 3.3vw, 1.3rem);
     font-weight: 700;
 }
 .sponsor-tier-3 .sponsor-item {
-    font-size: 1rem;
+    font-size: clamp(0.65rem, 2.5vw, 1rem);
     font-weight: 500;
     opacity: 0.9;
 }
