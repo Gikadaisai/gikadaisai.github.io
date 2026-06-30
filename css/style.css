@@ -627,6 +627,20 @@ p.next-bus-info {
     line-height: 1.2;
     margin: 0;
 }
+/* 開催日テキスト強調: ラベル部は小さく、日付部は大きく太く */
+.event-date-label {
+    display: block;
+    font-size: 0.55em;
+    font-weight: 500;
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.1em;
+}
+.event-date-highlight {
+    display: block;
+    font-size: 1.12em;
+    font-weight: 900;
+}
 .countdown-card #countdown-text {
     font-size: 1rem;
     font-weight: 300;
@@ -728,12 +742,12 @@ p.next-bus-info {
     top: 72px; /* header top-padding(10) + pill-height(56) + gap(6) */
     left: 16px;
     right: 16px;
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(45, 48, 54, 0.10);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
@@ -754,7 +768,7 @@ p.next-bus-info {
     list-style: none;
 }
 .small-screen #menubar nav li + li {
-    border-top: 1px solid rgba(45, 48, 54, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 .small-screen #menubar nav a {
     display: block;
@@ -767,7 +781,7 @@ p.next-bus-info {
     transition: background-color 0.18s, color 0.18s;
 }
 .small-screen #menubar nav a:hover {
-    background-color: var(--bg-light);
+    background-color: rgba(255, 255, 255, 0.2);
     color: var(--primary-color);
 }
 

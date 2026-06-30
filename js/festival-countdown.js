@@ -11,6 +11,11 @@ document.addEventListener('siteConfigLoaded', function (e) {
     var festivalEnd   = config.dates.end ? new Date(config.dates.end).getTime() : null;
     var displayText   = config.dates.displayText;
 
+    // 日付の強調HTML: 「第〇回〇〇 本番：」ラベル + 日付ハイライト
+    var dateHtml =
+        '<span class="event-date-label">第' + config.festivalNumber + '回' + config.festivalName + '&thinsp;本番：</span>' +
+        '<span class="event-date-highlight">' + displayText + '</span>';
+
     // --- 開場時間の表示 ---
     var openingTimeDate = new Date(festivalStart);
     var openingHours   = openingTimeDate.getHours().toString().padStart(2, '0');
@@ -23,7 +28,7 @@ document.addEventListener('siteConfigLoaded', function (e) {
     // --- 日付表示の更新 ---
     var eventDateEl = document.querySelector('.event-date');
     if (eventDateEl) {
-        eventDateEl.textContent = displayText;
+        eventDateEl.innerHTML = dateHtml;
     }
 
     // --- カード書き換えヘルパー ---
@@ -35,7 +40,7 @@ document.addEventListener('siteConfigLoaded', function (e) {
     // --- 終了後なら即時表示して終了 ---
     if (festivalEnd && Date.now() >= festivalEnd) {
         setCardContent(
-            "<p class='event-date'>" + displayText + "</p>" +
+            "<p class='event-date'>" + dateHtml + "</p>" +
             "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>ご来場<br>ありがとうございました</p>"
         );
         return;
@@ -52,7 +57,7 @@ document.addEventListener('siteConfigLoaded', function (e) {
             if (festivalEnd && now >= festivalEnd) {
                 clearInterval(countdownFunction);
                 setCardContent(
-                    "<p class='event-date'>" + displayText + "</p>" +
+                    "<p class='event-date'>" + dateHtml + "</p>" +
                     "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>"
                 );
                 return;
@@ -60,7 +65,7 @@ document.addEventListener('siteConfigLoaded', function (e) {
             // 開催中表示（初回のみ書き換え）
             clearInterval(countdownFunction);
             setCardContent(
-                "<p class='event-date'>" + displayText + "</p>" +
+                "<p class='event-date'>" + dateHtml + "</p>" +
                 "<p style='font-size: 2rem; font-weight: bold; margin-top: 1rem;'>技科大祭 開催中！</p>"
             );
             // 終了時刻まで監視を継続
@@ -69,7 +74,7 @@ document.addEventListener('siteConfigLoaded', function (e) {
                     if (Date.now() >= festivalEnd) {
                         clearInterval(endWatcher);
                         setCardContent(
-                            "<p class='event-date'>" + displayText + "</p>" +
+                            "<p class='event-date'>" + dateHtml + "</p>" +
                             "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>"
                         );
                     }
