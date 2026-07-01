@@ -922,12 +922,12 @@ p.next-bus-info {
     /* header top-padding(10) + pill-height(56) + gap(6) */
     left: 16px;
     right: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 200, 230, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;

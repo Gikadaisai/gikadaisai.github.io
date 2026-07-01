@@ -64,6 +64,19 @@
 .rlx-md-yellow  { width: 220px; height: 220px; }
 .rlx-sm-yellow  { width: 160px; height: 160px; }
 
+/* PC: 花火を半透明化し、テキストの背後に固定 */
+@media screen and (min-width: 769px) {
+    .rlx-sm-red,
+    .rlx-md-red,
+    .rlx-lg-red,
+    .rlx-sm-yellow,
+    .rlx-md-yellow,
+    .rlx-lg-yellow:not([class*="mascot"]) {
+        opacity: 0.3;
+        z-index: -1 !important;
+    }
+}
+
 
 /* 画像シェイプ共通スタイル */
 /* 画像シェイプ共通スタイル（基底クラス＋全種別をまとめて指定） */
@@ -281,6 +294,11 @@
 .proposal-hero-date .fas {
     color: #FF6B5E;
     margin-right: 0.5rem;
+}
+.hero-date-highlight {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: var(--accent-text-color);
 }
 
 /* ---------- Layout: Sidebar + Content ---------- */
@@ -1041,9 +1059,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     z-index: 5000;
     opacity: 0;
     visibility: hidden;
@@ -1059,12 +1077,17 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(40px) saturate(130%);
+    -webkit-backdrop-filter: blur(40px) saturate(130%);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px 24px 0 0;
     padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
     transform: translateY(100%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 20px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .rlx-mobile-nav-overlay.is-active .rlx-mobile-nav-content {
     transform: translateY(0);
@@ -1079,21 +1102,24 @@
 .rlx-mobile-nav-title {
     font-size: 1.2rem;
     font-weight: 800;
-    color: var(--text-color);
+    color: #ffffff;
     letter-spacing: 0.05em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.4);
 }
 .rlx-mobile-nav-close {
-    background: rgba(0, 0, 0, 0.05);
-    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     width: 36px;
     height: 36px;
     border-radius: 50%;
     font-size: 24px;
-    color: #444;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .rlx-mobile-nav-body {
@@ -1108,21 +1134,25 @@
     justify-content: center;
     gap: 8px;
     padding: 1.2rem 0.5rem;
-    background: #f8f9fa;
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    color: var(--text-color) !important;
+    color: #ffffff !important;
     text-decoration: none !important;
     font-size: 14px;
     font-weight: 700;
     transition: all 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.3);
 }
 .rlx-mobile-nav-item i {
     font-size: 1.4rem;
-    color: #FF6B5E;
+    color: #FFC824;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.5));
 }
 .rlx-mobile-nav-item:active {
-    background: #eee;
+    background: rgba(255, 255, 255, 0.22);
     transform: scale(0.97);
 }
 
@@ -1168,8 +1198,8 @@
     }
     .rlx-code-block code { font-size: 14px; }
     .rlx-bg-text {
-        font-size: 70px;
-        top: -40px !important;
+        font-size: clamp(26px, 10vw, 60px);
+        top: -28px !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
     }

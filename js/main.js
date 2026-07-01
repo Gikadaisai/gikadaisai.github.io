@@ -29,8 +29,8 @@ $(function() {
         }, 100);
     });
 
-    // ハンバーガーメニューのクリックイベント
-    $('#menubar_hdr').on('click', function(e) {
+    // ハンバーガーメニューのクリックイベント（site-loader.js が非同期で注入するため委譲で登録）
+    $(document).on('click', '#menubar_hdr', function(e) {
         e.stopPropagation();
         $(this).toggleClass('ham');
         $('#menubar').toggleClass('is-open');
@@ -44,8 +44,8 @@ $(function() {
         }
     });
 
-    // モバイル用のドロップダウンメニュー
-    $('.small-screen .ddmenu_parent > a').on('click', function(e) {
+    // モバイル用のドロップダウンメニュー（site-loader.js が非同期で注入するため委譲で登録）
+    $(document).on('click', '.small-screen .ddmenu_parent > a', function(e) {
         // href="#" の場合のみドロップダウンを開閉
         if ($(this).attr('href') === '#') {
             e.preventDefault(); // リンクの遷移を無効化
