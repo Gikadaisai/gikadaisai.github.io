@@ -114,13 +114,13 @@
   ],
   "pageVisibility": {
     "index": true,
-    "events": false,
-    "shops": false,
-    "timetable": false,
+    "events": true,
+    "shops": true,
+    "timetable": true,
     "painting-contest": true,
     "support": true,
     "access": true,
     "contact": true,
-    "guest": false
+    "guest": true
   }
 }
