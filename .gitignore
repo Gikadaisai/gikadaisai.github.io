@@ -1,0 +1,6 @@
+# 依存パッケージ(容量が大きく、npm install で再生成できるため管理しない)
+node_modules/
+
+# OS依存のメタデータファイル(開発内容とは無関係なため除外)
+.DS_Store
+Thumbs.db
