@@ -4,3 +4,5 @@ node_modules/
 # OS依存のメタデータファイル(開発内容とは無関係なため除外)
 .DS_Store
 Thumbs.db
+
+tmp.md
