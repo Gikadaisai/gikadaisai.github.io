@@ -149,6 +149,7 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 ```
 
 **ポイント**:
+
 - `id` は一覧の表示順序を決定するためのキーです
 - `img` の値がそのまま `data/shop/icon/{img}` の画像ファイル名になります（拡張子を含めて指定）
 - `img` が未指定の場合、デフォルト画像 `data/shop/icon/default.png` が表示されます
@@ -159,28 +160,24 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 
 ```json
 [
-    {
-        "id": "comedy-live",
-        "title": "スペシャルお笑いライブ",
-        "date": "10/12(日)",
-        "startTime": "11:30",
-        "description": "ゲスト名やイベント説明。\n改行は \\n で記述。",
-        "poster": "data/poster_live.png",
-        "freeAdmission": true,
-        "cautions": [
-            "注意事項1",
-            "注意事項2"
-        ],
-        "otherNotes": [
-            "その他の注意1"
-        ],
-        "warningText": "警告文。\n複数行は \\n で。",
-        "closingText": "締めの一文。"
-    }
+  {
+    "id": "comedy-live",
+    "title": "スペシャルお笑いライブ",
+    "date": "10/12(日)",
+    "startTime": "11:30",
+    "description": "ゲスト名やイベント説明。\n改行は \\n で記述。",
+    "poster": "data/poster_live.png",
+    "freeAdmission": true,
+    "cautions": ["注意事項1", "注意事項2"],
+    "otherNotes": ["その他の注意1"],
+    "warningText": "警告文。\n複数行は \\n で。",
+    "closingText": "締めの一文。"
+  }
 ]
 ```
 
 **ポイント**:
+
 - イベントが複数ある場合は、配列の中にオブジェクトを追加してください
 - `\n` で改行ができます
 
@@ -197,6 +194,7 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 ```
 
 **ポイント**:
+
 - URLがない企業は `"url": ""` と空文字にしてください（`#` リンクになります）
 - ロゴがない企業は `"img": null` としてください（デフォルト画像 `data/kyousan/no.png` が表示されます）
 - `img` にはファイル名のみ指定します（例: `"himika.png"`）。ディレクトリパスは不要です
@@ -212,6 +210,7 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 ```
 
 **ポイント**:
+
 - 時刻は `"HH:MM"` 形式（24時間表記）で記入
 - 時刻は必ず**昇順（早い順）**に並べてください
 - バス会社のダイヤ改正があった場合のみ更新が必要です
@@ -237,23 +236,23 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 }
 ```
 
-| 値 | 表示 |
-|----|------|
-| `true` | 通常のページとして公開される |
-| `false` | 「準備中」画面が表示される |
+| 値      | 表示                         |
+| ------- | ---------------------------- |
+| `true`  | 通常のページとして公開される |
+| `false` | 「準備中」画面が表示される   |
 
 ### 対象ページ一覧
 
-| キー | ページ |
-|------|--------|
-| `index` | トップページ（index.html） |
-| `events` | イベント・ゲスト情報（events.html） |
-| `shops` | 模擬店・キッチンカー（shops.html） |
-| `timetable` | タイムテーブル（timetable.html） |
-| `outline` | 協賛企業（outline.html） |
-| `donation` | ご寄付（donation.html） |
-| `access` | アクセス（access.html） |
-| `contact` | お問い合わせ（contact.html） |
+| キー        | ページ                              |
+| ----------- | ----------------------------------- |
+| `index`     | トップページ（index.html）          |
+| `events`    | イベント・ゲスト情報（events.html） |
+| `shops`     | 模擬店・キッチンカー（shops.html）  |
+| `timetable` | タイムテーブル（timetable.html）    |
+| `outline`   | 協賛企業（outline.html）            |
+| `donation`  | ご寄付（donation.html）             |
+| `access`    | アクセス（access.html）             |
+| `contact`   | お問い合わせ（contact.html）        |
 
 ### トップページ（index）を非公開にした場合の特別動作
 
@@ -290,15 +289,15 @@ HTML側で以下のプレースホルダーが使われている箇所は、こ�
 
 画像を差し替える場合、**同じファイル名で上書き**すれば、HTMLやJSONの変更は不要です。
 
-| 画像 | パス | 推奨事項 |
-|------|------|----------|
-| テーマポスター | `data/poster.png` | できるだけ軽量化（1MB以下推奨） |
-| イベントポスター | `data/poster_live.png` | 同上 |
-| タイムテーブル | `data/timetable.png` | 同上 |
-| 屋外マップ | `data/map/outside.png` | - |
-| 屋内マップ | `data/map/inside.png` | - |
-| 協賛企業ロゴ | `data/kyousan/*.png` | sponsors.json の `img` と一致させる |
-| 模擬店アイコン | `data/shop/icon/{img}` | shop.json の `img` と一致させる |
+| 画像             | パス                   | 推奨事項                            |
+| ---------------- | ---------------------- | ----------------------------------- |
+| テーマポスター   | `data/poster.png`      | できるだけ軽量化（1MB以下推奨）     |
+| イベントポスター | `data/poster_live.png` | 同上                                |
+| タイムテーブル   | `data/timetable.png`   | 同上                                |
+| 屋外マップ       | `data/map/outside.png` | -                                   |
+| 屋内マップ       | `data/map/inside.png`  | -                                   |
+| 協賛企業ロゴ     | `data/kyousan/*.png`   | sponsors.json の `img` と一致させる |
+| 模擬店アイコン   | `data/shop/icon/{img}` | shop.json の `img` と一致させる     |
 
 **ファイル名を変更した場合**は、対応する JSON ファイルのパスも更新してください。
 
@@ -310,12 +309,12 @@ JSONは書き方を少しでも間違えるとエラーになります。以下�
 
 ### よくあるミス
 
-| ミス | 誤 | 正 |
-|------|-----|-----|
-| 最後のカンマ | `"name": "A",` `}` | `"name": "A"` `}` |
-| シングルクォート | `'hello'` | `"hello"` |
-| コメント | `// コメント` | ← JSONではコメント不可 |
-| 全角文字の混入 | `"name"："A"` | `"name": "A"` |
+| ミス             | 誤                 | 正                     |
+| ---------------- | ------------------ | ---------------------- |
+| 最後のカンマ     | `"name": "A",` `}` | `"name": "A"` `}`      |
+| シングルクォート | `'hello'`          | `"hello"`              |
+| コメント         | `// コメント`      | ← JSONではコメント不可 |
+| 全角文字の混入   | `"name"："A"`      | `"name": "A"`          |
 
 ### チェック方法
 
@@ -366,6 +365,7 @@ npx serve .
 **原因**: JSONファイルの文法エラーの可能性が高いです。
 
 **対処法**:
+
 1. ブラウザの開発者ツール（F12）→ コンソールタブを確認
 2. エラーメッセージに記載されたJSONファイルを確認
 3. [JSONLint](https://jsonlint.com/) でチェック
@@ -375,6 +375,7 @@ npx serve .
 **原因**: `shop.json` の `id` と画像ファイル名が一致していません。
 
 **対処法**:
+
 - `shop.json` で `"img": "5.png"` なら、画像は `data/shop/icon/5.png` が必要です
 - `img` が未指定の場合、デフォルト画像 `data/shop/icon/default.png` が表示されます
 
@@ -383,6 +384,7 @@ npx serve .
 **原因**: `site-config.json` の日付形式が間違っている可能性があります。
 
 **対処法**:
+
 - `"day1": "2026-10-10T10:00:00"` のように `T` 区切りで記述してください
 - 年・月・日の値が正しいか確認してください
 
@@ -391,6 +393,7 @@ npx serve .
 **原因**: `site-config.json` の `festivalNumber` が更新されていません。
 
 **対処法**:
+
 - `"festivalNumber": 49` のように数値（クォーテーションなし）で記入してください
 
 ### 「ページが「準備中」のまま公開されない」
@@ -398,6 +401,7 @@ npx serve .
 **原因**: `site-config.json` の `pageVisibility` の値が `false` のままになっています。
 
 **対処法**:
+
 1. `js/site-config.json` を開く
 2. `pageVisibility` の該当するページのキーを `false` → `true` に変更して保存する
 
@@ -412,6 +416,7 @@ npx serve .
 **原因**: `sponsors.json` の文法エラー、または画像パスのミスです。
 
 **対処法**:
+
 1. `sponsors.json` を JSONLint でチェック
 2. `logo` のパスに記載した画像が実際に存在するか確認
 
