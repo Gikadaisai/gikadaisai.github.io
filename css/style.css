@@ -191,7 +191,7 @@ main section,
 }
 
 /* ========== Full-width White Sections ========== */
-/* 
+/*
    全ての標準的なセクションを端まで白背景にし、
    例外として index.html のプロポーザル関連セクションを除外する。
 */
@@ -2558,3 +2558,8 @@ body.site-ready .site-prerender-screen:not(.opening-active) {
     right: 16px;
   }
 }
+
+
+.test-verify   {   color :red;margin:0px    ;
+. t e s t - v e r i f y { c o l o r : r e d ; m a r g i n : 0 p x }  
+ 
