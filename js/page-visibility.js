@@ -101,11 +101,5 @@
   }
 
   // site-loader.js がすでに config を設定済みなら即時実行、そうでなければイベント待ち
-  if (window.siteConfig) {
-    applyComingSoon(window.siteConfig);
-  } else {
-    document.addEventListener("siteConfigLoaded", function (e) {
-      applyComingSoon(e.detail);
-    });
-  }
+  window.onSiteConfig(applyComingSoon);
 })();

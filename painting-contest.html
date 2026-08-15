@@ -2,6 +2,11 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
+    />
     <title>アイデア・デザインコンテスト｜第--回技科大祭</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -24,6 +29,8 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+      crossorigin="anonymous"
     />
     <!-- Site stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
@@ -870,8 +877,17 @@
     </div>
     <!-- /#container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"
+      integrity="sha384-pd7qbPsmTJfjFiks31ehUn6A68yiF8HXwV4anhaOf8icgDte+6V3PCNNYs933QCg"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/escape-html.js"></script>
     <script src="js/main.js"></script>
     <script src="js/site-loader.js"></script>
     <script src="js/page-visibility.js"></script>
@@ -880,14 +896,18 @@
       // ---- 締切カウントダウン ----
       (function () {
         var deadline = new Date("2026-09-05T23:59:00+09:00").getTime();
+        var timerId = null;
 
         function tick() {
           var dist = deadline - Date.now();
           if (dist <= 0) {
             var el = document.getElementById("pc-countdown");
-            if (el)
-              el.innerHTML =
-                '<p style="font-size:1.2rem;font-weight:800;color:#FF6B5E;margin:0;">締切を過ぎました</p>';
+            // 文言はテキストとして入れ、見た目は CSS クラスで与える
+            if (el) {
+              el.textContent = "締切を過ぎました";
+              el.classList.add("pc-countdown-expired");
+            }
+            if (timerId) clearInterval(timerId);
             return;
           }
           var d = Math.floor(dist / 864e5);
@@ -898,13 +918,15 @@
             var el = document.getElementById(id);
             if (el) el.textContent = v < 10 ? "0" + v : v;
           };
-          document.getElementById("pc-days").textContent = d;
+          // 日数はゼロ埋めしないため set() を使わない
+          var daysEl = document.getElementById("pc-days");
+          if (daysEl) daysEl.textContent = d;
           set("pc-hours", h);
           set("pc-minutes", m);
           set("pc-seconds", s);
         }
         tick();
-        setInterval(tick, 1000);
+        timerId = setInterval(tick, 1000);
       })();
 
       // ---- フローティングCTA 表示制御 ----

@@ -3,6 +3,28 @@
  * site-config.json を読み込み、全ページ共通の要素（ヘッダー・フッター等）を動的に注入する。
  * 各ページの <head>, <header>, <footer> 内のプレースホルダーを自動で書き換える。
  */
+
+/**
+ * site-config.json の読み込み完了を購読する。
+ *
+ * siteConfigLoaded イベントを直接 addEventListener すると、
+ * リスナー登録より先に発火した場合に取りこぼす（スクリプトの読み込み順や
+ * 回線速度で結果が変わる競合状態になる）。
+ * 読み込み済みなら即時実行、未了ならイベント待ちに振り分けることで
+ * タイミングに依存せず必ず1回実行されるようにする。
+ *
+ * @param {(config: object) => void} callback
+ */
+window.onSiteConfig = function (callback) {
+  if (window.siteConfig) {
+    callback(window.siteConfig);
+  } else {
+    document.addEventListener("siteConfigLoaded", function (e) {
+      callback(e.detail);
+    });
+  }
+};
+
 (async function () {
   "use strict";
 
@@ -489,10 +511,15 @@
             htmlSponsors +=
               '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
             tierItems.forEach(function (s) {
-              const safeName = s.name
-                ? String(s.name).replace(/</g, "&lt;").replace(/>/g, "&gt;")
+              const safeName = escapeHtml(s.name);
+              // HTMLコメント内は escapeHtml が効かないため、
+              // コメントを閉じられる "-->" と "<" "> " を除去してから埋め込む。
+              const safeAmount = String(s.amount == null ? "" : s.amount)
+                .replace(/[<>]/g, "")
+                .replace(/-{2,}/g, "-");
+              const amountComment = safeAmount
+                ? "<!-- " + safeAmount + " -->"
                 : "";
-              const amountComment = s.amount ? "<!-- " + s.amount + " -->" : "";
               htmlSponsors +=
                 '<span class="sponsor-item">' +
                 amountComment +
@@ -534,9 +561,7 @@
         if (validSupporters.length > 0) {
           validSupporters.forEach(function (sp) {
             const rawName = typeof sp === "string" ? sp : sp.name;
-            const safeName = rawName
-              ? String(rawName).replace(/</g, "&lt;").replace(/>/g, "&gt;")
-              : "";
+            const safeName = escapeHtml(rawName);
             if (safeName) {
               htmlSupporters +=
                 '<div class="supporter-chip">' + safeName + "</div>";

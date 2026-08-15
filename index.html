@@ -2,6 +2,11 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
+    />
     <title>第--回技科大祭｜豊橋技術科学大学の学園祭</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -24,6 +29,8 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+      crossorigin="anonymous"
     />
     <!-- Site stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
@@ -1019,14 +1026,27 @@
       }
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"
+      integrity="sha384-pd7qbPsmTJfjFiks31ehUn6A68yiF8HXwV4anhaOf8icgDte+6V3PCNNYs933QCg"
+      crossorigin="anonymous"
+    ></script>
 
+    <script src="js/escape-html.js"></script>
     <script src="js/main.js"></script>
     <script src="js/site-loader.js"></script>
 
     <!-- Rellax.js -->
-    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js"
+      integrity="sha384-pSQdnqsuAwdyk3FjmdCugWc6JXrpCyQPJbweAfCT9EjnJayrGAKKuI6V54wCfQ5c"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="js/page-visibility.js"></script>
     <script src="js/festival-countdown.js"></script>
@@ -1143,8 +1163,7 @@
       })();
 
       // site-config 読み込み後にテーブル見出しとマップリンクを更新
-      document.addEventListener("siteConfigLoaded", function (e) {
-        var config = e.detail;
+      window.onSiteConfig(function (config) {
         var num = config.festivalNumber;
 
         // テーブル見出しの回数更新

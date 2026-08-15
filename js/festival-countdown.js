@@ -1,17 +1,18 @@
 /**
  * festival-countdown.js
  * site-config.json の日程情報をもとにフェスティバルカウントダウンを表示する。
- * site-loader.js が発行する 'siteConfigLoaded' イベントを待って動作開始する。
+ * site-loader.js が提供する onSiteConfig() で config の準備完了を待つ。
  */
-document.addEventListener("siteConfigLoaded", function (e) {
+window.onSiteConfig(function (config) {
   "use strict";
 
-  var config = e.detail;
   var festivalStart = new Date(config.dates.start).getTime();
   var festivalEnd = config.dates.end
     ? new Date(config.dates.end).getTime()
     : null;
   var displayText = config.dates.displayText;
+  // innerHTML に埋める用途にはエスケープ済みの方を使う
+  var safeDisplayText = escapeHtml(displayText);
 
   // --- 開場時間の表示 ---
   var openingTimeDate = new Date(festivalStart);
@@ -38,7 +39,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
   if (festivalEnd && Date.now() >= festivalEnd) {
     setCardContent(
       "<p class='event-date'>" +
-        displayText +
+        safeDisplayText +
         "</p>" +
         "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>ご来場<br>ありがとうございました</p>",
     );
@@ -57,7 +58,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
         clearInterval(countdownFunction);
         setCardContent(
           "<p class='event-date'>" +
-            displayText +
+            safeDisplayText +
             "</p>" +
             "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>",
         );
@@ -67,7 +68,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
       clearInterval(countdownFunction);
       setCardContent(
         "<p class='event-date'>" +
-          displayText +
+          safeDisplayText +
           "</p>" +
           "<p style='font-size: 2rem; font-weight: bold; margin-top: 1rem;'>技科大祭 開催中！</p>",
       );
@@ -78,7 +79,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
             clearInterval(endWatcher);
             setCardContent(
               "<p class='event-date'>" +
-                displayText +
+                safeDisplayText +
                 "</p>" +
                 "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>",
             );
