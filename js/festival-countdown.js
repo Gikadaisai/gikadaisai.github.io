@@ -1,12 +1,11 @@
 /**
  * festival-countdown.js
  * site-config.json の日程情報をもとにフェスティバルカウントダウンを表示する。
- * site-loader.js が発行する 'siteConfigLoaded' イベントを待って動作開始する。
+ * site-loader.js が提供する onSiteConfig() で config の準備完了を待つ。
  */
-document.addEventListener("siteConfigLoaded", function (e) {
+window.onSiteConfig(function (config) {
   "use strict";
 
-  var config = e.detail;
   var festivalStart = new Date(config.dates.start).getTime();
   var festivalEnd = config.dates.end
     ? new Date(config.dates.end).getTime()

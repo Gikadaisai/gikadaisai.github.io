@@ -3,6 +3,28 @@
  * site-config.json を読み込み、全ページ共通の要素（ヘッダー・フッター等）を動的に注入する。
  * 各ページの <head>, <header>, <footer> 内のプレースホルダーを自動で書き換える。
  */
+
+/**
+ * site-config.json の読み込み完了を購読する。
+ *
+ * siteConfigLoaded イベントを直接 addEventListener すると、
+ * リスナー登録より先に発火した場合に取りこぼす（スクリプトの読み込み順や
+ * 回線速度で結果が変わる競合状態になる）。
+ * 読み込み済みなら即時実行、未了ならイベント待ちに振り分けることで
+ * タイミングに依存せず必ず1回実行されるようにする。
+ *
+ * @param {(config: object) => void} callback
+ */
+window.onSiteConfig = function (callback) {
+  if (window.siteConfig) {
+    callback(window.siteConfig);
+  } else {
+    document.addEventListener("siteConfigLoaded", function (e) {
+      callback(e.detail);
+    });
+  }
+};
+
 (async function () {
   "use strict";
 
