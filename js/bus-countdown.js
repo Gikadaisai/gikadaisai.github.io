@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       // 次のバスまで1時間以上
       countdownDisplayEl.innerHTML =
         '<p style="font-size: 1.1rem; font-weight: 500;">次のバスは <strong>' +
-        nextBus +
+        escapeHtml(nextBus) +
         "</strong> 発です</p>";
       if (nextBusInfoEl) nextBusInfoEl.style.display = "none";
     } else {

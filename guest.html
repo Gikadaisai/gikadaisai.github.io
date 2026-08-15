@@ -113,11 +113,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
 
+    <script src="js/escape-html.js"></script>
     <script src="js/main.js"></script>
     <script src="js/site-loader.js"></script>
     <script src="js/page-visibility.js"></script>
 
     <script>
+      // escapeHtml() は js/escape-html.js が提供する
       // events.json を読み込みゲスト（公表用イベント）情報を動的に描画
       document.addEventListener("DOMContentLoaded", async function () {
         var container = document.getElementById("events-container");
@@ -131,15 +133,16 @@
           var html = "";
           events.forEach(function (ev) {
             var descLines = ev.description
-              ? ev.description.replace(/\n/g, "<br>")
+              ? escapeHtml(ev.description).replace(/\n/g, "<br>")
               : "";
             var warningLines = ev.warningText
-              ? ev.warningText.replace(/\n/g, "<br>")
+              ? escapeHtml(ev.warningText).replace(/\n/g, "<br>")
               : "";
-            var closingText = ev.closingText || "";
+            var closingText = escapeHtml(ev.closingText || "");
 
             html += '<p class="c">';
-            html += "<strong>" + ev.displayDatetime + "</strong><br>";
+            html +=
+              "<strong>" + escapeHtml(ev.displayDatetime) + "</strong><br>";
             html += descLines;
             html += "</p>";
 
@@ -147,7 +150,11 @@
               html +=
                 '<div class="poster" style="max-width: 600px; margin: 2rem auto;">';
               html +=
-                '<img src="' + ev.poster + '" alt="' + ev.title + ' ポスター">';
+                '<img src="' +
+                escapeHtml(ev.poster) +
+                '" alt="' +
+                escapeHtml(ev.title) +
+                ' ポスター">';
               html += "</div>";
             }
 
@@ -157,7 +164,7 @@
                 "<p>企画会場でのマナーに関して会場施設を傷つける行為や、一般の方、近隣にお住まいの方のご迷惑となる行為は絶対におやめください。</p>";
               html += "<ul>";
               ev.cautions.forEach(function (c) {
-                html += "<li>" + c + "</li>";
+                html += "<li>" + escapeHtml(c) + "</li>";
               });
               html += "</ul>";
             }
@@ -166,7 +173,7 @@
               html += "<h3>その他注意事項</h3>";
               html += "<ul>";
               ev.otherNotes.forEach(function (n) {
-                html += "<li>" + n + "</li>";
+                html += "<li>" + escapeHtml(n) + "</li>";
               });
               html += "</ul>";
             }
@@ -182,8 +189,7 @@
           container.innerHTML = html;
         } catch (error) {
           console.error(error);
-          container.innerHTML =
-            "<p>情報の読み込み中にエラーが発生しました。</p>";
+          container.textContent = "情報の読み込み中にエラーが発生しました。";
         }
       });
     </script>

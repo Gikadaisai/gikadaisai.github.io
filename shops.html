@@ -197,6 +197,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
     <script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script>
+    <script src="js/escape-html.js"></script>
     <script src="js/main.js"></script>
     <script src="js/site-loader.js"></script>
     <script src="js/page-visibility.js"></script>
@@ -241,14 +242,21 @@
           return order === "asc" ? comparison : -comparison;
         };
 
+        // アイコンのファイル名は URL に直接埋まるため、
+        // エスケープではなく想定形式そのものを検証し、外れたら既定画像に落とす。
+        const SAFE_ICON_NAME = /^[A-Za-z0-9_-]+\.(png|jpe?g|webp|gif)$/;
+        const safeIconName = (name) =>
+          SAFE_ICON_NAME.test(String(name || ""))
+            ? String(name)
+            : "default.png";
+
         const generateHtmlForShops = (shops) => {
           return shops
             .map((shop) => {
-              const safeTitle = shop.title
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
-              const safeCircle = shop.circle.replace(/"/g, "&quot;");
-              const img = shop.img || "default.png";
+              const safeTitle = escapeHtml(shop.title);
+              const safeCircle = escapeHtml(shop.circle);
+              const safeLocation = escapeHtml(shop.location);
+              const img = safeIconName(shop.img);
               return `
                 <div class="shop-card">
                     <div class="shop-card-image">
@@ -258,7 +266,7 @@
                         <p class="shop-card-title">${safeTitle}</p>
                         <div class="shop-card-footer">
                             <span class="shop-card-circle">${safeCircle}</span>
-                            <span class="shop-card-location">${shop.location}</span>
+                            <span class="shop-card-location">${safeLocation}</span>
                         </div>
                     </div>
                 </div>

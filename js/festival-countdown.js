@@ -12,6 +12,8 @@ document.addEventListener("siteConfigLoaded", function (e) {
     ? new Date(config.dates.end).getTime()
     : null;
   var displayText = config.dates.displayText;
+  // innerHTML に埋める用途にはエスケープ済みの方を使う
+  var safeDisplayText = escapeHtml(displayText);
 
   // --- 開場時間の表示 ---
   var openingTimeDate = new Date(festivalStart);
@@ -38,7 +40,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
   if (festivalEnd && Date.now() >= festivalEnd) {
     setCardContent(
       "<p class='event-date'>" +
-        displayText +
+        safeDisplayText +
         "</p>" +
         "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>ご来場<br>ありがとうございました</p>",
     );
@@ -57,7 +59,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
         clearInterval(countdownFunction);
         setCardContent(
           "<p class='event-date'>" +
-            displayText +
+            safeDisplayText +
             "</p>" +
             "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>",
         );
@@ -67,7 +69,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
       clearInterval(countdownFunction);
       setCardContent(
         "<p class='event-date'>" +
-          displayText +
+          safeDisplayText +
           "</p>" +
           "<p style='font-size: 2rem; font-weight: bold; margin-top: 1rem;'>技科大祭 開催中！</p>",
       );
@@ -78,7 +80,7 @@ document.addEventListener("siteConfigLoaded", function (e) {
             clearInterval(endWatcher);
             setCardContent(
               "<p class='event-date'>" +
-                displayText +
+                safeDisplayText +
                 "</p>" +
                 "<p style='font-size: 1.6rem; font-weight: bold; margin-top: 1rem;'>今年もご来場ありがとうございました</p>",
             );

@@ -489,10 +489,15 @@
             htmlSponsors +=
               '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
             tierItems.forEach(function (s) {
-              const safeName = s.name
-                ? String(s.name).replace(/</g, "&lt;").replace(/>/g, "&gt;")
+              const safeName = escapeHtml(s.name);
+              // HTMLコメント内は escapeHtml が効かないため、
+              // コメントを閉じられる "-->" と "<" "> " を除去してから埋め込む。
+              const safeAmount = String(s.amount == null ? "" : s.amount)
+                .replace(/[<>]/g, "")
+                .replace(/-{2,}/g, "-");
+              const amountComment = safeAmount
+                ? "<!-- " + safeAmount + " -->"
                 : "";
-              const amountComment = s.amount ? "<!-- " + s.amount + " -->" : "";
               htmlSponsors +=
                 '<span class="sponsor-item">' +
                 amountComment +
@@ -534,9 +539,7 @@
         if (validSupporters.length > 0) {
           validSupporters.forEach(function (sp) {
             const rawName = typeof sp === "string" ? sp : sp.name;
-            const safeName = rawName
-              ? String(rawName).replace(/</g, "&lt;").replace(/>/g, "&gt;")
-              : "";
+            const safeName = escapeHtml(rawName);
             if (safeName) {
               htmlSupporters +=
                 '<div class="supporter-chip">' + safeName + "</div>";
