@@ -6,3 +6,6 @@ node_modules/
 Thumbs.db
 
 tmp.md
+
+# ローカル生成のセキュリティ監査レポート(コミット対象外)
+security-audit-report.md

@@ -230,25 +230,34 @@
 
         let allShops = [];
 
+        // フィルタ/ソートの change からも呼ばれるため、
+        // 描画失敗時に一覧が無反応のまま固まらないよう自前で握る。
         const renderList = () => {
           if (!shopListContainer) return;
-          const filterValue = filterSelect.value;
-          let filteredShops;
-          if (filterValue === "indoor") {
-            filteredShops = allShops.filter((shop) => shop.place === "室内");
-          } else if (filterValue === "tent") {
-            filteredShops = allShops.filter((shop) => shop.place === "屋外");
-          } else {
-            filteredShops = [...allShops];
+          try {
+            const filterValue = filterSelect.value;
+            let filteredShops;
+            if (filterValue === "indoor") {
+              filteredShops = allShops.filter((shop) => shop.place === "室内");
+            } else if (filterValue === "tent") {
+              filteredShops = allShops.filter((shop) => shop.place === "屋外");
+            } else {
+              filteredShops = [...allShops];
+            }
+            const sortKey = sortKeySelect.value;
+            const sortOrder = sortOrderSelect.value;
+            if (sortKey !== "default") {
+              filteredShops.sort((a, b) =>
+                sortCompare(a, b, sortKey, sortOrder),
+              );
+            }
+            shopListContainer.innerHTML =
+              generateHtmlForShops(filteredShops) ||
+              "<p>該当する企画はありません。</p>";
+          } catch (error) {
+            console.error(error);
+            shopListContainer.textContent = "一覧の表示に失敗しました。";
           }
-          const sortKey = sortKeySelect.value;
-          const sortOrder = sortOrderSelect.value;
-          if (sortKey !== "default") {
-            filteredShops.sort((a, b) => sortCompare(a, b, sortKey, sortOrder));
-          }
-          shopListContainer.innerHTML =
-            generateHtmlForShops(filteredShops) ||
-            "<p>該当する企画はありません。</p>";
         };
 
         const sortCompare = (a, b, key, order) => {
@@ -309,8 +318,10 @@
             renderList();
           } catch (error) {
             console.error(error);
-            shopListContainer.innerHTML =
-              "<p>企画情報の読み込み中にエラーが発生しました。</p>";
+            if (shopListContainer) {
+              shopListContainer.textContent =
+                "企画情報の読み込み中にエラーが発生しました。";
+            }
           }
         })();
       });

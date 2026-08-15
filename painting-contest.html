@@ -896,14 +896,18 @@
       // ---- 締切カウントダウン ----
       (function () {
         var deadline = new Date("2026-09-05T23:59:00+09:00").getTime();
+        var timerId = null;
 
         function tick() {
           var dist = deadline - Date.now();
           if (dist <= 0) {
             var el = document.getElementById("pc-countdown");
-            if (el)
-              el.innerHTML =
-                '<p style="font-size:1.2rem;font-weight:800;color:#FF6B5E;margin:0;">締切を過ぎました</p>';
+            // 文言はテキストとして入れ、見た目は CSS クラスで与える
+            if (el) {
+              el.textContent = "締切を過ぎました";
+              el.classList.add("pc-countdown-expired");
+            }
+            if (timerId) clearInterval(timerId);
             return;
           }
           var d = Math.floor(dist / 864e5);
@@ -914,13 +918,15 @@
             var el = document.getElementById(id);
             if (el) el.textContent = v < 10 ? "0" + v : v;
           };
-          document.getElementById("pc-days").textContent = d;
+          // 日数はゼロ埋めしないため set() を使わない
+          var daysEl = document.getElementById("pc-days");
+          if (daysEl) daysEl.textContent = d;
           set("pc-hours", h);
           set("pc-minutes", m);
           set("pc-seconds", s);
         }
         tick();
-        setInterval(tick, 1000);
+        timerId = setInterval(tick, 1000);
       })();
 
       // ---- フローティングCTA 表示制御 ----

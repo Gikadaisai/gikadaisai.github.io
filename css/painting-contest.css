@@ -124,6 +124,12 @@ main h2 .hosoku {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
+/* 締切超過時の文言（JS が textContent と併せて付与する） */
+.pc-countdown-expired {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ff6b5e;
+}
 .pc-countdown-unit {
   background: var(--text-color);
   color: #fff;
