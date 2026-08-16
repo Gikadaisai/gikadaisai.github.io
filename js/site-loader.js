@@ -237,19 +237,12 @@ window.renderSupportGrids = (function () {
         // ティアの前に横棒を入れる
         html += '<div class="sponsor-tier-divider"></div>';
         html += '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
+        // 表示順・文字サイズは tier(1〜3)と配列順だけで決まる。
+        // 協賛金額は非公開情報のため、ページには一切出力しない
+        // （HTMLコメントであってもソース表示で読めてしまうため）。
         tierItems.forEach(function (s) {
-          var safeName = escapeHtml(s.name);
-          // HTMLコメント内は escapeHtml が効かないため、
-          // コメントを閉じられる "-->" と "<" "> " を除去してから埋め込む。
-          var safeAmount = String(s.amount == null ? "" : s.amount)
-            .replace(/[<>]/g, "")
-            .replace(/-{2,}/g, "-");
-          var amountComment = safeAmount ? "<!-- " + safeAmount + " -->" : "";
           html +=
-            '<span class="sponsor-item">' +
-            amountComment +
-            safeName +
-            "</span>";
+            '<span class="sponsor-item">' + escapeHtml(s.name) + "</span>";
         });
         html += "</div>";
       }
@@ -562,6 +555,18 @@ window.renderSupportGrids = (function () {
   };
   replaceTextInNode(document.body);
 
+  // ナビゲーション1件分の <li>（href / label は必ずエスケープして埋め込む）
+  // ヘッダー・フッターの両方から使う
+  const navLink = function (item) {
+    return (
+      '<li><a href="' +
+      escapeHtml(item.href) +
+      '">' +
+      escapeHtml(item.label) +
+      "</a></li>"
+    );
+  };
+
   // --- ヘッダーの動的生成 ---
   const headerEl = document.querySelector("header");
   if (headerEl) {
@@ -570,21 +575,17 @@ window.renderSupportGrids = (function () {
       .map(function (item) {
         if (item.children) {
           const childrenHtml = item.children
-            .map(function (child) {
-              return (
-                '<li><a href="' + child.href + '">' + child.label + "</a></li>"
-              );
-            })
+            .map(navLink)
             .join("\n\t\t\t\t\t\t\t\t");
           return (
             '<li class="ddmenu_parent"><a href="#">' +
-            item.label +
+            escapeHtml(item.label) +
             "</a>\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t" +
             childrenHtml +
             "\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</li>"
           );
         } else {
-          return '<li><a href="' + item.href + '">' + item.label + "</a></li>";
+          return navLink(item);
         }
       })
       .join("\n\t\t\t\t\t\t");
@@ -594,29 +595,19 @@ window.renderSupportGrids = (function () {
     (config.headerNav || []).forEach(function (item) {
       if (item.children) {
         item.children.forEach(function (child) {
-          spNavItems +=
-            '<li><a href="' +
-            child.href +
-            '">' +
-            child.label +
-            "</a></li>\n\t\t\t\t\t\t";
+          spNavItems += navLink(child) + "\n\t\t\t\t\t\t";
         });
       } else {
-        spNavItems +=
-          '<li><a href="' +
-          item.href +
-          '">' +
-          item.label +
-          "</a></li>\n\t\t\t\t\t\t";
+        spNavItems += navLink(item) + "\n\t\t\t\t\t\t";
       }
     });
 
     const actionBtn =
       config.headerActions && config.headerActions.button
         ? '<a href="' +
-          config.headerActions.button.href +
+          escapeHtml(config.headerActions.button.href) +
           '" class="header-contact-btn">' +
-          config.headerActions.button.label +
+          escapeHtml(config.headerActions.button.label) +
           "</a>"
         : "";
 
@@ -627,10 +618,10 @@ window.renderSupportGrids = (function () {
       '\t\t\t\t<img src="images/TUTFESlogo.png" alt="技科大祭ロゴ" class="header-logo-img">\n' +
       '\t\t\t\t<div class="logo-text-group">\n' +
       '\t\t\t\t\t<div id="daigaku">' +
-      univName +
+      escapeHtml(univName) +
       "</div>\n" +
       '\t\t\t\t\t<div id="gikadaisai">' +
-      fullName +
+      escapeHtml(fullName) +
       "</div>\n" +
       "\t\t\t\t</div>\n" +
       "\t\t\t</a>\n" +
@@ -664,20 +655,16 @@ window.renderSupportGrids = (function () {
   const footerEl = document.querySelector("footer");
   if (footerEl) {
     // Menu ナビゲーション
-    const menuItems = (config.footerNav || [])
-      .map(function (item) {
-        return '<li><a href="' + item.href + '">' + item.label + "</a></li>";
-      })
-      .join("\n\t\t\t\t");
+    const menuItems = (config.footerNav || []).map(navLink).join("\n\t\t\t\t");
 
     // Links（外部リンク）
     const linkItems = (config.footerLinks || [])
       .map(function (item) {
         return (
           '<li><a href="' +
-          item.href +
+          escapeHtml(item.href) +
           '" target="_blank" rel="noopener noreferrer">' +
-          item.label +
+          escapeHtml(item.label) +
           "</a></li>"
         );
       })
@@ -689,19 +676,19 @@ window.renderSupportGrids = (function () {
       '\t\t\t<div class="logo-footer">\n' +
       '\t\t\t\t<a href="index.html">\n' +
       '\t\t\t\t\t<span class="daigaku-footer">' +
-      univName +
+      escapeHtml(univName) +
       "</span>\n" +
       '\t\t\t\t\t<span class="gikadaisai-footer">' +
-      fullName +
+      escapeHtml(fullName) +
       "</span>\n" +
       "\t\t\t\t</a>\n" +
       "\t\t\t</div>\n" +
       '\t\t\t<address class="footer-address">\n' +
       "\t\t\t\t" +
-      config.address.postalCode +
+      escapeHtml(config.address.postalCode) +
       "<br>\n" +
       "\t\t\t\t" +
-      config.address.text +
+      escapeHtml(config.address.text) +
       "\n" +
       "\t\t\t</address>\n" +
       '\t\t\t<img src="images/TUTFESlogo.png" alt="技科大祭ロゴ" class="footer-logo-img">\n' +
@@ -725,7 +712,7 @@ window.renderSupportGrids = (function () {
       "\t</div>\n" +
       '\t<div class="footer-bottom">\n' +
       "\t\t<small>Copyright&copy; " +
-      fullName +
+      escapeHtml(fullName) +
       "実行委員会 All Rights Reserved.</small>\n" +
       "\t</div>";
   }
