@@ -78,25 +78,6 @@
   <body class="home">
     <!-- 準備中スクリーン（FOUC防止: CSSで初期表示、JSが読み込まれたら非表示にする） -->
     <div class="site-prerender-screen" id="opening-screen">
-      <!-- 通常のマスコット走りアニメーション（2回目以降のページ遷移時に表示） -->
-      <div class="prerender-content">
-        <div class="prerender-runner">
-          <div class="prerender-mascot-wrapper">
-            <img
-              src="images/run1.png"
-              alt="技科大祭マスコットキャラクター"
-              class="prerender-mascot-frame is-active"
-            />
-            <img src="images/run2.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run3.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run4.png" alt="" class="prerender-mascot-frame" />
-          </div>
-          <div class="prerender-ground"></div>
-        </div>
-        <p class="prerender-loading" aria-label="Loading">
-          loading<span class="prerender-dots"></span>
-        </p>
-      </div>
       <!-- オープニングアニメーション（初回訪問時のみJSで表示） -->
       <div class="opening-overlay" style="display: none">
         <div class="opening-grid-h"></div>

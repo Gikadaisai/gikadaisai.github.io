@@ -38,27 +38,8 @@
   </head>
 
   <body>
-    <!-- 準備中スクリーン（FOUC防止） -->
-    <div class="site-prerender-screen">
-      <div class="prerender-content">
-        <div class="prerender-runner">
-          <div class="prerender-mascot-wrapper">
-            <img
-              src="images/run1.png"
-              alt="技科大祭マスコットキャラクター"
-              class="prerender-mascot-frame is-active"
-            />
-            <img src="images/run2.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run3.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run4.png" alt="" class="prerender-mascot-frame" />
-          </div>
-          <div class="prerender-ground"></div>
-        </div>
-        <p class="prerender-loading" aria-label="Loading">
-          loading<span class="prerender-dots"></span>
-        </p>
-      </div>
-    </div>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
     <div id="container">
       <header></header>
 

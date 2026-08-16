@@ -55,53 +55,11 @@ window.onSiteConfig = function (callback) {
   var visibility = config.pageVisibility || {};
   var isPageVisible = visibility[pageName] !== false;
 
-  // --- FOUC防止: プリレンダースクリーンを解除（最低0.5秒間表示） ---
+  // --- FOUC防止: プリレンダースクリーンを解除 ---
   // page-visibility.js が非公開ページを「準備中」画面に差し替えるため、
   // body.site-ready は常に付与してプリレンダースクリーンを解除する
-  var prerenderStartTime = performance.now();
-  var MINIMUM_DISPLAY_MS = 0; // 一時的に0に変更 (元は 500)
-
   function dismissPrerender() {
-    var elapsed = performance.now() - prerenderStartTime;
-    var remaining = MINIMUM_DISPLAY_MS - elapsed;
-    if (remaining > 0) {
-      setTimeout(function () {
-        document.body.classList.add("site-ready");
-        stopMascotAnimation();
-      }, remaining);
-    } else {
-      document.body.classList.add("site-ready");
-      stopMascotAnimation();
-    }
-  }
-
-  // --- マスコット走りアニメーション（フレーム切り替え） ---
-  var mascotFrames = document.querySelectorAll(".prerender-mascot-frame");
-  var mascotCurrentIndex = 0;
-  var mascotDirection = 1; // 1: 正方向, -1: 逆方向
-  var mascotIntervalId = null;
-
-  function startMascotAnimation() {
-    if (mascotFrames.length < 2) return;
-    mascotIntervalId = setInterval(function () {
-      mascotFrames[mascotCurrentIndex].classList.remove("is-active");
-      mascotCurrentIndex += mascotDirection;
-      if (mascotCurrentIndex >= mascotFrames.length - 1) {
-        mascotCurrentIndex = mascotFrames.length - 1;
-        mascotDirection = -1;
-      } else if (mascotCurrentIndex <= 0) {
-        mascotCurrentIndex = 0;
-        mascotDirection = 1;
-      }
-      mascotFrames[mascotCurrentIndex].classList.add("is-active");
-    }, 100);
-  }
-
-  function stopMascotAnimation() {
-    if (mascotIntervalId) {
-      clearInterval(mascotIntervalId);
-      mascotIntervalId = null;
-    }
+    document.body.classList.add("site-ready");
   }
 
   // --- オープニングアニメーション制御（初回訪問時のみ） ---
@@ -112,10 +70,8 @@ window.onSiteConfig = function (callback) {
   var isFirstVisit = !sessionStorage.getItem("opening_shown");
 
   if (isFirstVisit && openingOverlay && pageName === "index") {
-    // 初回訪問 & index.html: マスコットを非表示にしてからオープニングを表示
+    // 初回訪問 & index.html: オープニングを最後まで見せてからスライドアウト
     sessionStorage.setItem("opening_shown", "1");
-    var prerenderContent = prerenderScreen.querySelector(".prerender-content");
-    if (prerenderContent) prerenderContent.style.display = "none";
     openingOverlay.style.display = "";
     prerenderScreen.classList.add("opening-active");
 
@@ -136,9 +92,8 @@ window.onSiteConfig = function (callback) {
       );
     }, animDuration);
   } else {
-    // 2回目以降 or 他ページ: オープニングHTMLを削除して通常のマスコットローディングを使用
+    // 2回目以降 or 他ページ: オープニングHTMLを削除して即座に本編を表示
     if (openingOverlay) openingOverlay.remove();
-    startMascotAnimation();
     dismissPrerender();
   }
 
