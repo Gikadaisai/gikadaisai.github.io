@@ -87,7 +87,7 @@
               style="top: 50px; left: 20%"
             ></div>
             <h1><span>Guests</span><span class="hosoku">ゲスト情報</span></h1>
-            <div id="events-container"></div>
+            <div id="guest-container"></div>
           </section>
         </main>
       </div>
@@ -116,14 +116,14 @@
 
     <script>
       // escapeHtml() は js/escape-html.js が提供する
-      // events.json を読み込みゲスト（公表用イベント）情報を動的に描画
+      // guest.json を読み込みゲスト情報を動的に描画
       document.addEventListener("DOMContentLoaded", async function () {
-        var container = document.getElementById("events-container");
+        var container = document.getElementById("guest-container");
         if (!container) return;
 
         try {
-          var res = await fetch("js/events.json");
-          if (!res.ok) throw new Error("events.json の読み込みに失敗");
+          var res = await fetch("js/guest.json");
+          if (!res.ok) throw new Error("guest.json の読み込みに失敗");
           var events = await res.json();
 
           var html = "";
