@@ -657,10 +657,6 @@ main h2 .hosoku {
   background: var(--text-color);
   color: #fff;
 }
-.pc-apply-btn-note {
-  font-size: 12px;
-  opacity: 0.8;
-}
 .pc-apply-privacy {
   font-size: 13px;
   color: #666;

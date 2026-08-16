@@ -90,27 +90,22 @@
   height: 160px;
 }
 
-/* 画像シェイプ共通スタイル */
-/* 画像シェイプ共通スタイル（基底クラス＋全種別をまとめて指定） */
-.mascot-image-shape,
+/* 画像シェイプ共通スタイル（全種別をまとめて指定） */
 .mascot-image-shape-department1,
 .mascot-image-shape-department2,
 .mascot-image-shape-department3,
 .mascot-image-shape-department4,
-.mascot-image-shape-department5,
-.mascot-image-shape-library {
+.mascot-image-shape-department5 {
   background: none !important;
   width: 160px !important;
   height: 160px !important;
 }
 
-.mascot-image-shape::after,
 .mascot-image-shape-department1::after,
 .mascot-image-shape-department2::after,
 .mascot-image-shape-department3::after,
 .mascot-image-shape-department4::after,
-.mascot-image-shape-department5::after,
-.mascot-image-shape-library::after {
+.mascot-image-shape-department5::after {
   content: "";
   background-size: contain;
   background-repeat: no-repeat;
@@ -135,9 +130,6 @@
 }
 .mascot-image-shape-department5::after {
   background-image: url("../images/department5.png");
-}
-.mascot-image-shape-library::after {
-  background-image: url("../images/library.png");
 }
 
 /* ---------- Entrance Animations for Shapes ---------- */
@@ -217,9 +209,6 @@
 }
 .anim-d4 {
   animation-delay: 0.9s;
-}
-.anim-d5 {
-  animation-delay: 1s;
 }
 
 /* ---------- Top Center Banner ---------- */
@@ -517,19 +506,8 @@
   border-bottom: none;
   display: block;
 }
-.rlx-subheading {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin: 2rem 0 1rem;
-  border-bottom: none;
-  display: block;
-}
 .text-purple {
   color: #ff6b5e;
-}
-.text-green {
-  color: #ffc824;
 }
 
 .rlx-badge {
@@ -542,48 +520,6 @@
   border-radius: 12px;
   letter-spacing: 0.1em;
   margin-bottom: 2rem;
-}
-.rlx-lead {
-  font-size: 24px;
-  line-height: 1.8;
-  color: var(--text-color);
-  margin-bottom: 2rem;
-}
-
-/* ---------- Code Editor Block ---------- */
-.rlx-code-block {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 40px 50px;
-  border-radius: 4px;
-  margin: 2rem 0;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-}
-.rlx-code-block code {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 16px;
-  color: var(--text-color);
-  background: none;
-  padding: 0;
-  line-height: 2;
-  white-space: pre-wrap;
-}
-.code-comment {
-  color: rgba(0, 0, 0, 0.45);
-}
-.code-purple {
-  color: #ff6b5e;
-}
-.code-green {
-  color: #ffc824;
-}
-.code-orange {
-  color: #ffb85e;
-}
-.code-white {
-  color: var(--text-color);
 }
 
 /* ---------- Highlight Cards ---------- */
@@ -629,9 +565,6 @@
   font-size: 2rem;
   margin-bottom: 0.8rem;
   color: #888888;
-}
-.highlight-card-icon--purple {
-  color: #ff6b5e;
 }
 .highlight-label {
   font-size: 14px;
@@ -851,16 +784,6 @@
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
-.events-title {
-  font-family: "Source Sans 3", "Source Sans Pro", "Noto Sans JP", sans-serif;
-  font-size: clamp(24px, 4vw, 40px);
-  font-weight: 900;
-  color: var(--text-color);
-  margin: 0 0 0.5rem;
-  line-height: 1.4;
-  border-bottom: none;
-  display: block;
-}
 .events-subtitle {
   font-size: 22px;
   color: var(--text-color);
@@ -897,46 +820,6 @@
   box-shadow: 0 8px 30px rgba(255, 200, 36, 0.25);
   border-color: rgba(255, 200, 36, 0.8);
 }
-.event-card--accent {
-  border: 1px solid rgba(255, 107, 94, 0.4);
-  box-shadow: 0 4px 25px rgba(255, 107, 94, 0.15);
-}
-.event-card--accent:hover {
-  box-shadow: 0 8px 35px rgba(255, 107, 94, 0.25);
-  border-color: rgba(255, 107, 94, 0.7);
-}
-.event-card--accent .event-card-title {
-  color: var(--text-color);
-}
-.event-card--accent .event-card-desc {
-  color: #444444;
-}
-.event-card-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px;
-  letter-spacing: 0.05em;
-}
-.event-card-tag--new {
-  background: #ff6b5e;
-  color: #fff;
-}
-.event-card-tag--power {
-  background: #ffc824;
-  color: #0a0a0a;
-}
-.event-card-tag--must {
-  background: #ffc824;
-  color: #0a0a0a;
-}
-.event-card-tag--collab {
-  background: #4a4a4a;
-  color: #ffffff;
-}
 .event-card-icon {
   font-size: 2.2rem;
   margin-bottom: 1rem;
@@ -966,10 +849,6 @@
   color: #444444;
 }
 
-/* ---------- CTA Section ---------- */
-.proposal-cta {
-  padding: 0;
-}
 .cta-container {
   max-width: 100%;
   margin: 2rem 0 0;
