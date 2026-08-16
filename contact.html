@@ -132,9 +132,6 @@
         </main>
       </div>
       <footer></footer>
-      <div class="pagetop">
-        <a href="#"><i class="fas fa-angle-double-up"></i></a>
-      </div>
     </div>
 
     <script
@@ -157,8 +154,7 @@
     <script>
       // site-config 読み込み後にメールアドレスと回数表記を設定
       window.onSiteConfig(function (config) {
-        var fullName =
-          "第" + config.festivalNumber + "回" + config.festivalName;
+        var fullName = window.getFestivalName(config);
 
         var emailLink = document.getElementById("contact-email-link");
         var emailText = document.getElementById("contact-email-text");

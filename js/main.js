@@ -67,8 +67,6 @@ $(function () {
   var headerHeight = $("header").outerHeight();
   var headerMargin = parseInt($("header").css("margin-top"));
   var totalHeaderHeight = headerHeight + headerMargin;
-  // ページ上部へ戻るボタンのセレクター
-  var topButton = $(".pagetop");
 
   // スムーススクロールを実行する関数
   // targetにはスクロール先の要素のセレクターまたは'#'（ページトップ）を指定
@@ -81,7 +79,9 @@ $(function () {
   }
 
   // ページ内リンクとページトップへ戻るボタンにクリックイベントを設定
-  $('a[href^="#"], .pagetop').click(function (e) {
+  // ページトップボタンは site-loader.js が後から挿入するため、
+  // 個別バインドではなく document への委譲で受ける。
+  $(document).on("click", 'a[href^="#"], .pagetop', function (e) {
     e.preventDefault(); // デフォルトのアンカー動作をキャンセル
     var id = $(this).attr("href") || "#"; // クリックされた要素のhref属性を取得、なければ'#'
     smoothScroll(id); // スムーススクロールを実行
@@ -96,11 +96,8 @@ $(function () {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-    if (scrollTop >= 300) {
-      topButton.addClass("is-visible");
-    } else {
-      topButton.removeClass("is-visible");
-    }
+    // 挿入タイミングに依存しないよう毎回引き直す
+    $(".pagetop").toggleClass("is-visible", scrollTop >= 300);
   }
   updatePagetop(); // ロード時に即実行
   document.addEventListener("scroll", updatePagetop, {

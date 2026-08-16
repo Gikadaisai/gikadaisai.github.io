@@ -6,6 +6,9 @@
 window.onSiteConfig(function (config) {
   "use strict";
 
+  // カウントダウンカードを持たないページでは何もしない
+  if (!document.querySelector(".countdown-card")) return;
+
   var festivalStart = new Date(config.dates.start).getTime();
   var festivalEnd = config.dates.end
     ? new Date(config.dates.end).getTime()

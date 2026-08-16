@@ -279,7 +279,7 @@
                     <!-- ステージ企画 -->
                     <div class="highlight-card">
                       <i
-                        class="fas fa-microphone-stand highlight-card-icon highlight-card-icon--red"
+                        class="fas fa-microphone-stand highlight-card-icon"
                       ></i>
                       <h3 class="highlight-card-title">ステージ企画</h3>
                       <p class="highlight-card-desc">
@@ -288,9 +288,7 @@
                     </div>
                     <!-- 模擬店 -->
                     <div class="highlight-card">
-                      <i
-                        class="fas fa-utensils highlight-card-icon highlight-card-icon--red"
-                      ></i>
+                      <i class="fas fa-utensils highlight-card-icon"></i>
                       <h3 class="highlight-card-title">模擬店＆キッチンカー</h3>
                       <p class="highlight-card-desc">
                         屋内外合わせて多数出店。売り切れ続出の人気グルメが集結。
@@ -298,9 +296,7 @@
                     </div>
                     <!-- お笑いライブ -->
                     <div class="highlight-card">
-                      <i
-                        class="fas fa-face-laugh-beam highlight-card-icon highlight-card-icon--red"
-                      ></i>
+                      <i class="fas fa-face-laugh-beam highlight-card-icon"></i>
                       <h3 class="highlight-card-title">お笑いライブ</h3>
                       <p class="highlight-card-desc">
                         ハリウッドザコシショウさんなど有名芸人を招待！笑いに包まれるメインイベント!!
@@ -308,9 +304,7 @@
                     </div>
                     <!-- 打ち上げ花火 -->
                     <div class="highlight-card">
-                      <i
-                        class="fas fa-burst highlight-card-icon highlight-card-icon--red"
-                      ></i>
+                      <i class="fas fa-burst highlight-card-icon"></i>
                       <h3 class="highlight-card-title">初の打ち上げ花火</h3>
                       <p class="highlight-card-desc">
                         フィナーレを飾る大迫力の花火。キャンパスの夜空を彩る感動の瞬間。
@@ -804,116 +798,18 @@
             <h2 class="c">
               <span>Access</span><span class="hosoku">会場アクセス</span>
             </h2>
+            <!-- アクセス案内は js/site-config.json の access.methods で管理 -->
             <div class="access-container">
               <div class="access-info">
-                <div class="access-method">
-                  <h4>
-                    <i class="fas fa-train-subway"></i>電車・バスでお越しの方
-                  </h4>
-                  <div class="access-description">
-                    <p>
-                      <strong>JR各線・名鉄名古屋本線「豊橋駅」</strong
-                      >で下車。<br />豊橋駅東口バス乗り場から豊鉄バス「技科大線」に乗車（約25分）、「技科大前」バス停下車すぐ。
-                    </p>
-                    <div class="bus-countdown-wrapper">
-                      <h5>
-                        <i class="fas fa-bus"></i>技科大線の出発案内（豊橋駅前
-                        発）
-                      </h5>
-                      <p id="bus-schedule-note" class="note"></p>
-                      <div id="bus-countdown-display">
-                        <p>次の出発まであと</p>
-                        <div class="time-container">
-                          <span id="bus-minutes">--</span><small>分</small>
-                          <span id="bus-seconds">--</span><small>秒</small>
-                        </div>
-                      </div>
-                      <p class="next-bus-info">
-                        発車時刻: <span id="next-bus-time">--:--</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="access-method">
-                  <h4><i class="fas fa-car"></i>お車でお越しの方</h4>
-                  <div class="access-description">
-                    <p>
-                      東名高速道路「豊川IC」より約40分。<br />国道23号線バイパス「豊橋東IC」より約10分。
-                    </p>
-                    <p class="note">
-                      ※当日は駐車場の混雑が予想されます。可能な限り公共交通機関のご利用にご協力ください。
-                    </p>
-                  </div>
-                </div>
+                <div data-include="access-methods"></div>
               </div>
-              <div class="map-button-container">
-                <a
-                  id="map-direction-link"
-                  href="javascript:void(0);"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="map-button"
-                >
-                  <span class="map-button-icon"
-                    ><i class="fas fa-map-marked-alt"></i
-                  ></span>
-                  <span class="map-button-text">
-                    <strong>Google Mapで経路を確認</strong>
-                    <small>大学までのルートを検索</small>
-                  </span>
-                </a>
-              </div>
+              <div data-include="access-map"></div>
             </div>
           </section>
 
-          <!-- Section: Sponsors -->
-          <section id="Sponsors" class="bg1 rlx-index-legacy-section">
-            <div
-              class="deco-circle deco-circle--dashed deco-circle--xl"
-              style="top: -80px; left: -100px"
-            ></div>
-            <div
-              class="deco-circle deco-circle--solid deco-circle--md"
-              style="bottom: 20px; right: 5%"
-            ></div>
-            <div
-              class="deco-circle deco-circle--dashed deco-circle--sm"
-              style="top: 40%; right: -20px"
-            ></div>
-            <h2 class="c">
-              <span>Sponsors</span><span class="hosoku">ご協賛企業</span>
-            </h2>
-            <p class="c">
-              今年度の技科大祭開催にあたり、多くの企業の皆様にご支援、ご協力を賜りました。<br />心より感謝申し上げます。（敬称略）
-            </p>
-
-            <div id="sponsor-grid" class="sponsor-grid"></div>
-          </section>
-
-          <!-- Section: Supporters -->
-          <section
-            id="Supporters"
-            class="bg1 rlx-index-legacy-section"
-            style="position: relative"
-          >
-            <div
-              class="deco-circle deco-circle--filled deco-circle--md"
-              style="top: 150px; left: -40px"
-            ></div>
-            <div
-              class="deco-circle deco-circle--solid deco-circle--sm"
-              style="bottom: 100px; right: 8%"
-            ></div>
-            <h2 class="c">
-              <span>Supporters</span
-              ><span class="hosoku">ご寄付いただいた皆様</span>
-            </h2>
-            <p class="c">
-              今年度の技科大祭開催に際し、寄付サイト等を通じてご支援いただいた皆様をご紹介いたします。<br />皆様のご厚志に心より御礼申し上げます。（50音順、敬称略）
-            </p>
-
-            <div id="supporter-grid" class="supporter-grid"></div>
-          </section>
+          <!-- ご協賛企業・ご寄付者セクションは js/site-config.json の sections で管理 -->
+          <div data-include="sponsors"></div>
+          <div data-include="supporters"></div>
         </main>
 
         <!-- Floating Action Button for Section Navigation (Mobile Only) -->
@@ -964,9 +860,6 @@
         </div>
       </div>
       <footer></footer>
-      <div class="pagetop">
-        <a href="#"><i class="fas fa-angle-double-up"></i></a>
-      </div>
     </div>
 
     <script type="application/ld+json">
@@ -1080,7 +973,8 @@
       })();
 
       // Sidebar: position:fixed で画面固定 + 表示範囲制御
-      (function () {
+      // 基準点の #Supporters は site-loader.js が生成するため config 読み込み後に初期化する
+      function initSidebar() {
         var nav = document.querySelector(".rlx-sidebar-nav");
         var mascot = document.querySelector(".sidebar-mascot");
         var sidebar = document.querySelector(".rlx-sidebar");
@@ -1123,10 +1017,11 @@
         window.addEventListener("scroll", updateSidebar, { passive: true });
         window.addEventListener("resize", updateSidebar);
         updateSidebar();
-      })();
+      }
 
       // Sidebar active link on scroll
-      (function () {
+      // 対象セクション(#Sponsors 等)も生成後でないと拾えないため同様に遅延させる
+      function initSidebarActiveLink() {
         var links = document.querySelectorAll(".rlx-nav-link");
         var sections = [];
         links.forEach(function (l) {
@@ -1141,9 +1036,9 @@
             s.link.classList.toggle("active", st >= top && st < bot);
           });
         });
-      })();
+      }
 
-      // site-config 読み込み後にテーブル見出しとマップリンクを更新
+      // site-config 読み込み後（＝共通セクション生成後）の初期化
       window.onSiteConfig(function (config) {
         var num = config.festivalNumber;
 
@@ -1153,9 +1048,9 @@
         if (thLast) thLast.textContent = "第" + (num - 1) + "回（2025年実績）";
         if (thThis) thThis.textContent = "第" + num + "回（2026年計画）";
 
-        // Google Maps 経路リンク
-        var mapLink = document.getElementById("map-direction-link");
-        if (mapLink) mapLink.href = config.access.googleMapsDirection;
+        initSidebar();
+        initSidebarActiveLink();
+
         // --- Mobile Section Nav Logic ---
         const fab = document.getElementById("rlx-mobile-nav-trigger");
         const overlay = document.getElementById("rlx-mobile-nav-overlay");
