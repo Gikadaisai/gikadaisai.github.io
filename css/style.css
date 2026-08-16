@@ -991,43 +991,6 @@ p.next-bus-info {
   margin-top: 3rem;
 }
 
-.sponsor-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 1.5rem 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  min-height: 160px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sponsor-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 200, 36, 0.6);
-}
-
-.sponsor-tile img {
-  max-height: 70px;
-  max-width: 100%;
-  object-fit: contain;
-  margin-bottom: 1rem;
-}
-
-.sponsor-tile .sponsor-name {
-  font-weight: 600;
-  color: var(--text-color);
-  text-align: center;
-  line-height: 1.4;
-  font-size: 0.9rem;
-}
-
 /* テキストベース協賛表示 */
 .sponsor-grid.text-only-sponsors {
   display: block;
@@ -1807,6 +1770,33 @@ body.modal-open {
   color: var(--accent-text-color);
 }
 
+/* 芳名帳（PDF）へのリンクボタン */
+.supporter-registry {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* セレクタを2クラスにして .bg1 a { color: inherit } に打ち勝たせる */
+.supporter-grid .supporter-registry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #d32f2f;
+  border: 2px solid #d32f2f;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.supporter-grid .supporter-registry-btn:hover {
+  opacity: 0.7;
+  color: #d32f2f;
+}
+
 /* ========== FOUC防止: サイト公開状態管理 ========== */
 /* 初期状態: 本番コンテンツを非表示にし、準備中スクリーンを表示 */
 #contents,
@@ -1841,168 +1831,9 @@ body.site-ready .site-prerender-screen:not(.opening-active) {
   padding: 2rem;
 }
 
-/* 初回訪問時: マスコットを即非表示、オープニングを即表示（チラつき防止） */
-.first-visit .site-prerender-screen .prerender-content {
-  display: none !important;
-}
-
+/* 初回訪問時: オープニングを即表示（JSの実行を待たずチラつきを防ぐ） */
 .first-visit .site-prerender-screen .opening-overlay {
   display: flex !important;
-}
-
-.site-prerender-screen .prerender-content {
-  /* 一時的にマスコットのアニメーションを非表示 (元に戻す場合は以下の display: none !important; を削除) */
-  display: none !important;
-  position: relative;
-  z-index: 1;
-  /* display: flex; */
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-/* ========== Running Mascot Animation (Frame-based) ========== */
-.prerender-runner {
-  position: relative;
-  width: 160px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.prerender-mascot-wrapper {
-  position: relative;
-}
-
-/* 全フレーム画像を重ねて表示。JSで opacity を切り替える */
-.prerender-mascot-frame {
-  width: 120px;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: none;
-}
-
-.prerender-mascot-frame:first-child {
-  position: relative;
-  left: 0;
-  transform: none;
-}
-
-.prerender-mascot-frame.is-active {
-  opacity: 1;
-}
-
-/* 地面の影（走っている時の影の伸縮） */
-.prerender-ground {
-  width: 70px;
-  height: 12px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(45, 48, 54, 0.1) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  margin-top: 2px;
-  animation: shadow-pulse 0.4s ease-in-out infinite;
-}
-
-/* 砂ぼこりパーティクル */
-.prerender-mascot-wrapper::before,
-.prerender-mascot-wrapper::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  border-radius: 50%;
-  background: rgba(45, 48, 54, 0.1);
-  animation: dust-particle 0.8s ease-out infinite;
-}
-
-.prerender-mascot-wrapper::before {
-  left: 10px;
-  width: 8px;
-  height: 8px;
-  animation-delay: 0s;
-}
-
-.prerender-mascot-wrapper::after {
-  left: 20px;
-  width: 6px;
-  height: 6px;
-  animation-delay: 0.2s;
-}
-
-/* キーフレーム: 影の伸縮 */
-@keyframes shadow-pulse {
-  0%,
-  100% {
-    transform: scaleX(1);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: scaleX(0.6);
-    opacity: 0.4;
-  }
-}
-
-/* キーフレーム: 砂ぼこり */
-@keyframes dust-particle {
-  0% {
-    opacity: 0.6;
-    transform: translate(0, 0) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-30px, -10px) scale(0.3);
-  }
-}
-
-/* ========== Loading Text Animation ========== */
-.prerender-loading {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  color: #000000;
-  margin: 0;
-  min-width: 180px;
-}
-
-/* ドットのアニメーション: content で . の数を増減 */
-.prerender-dots::after {
-  content: "";
-  animation: loading-dots 1.5s steps(1, end) infinite;
-}
-
-@keyframes loading-dots {
-  0% {
-    content: "";
-  }
-
-  25% {
-    content: " .";
-  }
-
-  50% {
-    content: " . .";
-  }
-
-  75% {
-    content: " . . .";
-  }
-
-  100% {
-    content: "";
-  }
 }
 
 /* ========== Opening Animation (初回訪問時のみ表示) ========== */
@@ -2423,29 +2254,6 @@ body.site-ready .site-prerender-screen:not(.opening-active) {
 
 /* --- Exit animation --- */
 .site-prerender-screen.opening-exit {
-  animation: opening-flash-out 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  pointer-events: none;
-  will-change: opacity, background-color, filter;
-}
-
-/* 爆発的な光の広がりを追加 */
-.site-prerender-screen.opening-exit::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, #ffffff 0%, transparent 70%);
-  opacity: 0;
-  transform: scale(0);
-  animation: opening-burst 0.8s ease-out forwards;
-}
-
-.site-prerender-screen.opening-exit .opening-title-group {
-  animation: title-group-glow-exit 0.8s ease-in forwards;
-  will-change: transform, opacity, filter;
-}
-
-/* --- Exit animation --- */
-.site-prerender-screen.opening-exit {
   animation: opening-flash-out 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: none;
   will-change: opacity, background-color, filter;
@@ -2522,12 +2330,6 @@ body.site-ready .site-prerender-screen:not(.opening-active) {
     transform: scale(1.1);
     opacity: 0;
     filter: drop-shadow(0 0 40px #fff) brightness(2);
-  }
-}
-
-@keyframes element-exit {
-  to {
-    opacity: 0;
   }
 }
 

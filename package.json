@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "rellax": "^1.12.1"
-  },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",

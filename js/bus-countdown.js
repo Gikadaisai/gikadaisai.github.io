@@ -2,8 +2,11 @@
  * bus-countdown.js
  * timetable.json を読み込み、次のバスまでのカウントダウンを表示する。
  * index.html と access.html の両方で使用される共通スクリプト。
+ *
+ * 表示先の要素は site-loader.js がアクセス案内と一緒に生成するため、
+ * DOMContentLoaded ではなく onSiteConfig（生成完了後）を待つ。
  */
-document.addEventListener("DOMContentLoaded", async function () {
+window.onSiteConfig(async function () {
   "use strict";
 
   var countdownDisplayEl = document.getElementById("bus-countdown-display");

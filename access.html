@@ -2,7 +2,10 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する -->
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する
+         ※ クリックジャッキング対策(frame-ancestors)は meta 経由では
+            ブラウザに無視されるため、ここには書かない。
+            Webサーバーのレスポンスヘッダーで設定する(UPDATE_MANUAL.md 参照)。 -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
@@ -66,27 +69,8 @@
   </head>
 
   <body>
-    <!-- 準備中スクリーン（FOUC防止） -->
-    <div class="site-prerender-screen">
-      <div class="prerender-content">
-        <div class="prerender-runner">
-          <div class="prerender-mascot-wrapper">
-            <img
-              src="images/run1.png"
-              alt="技科大祭マスコットキャラクター"
-              class="prerender-mascot-frame is-active"
-            />
-            <img src="images/run2.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run3.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run4.png" alt="" class="prerender-mascot-frame" />
-          </div>
-          <div class="prerender-ground"></div>
-        </div>
-        <p class="prerender-loading" aria-label="Loading">
-          loading<span class="prerender-dots"></span>
-        </p>
-      </div>
-    </div>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
     <div id="container">
       <header></header>
 
@@ -134,71 +118,15 @@
                   </p>
                 </div>
 
-                <div class="access-method">
-                  <h4>
-                    <i class="fas fa-train-subway"></i>電車・バスでお越しの方
-                  </h4>
-                  <div class="access-description">
-                    <p>
-                      <strong>JR各線・名鉄名古屋本線「豊橋駅」</strong
-                      >で下車。<br />豊橋駅東口バス乗り場から豊鉄バス「技科大線」に乗車（約25分）、「技科大前」バス停下車すぐ。
-                    </p>
-                    <div class="bus-countdown-wrapper">
-                      <h5>
-                        <i class="fas fa-bus"></i>技科大線の出発案内（豊橋駅前
-                        発）
-                      </h5>
-                      <p id="bus-schedule-note" class="note"></p>
-                      <div id="bus-countdown-display">
-                        <p>次の出発まであと</p>
-                        <div class="time-container">
-                          <span id="bus-minutes">--</span><small>分</small>
-                          <span id="bus-seconds">--</span><small>秒</small>
-                        </div>
-                      </div>
-                      <p class="next-bus-info">
-                        発車時刻: <span id="next-bus-time">--:--</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="access-method">
-                  <h4><i class="fas fa-car"></i>お車でお越しの方</h4>
-                  <div class="access-description">
-                    <p>
-                      東名高速道路「豊川IC」より約40分。<br />国道23号線バイパス「豊橋東IC」より約10分。
-                    </p>
-                    <p class="note">
-                      ※当日は駐車場の混雑が予想されます。可能な限り公共交通機関のご利用にご協力ください。
-                    </p>
-                  </div>
-                </div>
+                <!-- アクセス案内は js/site-config.json の access.methods で管理 -->
+                <div data-include="access-methods"></div>
               </div>
-              <div class="map-button-container">
-                <a
-                  id="map-direction-link"
-                  href="javascript:void(0);"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="map-button"
-                >
-                  <span class="map-button-icon"
-                    ><i class="fas fa-map-marked-alt"></i
-                  ></span>
-                  <span class="map-button-text">
-                    <strong>Google Mapで経路を確認</strong>
-                    <small>大学までのルートを検索</small>
-                  </span>
-                </a>
-              </div>
+              <div data-include="access-map"></div>
             </div>
           </section>
         </main>
       </div>
       <footer></footer>
-      <div class="pagetop">
-        <a href="#"><i class="fas fa-angle-double-up"></i></a>
-      </div>
     </div>
 
     <script
@@ -220,12 +148,11 @@
     <script src="js/bus-countdown.js"></script>
 
     <script>
-      // site-config 読み込み後に Google Maps の URL を設定
+      // site-config 読み込み後に Google Maps 埋め込みの URL を設定
+      // （経路ボタンのリンクは site-loader.js が生成時に設定する）
       window.onSiteConfig(function (config) {
         var embedIframe = document.getElementById("google-maps-embed");
         if (embedIframe) embedIframe.src = config.access.googleMapsEmbed;
-        var mapLink = document.getElementById("map-direction-link");
-        if (mapLink) mapLink.href = config.access.googleMapsDirection;
       });
     </script>
   </body>

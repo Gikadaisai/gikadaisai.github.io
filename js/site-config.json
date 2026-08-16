@@ -29,7 +29,70 @@
   },
   "access": {
     "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.1582743817758!2d137.40748281152807!3d34.70118767280656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6004d486441646c7%3A0xb819d28be7a7df7f!2z6LGK5qmL5oqA6KGT56eR5a2m5aSn5a2m!5e0!3m2!1sja!2sjp!4v1754376149619!5m2!1sja!2sjp",
-    "googleMapsDirection": "https://www.google.com/maps/dir/?api=1&destination=%E8%B1%8A%E6%A9%8B%E6%8A%80%E8%A1%93%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6"
+    "googleMapsDirection": "https://www.google.com/maps/dir/?api=1&destination=%E8%B1%8A%E6%A9%8B%E6%8A%80%E8%A1%93%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6",
+    "mapButton": {
+      "title": "Google Mapで経路を確認",
+      "subtitle": "大学までのルートを検索"
+    },
+    "methods": [
+      {
+        "icon": "fa-train-subway",
+        "heading": "電車・バスでお越しの方",
+        "paragraphs": [
+          "**JR各線・名鉄名古屋本線「豊橋駅」**で下車。\n豊橋駅東口バス乗り場から豊鉄バス「技科大線」に乗車（約25分）、「技科大前」バス停下車すぐ。"
+        ],
+        "notes": [],
+        "busCountdown": {
+          "heading": "技科大線の出発案内（豊橋駅前 発）"
+        }
+      },
+      {
+        "icon": "fa-car",
+        "heading": "お車でお越しの方",
+        "paragraphs": [
+          "東名高速道路「豊川IC」より約40分。\n国道23号線バイパス「豊橋東IC」より約10分。"
+        ],
+        "notes": [
+          "※当日は駐車場の混雑が予想されます。可能な限り公共交通機関のご利用にご協力ください。"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "sponsors": {
+      "titleEn": "Sponsors",
+      "titleJa": "ご協賛企業",
+      "lead": "今年度の技科大祭開催にあたり、多くの企業の皆様にご支援、ご協力を賜りました。\n心より感謝申し上げます。（敬称略）",
+      "emptyText": "本年度のご協賛企業様を募集しております。",
+      "errorText": "協賛企業情報の読み込み中にエラーが発生しました。"
+    },
+    "supporters": {
+      "titleEn": "Supporters",
+      "titleJa": "ご寄付いただいた皆様",
+      "lead": "今年度の技科大祭開催に際し、寄付サイト等を通じてご支援いただいた皆様をご紹介いたします。\n皆様のご厚志に心より御礼申し上げます。（50音順、敬称略）",
+      "emptyText": "皆様からのご支援を引き続きお待ちしております。",
+      "errorText": "寄付者情報の読み込み中にエラーが発生しました。",
+      "registryUrl": "https://www.tut.ac.jp/kikin/download/houmei_gikadaisai.pdf",
+      "registryLabel": "芳名帳（PDF）はこちら"
+    }
+  },
+  "comingSoon": {
+    "label": "Coming Soon",
+    "title": "準備中",
+    "links": [
+      {
+        "href": "support.html",
+        "icon": "fa-hand-holding-heart",
+        "label": "ご協賛・ご寄付"
+      },
+      { "href": "index.html", "icon": "fa-home", "label": "トップページへ" },
+      {
+        "href": "access.html",
+        "icon": "fa-map-marker-alt",
+        "label": "アクセス"
+      },
+      { "href": "contact.html", "icon": "fa-envelope", "label": "お問い合わせ" }
+    ]
   },
   "headerNav": [
     {

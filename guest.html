@@ -2,7 +2,10 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する -->
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する
+         ※ クリックジャッキング対策(frame-ancestors)は meta 経由では
+            ブラウザに無視されるため、ここには書かない。
+            Webサーバーのレスポンスヘッダーで設定する(UPDATE_MANUAL.md 参照)。 -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
@@ -66,27 +69,8 @@
   </head>
 
   <body>
-    <!-- 準備中スクリーン（FOUC防止） -->
-    <div class="site-prerender-screen">
-      <div class="prerender-content">
-        <div class="prerender-runner">
-          <div class="prerender-mascot-wrapper">
-            <img
-              src="images/run1.png"
-              alt="技科大祭マスコットキャラクター"
-              class="prerender-mascot-frame is-active"
-            />
-            <img src="images/run2.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run3.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run4.png" alt="" class="prerender-mascot-frame" />
-          </div>
-          <div class="prerender-ground"></div>
-        </div>
-        <p class="prerender-loading" aria-label="Loading">
-          loading<span class="prerender-dots"></span>
-        </p>
-      </div>
-    </div>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
     <div id="container">
       <header></header>
 
@@ -106,14 +90,11 @@
               style="top: 50px; left: 20%"
             ></div>
             <h1><span>Guests</span><span class="hosoku">ゲスト情報</span></h1>
-            <div id="events-container"></div>
+            <div id="guest-container"></div>
           </section>
         </main>
       </div>
       <footer></footer>
-      <div class="pagetop">
-        <a href="#"><i class="fas fa-angle-double-up"></i></a>
-      </div>
     </div>
 
     <script
@@ -135,14 +116,14 @@
 
     <script>
       // escapeHtml() は js/escape-html.js が提供する
-      // events.json を読み込みゲスト（公表用イベント）情報を動的に描画
+      // guest.json を読み込みゲスト情報を動的に描画
       document.addEventListener("DOMContentLoaded", async function () {
-        var container = document.getElementById("events-container");
+        var container = document.getElementById("guest-container");
         if (!container) return;
 
         try {
-          var res = await fetch("js/events.json");
-          if (!res.ok) throw new Error("events.json の読み込みに失敗");
+          var res = await fetch("js/guest.json");
+          if (!res.ok) throw new Error("guest.json の読み込みに失敗");
           var events = await res.json();
 
           var html = "";

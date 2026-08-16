@@ -2,7 +2,10 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する -->
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する
+         ※ クリックジャッキング対策(frame-ancestors)は meta 経由では
+            ブラウザに無視されるため、ここには書かない。
+            Webサーバーのレスポンスヘッダーで設定する(UPDATE_MANUAL.md 参照)。 -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
@@ -66,27 +69,8 @@
   </head>
 
   <body>
-    <!-- 準備中スクリーン（FOUC防止） -->
-    <div class="site-prerender-screen">
-      <div class="prerender-content">
-        <div class="prerender-runner">
-          <div class="prerender-mascot-wrapper">
-            <img
-              src="images/run1.png"
-              alt="技科大祭マスコットキャラクター"
-              class="prerender-mascot-frame is-active"
-            />
-            <img src="images/run2.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run3.png" alt="" class="prerender-mascot-frame" />
-            <img src="images/run4.png" alt="" class="prerender-mascot-frame" />
-          </div>
-          <div class="prerender-ground"></div>
-        </div>
-        <p class="prerender-loading" aria-label="Loading">
-          loading<span class="prerender-dots"></span>
-        </p>
-      </div>
-    </div>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
     <div id="container">
       <header></header>
 
@@ -151,9 +135,6 @@
         </main>
       </div>
       <footer></footer>
-      <div class="pagetop">
-        <a href="#"><i class="fas fa-angle-double-up"></i></a>
-      </div>
     </div>
 
     <script
@@ -176,8 +157,7 @@
     <script>
       // site-config 読み込み後にメールアドレスと回数表記を設定
       window.onSiteConfig(function (config) {
-        var fullName =
-          "第" + config.festivalNumber + "回" + config.festivalName;
+        var fullName = window.getFestivalName(config);
 
         var emailLink = document.getElementById("contact-email-link");
         var emailText = document.getElementById("contact-email-text");

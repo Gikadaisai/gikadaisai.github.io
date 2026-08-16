@@ -1,7 +1,15 @@
 /**
  * site-loader.js
- * site-config.json を読み込み、全ページ共通の要素（ヘッダー・フッター等）を動的に注入する。
- * 各ページの <head>, <header>, <footer> 内のプレースホルダーを自動で書き換える。
+ * site-config.json を読み込み、全ページ共通の要素を動的に生成・注入する。
+ *
+ * このファイルと js/site-config.json が「全ページ共通部分の唯一の管理場所」です。
+ * ヘッダー / フッター / ページトップボタン / アクセス案内 / 協賛・寄付セクションは
+ * すべてここで組み立てられ、各HTMLには置き場所を示す目印だけが書かれています。
+ *
+ *   <div data-include="access-methods"></div>  → アクセス手段の説明
+ *   <div data-include="access-map"></div>      → Google Map 経路ボタン
+ *   <div data-include="sponsors"></div>        → ご協賛企業セクション
+ *   <div data-include="supporters"></div>      → ご寄付者セクション
  */
 
 /**
@@ -25,6 +33,290 @@ window.onSiteConfig = function (callback) {
   }
 };
 
+/**
+ * 「第49回技科大祭」のような正式名称を組み立てる。
+ * 複数のスクリプトが同じ文字列を必要とするため一箇所に集約する。
+ * @param {object} config
+ * @returns {string}
+ */
+window.getFestivalName = function (config) {
+  return "第" + config.festivalNumber + "回" + config.festivalName;
+};
+
+/**
+ * site-config.json 内の本文テキストを HTML に変換する。
+ *
+ * 先に escapeHtml() で無害化してから記法を展開するため、
+ * JSON 側にタグを書いても HTML として解釈されることはない。
+ *   \n       → 改行 (<br>)
+ *   **文字** → 太字 (<strong>)
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+window.formatSiteText = function (text) {
+  return escapeHtml(text)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+};
+
+/**
+ * 複数ページで使い回す共通セクションの組み立て関数群。
+ * page-visibility.js の「準備中」画面からも呼び出される。
+ */
+window.siteSections = (function () {
+  "use strict";
+
+  /** 装飾の円を1つ組み立てる */
+  function decoCircle(modifier, size, position) {
+    return (
+      '<div class="deco-circle deco-circle--' +
+      modifier +
+      " deco-circle--" +
+      size +
+      '" style="' +
+      position +
+      '"></div>'
+    );
+  }
+
+  /** セクション見出し（英語 + 日本語 + リード文） */
+  function sectionHeading(section) {
+    return (
+      '<h2 class="c"><span>' +
+      escapeHtml(section.titleEn) +
+      '</span><span class="hosoku">' +
+      escapeHtml(section.titleJa) +
+      "</span></h2>" +
+      '<p class="c">' +
+      window.formatSiteText(section.lead) +
+      "</p>"
+    );
+  }
+
+  /** アクセス手段（電車・バス / お車）の説明ブロック */
+  function accessMethods(config) {
+    return (config.access.methods || [])
+      .map(function (method) {
+        var html =
+          '<div class="access-method">' +
+          '<h4><i class="fas ' +
+          escapeHtml(method.icon) +
+          '"></i>' +
+          escapeHtml(method.heading) +
+          "</h4>" +
+          '<div class="access-description">';
+
+        (method.paragraphs || []).forEach(function (text) {
+          html += "<p>" + window.formatSiteText(text) + "</p>";
+        });
+
+        // バス出発案内（カウントダウンは js/bus-countdown.js が埋める）
+        if (method.busCountdown) {
+          html +=
+            '<div class="bus-countdown-wrapper">' +
+            '<h5><i class="fas fa-bus"></i>' +
+            escapeHtml(method.busCountdown.heading) +
+            "</h5>" +
+            '<p id="bus-schedule-note" class="note"></p>' +
+            '<div id="bus-countdown-display">' +
+            "<p>次の出発まであと</p>" +
+            '<div class="time-container">' +
+            '<span id="bus-minutes">--</span><small>分</small>' +
+            '<span id="bus-seconds">--</span><small>秒</small>' +
+            "</div>" +
+            "</div>" +
+            '<p class="next-bus-info">発車時刻: <span id="next-bus-time">--:--</span></p>' +
+            "</div>";
+        }
+
+        (method.notes || []).forEach(function (note) {
+          html += '<p class="note">' + window.formatSiteText(note) + "</p>";
+        });
+
+        return html + "</div></div>";
+      })
+      .join("");
+  }
+
+  /** Google Map の経路検索ボタン */
+  function accessMap(config) {
+    var button = config.access.mapButton;
+    return (
+      '<div class="map-button-container">' +
+      '<a id="map-direction-link" href="' +
+      escapeHtml(config.access.googleMapsDirection) +
+      '" target="_blank" rel="noopener noreferrer" class="map-button">' +
+      '<span class="map-button-icon"><i class="fas fa-map-marked-alt"></i></span>' +
+      '<span class="map-button-text">' +
+      "<strong>" +
+      escapeHtml(button.title) +
+      "</strong>" +
+      "<small>" +
+      escapeHtml(button.subtitle) +
+      "</small>" +
+      "</span>" +
+      "</a>" +
+      "</div>"
+    );
+  }
+
+  /** ご協賛企業セクション（中身は renderSupportGrids が後から埋める） */
+  function sponsors(config) {
+    return (
+      '<section id="Sponsors" class="bg1">' +
+      decoCircle("dashed", "xl", "top: -80px; left: -100px") +
+      decoCircle("solid", "md", "bottom: 20px; right: 5%") +
+      decoCircle("dashed", "sm", "top: 40%; right: -20px") +
+      sectionHeading(config.sections.sponsors) +
+      '<div id="sponsor-grid" class="sponsor-grid"></div>' +
+      "</section>"
+    );
+  }
+
+  /** ご寄付者セクション（中身は renderSupportGrids が後から埋める） */
+  function supporters(config) {
+    return (
+      '<section id="Supporters" class="bg1">' +
+      decoCircle("filled", "md", "top: 150px; left: -40px") +
+      decoCircle("solid", "sm", "bottom: 100px; right: 8%") +
+      sectionHeading(config.sections.supporters) +
+      '<div id="supporter-grid" class="supporter-grid"></div>' +
+      "</section>"
+    );
+  }
+
+  return {
+    "access-methods": accessMethods,
+    "access-map": accessMap,
+    sponsors: sponsors,
+    supporters: supporters,
+  };
+})();
+
+/**
+ * 協賛企業・ご寄付者の一覧をグリッドに描画する。
+ *
+ * グリッドは2通りの経路で現れる:
+ *   1. 通常ページ … site-loader.js が data-include を展開したとき
+ *   2. 準備中ページ … page-visibility.js が <main> を差し替えたとき
+ * どちらが先に起きても描画されるよう、両方から呼べる関数として公開する。
+ * JSON は一度だけ取得し、2回目以降の呼び出しでは取得結果を使い回す。
+ */
+window.renderSupportGrids = (function () {
+  "use strict";
+
+  var dataPromise = null;
+
+  function loadData() {
+    if (!dataPromise) {
+      dataPromise = Promise.all([
+        fetch("js/sponsors.json").then(function (r) {
+          if (!r.ok)
+            throw new Error("sponsors.json の読み込みに失敗しました。");
+          return r.json();
+        }),
+        fetch("js/supporters.json").then(function (r) {
+          if (!r.ok)
+            throw new Error("supporters.json の読み込みに失敗しました。");
+          return r.json();
+        }),
+      ]);
+    }
+    return dataPromise;
+  }
+
+  function renderSponsors(grid, section, data) {
+    var html = "";
+
+    // tier1, tier2, tier3 の順番で描画
+    ["tier1", "tier2", "tier3"].forEach(function (tierKey) {
+      var tierItems = data[tierKey];
+      if (tierItems && tierItems.length > 0) {
+        var tierNum = tierKey.replace("tier", "");
+        // ティアの前に横棒を入れる
+        html += '<div class="sponsor-tier-divider"></div>';
+        html += '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
+        // 表示順・文字サイズは tier(1〜3)と配列順だけで決まる。
+        // 協賛金額は非公開情報のため、ページには一切出力しない
+        // （HTMLコメントであってもソース表示で読めてしまうため）。
+        tierItems.forEach(function (s) {
+          html +=
+            '<span class="sponsor-item">' + escapeHtml(s.name) + "</span>";
+        });
+        html += "</div>";
+      }
+    });
+
+    if (html) {
+      // 最後に締めの横棒
+      html += '<div class="sponsor-tier-divider"></div>';
+      grid.classList.add("text-only-sponsors");
+    } else {
+      html =
+        '<p class="c" style="width: 100%;">' +
+        escapeHtml(section.emptyText) +
+        "</p>";
+    }
+    grid.innerHTML = html;
+  }
+
+  function renderSupporters(grid, section, data) {
+    var valid = data.filter(function (sp) {
+      return !sp._memo;
+    });
+
+    // 芳名帳（PDF）リンクを先頭に一元管理で追加
+    var html =
+      '<div class="c supporter-registry"><a href="' +
+      escapeHtml(section.registryUrl) +
+      '" target="_blank" rel="noopener noreferrer" class="supporter-registry-btn">' +
+      '<i class="fas fa-file-pdf"></i> ' +
+      escapeHtml(section.registryLabel) +
+      "</a></div>";
+
+    if (valid.length > 0) {
+      valid.forEach(function (sp) {
+        var safeName = escapeHtml(typeof sp === "string" ? sp : sp.name);
+        if (safeName)
+          html += '<div class="supporter-chip">' + safeName + "</div>";
+      });
+    } else {
+      html +=
+        '<p class="c" style="width: 100%;">' +
+        escapeHtml(section.emptyText) +
+        "</p>";
+    }
+    grid.innerHTML = html;
+  }
+
+  return async function renderSupportGrids(config) {
+    var sponsorGrid = document.getElementById("sponsor-grid");
+    var supporterGrid = document.getElementById("supporter-grid");
+    if (!sponsorGrid && !supporterGrid) return;
+
+    try {
+      var result = await loadData();
+      if (sponsorGrid)
+        renderSponsors(sponsorGrid, config.sections.sponsors, result[0]);
+      if (supporterGrid)
+        renderSupporters(supporterGrid, config.sections.supporters, result[1]);
+    } catch (error) {
+      console.error(error);
+      if (sponsorGrid)
+        sponsorGrid.innerHTML =
+          '<p class="c">' +
+          escapeHtml(config.sections.sponsors.errorText) +
+          "</p>";
+      if (supporterGrid)
+        supporterGrid.innerHTML =
+          '<p class="c">' +
+          escapeHtml(config.sections.supporters.errorText) +
+          "</p>";
+    }
+  };
+})();
+
 (async function () {
   "use strict";
 
@@ -42,7 +334,7 @@ window.onSiteConfig = function (callback) {
   const num = config.festivalNumber;
   const theme = config.theme;
   const univName = config.universityName;
-  const fullName = "第" + num + "回" + config.festivalName;
+  const fullName = window.getFestivalName(config);
   const festivalDateText = config.dates.displayText;
 
   // --- 現在のページの公開状態を pageVisibility から判定 ---
@@ -55,56 +347,14 @@ window.onSiteConfig = function (callback) {
   var visibility = config.pageVisibility || {};
   var isPageVisible = visibility[pageName] !== false;
 
-  // --- FOUC防止: プリレンダースクリーンを解除（最低0.5秒間表示） ---
+  // --- FOUC防止スクリーンの解除 ---
   // page-visibility.js が非公開ページを「準備中」画面に差し替えるため、
   // body.site-ready は常に付与してプリレンダースクリーンを解除する
-  var prerenderStartTime = performance.now();
-  var MINIMUM_DISPLAY_MS = 0; // 一時的に0に変更 (元は 500)
-
   function dismissPrerender() {
-    var elapsed = performance.now() - prerenderStartTime;
-    var remaining = MINIMUM_DISPLAY_MS - elapsed;
-    if (remaining > 0) {
-      setTimeout(function () {
-        document.body.classList.add("site-ready");
-        stopMascotAnimation();
-      }, remaining);
-    } else {
-      document.body.classList.add("site-ready");
-      stopMascotAnimation();
-    }
+    document.body.classList.add("site-ready");
   }
 
-  // --- マスコット走りアニメーション（フレーム切り替え） ---
-  var mascotFrames = document.querySelectorAll(".prerender-mascot-frame");
-  var mascotCurrentIndex = 0;
-  var mascotDirection = 1; // 1: 正方向, -1: 逆方向
-  var mascotIntervalId = null;
-
-  function startMascotAnimation() {
-    if (mascotFrames.length < 2) return;
-    mascotIntervalId = setInterval(function () {
-      mascotFrames[mascotCurrentIndex].classList.remove("is-active");
-      mascotCurrentIndex += mascotDirection;
-      if (mascotCurrentIndex >= mascotFrames.length - 1) {
-        mascotCurrentIndex = mascotFrames.length - 1;
-        mascotDirection = -1;
-      } else if (mascotCurrentIndex <= 0) {
-        mascotCurrentIndex = 0;
-        mascotDirection = 1;
-      }
-      mascotFrames[mascotCurrentIndex].classList.add("is-active");
-    }, 100);
-  }
-
-  function stopMascotAnimation() {
-    if (mascotIntervalId) {
-      clearInterval(mascotIntervalId);
-      mascotIntervalId = null;
-    }
-  }
-
-  // --- オープニングアニメーション制御（初回訪問時のみ） ---
+  // --- オープニングアニメーション制御（初回訪問時の index のみ） ---
   var prerenderScreen = document.querySelector(".site-prerender-screen");
   var openingOverlay = prerenderScreen
     ? prerenderScreen.querySelector(".opening-overlay")
@@ -112,10 +362,8 @@ window.onSiteConfig = function (callback) {
   var isFirstVisit = !sessionStorage.getItem("opening_shown");
 
   if (isFirstVisit && openingOverlay && pageName === "index") {
-    // 初回訪問 & index.html: マスコットを非表示にしてからオープニングを表示
+    // 初回訪問 & index.html: オープニングを最後まで見せてからスライドアウト
     sessionStorage.setItem("opening_shown", "1");
-    var prerenderContent = prerenderScreen.querySelector(".prerender-content");
-    if (prerenderContent) prerenderContent.style.display = "none";
     openingOverlay.style.display = "";
     prerenderScreen.classList.add("opening-active");
 
@@ -136,20 +384,9 @@ window.onSiteConfig = function (callback) {
       );
     }, animDuration);
   } else {
-    // 2回目以降 or 他ページ: オープニングHTMLを削除して通常のマスコットローディングを使用
+    // 2回目以降 or 他ページ: オープニングHTMLを削除して即座に本編を表示
     if (openingOverlay) openingOverlay.remove();
-    startMascotAnimation();
     dismissPrerender();
-  }
-
-  // --- プリレンダースクリーンの祭名を更新（解除前に一瞬表示される場合に備える） ---
-  if (prerenderScreen) {
-    var prerenderDesc = prerenderScreen.querySelector(".prerender-desc");
-    if (prerenderDesc) {
-      prerenderDesc.innerHTML =
-        fullName +
-        "の公式サイトです。<br>現在、サイトは準備中です。<br>公開までしばらくお待ちください。";
-    }
   }
 
   // --- 正規表現 ---
@@ -318,6 +555,18 @@ window.onSiteConfig = function (callback) {
   };
   replaceTextInNode(document.body);
 
+  // ナビゲーション1件分の <li>（href / label は必ずエスケープして埋め込む）
+  // ヘッダー・フッターの両方から使う
+  const navLink = function (item) {
+    return (
+      '<li><a href="' +
+      escapeHtml(item.href) +
+      '">' +
+      escapeHtml(item.label) +
+      "</a></li>"
+    );
+  };
+
   // --- ヘッダーの動的生成 ---
   const headerEl = document.querySelector("header");
   if (headerEl) {
@@ -326,21 +575,17 @@ window.onSiteConfig = function (callback) {
       .map(function (item) {
         if (item.children) {
           const childrenHtml = item.children
-            .map(function (child) {
-              return (
-                '<li><a href="' + child.href + '">' + child.label + "</a></li>"
-              );
-            })
+            .map(navLink)
             .join("\n\t\t\t\t\t\t\t\t");
           return (
             '<li class="ddmenu_parent"><a href="#">' +
-            item.label +
+            escapeHtml(item.label) +
             "</a>\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t" +
             childrenHtml +
             "\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</li>"
           );
         } else {
-          return '<li><a href="' + item.href + '">' + item.label + "</a></li>";
+          return navLink(item);
         }
       })
       .join("\n\t\t\t\t\t\t");
@@ -350,29 +595,19 @@ window.onSiteConfig = function (callback) {
     (config.headerNav || []).forEach(function (item) {
       if (item.children) {
         item.children.forEach(function (child) {
-          spNavItems +=
-            '<li><a href="' +
-            child.href +
-            '">' +
-            child.label +
-            "</a></li>\n\t\t\t\t\t\t";
+          spNavItems += navLink(child) + "\n\t\t\t\t\t\t";
         });
       } else {
-        spNavItems +=
-          '<li><a href="' +
-          item.href +
-          '">' +
-          item.label +
-          "</a></li>\n\t\t\t\t\t\t";
+        spNavItems += navLink(item) + "\n\t\t\t\t\t\t";
       }
     });
 
     const actionBtn =
       config.headerActions && config.headerActions.button
         ? '<a href="' +
-          config.headerActions.button.href +
+          escapeHtml(config.headerActions.button.href) +
           '" class="header-contact-btn">' +
-          config.headerActions.button.label +
+          escapeHtml(config.headerActions.button.label) +
           "</a>"
         : "";
 
@@ -383,10 +618,10 @@ window.onSiteConfig = function (callback) {
       '\t\t\t\t<img src="images/TUTFESlogo.png" alt="技科大祭ロゴ" class="header-logo-img">\n' +
       '\t\t\t\t<div class="logo-text-group">\n' +
       '\t\t\t\t\t<div id="daigaku">' +
-      univName +
+      escapeHtml(univName) +
       "</div>\n" +
       '\t\t\t\t\t<div id="gikadaisai">' +
-      fullName +
+      escapeHtml(fullName) +
       "</div>\n" +
       "\t\t\t\t</div>\n" +
       "\t\t\t</a>\n" +
@@ -420,20 +655,16 @@ window.onSiteConfig = function (callback) {
   const footerEl = document.querySelector("footer");
   if (footerEl) {
     // Menu ナビゲーション
-    const menuItems = (config.footerNav || [])
-      .map(function (item) {
-        return '<li><a href="' + item.href + '">' + item.label + "</a></li>";
-      })
-      .join("\n\t\t\t\t");
+    const menuItems = (config.footerNav || []).map(navLink).join("\n\t\t\t\t");
 
     // Links（外部リンク）
     const linkItems = (config.footerLinks || [])
       .map(function (item) {
         return (
           '<li><a href="' +
-          item.href +
+          escapeHtml(item.href) +
           '" target="_blank" rel="noopener noreferrer">' +
-          item.label +
+          escapeHtml(item.label) +
           "</a></li>"
         );
       })
@@ -445,19 +676,19 @@ window.onSiteConfig = function (callback) {
       '\t\t\t<div class="logo-footer">\n' +
       '\t\t\t\t<a href="index.html">\n' +
       '\t\t\t\t\t<span class="daigaku-footer">' +
-      univName +
+      escapeHtml(univName) +
       "</span>\n" +
       '\t\t\t\t\t<span class="gikadaisai-footer">' +
-      fullName +
+      escapeHtml(fullName) +
       "</span>\n" +
       "\t\t\t\t</a>\n" +
       "\t\t\t</div>\n" +
       '\t\t\t<address class="footer-address">\n' +
       "\t\t\t\t" +
-      config.address.postalCode +
+      escapeHtml(config.address.postalCode) +
       "<br>\n" +
       "\t\t\t\t" +
-      config.address.text +
+      escapeHtml(config.address.text) +
       "\n" +
       "\t\t\t</address>\n" +
       '\t\t\t<img src="images/TUTFESlogo.png" alt="技科大祭ロゴ" class="footer-logo-img">\n' +
@@ -481,10 +712,26 @@ window.onSiteConfig = function (callback) {
       "\t</div>\n" +
       '\t<div class="footer-bottom">\n' +
       "\t\t<small>Copyright&copy; " +
-      fullName +
+      escapeHtml(fullName) +
       "実行委員会 All Rights Reserved.</small>\n" +
       "\t</div>";
   }
+
+  // --- ページトップへ戻るボタン（全ページ共通） ---
+  const containerEl = document.getElementById("container");
+  if (containerEl && !document.querySelector(".pagetop")) {
+    const pagetop = document.createElement("div");
+    pagetop.className = "pagetop";
+    pagetop.innerHTML =
+      '<a href="#"><i class="fas fa-angle-double-up"></i></a>';
+    containerEl.appendChild(pagetop);
+  }
+
+  // --- data-include の目印を共通セクションに置き換える ---
+  document.querySelectorAll("[data-include]").forEach(function (el) {
+    const builder = window.siteSections[el.dataset.include];
+    if (builder) el.innerHTML = builder(config);
+  });
 
   // --- グローバルに config を公開 ---
   window.siteConfig = config;
@@ -492,93 +739,8 @@ window.onSiteConfig = function (callback) {
     new CustomEvent("siteConfigLoaded", { detail: config }),
   );
 
-  // --- 協賛・寄付者の動的描画（共通処理） ---
-  const sponsorGrid = document.getElementById("sponsor-grid");
-  if (sponsorGrid) {
-    try {
-      const resSponsors = await fetch("js/sponsors.json");
-      if (resSponsors.ok) {
-        const sponsorsData = await resSponsors.json();
-        let htmlSponsors = "";
-
-        // tier1, tier2, tier3 の順番で描画
-        ["tier1", "tier2", "tier3"].forEach(function (tierKey) {
-          const tierItems = sponsorsData[tierKey];
-          if (tierItems && tierItems.length > 0) {
-            const tierNum = tierKey.replace("tier", "");
-            // ティアの前に横棒を入れる
-            htmlSponsors += '<div class="sponsor-tier-divider"></div>';
-            htmlSponsors +=
-              '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
-            tierItems.forEach(function (s) {
-              const safeName = escapeHtml(s.name);
-              // HTMLコメント内は escapeHtml が効かないため、
-              // コメントを閉じられる "-->" と "<" "> " を除去してから埋め込む。
-              const safeAmount = String(s.amount == null ? "" : s.amount)
-                .replace(/[<>]/g, "")
-                .replace(/-{2,}/g, "-");
-              const amountComment = safeAmount
-                ? "<!-- " + safeAmount + " -->"
-                : "";
-              htmlSponsors +=
-                '<span class="sponsor-item">' +
-                amountComment +
-                safeName +
-                "</span>";
-            });
-            htmlSponsors += "</div>";
-          }
-        });
-
-        if (htmlSponsors) {
-          // 最後に締めの横棒
-          htmlSponsors += '<div class="sponsor-tier-divider"></div>';
-          sponsorGrid.classList.add("text-only-sponsors");
-        } else {
-          htmlSponsors =
-            '<p class="c" style="width: 100%;">本年度のご協賛企業様を募集しております。</p>';
-        }
-        sponsorGrid.innerHTML = htmlSponsors;
-      }
-    } catch (error) {
-      console.error(error);
-      sponsorGrid.innerHTML =
-        '<p class="c">協賛企業情報の読み込み中にエラーが発生しました。</p>';
-    }
-  }
-
-  const supporterGrid = document.getElementById("supporter-grid");
-  if (supporterGrid) {
-    try {
-      const resSupporters = await fetch("js/supporters.json");
-      if (resSupporters.ok) {
-        const supporters = await resSupporters.json();
-        const validSupporters = supporters.filter((sp) => !sp._memo);
-        // 芳名帳（PDF）リンクを先頭に一元管理で追加
-        let htmlSupporters =
-          '<div class="c" style="margin-top: 1.5rem; margin-bottom: 2rem;"><a href="https://www.tut.ac.jp/kikin/download/houmei_gikadaisai.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; background: transparent; color: #d32f2f; border: 2px solid #d32f2f; border-radius: 50px; text-decoration: none; font-weight: bold; transition: opacity 0.3s ease;" onmouseover="this.style.opacity=\'0.7\'" onmouseout="this.style.opacity=\'1\'"><i class="fas fa-file-pdf"></i> 芳名帳（PDF）はこちら</a></div>';
-
-        if (validSupporters.length > 0) {
-          validSupporters.forEach(function (sp) {
-            const rawName = typeof sp === "string" ? sp : sp.name;
-            const safeName = escapeHtml(rawName);
-            if (safeName) {
-              htmlSupporters +=
-                '<div class="supporter-chip">' + safeName + "</div>";
-            }
-          });
-        } else {
-          htmlSupporters +=
-            '<p class="c" style="width: 100%;">皆様からのご支援を引き続きお待ちしております。</p>';
-        }
-        supporterGrid.innerHTML = htmlSupporters;
-      }
-    } catch (error) {
-      console.error(error);
-      supporterGrid.innerHTML =
-        '<p class="c">寄付者情報の読み込み中にエラーが発生しました。</p>';
-    }
-  }
+  // --- 協賛・寄付者の一覧を描画 ---
+  await window.renderSupportGrids(config);
 
   // --- すべての処理が完了したのでプリレンダースクリーンを解除 ---
   dismissPrerender();
