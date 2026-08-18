@@ -1,10 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>技科大祭2026 | Sponsors</title>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Content Security Policy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
+    />
+    <title>スポンサー｜第49回技科大祭</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学の学園祭をご支援いただいているスポンサー情報をご覧いただけます。"
+    />
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <!-- Favicon -->
+    <link rel="icon" href="images/TUTFESlogo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="images/TUTFESlogo.png" />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+      crossorigin="anonymous"
+    />
+    <!-- Site stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- OGP / SNSシェア用 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="第49回技科大祭" />
+    <meta property="og:title" content="スポンサー｜第49回技科大祭" />
+    <meta
+      property="og:description"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学にて開催。"
+    />
+    <meta
+      property="og:url"
+      content="https://sea.tut.ac.jp/gikadaisai/support.html"
+    />
+    <meta
+      property="og:image"
+      content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
+    />
+    <meta property="og:locale" content="ja_JP" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tut_festival" />
+    <meta name="twitter:title" content="スポンサー｜第49回技科大祭" />
+    <meta
+      name="twitter:description"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学にて開催。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
+    />
 
 <style>
 
@@ -12,19 +70,14 @@
    RESET
 ========================================================= */
 
-*{
+.sponsor-wrapper *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    background:#fff;
+.sponsor-wrapper{
+    overflow-x:hidden;
     color:#111;
     font-family:
         -apple-system,
@@ -32,7 +85,6 @@ body{
         "Helvetica Neue",
         "Noto Sans JP",
         sans-serif;
-    overflow-x:hidden;
 }
 
 
@@ -1174,25 +1226,8 @@ body{
 
 
 /* =========================================================
-   FOOTER
+   SPONSOR LOCAL FOOTER (disabled — using common footer)
 ========================================================= */
-
-footer{
-
-    padding:60px 20px;
-
-    border-top:1px solid #e0e0e0;
-
-    text-align:center;
-
-    font-size:10.5px;
-
-    font-weight:700;
-
-    color:#888;
-
-    letter-spacing:.20em;
-}
 
 
 /* =========================================================
@@ -1653,11 +1688,22 @@ footer{
 
 }
 
+/* --- Negate #contents padding so sponsor marquee reaches edges --- */
+.sponsor-wrapper {
+    margin: calc(-1 * var(--global-space, 0px));
+}
 </style>
 </head>
 
+  <body>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
+    <div id="container">
+      <header></header>
 
-<body>
+      <div id="contents">
+        <main>
+          <div class="sponsor-wrapper">
 
 
 <!-- =========================================================
@@ -1933,11 +1979,7 @@ footer{
 
 
 
-<footer>
-
-    TOYOHASHI UNIVERSITY OF TECHNOLOGY FESTIVAL 2026
-
-</footer>
+<!-- common footer is populated by site-loader.js -->
 
 
 
@@ -2796,5 +2838,27 @@ requestAnimationFrame(animateMarquee);
 
 </script>
 
-</body>
+          </div><!-- /.sponsor-wrapper -->
+        </main>
+      </div>
+      <footer></footer>
+    </div>
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"
+      integrity="sha384-pd7qbPsmTJfjFiks31ehUn6A68yiF8HXwV4anhaOf8icgDte+6V3PCNNYs933QCg"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="js/escape-html.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site-loader.js"></script>
+    <script src="js/page-visibility.js"></script>
+  </body>
 </html>
