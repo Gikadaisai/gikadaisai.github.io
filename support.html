@@ -64,1636 +64,1492 @@
       content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
     />
 
-<style>
-
-/* =========================================================
+    <style>
+      /* =========================================================
    RESET
 ========================================================= */
 
-.sponsor-wrapper *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+      .sponsor-wrapper * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-.sponsor-wrapper{
-    overflow-x:hidden;
-    color:#111;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        "Noto Sans JP",
-        sans-serif;
-}
+      .sponsor-wrapper {
+        overflow-x: hidden;
+        color: #111;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans JP",
+          sans-serif;
+      }
 
-
-/* =========================================================
+      /* =========================================================
    MAIN MARQUEE EXPERIENCE
 ========================================================= */
 
-.marquee-section{
-
-    /*
+      .marquee-section {
+        /*
         自動ループアニメーション + スクロールによるWall & 50周年ロゴへのスムーズな移行
     */
-    height:280vh;
+        height: 280vh;
 
-    position:relative;
-}
+        position: relative;
+      }
 
-.marquee-sticky{
+      .marquee-sticky {
+        position: sticky;
 
-    position:sticky;
+        top: 0;
 
-    top:0;
+        width: 100%;
+        height: 100vh;
 
-    width:100%;
-    height:100vh;
+        overflow: hidden;
 
-    overflow:hidden;
+        background: #fff;
+      }
 
-    background:#fff;
-}
-
-
-/* =========================================================
+      /* =========================================================
    SUBTLE GRID
 ========================================================= */
 
-.background-grid{
+      .background-grid {
+        position: absolute;
 
-    position:absolute;
+        inset: 0;
 
-    inset:0;
+        pointer-events: none;
 
-    pointer-events:none;
+        opacity: 0.55;
 
-    opacity:.55;
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
 
-    background-image:
-        linear-gradient(
-            rgba(0,0,0,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.025) 1px,
-            transparent 1px
-        );
+        background-size: 40px 40px;
+      }
 
-    background-size:40px 40px;
-}
-
-
-/* =========================================================
+      /* =========================================================
    HEADER
 ========================================================= */
 
-.top-label{
+      .top-label {
+        position: absolute;
 
-    position:absolute;
+        top: 32px;
+        left: 36px;
 
-    top:32px;
-    left:36px;
+        z-index: 100;
 
-    z-index:100;
+        pointer-events: none;
 
-    pointer-events:none;
+        transition: opacity 0.35s ease;
+      }
 
-    transition:opacity .35s ease;
-}
+      .top-label-small {
+        font-size: 10px;
 
-.top-label-small{
+        font-weight: 750;
 
-    font-size:10px;
+        color: #777;
 
-    font-weight:750;
+        letter-spacing: 0.25em;
 
-    color:#777;
+        margin-bottom: 8px;
+      }
 
-    letter-spacing:.25em;
+      .top-label-title {
+        font-size: clamp(22px, 2.5vw, 34px);
 
-    margin-bottom:8px;
-}
+        font-weight: 900;
 
-.top-label-title{
+        line-height: 1.28;
 
-    font-size:
-        clamp(22px,2.5vw,34px);
+        letter-spacing: -0.03em;
 
-    font-weight:900;
+        color: #111;
+      }
 
-    line-height:1.28;
-
-    letter-spacing:-.03em;
-
-    color:#111;
-}
-
-
-/* =========================================================
+      /* =========================================================
    SPONSOR COUNT
 ========================================================= */
 
-.counter{
+      .counter {
+        position: absolute;
 
-    position:absolute;
+        top: 32px;
+        right: 36px;
 
-    top:32px;
-    right:36px;
+        z-index: 100;
 
-    z-index:100;
+        text-align: right;
 
-    text-align:right;
+        pointer-events: none;
 
-    pointer-events:none;
+        transition: opacity 0.35s ease;
+      }
 
-    transition:opacity .35s ease;
-}
+      .counter-number {
+        font-size: clamp(32px, 3.5vw, 44px);
 
-.counter-number{
+        line-height: 1;
 
-    font-size:
-        clamp(32px,3.5vw,44px);
+        font-weight: 900;
 
-    line-height:1;
+        letter-spacing: -0.05em;
 
-    font-weight:900;
+        color: #111;
+      }
 
-    letter-spacing:-.05em;
+      .counter-label {
+        margin-top: 6px;
 
-    color:#111;
-}
+        font-size: 9.5px;
 
-.counter-label{
+        font-weight: 800;
 
-    margin-top:6px;
+        color: #888;
 
-    font-size:9.5px;
+        letter-spacing: 0.22em;
+      }
 
-    font-weight:800;
-
-    color:#888;
-
-    letter-spacing:.22em;
-}
-
-
-/* =========================================================
+      /* =========================================================
    MARQUEE
 ========================================================= */
 
-.marquee{
+      .marquee {
+        position: absolute;
 
-    position:absolute;
+        left: 0;
 
-    left:0;
+        width: 100%;
 
-    width:100%;
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        white-space: nowrap;
 
-    white-space:nowrap;
+        z-index: 10;
 
-    z-index:10;
+        will-change: transform, opacity;
 
-    will-change:transform,opacity;
+        transition: opacity 0.4s ease;
+      }
 
-    transition:opacity .4s ease;
-}
-
-
-/*
+      /*
     4段を均等配置
 */
 
-.marquee-row-1{
-    top:19%;
-}
+      .marquee-row-1 {
+        top: 19%;
+      }
 
-.marquee-row-2{
-    top:37%;
-}
+      .marquee-row-2 {
+        top: 37%;
+      }
 
-.marquee-row-3{
-    top:55%;
-}
+      .marquee-row-3 {
+        top: 55%;
+      }
 
-.marquee-row-4{
-    top:73%;
-}
+      .marquee-row-4 {
+        top: 73%;
+      }
 
-
-/* =========================================================
+      /* =========================================================
    TRACK
 ========================================================= */
 
-.track{
+      .track {
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        gap: 8px;
 
-    gap:8px;
+        width: max-content;
 
-    width:max-content;
+        will-change: transform;
+      }
 
-    will-change:transform;
-}
-
-
-/* =========================================================
+      /* =========================================================
    LOGO CARD (ASPECT RATIO 1:2.3)
 ========================================================= */
 
-.logo-card{
+      .logo-card {
+        flex-shrink: 0;
 
-    flex-shrink:0;
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        justify-content: center;
 
-    justify-content:center;
+        text-align: center;
 
-    text-align:center;
+        width: 184px;
 
-    width:184px;
+        height: 80px;
 
-    height:80px;
+        aspect-ratio: 2.3 / 1;
 
-    aspect-ratio:2.3 / 1;
+        padding: 4px 8px;
 
-    padding:4px 8px;
+        background: #fff;
 
-    background:#fff;
+        border: 1px solid #e0e0e0;
 
-    border:1px solid #e0e0e0;
+        font-size: 13px;
 
-    font-size:13px;
+        font-weight: 800;
 
-    font-weight:800;
+        letter-spacing: -0.02em;
 
-    letter-spacing:-.02em;
+        user-select: none;
 
-    user-select:none;
+        cursor: pointer;
 
-    cursor:pointer;
+        border-radius: 4px;
 
-    border-radius:4px;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
 
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
+      .logo-card:hover {
+        background: #fff;
 
-.logo-card:hover{
+        border-color: #111;
 
-    background:#fff;
+        transform: translateY(-4px);
 
-    border-color:#111;
+        box-shadow:
+          0 14px 28px rgba(0, 0, 0, 0.08),
+          0 2px 6px rgba(0, 0, 0, 0.04);
+      }
 
-    transform:
-        translateY(-4px);
+      .logo-card img {
+        max-width: 96%;
+        max-height: 88%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
 
-    box-shadow:
-        0 14px 28px
-        rgba(0,0,0,.08),
-        0 2px 6px
-        rgba(0,0,0,.04);
-}
+      .logo-name {
+        display: block;
+        word-break: break-word;
+        line-height: 1.35;
+      }
 
-.logo-card img{
-    max-width:96%;
-    max-height:88%;
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    pointer-events:none;
-}
-
-.logo-name{
-    display:block;
-    word-break:break-word;
-    line-height:1.35;
-}
-
-
-/* =========================================================
+      /* =========================================================
    CENTER WALL (12-COLUMN TIERED GRID)
 ========================================================= */
 
-.wall{
+      .wall {
+        position: absolute;
 
-    position:absolute;
+        inset: 8.5% 3.5% 8.5% 3.5%;
 
-    inset:8.5% 3.5% 8.5% 3.5%;
+        display: grid;
 
-    display:grid;
+        grid-template-columns: repeat(12, 1fr);
 
-    grid-template-columns:
-        repeat(12,1fr);
+        grid-auto-rows: minmax(44px, 1fr);
 
-    grid-auto-rows:
-        minmax(44px,1fr);
+        gap: 6px;
 
-    gap:6px;
+        z-index: 50;
 
-    z-index:50;
+        opacity: 0;
 
-    opacity:0;
+        visibility: hidden;
 
-    visibility:hidden;
+        transform: scale(0.95);
 
-    transform:
-        scale(.95);
+        pointer-events: none;
 
-    pointer-events:none;
+        transition:
+          opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-    transition:
-        opacity .75s
-        cubic-bezier(.16,1,.3,1),
+      .wall.active {
+        opacity: 1;
 
-        transform .85s
-        cubic-bezier(.16,1,.3,1);
-}
+        visibility: visible;
 
-.wall.active{
+        transform: scale(1);
 
-    opacity:1;
+        pointer-events: auto;
+      }
 
-    visibility:visible;
-
-    transform:
-        scale(1);
-
-    pointer-events:auto;
-}
-
-
-/* =========================================================
+      /* =========================================================
    WALL CARDS
 ========================================================= */
 
-.wall-card{
+      .wall-card {
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        justify-content: center;
 
-    justify-content:center;
+        text-align: center;
 
-    text-align:center;
+        border: 1px solid #e0e0e0;
 
-    border:1px solid #e0e0e0;
+        background: #fff;
 
-    background:#fff;
+        font-weight: 800;
 
-    font-weight:800;
+        padding: 3px 6px;
 
-    padding:3px 6px;
+        border-radius: 4px;
 
-    border-radius:4px;
+        opacity: 0;
 
-    opacity:0;
+        transform: translateY(15px) scale(0.97);
 
-    transform:
-        translateY(15px)
-        scale(.97);
+        cursor: pointer;
 
-    cursor:pointer;
+        transition:
+          opacity 0.5s ease,
+          transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
 
-    transition:
-        opacity .5s ease,
-        transform .55s
-        cubic-bezier(.16,1,.3,1),
-        border-color .2s ease,
-        box-shadow .2s ease;
-}
+      .wall.active .wall-card {
+        opacity: 1;
 
-.wall.active .wall-card{
+        transform: translateY(0) scale(1);
+      }
 
-    opacity:1;
+      .wall-card:hover {
+        background: #fff;
 
-    transform:
-        translateY(0)
-        scale(1);
-}
+        border-color: #111;
 
-.wall-card:hover{
+        transform: translateY(-3px) scale(1.025) !important;
 
-    background:#fff;
+        z-index: 15;
 
-    border-color:#111;
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.1),
+          0 2px 6px rgba(0, 0, 0, 0.04);
+      }
 
-    transform:
-        translateY(-3px)
-        scale(1.025) !important;
+      .wall-card img {
+        max-width: 96%;
+        max-height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
 
-    z-index:15;
+      /* Wall Rank Sizes */
+      .w-top {
+        grid-column: span 12;
+        grid-row: span 2;
+        font-size: 18px;
+        font-weight: 900;
+        border: 2px solid #111;
+        background: #fff;
+      }
 
-    box-shadow:
-        0 14px 30px
-        rgba(0,0,0,.10),
-        0 2px 6px
-        rgba(0,0,0,.04);
-}
+      .w-premium {
+        grid-column: span 6;
+        grid-row: span 2;
+        font-size: 15px;
+        font-weight: 850;
+        border: 2px solid #222;
+        background: #fff;
+      }
 
-.wall-card img{
-    max-width:96%;
-    max-height:90%;
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    pointer-events:none;
-}
+      .w-gold {
+        grid-column: span 4;
+        grid-row: span 1;
+        font-size: 13px;
+        font-weight: 800;
+      }
 
-/* Wall Rank Sizes */
-.w-top{
-    grid-column:span 12;
-    grid-row:span 2;
-    font-size:18px;
-    font-weight:900;
-    border:2px solid #111;
-    background:#fff;
-}
+      .w-silver {
+        grid-column: span 4;
+        grid-row: span 1;
+        font-size: 12px;
+        font-weight: 750;
+      }
 
-.w-premium{
-    grid-column:span 6;
-    grid-row:span 2;
-    font-size:15px;
-    font-weight:850;
-    border:2px solid #222;
-    background:#fff;
-}
+      .w-bronze {
+        grid-column: span 2;
+        grid-row: span 1;
+        font-size: 10.5px;
+        font-weight: 700;
+      }
 
-.w-gold{
-    grid-column:span 4;
-    grid-row:span 1;
-    font-size:13px;
-    font-weight:800;
-}
+      .w-supporter {
+        grid-column: span 2;
+        grid-row: span 1;
+        font-size: 10px;
+        font-weight: 700;
+      }
 
-.w-silver{
-    grid-column:span 4;
-    grid-row:span 1;
-    font-size:12px;
-    font-weight:750;
-}
-
-.w-bronze{
-    grid-column:span 2;
-    grid-row:span 1;
-    font-size:10.5px;
-    font-weight:700;
-}
-
-.w-supporter{
-    grid-column:span 2;
-    grid-row:span 1;
-    font-size:10px;
-    font-weight:700;
-}
-
-
-/* =========================================================
+      /* =========================================================
    FINAL CENTER (PLAN A: OFFICIAL 50TH LOGO + FROSTED PANEL)
 ========================================================= */
 
-.center{
+      .center {
+        position: absolute;
 
-    position:absolute;
+        left: 50%;
+        top: 50%;
 
-    left:50%;
-    top:50%;
+        z-index: 80;
 
-    z-index:80;
+        text-align: center;
 
-    text-align:center;
+        white-space: nowrap;
 
-    white-space:nowrap;
+        pointer-events: none;
 
-    pointer-events:none;
+        opacity: 0;
 
-    opacity:0;
+        transform: translate(-50%, -50%) scale(0.9);
 
-    transform:
-        translate(-50%,-50%)
-        scale(.90);
+        padding: 30px 52px 26px;
 
-    padding:30px 52px 26px;
+        background: rgba(255, 255, 255, 0.94);
 
-    background:rgba(255,255,255,.94);
+        backdrop-filter: blur(14px);
 
-    backdrop-filter:blur(14px);
+        -webkit-backdrop-filter: blur(14px);
 
-    -webkit-backdrop-filter:blur(14px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
 
-    border:1px solid rgba(0,0,0,.08);
+        border-radius: 12px;
 
-    border-radius:12px;
+        box-shadow:
+          0 24px 70px rgba(0, 0, 0, 0.12),
+          0 4px 12px rgba(0, 0, 0, 0.04);
 
-    box-shadow:
-        0 24px 70px
-        rgba(0,0,0,.12),
-        0 4px 12px
-        rgba(0,0,0,.04);
+        transition:
+          opacity 0.75s ease,
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-    transition:
-        opacity .75s ease,
-        transform .8s
-        cubic-bezier(.16,1,.3,1);
-}
+      .center.active {
+        opacity: 1;
 
-.center.active{
+        transform: translate(-50%, -50%) scale(1);
+      }
 
-    opacity:1;
+      .center-logo-wrap {
+        display: flex;
 
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-}
+        justify-content: center;
 
-.center-logo-wrap{
+        align-items: center;
 
-    display:flex;
+        margin-bottom: 12px;
+      }
 
-    justify-content:center;
+      .center-logo-img {
+        width: clamp(160px, 20vw, 240px);
 
-    align-items:center;
+        height: auto;
 
-    margin-bottom:12px;
-}
+        object-fit: contain;
 
-.center-logo-img{
+        display: block;
 
-    width:clamp(160px, 20vw, 240px);
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+      }
 
-    height:auto;
+      .center-festival {
+        font-size: clamp(13px, 1.25vw, 16px);
 
-    object-fit:contain;
+        color: #111;
 
-    display:block;
+        font-weight: 850;
 
-    filter:drop-shadow(0 4px 10px rgba(0,0,0,.05));
-}
+        letter-spacing: 0.15em;
+      }
 
-.center-festival{
-
-    font-size:
-        clamp(13px,1.25vw,16px);
-
-    color:#111;
-
-    font-weight:850;
-
-    letter-spacing:.15em;
-}
-
-
-/* =========================================================
+      /* =========================================================
    SCROLL HINT
 ========================================================= */
 
-.scroll-hint{
+      .scroll-hint {
+        position: absolute;
 
-    position:absolute;
+        left: 50%;
+        bottom: 24px;
 
-    left:50%;
-    bottom:24px;
+        transform: translateX(-50%);
 
-    transform:
-        translateX(-50%);
+        z-index: 100;
 
-    z-index:100;
+        font-size: 8.5px;
 
-    font-size:8.5px;
+        font-weight: 750;
 
-    font-weight:750;
+        color: #777;
 
-    color:#777;
+        letter-spacing: 0.3em;
 
-    letter-spacing:.3em;
+        white-space: nowrap;
 
-    white-space:nowrap;
+        pointer-events: none;
+      }
 
-    pointer-events:none;
-}
+      .scroll-line {
+        width: 1px;
 
-.scroll-line{
+        height: 35px;
 
-    width:1px;
+        background: #111;
 
-    height:35px;
+        margin: 9px auto 0;
 
-    background:#111;
+        transform-origin: top;
+      }
 
-    margin:9px auto 0;
-
-    transform-origin:top;
-}
-
-
-/* =========================================================
+      /* =========================================================
    PROGRESS BAR
 ========================================================= */
 
-.progress{
+      .progress {
+        position: absolute;
 
-    position:absolute;
+        right: 20px;
+        top: 50%;
 
-    right:20px;
-    top:50%;
+        transform: translateY(-50%);
 
-    transform:
-        translateY(-50%);
+        width: 2px;
+        height: 120px;
 
-    width:2px;
-    height:120px;
+        background: #e5e5e5;
 
-    background:#e5e5e5;
+        z-index: 100;
+      }
 
-    z-index:100;
-}
+      .progress-fill {
+        width: 100%;
+        height: 0%;
 
-.progress-fill{
+        background: #111;
+      }
 
-    width:100%;
-    height:0%;
-
-    background:#111;
-}
-
-
-/* =========================================================
+      /* =========================================================
    SPONSOR LIST (TIERED SECTIONS)
 ========================================================= */
 
-.sponsors{
+      .sponsors {
+        padding: 120px 25px 80px;
 
-    padding:
-        120px 25px 80px;
+        background: #fff;
+      }
 
-    background:#fff;
-}
+      .sponsor-inner {
+        max-width: 1300px;
 
-.sponsor-inner{
+        margin: 0 auto;
+      }
 
-    max-width:1300px;
+      .sponsor-heading {
+        display: flex;
 
-    margin:0 auto;
-}
+        align-items: flex-end;
 
-.sponsor-heading{
+        justify-content: space-between;
 
-    display:flex;
+        padding-bottom: 30px;
 
-    align-items:flex-end;
+        margin-bottom: 60px;
 
-    justify-content:space-between;
+        border-bottom: 2px solid #111;
+      }
 
-    padding-bottom:30px;
+      .sponsor-heading h2 {
+        font-size: clamp(48px, 7vw, 96px);
 
-    margin-bottom:60px;
+        line-height: 0.9;
 
-    border-bottom:2px solid #111;
-}
+        font-weight: 950;
 
-.sponsor-heading h2{
+        letter-spacing: -0.06em;
+      }
 
-    font-size:
-        clamp(48px,7vw,96px);
+      .sponsor-heading p {
+        font-size: 12px;
 
-    line-height:.9;
+        color: #444;
 
-    font-weight:950;
+        line-height: 1.7;
 
-    letter-spacing:-.06em;
-}
+        letter-spacing: 0.15em;
+        font-weight: 700;
+      }
 
-.sponsor-heading p{
+      /* Tier Group Layout */
+      .sponsor-tier-group {
+        margin-bottom: 50px;
+      }
 
-    font-size:12px;
+      .sponsor-tier-group:last-child {
+        margin-bottom: 0;
+      }
 
-    color:#444;
+      .tier-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e5e5;
+      }
 
-    line-height:1.7;
+      .tier-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        background: #111;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        border-radius: 3px;
+      }
 
-    letter-spacing:.15em;
-    font-weight:700;
-}
+      .tier-name-ja {
+        font-size: 15px;
+        font-weight: 850;
+        letter-spacing: 0.04em;
+        color: #111;
+      }
 
-/* Tier Group Layout */
-.sponsor-tier-group{
-    margin-bottom:50px;
-}
+      /* Tier Grids */
+      .tier-grid {
+        display: grid;
+        gap: 12px;
+      }
 
-.sponsor-tier-group:last-child{
-    margin-bottom:0;
-}
+      .grid-top {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+        margin: 0 auto;
+      }
 
-.tier-title-wrap{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin-bottom:20px;
-    padding-bottom:12px;
-    border-bottom:1px solid #e5e5e5;
-}
+      .grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-.tier-badge{
-    display:inline-block;
-    padding:4px 10px;
-    background:#111;
-    color:#fff;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.10em;
-    border-radius:3px;
-}
+      .grid-gold {
+        grid-template-columns: repeat(3, 1fr);
+      }
 
-.tier-name-ja{
-    font-size:15px;
-    font-weight:850;
-    letter-spacing:.04em;
-    color:#111;
-}
+      .grid-silver {
+        grid-template-columns: repeat(3, 1fr);
+      }
 
-/* Tier Grids */
-.tier-grid{
-    display:grid;
-    gap:12px;
-}
+      .grid-bronze {
+        grid-template-columns: repeat(5, 1fr);
+      }
 
-.grid-top{
-    grid-template-columns:1fr;
-    max-width:680px;
-    margin:0 auto;
-}
+      .grid-supporter {
+        grid-template-columns: repeat(5, 1fr);
+      }
 
-.grid-premium{
-    grid-template-columns:repeat(2, 1fr);
-}
+      /* Sponsor List Card Base (PURE WHITE BG) */
+      .sponsor-list-card {
+        display: flex;
 
-.grid-gold{
-    grid-template-columns:repeat(3, 1fr);
-}
+        align-items: center;
 
-.grid-silver{
-    grid-template-columns:repeat(3, 1fr);
-}
+        justify-content: center;
 
-.grid-bronze{
-    grid-template-columns:repeat(5, 1fr);
-}
+        text-align: center;
 
-.grid-supporter{
-    grid-template-columns:repeat(5, 1fr);
-}
+        background: #fff;
 
-/* Sponsor List Card Base (PURE WHITE BG) */
-.sponsor-list-card{
+        border: 1px solid #e0e0e0;
 
-    display:flex;
+        padding: 8px 12px;
 
-    align-items:center;
+        cursor: pointer;
 
-    justify-content:center;
+        border-radius: 4px;
 
-    text-align:center;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
 
-    background:#fff;
+      .sponsor-list-card:hover {
+        background: #fff;
 
-    border:1px solid #e0e0e0;
+        border-color: #111;
 
-    padding:8px 12px;
+        transform: translateY(-5px);
 
-    cursor:pointer;
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.08),
+          0 2px 8px rgba(0, 0, 0, 0.03);
+      }
 
-    border-radius:4px;
+      .sponsor-list-card img {
+        max-width: 96%;
+        max-height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
 
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
+      /* List Card Heights & Typography by Tier */
+      .grid-top .sponsor-list-card {
+        min-height: 160px;
+        font-size: 18px;
+        font-weight: 900;
+        border: 1.5px solid #111;
+        background: #fff;
+        padding: 12px 24px;
+      }
 
-.sponsor-list-card:hover{
+      .grid-premium .sponsor-list-card {
+        min-height: 140px;
+        font-size: 16px;
+        font-weight: 850;
+        border: 1.5px solid #222;
+        background: #fff;
+        padding: 10px 20px;
+      }
 
-    background:#fff;
+      .grid-gold .sponsor-list-card {
+        min-height: 115px;
+        font-size: 14px;
+        font-weight: 800;
+        padding: 8px 14px;
+      }
 
-    border-color:#111;
+      .grid-silver .sponsor-list-card {
+        min-height: 100px;
+        font-size: 12.5px;
+        font-weight: 750;
+        padding: 6px 12px;
+      }
 
-    transform:
-        translateY(-5px);
+      .grid-bronze .sponsor-list-card {
+        min-height: 85px;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 8px;
+      }
 
-    box-shadow:
-        0 16px 36px
-        rgba(0,0,0,.08),
-        0 2px 8px
-        rgba(0,0,0,.03);
-}
+      .grid-supporter .sponsor-list-card {
+        min-height: 75px;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 4px 6px;
+      }
 
-.sponsor-list-card img{
-    max-width:96%;
-    max-height:90%;
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    pointer-events:none;
-}
-
-/* List Card Heights & Typography by Tier */
-.grid-top .sponsor-list-card{
-    min-height:160px;
-    font-size:18px;
-    font-weight:900;
-    border:1.5px solid #111;
-    background:#fff;
-    padding:12px 24px;
-}
-
-.grid-premium .sponsor-list-card{
-    min-height:140px;
-    font-size:16px;
-    font-weight:850;
-    border:1.5px solid #222;
-    background:#fff;
-    padding:10px 20px;
-}
-
-.grid-gold .sponsor-list-card{
-    min-height:115px;
-    font-size:14px;
-    font-weight:800;
-    padding:8px 14px;
-}
-
-.grid-silver .sponsor-list-card{
-    min-height:100px;
-    font-size:12.5px;
-    font-weight:750;
-    padding:6px 12px;
-}
-
-.grid-bronze .sponsor-list-card{
-    min-height:85px;
-    font-size:11px;
-    font-weight:700;
-    padding:4px 8px;
-}
-
-.grid-supporter .sponsor-list-card{
-    min-height:75px;
-    font-size:10.5px;
-    font-weight:700;
-    padding:4px 6px;
-}
-
-
-/* =========================================================
+      /* =========================================================
    INDIVIDUAL DONORS (PERSONAL SPONSORS)
 ========================================================= */
 
-.individual-section{
+      .individual-section {
+        margin-top: 70px;
 
-    margin-top:70px;
+        padding-top: 50px;
 
-    padding-top:50px;
+        border-top: 1px dashed #dedede;
+      }
 
-    border-top:1px dashed #dedede;
-}
+      .individual-header-wrap {
+        display: flex;
 
-.individual-header-wrap{
+        align-items: flex-end;
 
-    display:flex;
+        justify-content: space-between;
 
-    align-items:flex-end;
+        flex-wrap: wrap;
 
-    justify-content:space-between;
+        gap: 12px;
 
-    flex-wrap:wrap;
+        margin-bottom: 8px;
+      }
 
-    gap:12px;
+      .individual-title-group {
+        display: flex;
 
-    margin-bottom:8px;
-}
+        align-items: center;
 
-.individual-title-group{
+        gap: 14px;
+      }
 
-    display:flex;
+      .individual-fund-title {
+        font-size: 16px;
 
-    align-items:center;
+        font-weight: 850;
 
-    gap:14px;
-}
+        color: #111;
 
-.individual-fund-title{
+        letter-spacing: 0.03em;
+      }
 
-    font-size:16px;
+      .individual-subtitle {
+        font-size: 12.5px;
 
-    font-weight:850;
+        color: #555;
 
-    color:#111;
+        font-weight: 600;
 
-    letter-spacing:.03em;
-}
+        margin-bottom: 28px;
+      }
 
-.individual-subtitle{
+      .individual-kana-container {
+        display: flex;
 
-    font-size:12.5px;
+        flex-direction: column;
 
-    color:#555;
+        gap: 20px;
+      }
 
-    font-weight:600;
+      .individual-kana-group {
+        display: grid;
 
-    margin-bottom:28px;
-}
+        grid-template-columns: 72px 1fr;
 
-.individual-kana-container{
+        gap: 16px;
 
-    display:flex;
+        align-items: start;
+      }
 
-    flex-direction:column;
+      .individual-kana-label {
+        font-size: 11px;
 
-    gap:20px;
-}
+        font-weight: 800;
 
-.individual-kana-group{
+        color: #444;
 
-    display:grid;
+        padding: 8px 6px;
 
-    grid-template-columns:72px 1fr;
+        background: #f4f4f4;
 
-    gap:16px;
+        border: 1px solid #e5e5e5;
 
-    align-items:start;
-}
+        border-radius: 4px;
 
-.individual-kana-label{
+        text-align: center;
 
-    font-size:11px;
+        letter-spacing: 0.1em;
 
-    font-weight:800;
+        user-select: none;
+      }
 
-    color:#444;
+      .individual-names-grid {
+        display: grid;
 
-    padding:8px 6px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 
-    background:#f4f4f4;
+        gap: 8px;
+      }
 
-    border:1px solid #e5e5e5;
+      .individual-name-card {
+        display: flex;
 
-    border-radius:4px;
+        align-items: center;
 
-    text-align:center;
+        justify-content: center;
 
-    letter-spacing:.1em;
+        text-align: center;
 
-    user-select:none;
-}
+        background: #fff;
 
-.individual-names-grid{
+        border: 1px solid #e0e0e0;
 
-    display:grid;
+        border-radius: 4px;
 
-    grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+        padding: 9px 10px;
 
-    gap:8px;
-}
+        font-size: 13px;
 
-.individual-name-card{
+        font-weight: 750;
 
-    display:flex;
+        color: #222;
 
-    align-items:center;
+        letter-spacing: 0.02em;
 
-    justify-content:center;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
 
-    text-align:center;
+      .individual-name-card:hover {
+        border-color: #111;
 
-    background:#fff;
+        transform: translateY(-2px);
 
-    border:1px solid #e0e0e0;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      }
 
-    border-radius:4px;
+      .individual-anonymous-wrap {
+        margin-top: 28px;
 
-    padding:9px 10px;
+        padding: 14px 20px;
 
-    font-size:13px;
+        background: #f9f9f9;
 
-    font-weight:750;
+        border: 1px dashed #d0d0d0;
 
-    color:#222;
+        border-radius: 6px;
 
-    letter-spacing:.02em;
+        display: flex;
 
-    transition:
-        transform .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
-}
+        align-items: center;
 
-.individual-name-card:hover{
+        justify-content: space-between;
 
-    border-color:#111;
+        flex-wrap: wrap;
 
-    transform:translateY(-2px);
+        gap: 10px;
 
-    box-shadow:0 6px 16px rgba(0,0,0,.06);
-}
+        font-size: 12.5px;
 
-.individual-anonymous-wrap{
+        font-weight: 700;
 
-    margin-top:28px;
+        color: #444;
+      }
 
-    padding:14px 20px;
-
-    background:#f9f9f9;
-
-    border:1px dashed #d0d0d0;
-
-    border-radius:6px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    font-size:12.5px;
-
-    font-weight:700;
-
-    color:#444;
-}
-
-
-/* =========================================================
+      /* =========================================================
    THANKS (APPRECIATION & 50TH LOGO)
 ========================================================= */
 
-.thanks{
+      .thanks {
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        justify-content: center;
 
-    justify-content:center;
+        text-align: center;
 
-    text-align:center;
+        padding: 80px 24px 110px;
 
-    padding:80px 24px 110px;
+        background: #fff;
 
-    background:#fff;
+        border-top: 1px solid #e5e5e5;
+      }
 
-    border-top:1px solid #e5e5e5;
-}
+      .thanks-logo-wrap {
+        display: flex;
 
-.thanks-logo-wrap{
+        justify-content: center;
 
-    display:flex;
+        align-items: center;
 
-    justify-content:center;
+        margin-bottom: 20px;
+      }
 
-    align-items:center;
+      .thanks-logo-img {
+        width: clamp(130px, 16vw, 190px);
 
-    margin-bottom:20px;
-}
+        height: auto;
 
-.thanks-logo-img{
+        object-fit: contain;
 
-    width:clamp(130px, 16vw, 190px);
+        display: block;
 
-    height:auto;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+      }
 
-    object-fit:contain;
+      .thanks-subtitle {
+        font-size: 10.5px;
 
-    display:block;
+        font-weight: 850;
 
-    filter:drop-shadow(0 4px 12px rgba(0,0,0,.06));
-}
+        color: #777;
 
-.thanks-subtitle{
+        letter-spacing: 0.26em;
 
-    font-size:10.5px;
+        margin-bottom: 12px;
+      }
 
-    font-weight:850;
+      .thanks-title {
+        font-size: clamp(24px, 3.2vw, 40px);
 
-    color:#777;
+        font-weight: 900;
 
-    letter-spacing:.26em;
+        line-height: 1.45;
 
-    margin-bottom:12px;
-}
+        letter-spacing: -0.02em;
 
-.thanks-title{
+        color: #111;
+      }
 
-    font-size:
-        clamp(24px,3.2vw,40px);
+      .thanks-text {
+        max-width: 680px;
 
-    font-weight:900;
+        margin: 22px auto 0;
 
-    line-height:1.45;
+        font-size: 14.5px;
 
-    letter-spacing:-.02em;
+        line-height: 2.3;
 
-    color:#111;
-}
+        color: #444;
 
-.thanks-text{
+        font-weight: 500;
+      }
 
-    max-width:680px;
-
-    margin:22px auto 0;
-
-    font-size:14.5px;
-
-    line-height:2.3;
-
-    color:#444;
-
-    font-weight:500;
-}
-
-
-/* =========================================================
+      /* =========================================================
    SPONSOR LOCAL FOOTER (disabled — using common footer)
 ========================================================= */
 
-
-/* =========================================================
+      /* =========================================================
    MODAL
 ========================================================= */
 
-.modal{
+      .modal {
+        position: fixed;
 
-    position:fixed;
+        inset: 0;
 
-    inset:0;
+        z-index: 999;
 
-    z-index:999;
+        display: flex;
 
-    display:flex;
+        align-items: center;
 
-    align-items:center;
+        justify-content: center;
 
-    justify-content:center;
+        background: rgba(0, 0, 0, 0.5);
 
-    background:rgba(0,0,0,.5);
+        backdrop-filter: blur(10px);
 
-    backdrop-filter:blur(10px);
+        -webkit-backdrop-filter: blur(10px);
 
-    -webkit-backdrop-filter:blur(10px);
+        opacity: 0;
 
-    opacity:0;
+        visibility: hidden;
 
-    visibility:hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
 
-    transition:
-        opacity .3s ease,
-        visibility .3s ease;
-}
+      .modal.active {
+        opacity: 1;
 
-.modal.active{
+        visibility: visible;
+      }
 
-    opacity:1;
+      .modal-card {
+        position: relative;
 
-    visibility:visible;
-}
+        width: 90%;
 
-.modal-card{
+        max-width: 640px;
 
-    position:relative;
+        max-height: 88vh;
 
-    width:90%;
+        overflow-y: auto;
 
-    max-width:640px;
+        background: #fff;
 
-    max-height:88vh;
+        border-radius: 12px;
 
-    overflow-y:auto;
+        padding: 44px 36px 36px;
 
-    background:#fff;
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.22);
 
-    border-radius:12px;
+        transform: translateY(16px) scale(0.97);
 
-    padding:44px 36px 36px;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-    box-shadow:
-        0 28px 75px rgba(0,0,0,.22);
+      .modal.active .modal-card {
+        transform: translateY(0) scale(1);
+      }
 
-    transform:translateY(16px) scale(.97);
+      .modal-close {
+        position: absolute;
 
-    transition:transform .3s cubic-bezier(.16,1,.3,1);
-}
+        top: 16px;
 
-.modal.active .modal-card{
+        right: 16px;
 
-    transform:translateY(0) scale(1);
-}
+        width: 36px;
 
-.modal-close{
+        height: 36px;
 
-    position:absolute;
+        border: none;
 
-    top:16px;
+        background: #f0f0f0;
 
-    right:16px;
+        border-radius: 50%;
 
-    width:36px;
+        font-size: 20px;
 
-    height:36px;
+        line-height: 1;
 
-    border:none;
+        cursor: pointer;
 
-    background:#f0f0f0;
+        display: flex;
 
-    border-radius:50%;
+        align-items: center;
 
-    font-size:20px;
+        justify-content: center;
 
-    line-height:1;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
 
-    cursor:pointer;
+      .modal-close:hover {
+        background: #e0e0e0;
 
-    display:flex;
+        transform: scale(1.08);
+      }
 
-    align-items:center;
+      .modal-tier-badge {
+        display: inline-block;
 
-    justify-content:center;
+        font-size: 10.5px;
 
-    transition:background .2s ease, transform .2s ease;
-}
+        font-weight: 800;
 
-.modal-close:hover{
+        letter-spacing: 0.1em;
 
-    background:#e0e0e0;
+        padding: 4px 10px;
 
-    transform:scale(1.08);
-}
+        background: #111;
 
-.modal-tier-badge{
+        color: #fff;
 
-    display:inline-block;
+        border-radius: 3px;
 
-    font-size:10.5px;
+        margin-bottom: 18px;
+      }
 
-    font-weight:800;
+      .modal-logo-wrap {
+        max-height: 110px;
 
-    letter-spacing:.10em;
+        display: none;
 
-    padding:4px 10px;
+        align-items: center;
 
-    background:#111;
+        justify-content: center;
 
-    color:#fff;
+        margin-bottom: 20px;
 
-    border-radius:3px;
+        padding: 14px;
 
-    margin-bottom:18px;
-}
+        background: #fff;
 
-.modal-logo-wrap{
+        border: 1px solid #e0e0e0;
 
-    max-height:110px;
+        border-radius: 8px;
+      }
 
-    display:none;
+      .modal-logo-wrap.active {
+        display: flex;
+      }
 
-    align-items:center;
+      .modal-logo-wrap img {
+        max-height: 85px;
 
-    justify-content:center;
+        max-width: 100%;
 
-    margin-bottom:20px;
+        object-fit: contain;
+      }
 
-    padding:14px;
+      .modal-name {
+        font-size: clamp(22px, 3vw, 30px);
 
-    background:#fff;
+        font-weight: 900;
 
-    border:1px solid #e0e0e0;
+        line-height: 1.35;
 
-    border-radius:8px;
-}
+        letter-spacing: -0.02em;
 
-.modal-logo-wrap.active{
+        color: #111;
 
-    display:flex;
-}
+        margin-bottom: 16px;
+      }
 
-.modal-logo-wrap img{
+      .modal-line {
+        width: 100%;
 
-    max-height:85px;
+        height: 1px;
 
-    max-width:100%;
+        background: #e5e5e5;
 
-    object-fit:contain;
-}
+        margin-bottom: 20px;
+      }
 
-.modal-name{
+      .modal-message {
+        font-size: 14.5px;
 
-    font-size:clamp(22px, 3vw, 30px);
+        line-height: 2;
 
-    font-weight:900;
+        color: #333;
 
-    line-height:1.35;
+        font-weight: 500;
 
-    letter-spacing:-.02em;
+        white-space: pre-wrap;
 
-    color:#111;
+        margin-bottom: 28px;
+      }
 
-    margin-bottom:16px;
-}
+      .modal-links {
+        display: flex;
 
-.modal-line{
+        flex-wrap: wrap;
 
-    width:100%;
+        gap: 10px;
+      }
 
-    height:1px;
+      .modal-link-btn {
+        display: inline-flex;
 
-    background:#e5e5e5;
+        align-items: center;
 
-    margin-bottom:20px;
-}
+        gap: 8px;
 
-.modal-message{
+        padding: 10px 18px;
 
-    font-size:14.5px;
+        border-radius: 6px;
 
-    line-height:2.0;
+        font-size: 12.5px;
 
-    color:#333;
+        font-weight: 750;
 
-    font-weight:500;
+        letter-spacing: 0.02em;
 
-    white-space:pre-wrap;
+        text-decoration: none;
 
-    margin-bottom:28px;
-}
+        border-radius: 3px;
 
-.modal-links{
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease;
+      }
 
-    display:flex;
+      .modal-link-btn:hover {
+        background: #333;
 
-    flex-wrap:wrap;
+        transform: translateY(-2px);
+      }
 
-    gap:10px;
-}
+      .modal-link-btn.btn-website {
+        background: #111;
+        color: #fff;
+      }
 
-.modal-link-btn{
+      .modal-link-btn.btn-instagram {
+        background: #e1306c;
+        border-color: #e1306c;
+        color: #fff;
+      }
 
-    display:inline-flex;
+      .modal-link-btn.btn-instagram:hover {
+        background: #c1275b;
+        border-color: #c1275b;
+      }
 
-    align-items:center;
+      .modal-link-btn.btn-x {
+        background: #000;
+        border-color: #000;
+        color: #fff;
+      }
 
-    gap:8px;
+      .modal-link-btn.btn-x:hover {
+        background: #222;
+        border-color: #222;
+      }
 
-    padding:10px 18px;
+      .modal-link-btn.btn-youtube {
+        background: #ff0000;
+        border-color: #ff0000;
+        color: #fff;
+      }
 
-    border-radius:6px;
+      .modal-link-btn.btn-youtube:hover {
+        background: #cc0000;
+        border-color: #cc0000;
+      }
 
-    font-size:12.5px;
+      .modal-link-btn svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
 
-    font-weight:750;
-
-    letter-spacing:.02em;
-
-    text-decoration:none;
-
-    border-radius:3px;
-
-    transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
-}
-
-.modal-link-btn:hover{
-
-    background:#333;
-
-    transform:translateY(-2px);
-}
-
-.modal-link-btn.btn-website{
-    background:#111;
-    color:#fff;
-}
-
-.modal-link-btn.btn-instagram{
-    background:#e1306c;
-    border-color:#e1306c;
-    color:#fff;
-}
-
-.modal-link-btn.btn-instagram:hover{
-    background:#c1275b;
-    border-color:#c1275b;
-}
-
-.modal-link-btn.btn-x{
-    background:#000;
-    border-color:#000;
-    color:#fff;
-}
-
-.modal-link-btn.btn-x:hover{
-    background:#222;
-    border-color:#222;
-}
-
-.modal-link-btn.btn-youtube{
-    background:#ff0000;
-    border-color:#ff0000;
-    color:#fff;
-}
-
-.modal-link-btn.btn-youtube:hover{
-    background:#cc0000;
-    border-color:#cc0000;
-}
-
-.modal-link-btn svg{
-    width:14px;
-    height:14px;
-    fill:currentColor;
-}
-
-
-/* =========================================================
+      /* =========================================================
    MOBILE RESPONSIVE
 ========================================================= */
 
-@media(max-width:768px){
+      @media (max-width: 768px) {
+        .marquee-section {
+          height: 240vh;
+        }
 
-    .marquee-section{
-        height:240vh;
-    }
+        .top-label {
+          top: 18px;
+          left: 18px;
+        }
 
-    .top-label{
+        .counter {
+          top: 18px;
+          right: 18px;
+        }
 
-        top:18px;
-        left:18px;
-    }
+        .marquee-row-1 {
+          top: 22%;
+        }
 
-    .counter{
+        .marquee-row-2 {
+          top: 40%;
+        }
 
-        top:18px;
-        right:18px;
-    }
+        .marquee-row-3 {
+          top: 58%;
+        }
 
-    .marquee-row-1{
-        top:22%;
-    }
+        .marquee-row-4 {
+          top: 76%;
+        }
 
-    .marquee-row-2{
-        top:40%;
-    }
+        .wall {
+          inset: 7% 2% 5% 2%;
 
-    .marquee-row-3{
-        top:58%;
-    }
+          grid-template-columns: repeat(12, 1fr);
 
-    .marquee-row-4{
-        top:76%;
-    }
+          grid-auto-rows: minmax(0, 1fr);
 
-    .wall{
+          gap: 3px;
+        }
 
-        inset:7% 2% 5% 2%;
+        .wall-card {
+          padding: 1px 2px;
 
-        grid-template-columns:
-            repeat(12,1fr);
+          border-radius: 2px;
+        }
 
-        grid-auto-rows:
-            minmax(0, 1fr);
+        .wall-card img {
+          max-width: 98%;
 
-        gap:3px;
-    }
+          max-height: 92%;
 
-    .wall-card{
+          width: 100%;
 
-        padding:1px 2px;
+          height: 100%;
 
-        border-radius:2px;
-    }
+          object-fit: contain;
+        }
 
-    .wall-card img{
+        .w-top {
+          grid-column: span 12;
+          grid-row: span 1;
+          font-size: 13px;
+        }
 
-        max-width:98%;
+        .w-premium {
+          grid-column: span 6;
+          grid-row: span 1;
+          font-size: 11px;
+        }
 
-        max-height:92%;
+        .w-gold {
+          grid-column: span 4;
+          grid-row: span 1;
+          font-size: 10px;
+        }
 
-        width:100%;
+        .w-silver {
+          grid-column: span 4;
+          grid-row: span 1;
+          font-size: 9.5px;
+        }
 
-        height:100%;
+        .w-bronze {
+          grid-column: span 3;
+          grid-row: span 1;
+          font-size: 8.5px;
+        }
 
-        object-fit:contain;
-    }
+        .w-supporter {
+          grid-column: span 3;
+          grid-row: span 1;
+          font-size: 8px;
+        }
 
-    .w-top{
-        grid-column:span 12;
-        grid-row:span 1;
-        font-size:13px;
-    }
+        .grid-top {
+          grid-template-columns: 1fr;
+        }
 
-    .w-premium{
-        grid-column:span 6;
-        grid-row:span 1;
-        font-size:11px;
-    }
+        .grid-premium {
+          grid-template-columns: 1fr;
+        }
 
-    .w-gold{
-        grid-column:span 4;
-        grid-row:span 1;
-        font-size:10px;
-    }
+        .grid-gold {
+          grid-template-columns: repeat(2, 1fr);
+        }
 
-    .w-silver{
-        grid-column:span 4;
-        grid-row:span 1;
-        font-size:9.5px;
-    }
+        .grid-silver {
+          grid-template-columns: repeat(2, 1fr);
+        }
 
-    .w-bronze{
-        grid-column:span 3;
-        grid-row:span 1;
-        font-size:8.5px;
-    }
+        .grid-bronze {
+          grid-template-columns: repeat(3, 1fr);
+        }
 
-    .w-supporter{
-        grid-column:span 3;
-        grid-row:span 1;
-        font-size:8px;
-    }
+        .grid-supporter {
+          grid-template-columns: repeat(3, 1fr);
+        }
 
-    .grid-top{
-        grid-template-columns:1fr;
-    }
+        .individual-kana-group {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
 
-    .grid-premium{
-        grid-template-columns:1fr;
-    }
+        .individual-kana-label {
+          display: inline-block;
+          width: fit-content;
+          padding: 4px 10px;
+          font-size: 11px;
+        }
 
-    .grid-gold{
-        grid-template-columns:repeat(2, 1fr);
-    }
+        .individual-names-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6px;
+        }
 
-    .grid-silver{
-        grid-template-columns:repeat(2, 1fr);
-    }
+        .individual-name-card {
+          font-size: 12px;
+          padding: 9px 6px;
+        }
 
-    .grid-bronze{
-        grid-template-columns:repeat(3, 1fr);
-    }
+        .modal-card {
+          padding: 35px 22px;
+        }
+      }
 
-    .grid-supporter{
-        grid-template-columns:repeat(3, 1fr);
-    }
-
-    .individual-kana-group{
-        grid-template-columns:1fr;
-        gap:8px;
-    }
-
-    .individual-kana-label{
-        display:inline-block;
-        width:fit-content;
-        padding:4px 10px;
-        font-size:11px;
-    }
-
-    .individual-names-grid{
-        grid-template-columns:repeat(2, 1fr);
-        gap:6px;
-    }
-
-    .individual-name-card{
-        font-size:12px;
-        padding:9px 6px;
-    }
-
-    .modal-card{
-
-        padding:35px 22px;
-    }
-
-}
-
-/* --- Negate #contents padding so sponsor marquee reaches edges --- */
-.sponsor-wrapper {
-    margin: calc(-1 * var(--global-space, 0px));
-}
-</style>
-</head>
+      /* --- Negate #contents padding so sponsor marquee reaches edges --- */
+      .sponsor-wrapper {
+        margin: calc(-1 * var(--global-space, 0px));
+      }
+    </style>
+  </head>
 
   <body>
     <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
@@ -1704,1141 +1560,802 @@
       <div id="contents">
         <main>
           <div class="sponsor-wrapper">
-
-
-<!-- =========================================================
+            <!-- =========================================================
      MARQUEE SECTION
 ========================================================= -->
 
-<section class="marquee-section">
+            <section class="marquee-section">
+              <div class="marquee-sticky">
+                <div class="background-grid"></div>
 
-<div class="marquee-sticky">
-
-
-    <div class="background-grid"></div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          HEADER
     ===================================================== -->
 
-    <div class="top-label">
+                <div class="top-label">
+                  <div class="top-label-small">SPONSORS</div>
 
-        <div class="top-label-small">
-            SPONSORS
-        </div>
+                  <div class="top-label-title">
+                    開学50周年の技科大祭を、<br />
+                    ともに創るパートナー。
+                  </div>
+                </div>
 
-        <div class="top-label-title">
-            開学50周年の技科大祭を、<br>
-            ともに創るパートナー。
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          COUNTER
     ===================================================== -->
 
-    <div class="counter">
+                <div class="counter">
+                  <div class="counter-number" id="counter">0</div>
 
-        <div
-            class="counter-number"
-            id="counter">
-            0
-        </div>
+                  <div class="counter-label">SPONSORS</div>
+                </div>
 
-        <div class="counter-label">
-            SPONSORS
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          ROW 1
     ===================================================== -->
 
-    <div
-        class="marquee marquee-row-1"
-        id="row1">
+                <div class="marquee marquee-row-1" id="row1">
+                  <div class="track"></div>
+                </div>
 
-        <div
-            class="track">
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          ROW 2
     ===================================================== -->
 
-    <div
-        class="marquee marquee-row-2"
-        id="row2">
+                <div class="marquee marquee-row-2" id="row2">
+                  <div class="track"></div>
+                </div>
 
-        <div
-            class="track">
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          ROW 3
     ===================================================== -->
 
-    <div
-        class="marquee marquee-row-3"
-        id="row3">
+                <div class="marquee marquee-row-3" id="row3">
+                  <div class="track"></div>
+                </div>
 
-        <div
-            class="track">
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          ROW 4
     ===================================================== -->
 
-    <div
-        class="marquee marquee-row-4"
-        id="row4">
+                <div class="marquee marquee-row-4" id="row4">
+                  <div class="track"></div>
+                </div>
 
-        <div
-            class="track">
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          WALL
     ===================================================== -->
 
-    <div
-        class="wall"
-        id="wall">
-    </div>
+                <div class="wall" id="wall"></div>
 
-
-    <!-- =====================================================
+                <!-- =====================================================
          FINAL CENTER (PLAN A: OFFICIAL 50TH LOGO)
     ===================================================== -->
 
-    <div
-        class="center"
-        id="center">
+                <div class="center" id="center">
+                  <div class="center-logo-wrap">
+                    <img
+                      src="logos/tut50th_logo.png"
+                      alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
+                      class="center-logo-img"
+                    />
+                  </div>
 
-        <div class="center-logo-wrap">
-            <img
-                src="logos/tut50th_logo.png"
-                alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
-                class="center-logo-img">
-        </div>
+                  <div class="center-festival">第49回 技科大祭 2026</div>
+                </div>
 
-        <div class="center-festival">
-            第49回 技科大祭 2026
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          SCROLL HINT
     ===================================================== -->
 
-    <div class="scroll-hint">
+                <div class="scroll-hint">
+                  SCROLL
 
-        SCROLL
+                  <div class="scroll-line"></div>
+                </div>
 
-        <div class="scroll-line"></div>
-
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          PROGRESS
     ===================================================== -->
 
-    <div class="progress">
+                <div class="progress">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
+              </div>
+            </section>
 
-        <div
-            class="progress-fill"
-            id="progressFill">
-        </div>
-
-    </div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
+            <!-- =========================================================
      SPONSOR LIST
 ========================================================= -->
 
-<section class="sponsors">
+            <section class="sponsors">
+              <div class="sponsor-inner">
+                <div class="sponsor-heading">
+                  <h2>SPONSORS</h2>
 
-<div class="sponsor-inner">
+                  <p>
+                    技科大祭2026<br />
+                    協賛企業・団体
+                  </p>
+                </div>
 
+                <div id="sponsorTiersContainer">
+                  <!-- ランク別に動的生成 -->
+                </div>
 
-    <div class="sponsor-heading">
-
-        <h2>
-            SPONSORS
-        </h2>
-
-        <p>
-            技科大祭2026<br>
-            協賛企業・団体
-        </p>
-
-    </div>
-
-
-    <div id="sponsorTiersContainer">
-        <!-- ランク別に動的生成 -->
-    </div>
-
-
-    <!-- =====================================================
+                <!-- =====================================================
          INDIVIDUAL DONORS (PERSONAL SPONSORS)
     ===================================================== -->
 
-    <div class="individual-section" id="individualSection">
+                <div class="individual-section" id="individualSection">
+                  <div class="individual-header-wrap">
+                    <div class="individual-title-group">
+                      <span class="tier-badge">DONATION</span>
+                      <span class="individual-fund-title"
+                        >豊橋技術科学大学基金 寄附者ご芳名</span
+                      >
+                    </div>
+                  </div>
 
-        <div class="individual-header-wrap">
+                  <div class="individual-subtitle">
+                    技科大祭支援募金 個人（五十音順）
+                  </div>
 
-            <div class="individual-title-group">
-                <span class="tier-badge">DONATION</span>
-                <span class="individual-fund-title">豊橋技術科学大学基金 寄附者ご芳名</span>
-            </div>
+                  <div
+                    class="individual-kana-container"
+                    id="individualKanaContainer"
+                  >
+                    <!-- あ行、か行... の行グループを動的生成 -->
+                  </div>
 
-        </div>
+                  <div
+                    class="individual-anonymous-wrap"
+                    id="individualAnonymousWrap"
+                  >
+                    <span>掲載を希望されないご寄附者</span>
+                    <span>14名</span>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-        <div class="individual-subtitle">
-            技科大祭支援募金 個人（五十音順）
-        </div>
-
-        <div class="individual-kana-container" id="individualKanaContainer">
-            <!-- あ行、か行... の行グループを動的生成 -->
-        </div>
-
-        <div class="individual-anonymous-wrap" id="individualAnonymousWrap">
-            <span>掲載を希望されないご寄附者</span>
-            <span>14名</span>
-        </div>
-
-    </div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
+            <!-- =========================================================
      THANKS (APPRECIATION & 50TH LOGO)
 ========================================================= -->
 
-<section class="thanks">
+            <section class="thanks">
+              <div>
+                <div class="thanks-logo-wrap">
+                  <img
+                    src="logos/tut50th_logo.png"
+                    alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
+                    class="thanks-logo-img"
+                  />
+                </div>
 
-<div>
+                <div class="thanks-subtitle">THANK YOU FOR YOUR SUPPORT</div>
 
-    <div class="thanks-logo-wrap">
-        <img
-            src="logos/tut50th_logo.png"
-            alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
-            class="thanks-logo-img">
-    </div>
+                <div class="thanks-title">
+                  ご協賛・ご寄附をいただいたすべての皆さまへ、<br />心より深く感謝申し上げます。
+                </div>
 
-    <div class="thanks-subtitle">
-        THANK YOU FOR YOUR SUPPORT
-    </div>
+                <p class="thanks-text">
+                  皆さまからの温かいご支援とご協力が、開学50周年という節目を迎える豊橋技術科学大学において、学生たちの新たな挑戦を支え、一人ひとりの情熱を形にする「第49回
+                  技科大祭」の大きな原動力となっております。
+                  技術の未来、地域の未来をともに創るパートナーとして、多大なるご支援を賜りました協賛企業の皆さま、ならびに温かいご寄附をお寄せいただきました個人の皆さまへ、実行委員会・学生一同、心より深く御礼申し上げます。
+                </p>
+              </div>
+            </section>
 
-    <div class="thanks-title">
-        ご協賛・ご寄附をいただいたすべての皆さまへ、<br>心より深く感謝申し上げます。
-    </div>
+            <!-- common footer is populated by site-loader.js -->
 
-    <p class="thanks-text">
-        皆さまからの温かいご支援とご協力が、開学50周年という節目を迎える豊橋技術科学大学において、学生たちの新たな挑戦を支え、一人ひとりの情熱を形にする「第49回 技科大祭」の大きな原動力となっております。
-        技術の未来、地域の未来をともに創るパートナーとして、多大なるご支援を賜りました協賛企業の皆さま、ならびに温かいご寄附をお寄せいただきました個人の皆さまへ、実行委員会・学生一同、心より深く御礼申し上げます。
-    </p>
-
-</div>
-
-</section>
-
-
-
-<!-- common footer is populated by site-loader.js -->
-
-
-
-<!-- =========================================================
+            <!-- =========================================================
      MODAL
 ========================================================= -->
 
-<div
-    class="modal"
-    id="modal">
+            <div class="modal" id="modal">
+              <div class="modal-card">
+                <button class="modal-close" id="modalClose" aria-label="閉じる">
+                  ×
+                </button>
 
-    <div class="modal-card">
+                <div class="modal-tier-badge" id="modalTierBadge">SPONSOR</div>
 
-        <button
-            class="modal-close"
-            id="modalClose"
-            aria-label="閉じる">
-            ×
-        </button>
+                <div class="modal-logo-wrap" id="modalLogoWrap"></div>
 
-        <div
-            class="modal-tier-badge"
-            id="modalTierBadge">
-            SPONSOR
-        </div>
+                <div class="modal-name" id="modalName"></div>
 
-        <div
-            class="modal-logo-wrap"
-            id="modalLogoWrap">
-        </div>
+                <div class="modal-line"></div>
 
-        <div
-            class="modal-name"
-            id="modalName">
-        </div>
+                <div class="modal-message" id="modalMessage"></div>
 
-        <div class="modal-line"></div>
+                <div class="modal-links" id="modalLinks"></div>
+              </div>
+            </div>
 
-        <div
-            class="modal-message"
-            id="modalMessage">
-        </div>
+            <!-- 協賛企業データファイル -->
+            <script src="sponsors.js"></script>
 
-        <div
-            class="modal-links"
-            id="modalLinks">
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- 協賛企業データファイル -->
-<script src="sponsors.js"></script>
-
-<script>
-
-/* =========================================================
+            <script>
+              /* =========================================================
    TIER DEFINITIONS & HELPERS
 ========================================================= */
 
-const TIERS = [
-    {
-        key: "top",
-        name: "トップスポンサー",
-        en: "TOP SPONSOR",
-        order: 1,
-        wallClass: "w-top",
-        gridClass: "grid-top"
-    },
-    {
-        key: "premium",
-        name: "プレミアムスポンサー",
-        en: "PREMIUM SPONSOR",
-        order: 2,
-        wallClass: "w-premium",
-        gridClass: "grid-premium"
-    },
-    {
-        key: "gold",
-        name: "ゴールドスポンサー",
-        en: "GOLD SPONSOR",
-        order: 3,
-        wallClass: "w-gold",
-        gridClass: "grid-gold"
-    },
-    {
-        key: "silver",
-        name: "シルバースポンサー",
-        en: "SILVER SPONSOR",
-        order: 4,
-        wallClass: "w-silver",
-        gridClass: "grid-silver"
-    },
-    {
-        key: "bronze",
-        name: "ブロンズスポンサー",
-        en: "BRONZE SPONSOR",
-        order: 5,
-        wallClass: "w-bronze",
-        gridClass: "grid-bronze"
-    },
-    {
-        key: "supporter",
-        name: "サポーター",
-        en: "SUPPORTER",
-        order: 6,
-        wallClass: "w-supporter",
-        gridClass: "grid-supporter"
-    }
-];
+              const TIERS = [
+                {
+                  key: "top",
+                  name: "トップスポンサー",
+                  en: "TOP SPONSOR",
+                  order: 1,
+                  wallClass: "w-top",
+                  gridClass: "grid-top",
+                },
+                {
+                  key: "premium",
+                  name: "プレミアムスポンサー",
+                  en: "PREMIUM SPONSOR",
+                  order: 2,
+                  wallClass: "w-premium",
+                  gridClass: "grid-premium",
+                },
+                {
+                  key: "gold",
+                  name: "ゴールドスポンサー",
+                  en: "GOLD SPONSOR",
+                  order: 3,
+                  wallClass: "w-gold",
+                  gridClass: "grid-gold",
+                },
+                {
+                  key: "silver",
+                  name: "シルバースポンサー",
+                  en: "SILVER SPONSOR",
+                  order: 4,
+                  wallClass: "w-silver",
+                  gridClass: "grid-silver",
+                },
+                {
+                  key: "bronze",
+                  name: "ブロンズスポンサー",
+                  en: "BRONZE SPONSOR",
+                  order: 5,
+                  wallClass: "w-bronze",
+                  gridClass: "grid-bronze",
+                },
+                {
+                  key: "supporter",
+                  name: "サポーター",
+                  en: "SUPPORTER",
+                  order: 6,
+                  wallClass: "w-supporter",
+                  gridClass: "grid-supporter",
+                },
+              ];
 
+              function getSponsorTier(sponsor) {
+                // キャリアナビゲーション特例
+                if (
+                  sponsor.name &&
+                  sponsor.name.includes("キャリアナビゲーション")
+                ) {
+                  return TIERS.find((t) => t.key === "premium");
+                }
 
-function getSponsorTier(sponsor){
+                if (sponsor.amount >= 500000) {
+                  return TIERS.find((t) => t.key === "top");
+                }
 
-    // キャリアナビゲーション特例
-    if(sponsor.name && sponsor.name.includes("キャリアナビゲーション")){
-        return TIERS.find(t => t.key === "premium");
-    }
+                if (sponsor.amount >= 150000) {
+                  return TIERS.find((t) => t.key === "premium");
+                }
 
-    if(sponsor.amount >= 500000){
-        return TIERS.find(t => t.key === "top");
-    }
+                if (sponsor.amount >= 100000) {
+                  return TIERS.find((t) => t.key === "gold");
+                }
 
-    if(sponsor.amount >= 150000){
-        return TIERS.find(t => t.key === "premium");
-    }
+                if (sponsor.amount >= 50000) {
+                  return TIERS.find((t) => t.key === "silver");
+                }
 
-    if(sponsor.amount >= 100000){
-        return TIERS.find(t => t.key === "gold");
-    }
+                if (sponsor.amount >= 30000) {
+                  return TIERS.find((t) => t.key === "bronze");
+                }
 
-    if(sponsor.amount >= 50000){
-        return TIERS.find(t => t.key === "silver");
-    }
+                return TIERS.find((t) => t.key === "supporter");
+              }
 
-    if(sponsor.amount >= 30000){
-        return TIERS.find(t => t.key === "bronze");
-    }
+              function getCardInner(sponsor) {
+                if (sponsor.logo && sponsor.logo.trim() !== "") {
+                  return `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
+                }
 
-    return TIERS.find(t => t.key === "supporter");
+                return `<span class="logo-name">${sponsor.name}</span>`;
+              }
 
-}
-
-
-function getCardInner(sponsor){
-
-    if(sponsor.logo && sponsor.logo.trim() !== ""){
-        return `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
-    }
-
-    return `<span class="logo-name">${sponsor.name}</span>`;
-
-}
-
-
-/* =========================================================
+              /* =========================================================
    SORTED SPONSORS BY TIER
 ========================================================= */
 
-const sortedSponsors = [...sponsors].sort((a, b) => {
-    const tierA = getSponsorTier(a);
-    const tierB = getSponsorTier(b);
-    return tierA.order - tierB.order;
-});
+              const sortedSponsors = [...sponsors].sort((a, b) => {
+                const tierA = getSponsorTier(a);
+                const tierB = getSponsorTier(b);
+                return tierA.order - tierB.order;
+              });
 
-
-/* =========================================================
+              /* =========================================================
    CREATE MARQUEE CARD (4 ROWS)
 ========================================================= */
 
-function createMarqueeCard(sponsor){
+              function createMarqueeCard(sponsor) {
+                const card = document.createElement("div");
 
-    const card =
-        document.createElement("div");
+                card.className = "logo-card";
 
-    card.className =
-        "logo-card";
+                card.innerHTML = getCardInner(sponsor);
 
-    card.innerHTML =
-        getCardInner(sponsor);
+                card.addEventListener("click", () => {
+                  openModal(sponsor);
+                });
 
-    card.addEventListener(
-        "click",
-        ()=>{
-            openModal(sponsor);
-        }
-    );
+                return card;
+              }
 
-    return card;
+              const ROW_COUNT = 4;
+              const itemsPerRow = Math.ceil(sponsors.length / ROW_COUNT); // 28社 / 4 = 7社ずつ均等
+              const rowSponsors = [];
 
-}
+              for (let r = 0; r < ROW_COUNT; r++) {
+                rowSponsors.push(
+                  sponsors.slice(r * itemsPerRow, (r + 1) * itemsPerRow),
+                );
+              }
 
+              const tracks = [
+                document.querySelector("#row1 .track"),
+                document.querySelector("#row2 .track"),
+                document.querySelector("#row3 .track"),
+                document.querySelector("#row4 .track"),
+              ];
 
-const ROW_COUNT = 4;
-const itemsPerRow = Math.ceil(sponsors.length / ROW_COUNT); // 28社 / 4 = 7社ずつ均等
-const rowSponsors = [];
+              tracks.forEach((track, rowIndex) => {
+                const list = rowSponsors[rowIndex];
 
-for(let r = 0; r < ROW_COUNT; r++){
-    rowSponsors.push(
-        sponsors.slice(r * itemsPerRow, (r + 1) * itemsPerRow)
-    );
-}
-
-
-const tracks = [
-    document.querySelector("#row1 .track"),
-    document.querySelector("#row2 .track"),
-    document.querySelector("#row3 .track"),
-    document.querySelector("#row4 .track")
-];
-
-
-tracks.forEach(
-    (track, rowIndex)=>{
-
-        const list =
-            rowSponsors[rowIndex];
-
-        /*
+                /*
             10セット複製して2.2周スクロールしても途切れないようにする
         */
-        for(let repeat=0; repeat<10; repeat++){
-
-            list.forEach(
-                sponsor=>{
-                    track.appendChild(
-                        createMarqueeCard(sponsor)
-                    );
+                for (let repeat = 0; repeat < 10; repeat++) {
+                  list.forEach((sponsor) => {
+                    track.appendChild(createMarqueeCard(sponsor));
+                  });
                 }
-            );
+              });
 
-        }
-
-    }
-);
-
-
-/* =========================================================
+              /* =========================================================
    CREATE WALL (SORTED BY TIER & SIZED ACCORDINGLY)
 ========================================================= */
 
-const wall =
-    document.getElementById(
-        "wall"
-    );
+              const wall = document.getElementById("wall");
 
+              sortedSponsors.forEach((sponsor, index) => {
+                const tier = getSponsorTier(sponsor);
 
-sortedSponsors.forEach(
-    (sponsor, index)=>{
+                const card = document.createElement("div");
 
-        const tier =
-            getSponsorTier(sponsor);
+                card.className = `wall-card ${tier.wallClass}`;
 
-        const card =
-            document.createElement(
-                "div"
-            );
+                card.style.transitionDelay = `${0.02 + index * 0.015}s`;
 
-        card.className =
-            `wall-card ${tier.wallClass}`;
+                card.innerHTML = getCardInner(sponsor);
 
-        card.style.transitionDelay =
-            `${0.02 + index * 0.015}s`;
+                card.addEventListener("click", () => {
+                  openModal(sponsor);
+                });
 
-        card.innerHTML =
-            getCardInner(sponsor);
+                wall.appendChild(card);
+              });
 
-        card.addEventListener(
-            "click",
-            ()=>{
-                openModal(sponsor);
-            }
-        );
-
-        wall.appendChild(
-            card
-        );
-
-    }
-);
-
-
-/* =========================================================
+              /* =========================================================
    SPONSOR LIST (TIER SECTIONS)
 ========================================================= */
 
-const sponsorTiersContainer =
-    document.getElementById(
-        "sponsorTiersContainer"
-    );
+              const sponsorTiersContainer = document.getElementById(
+                "sponsorTiersContainer",
+              );
 
+              TIERS.forEach((tier) => {
+                const tierSponsors = sortedSponsors.filter(
+                  (s) => getSponsorTier(s).key === tier.key,
+                );
 
-TIERS.forEach(tier => {
+                if (tierSponsors.length === 0) return;
 
-    const tierSponsors =
-        sortedSponsors.filter(
-            s => getSponsorTier(s).key === tier.key
-        );
+                const group = document.createElement("div");
 
-    if(tierSponsors.length === 0) return;
+                group.className = "sponsor-tier-group";
 
-    const group =
-        document.createElement("div");
+                // 見出し
+                const titleWrap = document.createElement("div");
 
-    group.className =
-        "sponsor-tier-group";
+                titleWrap.className = "tier-title-wrap";
 
-    // 見出し
-    const titleWrap =
-        document.createElement("div");
-
-    titleWrap.className =
-        "tier-title-wrap";
-
-    titleWrap.innerHTML = `
+                titleWrap.innerHTML = `
         <span class="tier-badge">${tier.en}</span>
         <span class="tier-name-ja">${tier.name}</span>
     `;
 
-    group.appendChild(titleWrap);
+                group.appendChild(titleWrap);
 
-    // グリッド
-    const grid =
-        document.createElement("div");
+                // グリッド
+                const grid = document.createElement("div");
 
-    grid.className =
-        `tier-grid ${tier.gridClass}`;
+                grid.className = `tier-grid ${tier.gridClass}`;
 
-    tierSponsors.forEach(sponsor => {
+                tierSponsors.forEach((sponsor) => {
+                  const card = document.createElement("div");
 
-        const card =
-            document.createElement("div");
+                  card.className = "sponsor-list-card";
 
-        card.className =
-            "sponsor-list-card";
+                  card.innerHTML = getCardInner(sponsor);
 
-        card.innerHTML =
-            getCardInner(sponsor);
+                  card.addEventListener("click", () => {
+                    openModal(sponsor);
+                  });
 
-        card.addEventListener(
-            "click",
-            ()=>{
-                openModal(sponsor);
-            }
-        );
+                  grid.appendChild(card);
+                });
 
-        grid.appendChild(card);
+                group.appendChild(grid);
 
-    });
+                sponsorTiersContainer.appendChild(group);
+              });
 
-    group.appendChild(grid);
-
-    sponsorTiersContainer.appendChild(group);
-
-});
-
-
-/* =========================================================
+              /* =========================================================
    INDIVIDUAL DONORS RENDERING (KANA GROUPS & ANONYMOUS)
 ========================================================= */
 
-const individualKanaContainer =
-    document.getElementById("individualKanaContainer");
+              const individualKanaContainer = document.getElementById(
+                "individualKanaContainer",
+              );
 
-const individualAnonymousWrap =
-    document.getElementById("individualAnonymousWrap");
+              const individualAnonymousWrap = document.getElementById(
+                "individualAnonymousWrap",
+              );
 
-if(individualKanaContainer && typeof individualDonorsData !== "undefined"){
+              if (
+                individualKanaContainer &&
+                typeof individualDonorsData !== "undefined"
+              ) {
+                // 日付反映
+                const dateEl = document.querySelector(".individual-date");
+                if (dateEl && individualDonorsData.date) {
+                  dateEl.textContent = individualDonorsData.date;
+                }
 
-    // 日付反映
-    const dateEl = document.querySelector(".individual-date");
-    if(dateEl && individualDonorsData.date){
-        dateEl.textContent = individualDonorsData.date;
-    }
-
-    // 匿名希望の反映
-    if(individualAnonymousWrap && individualDonorsData.anonymous){
-        individualAnonymousWrap.innerHTML = `
+                // 匿名希望の反映
+                if (individualAnonymousWrap && individualDonorsData.anonymous) {
+                  individualAnonymousWrap.innerHTML = `
             <span>掲載を希望されないご寄附者</span>
             <span>${individualDonorsData.anonymous.replace("掲載を希望されないご寄附者", "").trim()}</span>
         `;
-    }
+                }
 
-    // 五十音別グループの生成
-    if(Array.isArray(individualDonorsData.sections)){
+                // 五十音別グループの生成
+                if (Array.isArray(individualDonorsData.sections)) {
+                  individualDonorsData.sections.forEach((section) => {
+                    if (!section.names || section.names.length === 0) return;
 
-        individualDonorsData.sections.forEach(section => {
+                    const group = document.createElement("div");
+                    group.className = "individual-kana-group";
 
-            if(!section.names || section.names.length === 0) return;
+                    // 行ラベル（あ行、か行...）
+                    const label = document.createElement("div");
+                    label.className = "individual-kana-label";
+                    label.textContent = section.kana;
+                    group.appendChild(label);
 
-            const group = document.createElement("div");
-            group.className = "individual-kana-group";
+                    // ネームグリッド
+                    const namesGrid = document.createElement("div");
+                    namesGrid.className = "individual-names-grid";
 
-            // 行ラベル（あ行、か行...）
-            const label = document.createElement("div");
-            label.className = "individual-kana-label";
-            label.textContent = section.kana;
-            group.appendChild(label);
+                    section.names.forEach((name) => {
+                      const card = document.createElement("div");
+                      card.className = "individual-name-card";
+                      card.textContent = name;
+                      namesGrid.appendChild(card);
+                    });
 
-            // ネームグリッド
-            const namesGrid = document.createElement("div");
-            namesGrid.className = "individual-names-grid";
+                    group.appendChild(namesGrid);
+                    individualKanaContainer.appendChild(group);
+                  });
+                }
+              }
 
-            section.names.forEach(name => {
-                const card = document.createElement("div");
-                card.className = "individual-name-card";
-                card.textContent = name;
-                namesGrid.appendChild(card);
-            });
-
-            group.appendChild(namesGrid);
-            individualKanaContainer.appendChild(group);
-
-        });
-
-    }
-
-}
-
-
-/* =========================================================
+              /* =========================================================
    MODAL
 ========================================================= */
 
-const modal =
-    document.getElementById(
-        "modal"
-    );
+              const modal = document.getElementById("modal");
 
-const modalTierBadge =
-    document.getElementById(
-        "modalTierBadge"
-    );
+              const modalTierBadge = document.getElementById("modalTierBadge");
 
-const modalLogoWrap =
-    document.getElementById(
-        "modalLogoWrap"
-    );
+              const modalLogoWrap = document.getElementById("modalLogoWrap");
 
-const modalName =
-    document.getElementById(
-        "modalName"
-    );
+              const modalName = document.getElementById("modalName");
 
-const modalMessage =
-    document.getElementById(
-        "modalMessage"
-    );
+              const modalMessage = document.getElementById("modalMessage");
 
-const modalLinks =
-    document.getElementById(
-        "modalLinks"
-    );
+              const modalLinks = document.getElementById("modalLinks");
 
+              function openModal(sponsor) {
+                const tier = getSponsorTier(sponsor);
 
-function openModal(sponsor){
+                modalTierBadge.textContent = `${tier.en} ｜ ${tier.name}`;
 
-    const tier =
-        getSponsorTier(sponsor);
+                modalName.textContent = sponsor.name;
 
-    modalTierBadge.textContent =
-        `${tier.en} ｜ ${tier.name}`;
+                // ロゴ画像
+                if (sponsor.logo && sponsor.logo.trim() !== "") {
+                  modalLogoWrap.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
+                  modalLogoWrap.classList.add("active");
+                } else {
+                  modalLogoWrap.innerHTML = "";
+                  modalLogoWrap.classList.remove("active");
+                }
 
-    modalName.textContent =
-        sponsor.name;
+                // 企業紹介文 / メッセージ
+                if (
+                  sponsor.description &&
+                  sponsor.description.trim() !== "" &&
+                  sponsor.description !== "後で挿入"
+                ) {
+                  modalMessage.textContent = sponsor.description;
+                } else {
+                  modalMessage.innerHTML = `技科大祭2026をご支援いただいています。<br><br>皆さまのご協力によって、開学50周年を迎える豊橋技術科学大学の技科大祭を、さらに大きな祭りへ。`;
+                }
 
-    // ロゴ画像
-    if(sponsor.logo && sponsor.logo.trim() !== ""){
-        modalLogoWrap.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
-        modalLogoWrap.classList.add("active");
-    }else{
-        modalLogoWrap.innerHTML = "";
-        modalLogoWrap.classList.remove("active");
-    }
+                // Webサイト / SNSリンクボタン
+                modalLinks.innerHTML = "";
 
-    // 企業紹介文 / メッセージ
-    if(sponsor.description && sponsor.description.trim() !== "" && sponsor.description !== "後で挿入"){
-        modalMessage.textContent = sponsor.description;
-    }else{
-        modalMessage.innerHTML = `技科大祭2026をご支援いただいています。<br><br>皆さまのご協力によって、開学50周年を迎える豊橋技術科学大学の技科大祭を、さらに大きな祭りへ。`;
-    }
+                if (sponsor.links && Array.isArray(sponsor.links)) {
+                  sponsor.links.forEach((link) => {
+                    if (!link.url || link.url.trim() === "") return;
 
-    // Webサイト / SNSリンクボタン
-    modalLinks.innerHTML = "";
+                    const btn = document.createElement("a");
+                    btn.href = link.url;
+                    btn.target = "_blank";
+                    btn.rel = "noopener noreferrer";
 
-    if(sponsor.links && Array.isArray(sponsor.links)){
-        sponsor.links.forEach(link=>{
-            if(!link.url || link.url.trim() === "") return;
+                    let iconSvg = "";
+                    let btnClass = "btn-website";
 
-            const btn = document.createElement("a");
-            btn.href = link.url;
-            btn.target = "_blank";
-            btn.rel = "noopener noreferrer";
+                    if (
+                      link.type === "instagram" ||
+                      link.url.includes("instagram.com")
+                    ) {
+                      btnClass = "btn-instagram";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+                    } else if (
+                      link.type === "youtube" ||
+                      link.url.includes("youtube.com") ||
+                      link.url.includes("youtu.be")
+                    ) {
+                      btnClass = "btn-youtube";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+                    } else if (
+                      link.type === "x" ||
+                      link.url.includes("x.com") ||
+                      link.url.includes("twitter.com")
+                    ) {
+                      btnClass = "btn-x";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+                    } else {
+                      btnClass = "btn-website";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
+                    }
 
-            let iconSvg = "";
-            let btnClass = "btn-website";
+                    btn.className = `modal-link-btn ${btnClass}`;
+                    btn.innerHTML = `${iconSvg} ${link.label || "Webサイト"}`;
+                    modalLinks.appendChild(btn);
+                  });
+                }
 
-            if(link.type === "instagram" || link.url.includes("instagram.com")){
-                btnClass = "btn-instagram";
-                iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
-            }else if(link.type === "youtube" || link.url.includes("youtube.com") || link.url.includes("youtu.be")){
-                btnClass = "btn-youtube";
-                iconSvg = `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
-            }else if(link.type === "x" || link.url.includes("x.com") || link.url.includes("twitter.com")){
-                btnClass = "btn-x";
-                iconSvg = `<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
-            }else{
-                btnClass = "btn-website";
-                iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
-            }
+                modal.classList.add("active");
+              }
 
-            btn.className = `modal-link-btn ${btnClass}`;
-            btn.innerHTML = `${iconSvg} ${link.label || 'Webサイト'}`;
-            modalLinks.appendChild(btn);
-        });
-    }
+              function closeModal() {
+                modal.classList.remove("active");
+              }
 
-    modal.classList.add(
-        "active"
-    );
+              document
+                .getElementById("modalClose")
+                .addEventListener("click", closeModal);
 
-}
+              modal.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                  closeModal();
+                }
+              });
 
+              document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                  closeModal();
+                }
+              });
 
-function closeModal(){
-
-    modal.classList.remove(
-        "active"
-    );
-
-}
-
-
-document
-    .getElementById(
-        "modalClose"
-    )
-    .addEventListener(
-        "click",
-        closeModal
-    );
-
-
-modal.addEventListener(
-    "click",
-    event=>{
-
-        if(
-            event.target === modal
-        ){
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    event=>{
-
-        if(
-            event.key === "Escape"
-        ){
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
+              /* =========================================================
    ANIMATION & SCROLL ENGINE
 ========================================================= */
 
-const section =
-    document.querySelector(
-        ".marquee-section"
-    );
+              const section = document.querySelector(".marquee-section");
 
-const wallElement =
-    document.getElementById(
-        "wall"
-    );
+              const wallElement = document.getElementById("wall");
 
-const center =
-    document.getElementById(
-        "center"
-    );
+              const center = document.getElementById("center");
 
-const progressFill =
-    document.getElementById(
-        "progressFill"
-    );
+              const progressFill = document.getElementById("progressFill");
 
-const counter =
-    document.getElementById(
-        "counter"
-    );
+              const counter = document.getElementById("counter");
 
-// 初期カウントアップアニメーション (0 -> 全社数)
-let currentCount = 0;
-const totalSponsorsCount = sponsors.length;
+              // 初期カウントアップアニメーション (0 -> 全社数)
+              let currentCount = 0;
+              const totalSponsorsCount = sponsors.length;
 
-function animateCounter(){
-    if(currentCount < totalSponsorsCount){
-        currentCount++;
-        counter.textContent = currentCount;
-        setTimeout(animateCounter, 45);
-    }else{
-        counter.textContent = totalSponsorsCount;
-    }
-}
-setTimeout(animateCounter, 200);
+              function animateCounter() {
+                if (currentCount < totalSponsorsCount) {
+                  currentCount++;
+                  counter.textContent = currentCount;
+                  setTimeout(animateCounter, 45);
+                } else {
+                  counter.textContent = totalSponsorsCount;
+                }
+              }
+              setTimeout(animateCounter, 200);
 
-
-/* =========================================================
+              /* =========================================================
    SCROLL TIMING SETTINGS
 ========================================================= */
 
-const FADE_START = 0.10;
-const FADE_END = 0.20;
-const WALL_START = 0.20;
-const CENTER_START_PC = 0.585; // Wall〜50周年ロゴまでのスクロール量を30%削減 (0.55 -> 0.385)
-const CENTER_START_MOBILE = 0.55; // スマホでのWall〜50周年ロゴまでのスクロール量を30%削減 (0.50 -> 0.35)
+              const FADE_START = 0.1;
+              const FADE_END = 0.2;
+              const WALL_START = 0.2;
+              const CENTER_START_PC = 0.585; // Wall〜50周年ロゴまでのスクロール量を30%削減 (0.55 -> 0.385)
+              const CENTER_START_MOBILE = 0.55; // スマホでのWall〜50周年ロゴまでのスクロール量を30%削減 (0.50 -> 0.35)
 
-let autoOffset = 0;
-const AUTO_SPEED = 0.65;
+              let autoOffset = 0;
+              const AUTO_SPEED = 0.65;
 
-
-/* =========================================================
+              /* =========================================================
    CLAMP
 ========================================================= */
 
-function clamp(
-    value,
-    min,
-    max
-){
+              function clamp(value, min, max) {
+                return Math.max(min, Math.min(max, value));
+              }
 
-    return Math.max(
-        min,
-        Math.min(
-            max,
-            value
-        )
-    );
-
-}
-
-
-/* =========================================================
+              /* =========================================================
    CONTINUOUS ANIMATION LOOP (AUTO-FLOWING MARQUEE)
 ========================================================= */
 
-function animateMarquee(){
+              function animateMarquee() {
+                autoOffset += AUTO_SPEED;
 
-    autoOffset += AUTO_SPEED;
+                tracks.forEach((track, index) => {
+                  const totalWidth = track.scrollWidth;
 
-    tracks.forEach(
-        (track, index)=>{
+                  // 10セット複製しているため、1セット分の幅は totalWidth / 10
+                  const oneSetWidth = totalWidth / 10;
 
-            const totalWidth =
-                track.scrollWidth;
+                  const offset = autoOffset % oneSetWidth;
 
-            // 10セット複製しているため、1セット分の幅は totalWidth / 10
-            const oneSetWidth =
-                totalWidth / 10;
+                  let currentX = 0;
 
-            const offset =
-                autoOffset % oneSetWidth;
+                  if (index % 2 === 0) {
+                    // 1・3段目（左方向へ自動で流れる）
+                    currentX = -(oneSetWidth * 2) - offset;
+                  } else {
+                    // 2・4段目（右方向へ自動で流れる）
+                    currentX = -(oneSetWidth * 6) + offset;
+                  }
 
-            let currentX = 0;
+                  track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+                });
 
-            if(index % 2 === 0){
-                // 1・3段目（左方向へ自動で流れる）
-                currentX = - (oneSetWidth * 2) - offset;
-            }else{
-                // 2・4段目（右方向へ自動で流れる）
-                currentX = - (oneSetWidth * 6) + offset;
-            }
+                updateScroll();
 
-            track.style.transform =
-                `translate3d(${currentX}px, 0, 0)`;
+                requestAnimationFrame(animateMarquee);
+              }
 
-        }
-    );
-
-    updateScroll();
-
-    requestAnimationFrame(animateMarquee);
-
-}
-
-
-/* =========================================================
+              /* =========================================================
    SCROLL UPDATE (TRANSITION TO WALL & 50TH LOGO)
 ========================================================= */
 
-function updateScroll(){
+              function updateScroll() {
+                const rect = section.getBoundingClientRect();
 
-    const rect =
-        section.getBoundingClientRect();
+                const total = section.offsetHeight - window.innerHeight;
 
-    const total =
-        section.offsetHeight -
-        window.innerHeight;
+                let progress = -rect.top / total;
 
-    let progress =
-        -rect.top /
-        total;
+                progress = clamp(progress, 0, 1);
 
-    progress =
-        clamp(
-            progress,
-            0,
-            1
-        );
-
-
-    /* =====================================================
+                /* =====================================================
        PROGRESS BAR
     ===================================================== */
 
-    if(progressFill){
-        progressFill.style.height =
-            (progress * 100) + "%";
-    }
+                if (progressFill) {
+                  progressFill.style.height = progress * 100 + "%";
+                }
 
-
-    /* =====================================================
+                /* =====================================================
        FADE MARQUEE & HEADERS
     ===================================================== */
 
-    let fade = 0;
+                let fade = 0;
 
-    if(
-        progress > FADE_START
-    ){
+                if (progress > FADE_START) {
+                  fade = clamp(
+                    (progress - FADE_START) / (FADE_END - FADE_START),
+                    0,
+                    1,
+                  );
+                }
 
-        fade =
-            clamp(
-                (
-                    progress -
-                    FADE_START
-                ) /
-                (
-                    FADE_END -
-                    FADE_START
-                ),
-                0,
-                1
-            );
+                const marqueeOpacity = 1 - fade;
 
-    }
+                document.querySelectorAll(".marquee").forEach((marquee) => {
+                  marquee.style.opacity = marqueeOpacity;
 
-    const marqueeOpacity = 1 - fade;
+                  marquee.style.pointerEvents =
+                    marqueeOpacity < 0.1 ? "none" : "auto";
+                });
 
-    document
-        .querySelectorAll(
-            ".marquee"
-        )
-        .forEach(
-            marquee=>{
+                const topLabelEl = document.querySelector(".top-label");
+                const counterEl = document.querySelector(".counter");
+                if (topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
+                if (counterEl) counterEl.style.opacity = marqueeOpacity;
 
-                marquee.style.opacity =
-                    marqueeOpacity;
-
-                marquee.style.pointerEvents =
-                    marqueeOpacity < 0.1
-                        ? "none"
-                        : "auto";
-
-            }
-        );
-
-    const topLabelEl = document.querySelector(".top-label");
-    const counterEl = document.querySelector(".counter");
-    if(topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
-    if(counterEl) counterEl.style.opacity = marqueeOpacity;
-
-
-    /* =====================================================
+                /* =====================================================
        WALL (12-COLUMN TIERED GRID)
     ===================================================== */
 
-    if(
-        progress >= WALL_START
-    ){
+                if (progress >= WALL_START) {
+                  wallElement.classList.add("active");
+                } else {
+                  wallElement.classList.remove("active");
+                }
 
-        wallElement.classList.add(
-            "active"
-        );
-
-    }else{
-
-        wallElement.classList.remove(
-            "active"
-        );
-
-    }
-
-
-    /* =====================================================
+                /* =====================================================
        CENTER 50 (RESPONSIVE THRESHOLD)
     ===================================================== */
 
-    const isMobile = window.innerWidth <= 768;
-    const centerStart = isMobile ? CENTER_START_MOBILE : CENTER_START_PC;
+                const isMobile = window.innerWidth <= 768;
+                const centerStart = isMobile
+                  ? CENTER_START_MOBILE
+                  : CENTER_START_PC;
 
-    if(
-        progress >= centerStart
-    ){
+                if (progress >= centerStart) {
+                  center.classList.add("active");
+                } else {
+                  center.classList.remove("active");
+                }
+              }
 
-        center.classList.add(
-            "active"
-        );
-
-    }else{
-
-        center.classList.remove(
-            "active"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
+              /* =========================================================
    EVENTS & START
 ========================================================= */
 
-window.addEventListener(
-    "scroll",
-    updateScroll,
-    {
-        passive:true
-    }
-);
+              window.addEventListener("scroll", updateScroll, {
+                passive: true,
+              });
 
-window.addEventListener(
-    "resize",
-    updateScroll
-);
+              window.addEventListener("resize", updateScroll);
 
-
-// 自動アニメーションループ開始
-requestAnimationFrame(animateMarquee);
-
-</script>
-
-          </div><!-- /.sponsor-wrapper -->
+              // 自動アニメーションループ開始
+              requestAnimationFrame(animateMarquee);
+            </script>
+          </div>
+          <!-- /.sponsor-wrapper -->
         </main>
       </div>
       <footer></footer>
