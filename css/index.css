@@ -1234,10 +1234,11 @@
     font-size: 14px;
   }
   .rlx-bg-text {
-    font-size: 70px;
-    top: -40px !important;
+    font-size: clamp(32px, 9.5vw, 52px);
+    top: -22px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
+    letter-spacing: -0.02em;
   }
   .rlx-shape {
     display: none;
