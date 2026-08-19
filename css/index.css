@@ -362,6 +362,13 @@
   color: #ff6b5e;
   margin-right: 0.5rem;
 }
+.proposal-hero-date-emphasis {
+  display: inline-block;
+  font-size: 1.3em;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
 
 /* ---------- Layout: Sidebar + Content ---------- */
 .rlx-layout {
@@ -1204,8 +1211,14 @@
     padding: 5rem var(--global-space) 3rem;
   }
   .proposal-hero-date {
-    padding: 20px 30px;
+    padding: 18px 24px;
     font-size: 16px;
+    line-height: 1.5;
+  }
+  .proposal-hero-date-emphasis {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.4em;
   }
   .rlx-code-block {
     padding: 24px 20px;
