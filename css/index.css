@@ -90,6 +90,13 @@
   height: 160px;
 }
 
+/* PC広画面では花火装飾を控えめにし、本文の視認性を優先する（マスコット画像は対象外） */
+@media screen and (min-width: 961px) {
+  .rlx-shape:not([class*="mascot-image-shape"])::after {
+    opacity: 0.5;
+  }
+}
+
 /* 画像シェイプ共通スタイル（全種別をまとめて指定） */
 .mascot-image-shape-department1,
 .mascot-image-shape-department2,
