@@ -1169,12 +1169,18 @@ p.next-bus-info {
 }
 
 .contact-button-wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
   margin: 2rem 0 3rem;
+  flex-wrap: wrap;
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   color: var(--primary-color);
   padding: 1rem 2.5rem;
@@ -1185,6 +1191,9 @@ p.next-bus-info {
   font-size: 1.1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 107, 94, 0.15);
+  white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cta-button:hover {
@@ -1196,6 +1205,7 @@ p.next-bus-info {
 
 .cta-button .fas {
   margin-right: 0.8em;
+  flex-shrink: 0;
 }
 
 .contact-notes {
@@ -1221,6 +1231,19 @@ p.next-bus-info {
 .contact-notes p {
   margin: 0;
   line-height: 1.8;
+}
+
+/* スマホ: ボタンを縦並びにし、画面幅に収める */
+.small-screen .contact-button-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-screen .cta-button {
+  width: 100%;
+  max-width: 360px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
 }
 
 /* ========== Feature Blocks (Theme & Guest) ========== */
