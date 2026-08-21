@@ -105,8 +105,12 @@
                   <label for="filter-type">絞り込み:</label>
                   <select id="filter-type">
                     <option value="all" selected>すべて</option>
-                    <option value="indoor">屋内企画</option>
-                    <option value="tent">屋外企画</option>
+                    <option value="local_food">ご当地・屋内飲食模擬店</option>
+                    <option value="kitchen_car">キッチンカー</option>
+                    <option value="game">遊戯模擬店</option>
+                    <option value="tech_fes">科学体験（Techフェス）</option>
+                    <option value="circle_experience">サークル体験</option>
+                    <option value="circle_exhibit">サークル展示</option>
                   </select>
                 </div>
                 <div class="control-group">
@@ -218,12 +222,13 @@
           try {
             const filterValue = filterSelect.value;
             let filteredShops;
-            if (filterValue === "indoor") {
-              filteredShops = allShops.filter((shop) => shop.place === "室内");
-            } else if (filterValue === "tent") {
-              filteredShops = allShops.filter((shop) => shop.place === "屋外");
-            } else {
+
+            if (filterValue === "all") {
               filteredShops = [...allShops];
+            } else {
+              filteredShops = allShops.filter(
+                (shop) => shop.category === filterValue,
+              );
             }
             const sortKey = sortKeySelect.value;
             const sortOrder = sortOrderSelect.value;

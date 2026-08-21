@@ -3,6 +3,8 @@
     "circle": "アニメーション＆コミック研究会",
     "title": "アニメーション＆コミック研究会",
     "place": "室内",
+    "category": "",
+
     "location": "A-114",
     "img": "1.png"
   },
@@ -10,6 +12,8 @@
     "circle": "Jazz研究会",
     "title": "Jazz喫茶",
     "place": "室内",
+    "category": "",
+
     "location": "A-201",
     "img": "2.png"
   },
@@ -17,6 +21,8 @@
     "circle": "総合文化部喫茶部門",
     "title": "TUTea & Coffee Club",
     "place": "室内",
+    "category": "",
+
     "location": "A-106",
     "img": "3.png"
   },
@@ -24,6 +30,8 @@
     "circle": "音楽技術部",
     "title": "DJイベント",
     "place": "室内",
+    "category": "",
+
     "location": "コモンズI",
     "img": "4.png"
   },
@@ -31,6 +39,8 @@
     "circle": "アナログげ～む俱楽部",
     "title": "ボードゲーム体験会",
     "place": "室内",
+    "category": "",
+
     "location": "A-312",
     "img": "5.png"
   },
@@ -38,6 +48,8 @@
     "circle": "スタートアップ推進室",
     "title": "ネイル体験サロン",
     "place": "室内",
+    "category": "",
+
     "location": "A-203",
     "img": "6.png"
   },
@@ -45,6 +57,8 @@
     "circle": "おちゃのかい",
     "title": "技科大庵",
     "place": "室内",
+    "category": "",
+
     "location": "コモンズII",
     "img": "7.png"
   },
@@ -52,6 +66,8 @@
     "circle": "カーボンニュートラル研究会",
     "title": "遊んで学ぶ！SDGsモルック",
     "place": "室内",
+    "category": "",
+
     "location": "A-308",
     "img": "8.png"
   },
@@ -59,6 +75,8 @@
     "circle": "TUTものづくりサークル",
     "title": "物販&作品展示会",
     "place": "室内",
+    "category": "",
+
     "location": "A棟1階ホール",
     "img": "9.png"
   },
@@ -66,6 +84,8 @@
     "circle": "模型部(TuT)",
     "title": "模型展示/プラモデル制作体験会",
     "place": "室内",
+    "category": "",
+
     "location": "A-205",
     "img": "10.png"
   },
@@ -73,6 +93,8 @@
     "circle": "ロボコン同好会",
     "title": "ロボット操縦体験&展示",
     "place": "室内",
+    "category": "",
+
     "location": "A棟1階ホール",
     "img": "11.png"
   },
@@ -80,6 +102,8 @@
     "circle": "コンピュータクラブ",
     "title": "コンピュータクラブ",
     "place": "室内",
+    "category": "",
+
     "location": "A-108",
     "img": "12.png"
   },
@@ -87,6 +111,8 @@
     "circle": "TUT謎解き制作チーム",
     "title": "謎だらけの単位認定試験からの脱出",
     "place": "室内",
+    "category": "",
+
     "location": "A-207",
     "img": "13.png"
   },
@@ -94,6 +120,8 @@
     "circle": "レゴ部",
     "title": "レゴ作品展示",
     "place": "室内",
+    "category": "",
+
     "location": "ひばりラウンジ",
     "img": "14.png"
   },
@@ -101,6 +129,8 @@
     "circle": "軽音楽部D7sus4",
     "title": "GIKA ROCK",
     "place": "室内",
+    "category": "",
+
     "location": "A-301",
     "img": "15.png"
   },
@@ -108,6 +138,8 @@
     "circle": "弓道部",
     "title": "的あて検定",
     "place": "室内",
+    "category": "",
+
     "location": "A-105",
     "img": "16.png"
   },
@@ -115,6 +147,8 @@
     "circle": "ダンスサークル",
     "title": "ノマチカワサキ",
     "place": "室内",
+    "category": "",
+
     "location": "A-306",
     "img": "17.png"
   },
