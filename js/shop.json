@@ -1,323 +1,564 @@
 [
   {
-    "circle": "アニメーション＆コミック研究会",
-    "title": "アニメーション＆コミック研究会",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-114",
-    "img": "1.png"
+    "circle": "bibico",
+    "title": "bibico",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["1.jpeg", "2.jpeg"]
   },
   {
-    "circle": "Jazz研究会",
-    "title": "Jazz喫茶",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-201",
-    "img": "2.png"
-  },
-  {
-    "circle": "総合文化部喫茶部門",
-    "title": "TUTea & Coffee Club",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-106",
+    "circle": "OpenFieldCoffee",
+    "title": "OpenFieldCoffee",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
     "img": "3.png"
   },
   {
-    "circle": "音楽技術部",
-    "title": "DJイベント",
-    "place": "室内",
-    "category": "",
-
-    "location": "コモンズI",
-    "img": "4.png"
+    "circle": "Smilecafe",
+    "title": "Smilecafe",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["4.jpeg", "5.jpeg"]
   },
   {
-    "circle": "アナログげ～む俱楽部",
-    "title": "ボードゲーム体験会",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-312",
-    "img": "5.png"
-  },
-  {
-    "circle": "スタートアップ推進室",
-    "title": "ネイル体験サロン",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-203",
+    "circle": "Teaful NewYork",
+    "title": "Teaful NewYork",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
     "img": "6.png"
   },
   {
-    "circle": "おちゃのかい",
-    "title": "技科大庵",
-    "place": "室内",
-    "category": "",
-
-    "location": "コモンズII",
-    "img": "7.png"
-  },
-  {
-    "circle": "カーボンニュートラル研究会",
-    "title": "遊んで学ぶ！SDGsモルック",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-308",
-    "img": "8.png"
-  },
-  {
-    "circle": "TUTものづくりサークル",
-    "title": "物販&作品展示会",
-    "place": "室内",
-    "category": "",
-
-    "location": "A棟1階ホール",
-    "img": "9.png"
-  },
-  {
-    "circle": "模型部(TuT)",
-    "title": "模型展示/プラモデル制作体験会",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-205",
-    "img": "10.png"
-  },
-  {
-    "circle": "ロボコン同好会",
-    "title": "ロボット操縦体験&展示",
-    "place": "室内",
-    "category": "",
-
-    "location": "A棟1階ホール",
-    "img": "11.png"
-  },
-  {
-    "circle": "コンピュータクラブ",
-    "title": "コンピュータクラブ",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-108",
-    "img": "12.png"
-  },
-  {
-    "circle": "TUT謎解き制作チーム",
-    "title": "謎だらけの単位認定試験からの脱出",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-207",
-    "img": "13.png"
-  },
-  {
-    "circle": "レゴ部",
-    "title": "レゴ作品展示",
-    "place": "室内",
-    "category": "",
-
-    "location": "ひばりラウンジ",
-    "img": "14.png"
-  },
-  {
-    "circle": "軽音楽部D7sus4",
-    "title": "GIKA ROCK",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-301",
-    "img": "15.png"
-  },
-  {
-    "circle": "弓道部",
-    "title": "的あて検定",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-105",
-    "img": "16.png"
-  },
-  {
-    "circle": "ダンスサークル",
-    "title": "ノマチカワサキ",
-    "place": "室内",
-    "category": "",
-
-    "location": "A-306",
-    "img": "17.png"
-  },
-  {
-    "circle": "1系",
-    "title": "タクトのタピオカ",
+    "circle": "Viola",
+    "title": "Viola",
     "place": "屋外",
-    "location": "テント12",
-    "img": "18.png"
+    "category": "キッチンカー",
+    "location": "",
+    "img": "7.jpg"
   },
   {
-    "circle": "株式会社salmon 豊橋支社",
-    "title": "Re:Pizza Salmon",
+    "circle": "アンバーズ",
+    "title": "アンバーズ",
     "place": "屋外",
-    "location": "テント21",
-    "img": "19.png"
+    "category": "キッチンカー",
+    "location": "",
+    "img": "8.jpg"
+  },
+  {
+    "circle": "おにぎり転",
+    "title": "おにぎり転",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["9.png", "10.jpg", "11.jpg"]
+  },
+  {
+    "circle": "オレンジガーデン",
+    "title": "オレンジガーデン",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["12.jpeg", "13.jpeg"]
+  },
+  {
+    "circle": "カレーノとよはし",
+    "title": "カレーノとよはし",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["14.jpg", "15.jpeg", "16.jpeg", "17.jpeg"]
+  },
+  {
+    "circle": "ジェラートサンタ",
+    "title": "ジェラートサンタ",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["18.jpg", "19.jpg", "20.jpg"]
+  },
+  {
+    "circle": "焼きたて富良野メロンパン",
+    "title": "焼きたて富良野メロンパン",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": "21.jpg"
+  },
+  {
+    "circle": "かまど焼き芋コッソリ",
+    "title": "かまど焼き芋コッソリ",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["22.png", "23.png", "24.png", "25.png", "26.png"]
+  },
+  {
+    "circle": "炭焼き塾",
+    "title": "炭焼き塾",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": ["27.jpg", "28.jpg", "29.jpg"]
+  },
+  {
+    "circle": "和広産業",
+    "title": "和広産業",
+    "place": "屋外",
+    "category": "キッチンカー",
+    "location": "",
+    "img": "30.png"
+  },
+  {
+    "circle": "豊橋日曜学校",
+    "title": "日曜グルメ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": ["31.jpeg", "32.jpeg"],
+    "comment": "メンバーの多さを生かしご当地グルメを多数販売。ここだけの特製アレンジも用意しています。ぜひ来てください!!"
+  },
+  {
+    "circle": "豊橋日曜学校",
+    "title": "日曜グルメ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "33.png",
+    "comment": "日曜学校です。メンバーの多さを生かしご当地グルメを多数販売。ここだけの特製アレンジも用意しています。ぜひ来てください。!!"
+  },
+  {
+    "circle": "波乗り部",
+    "title": "台湾フルーツドリンク",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "34.png",
+    "comment": "サーフィンしよう！！美味しいフルーツドリンク売ってます"
+  },
+  {
+    "circle": "川島研究室",
+    "title": "川島研究室",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "35.png",
+    "comment": "福岡ゆかりのホットドッグ文化をイメージした一品です。こだわりの味をぜひお楽しみください！ "
   },
   {
     "circle": "吹奏楽団",
     "title": "Churro Ensemble",
-    "place": "屋外",
-    "location": "テント19",
-    "img": "20.png"
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "36.jpeg",
+    "comment": "吹奏楽団が作る、自慢のおいしいチュロス！！ サクッとひと口、幸せふた口。信玄餅風など個性豊かなチュロス！"
   },
   {
-    "circle": "もっとずっとホットドック",
-    "title": "もっとずっとホットドック",
-    "place": "屋外",
-    "location": "テント7",
-    "img": "21.png"
-  },
-  {
-    "circle": "油そばいつも君のそば",
-    "title": "油そばいつも君のそば",
-    "place": "屋外",
-    "location": "テント17",
-    "img": "22.png"
-  },
-  {
-    "circle": "技科大祭実行委員OB",
-    "title": "技科大祭OBのガチ屋台・射的",
-    "place": "屋外",
-    "location": "テント10",
-    "img": "23.png"
-  },
-  {
-    "circle": "技科大祭実行委員OB",
-    "title": "技科大祭OBのガチ屋台・はしまき",
-    "place": "屋外",
-    "location": "テント11",
-    "img": "24.png"
-  },
-  {
-    "circle": "計測システム研究室",
-    "title": "ダイムナルド",
-    "place": "屋外",
-    "location": "テント4",
-    "img": "25.png"
-  },
-  {
-    "circle": "インドネシア留学生会",
-    "title": "インドネシア料理",
-    "place": "屋外",
-    "location": "テント6",
-    "img": "26.png"
-  },
-  {
-    "circle": "4系研究室有志団体",
-    "title": "今年も400食売る揚げ物屋さん",
-    "place": "屋外",
-    "location": "テント9",
-    "img": "27.png"
-  },
-  {
-    "circle": "ダンスサークル",
-    "title": "GILLE'S キッチン",
-    "place": "屋外",
-    "location": "テント14",
-    "img": "28.png"
+    "circle": "国際交流クラブ",
+    "title": "国際交流クラブ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "37.jpeg",
+    "comment": "韓国の屋台定番グルメ! モチモチのトックを甘辛コチュジャンソースでじっくり煮込んだトッポギです！ぜひお越しください！！"
   },
   {
     "circle": "荒川研究室",
-    "title": "甘味処 〜荒川研〜",
-    "place": "屋外",
-    "location": "テント16",
-    "img": "29.png"
+    "title": "荒川研究室",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "38.png",
+    "comment": "愛知名物をホットサンドでアレンジ！定番からご当地メニューまで、できたてアツアツで準備しています！ぜひ遊びにきてください！ "
   },
   {
-    "circle": "豊橋日曜学校",
-    "title": "52年続く日学伝統ワッフル",
-    "place": "屋外",
-    "location": "テント15",
-    "img": "30.png"
+    "circle": "剣道部",
+    "title": "剣道部の讃岐うどん",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "39.png",
+    "comment": "豊橋技科大剣道部、伝統の『うどん』と香川県、伝統の『讃岐』が奇跡のコラボ!!!一杯一杯に、部員たちの“真剣勝負”が詰まっています。ぜひご来店ください！ ！ "
+  },
+  {
+    "circle": "株式会社 Salmon",
+    "title": "匠のイタリアン",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "40.png",
+    "comment": "株式会社Salmom が焼きそばをアレンジした新潟県のソウルフードであるイタリアンを販売します！匠のイタリアンをご賞味あれ！"
+  },
+  {
+    "circle": "学友会",
+    "title": "学友会の串カツ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "41.jpg",
+    "comment": "生粋の愛知県民である学友会長が味噌串カツを作ります！しかしそこに現るソースカツ。負けられない戦いが、幕を開ける。"
   },
   {
     "circle": "ラグビー部",
     "title": "焼き鳥 のーさいど",
-    "place": "屋外",
-    "location": "テント3",
-    "img": "31.png"
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "42.png",
+    "comment": "長門風焼き鳥（ガーリック×七味）を販売中！種類はもも、ねぎま、つくね、にんにくまからお選びいただけます！相性抜群のドリンクもご一緒にいかがですか？ "
+  },
+  {
+    "circle": "ラオスの学生グループ",
+    "title": "カノムクロック",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "43.png",
+    "comment": "ラオスの屋台で人気！ココナッツ風味の伝統菓子「カノムコック」をぜひご賞味ください。"
+  },
+  {
+    "circle": "モンゴル留学生たち",
+    "title": "モンゴル料理",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "44.png",
+    "comment": "ホーショルは揚げ焼き餃子と似ているけど、食感にこだわり、お肉はジューシー、外はカラッとサクサクに仕上げているのですごい美味しいです。観光客にも地元の人々にも大人気のホーショルはいかがでしょうか。"
+  },
+  {
+    "circle": "もっとずっとほっとどっぐ",
+    "title": "もっとずっとほっとどっぐ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "45.jpeg",
+    "comment": "全豊橋市民が夢中と巷でウワサされているらしいホットドッグ屋がまたまた技科大祭に出店！豊橋特産の「アレ」をぜひご賞味あれ！"
+  },
+  {
+    "circle": "マレーシア留学生有志",
+    "title": "マレーシア留学生店",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "46.png",
+    "comment": "マレーシアの定番朝食と人気スイーツ、本場の飲み物をぜひお楽しみください！"
+  },
+  {
+    "circle": "バレーボール部",
+    "title": "パンもボールもアゲてくよ!",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "47.png",
+    "comment": "アクワーバ！ガーナチョコ風、ハイサイ！沖縄黒糖風、おいでやす！京都宇治抹茶風&京きな粉風。アゲアゲ揚げパンで旅行気分！"
+  },
+  {
+    "circle": "ノマチカワサキ",
+    "title": "ノマチカワサキ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "48.png",
+    "comment": "コーヒーとソーダのお店。おすすめはいちごミルクラテ！高知の清流をイメージしたニヨドブルーソーダ！座りながら飲めます！ "
+  },
+  {
+    "circle": "トライアスロン部",
+    "title": "ズンダーバックス",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "49.jpeg",
+    "comment": "10 月でもまだまだ暑い！そんな時は 3 つのシェイク，ずんだシェイク，バニラシェイク，チョコレートシェイクでクールダウン！！"
+  },
+  {
+    "circle": "ドパガーキング",
+    "title": "ドパガーキング",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "50.jpg",
+    "comment": "今度の「ご当地」はあなたが作る！名物グルメな組み合わせを目指して、ランダムに重なる食材達との上振れ頼みなグルメ旅へ！"
+  },
+  {
+    "circle": "スピンエレクトロニクスグループ",
+    "title": "スピンエレクトロニクスグループ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "51.png",
+    "comment": "メキシコ発祥のナチョスを名古屋名物台湾風の味付けにしてみました。もちろん、本場メキシコ風もあるので、ぜひお越しください。"
+  },
+  {
+    "circle": "おちゃのかい",
+    "title": "技科大庵",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "52.jpg",
+    "comment": "おいしい抹茶とお菓子で、心身ともにリフレッシュしませんか? お友達やご家族と一緒に、または一人でじっくりと。お点前を見ながら喫茶感覚で茶道をお楽しみください。"
+  },
+  {
+    "circle": "JAZZ 研究会",
+    "title": "JAZZ喫茶",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "53.png",
+    "comment": "コーヒーや紅茶を飲みながら、Jazzの生演奏を楽しめる喫茶店です。"
+  },
+  {
+    "circle": "Gille Workers",
+    "title": "GILLE’S キッチン",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "54.jpg",
+    "comment": "メキシコの味を気軽に！超美味しいタコスと冷たいドリンクはいかがでしょうか！ステージ披露もありますので、ぜひ見に来てください！"
+  },
+  {
+    "circle": "地理旅行研究会",
+    "title": "大判？今川？回転？ あなたの地元の「アレ」焼き",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "55.png",
+    "comment": "大判？今川？回転？地域で変わる呼び名！定番小豆とカスタードをご提供！ぜひご来店ください"
+  },
+  {
+    "circle": "総合文化部喫茶部門",
+    "title": "技科大喫茶部",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "56.png",
+    "comment": "紅茶・コーヒーを嗜んだり、ラテアートの練習に勤しんだりする部員たちが選んで淹れる、とっておきの一杯で休憩していきませんか？"
+  },
+  {
+    "circle": "どこまでわんこ",
+    "title": "どこまでわんこ",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "57.jpeg",
+    "comment": "おばんです！日本全国の高専生が集結！わんこそばや各種そば、絶品スイーツにドリンクと盛りだくさん！ぜひ、おでんせ！"
+  },
+  {
+    "circle": "技科大祭OB",
+    "title": "青森ニンニクスタミナ焼きそば＆缶倒し",
+    "place": "屋内",
+    "category": "ご当地・屋内飲食模擬店",
+    "location": "",
+    "img": "81.jpeg",
+    "comment": "ニンニク炸裂！青森ご当地スタミナ焼きそばを食べてスタミナ満点！景品を狙えるスタミナ缶倒しは子供から大人まで楽しめます！"
   },
   {
     "circle": "自動車研究部",
-    "title": "自動車研究部車輌展示＆唐揚げ販売",
-    "place": "屋外",
-    "location": "テント1,2",
-    "img": "32.png"
+    "title": "自動車研究部",
+    "place": "屋内",
+    "category": "サークル体験",
+    "location": "",
+    "img": "59.png",
+    "comment": "自動車研究部の製作車輌をシミュレーターに再現！実際のモノコックに乗り込み、本格レーシング体験とタイムアタックを楽しもう！"
   },
   {
-    "circle": "学友会",
-    "title": "豊橋技んだこ",
-    "place": "屋外",
-    "location": "テント13",
-    "img": "33.png"
+    "circle": "TUT ものづくりサークル",
+    "title": "技術の森",
+    "place": "屋内",
+    "category": "サークル体験",
+    "location": "",
+    "img": "60.png",
+    "comment": "「技術の森」、それは私たちの技術が集う場。地上から空まで五感で楽しめる展示品や、たくさんの体験ゲームを用意しています！"
   },
   {
-    "circle": "剣道部",
-    "title": "めーん！うどん！！",
-    "place": "屋外",
-    "location": "テント20",
-    "img": "34.png"
+    "circle": "弓道部",
+    "title": "的あてゲーム",
+    "place": "屋内",
+    "category": "サークル体験",
+    "location": "",
+    "img": "61.png",
+    "comment": "本物の和弓を使った的あてゲーム！見事的に当てて景品をゲットしよう！！ 弓道部員が皆さんをサポートしますのでご安心を！ "
   },
   {
-    "circle": "国際交流クラブ",
-    "title": "世界のカップ麺&飲み物",
-    "place": "屋外",
-    "location": "テント18",
-    "img": "35.png"
+    "circle": "麻技麻雀部",
+    "title": "まーじゃん",
+    "place": "屋内",
+    "category": "サークル体験",
+    "location": "",
+    "img": "62.png",
+    "comment": "皆さん、麻雀に興味はありませんか？ 聞いたことがあるだけでも大丈夫！ レベル別にご案内するので、初めての人も大歓迎です。ぜひお気軽にお立ち寄り下さい。飲み物の購入だけでも大歓迎！"
   },
   {
-    "circle": "あつしの焼きそば",
-    "title": "あつしの焼きそば",
-    "place": "屋外",
-    "location": "テント5",
-    "img": "36.png"
+    "circle": "創立５０周年記念アマチュア無線局公開運用",
+    "title": "創立50周年記念アマチュア無線局公開運用",
+    "place": "屋内",
+    "category": "サークル体験",
+    "location": "",
+    "img": "63.png",
+    "comment": "豊橋技科大の創立５０周年を記念して、いまだけの特別なアマチュア無線局を公開運用します！「体験運用」もできます！"
   },
   {
-    "circle": "技科大祭実行委員会",
-    "title": "とよチル商店",
-    "place": "屋外",
-    "location": "テント8",
-    "img": "37.png"
+    "circle": "音楽技術部",
+    "title": "The Utopia Tone vol.11 extended",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "64.png",
+    "comment": "福利施設1階，コモンズⅠにてDJイベントを開催しています！いろんな音楽が聴けます！是非，お越しください！"
   },
   {
-    "circle": "アサイー viola",
-    "title": "アサイー viola",
-    "place": "屋外",
-    "location": "テントA",
-    "img": "A.png"
+    "circle": "コンピュータクラブ",
+    "title": "コンピュータクラブ",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "65.png",
+    "comment": "部員が製作したゲームや作品を展示します！ぜひお越しください！！"
   },
   {
-    "circle": "おにぎり屋 転",
-    "title": "おにぎり屋 転",
-    "place": "屋外",
-    "location": "テントB",
-    "img": "B.png"
+    "circle": "アニメーション&コミック研究会",
+    "title": "アニメーション&コミック研究会",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "66.png",
+    "comment": "同人誌の販売や同人誌の展示、ぬり絵体験をします！休憩したい方もぜひお越しください！"
   },
   {
-    "circle": "クレープ屋 smilecafe_maru",
-    "title": "smilecafe_maru",
-    "place": "屋外",
-    "location": "テントC",
-    "img": "C.png"
+    "circle": "軽音楽部D7 sus4",
+    "title": "軽音楽部D7 sus4",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "67.png",
+    "comment": "軽音部です！熱い演奏と最高のセトリで、学祭イチ熱いライブをお届けします！！一緒に拳を掲げて最高の思い出を作ろう！"
   },
   {
-    "circle": "ユタカ自動車学校",
-    "title": "ユタカ自動車学校",
-    "place": "屋外",
-    "location": "テントD",
-    "img": "D.png"
+    "circle": "写真部",
+    "title": "夏の写真展",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "68.jpeg",
+    "comment": "写真部部員が撮った写真を展示します！ぜひご覧になって下さい！"
+  },
+  {
+    "circle": "模型部(TUT)",
+    "title": "模型展覧会",
+    "place": "屋内",
+    "category": "サークル展示",
+    "location": "",
+    "img": "69.jpg",
+    "comment": "いろんなジャンルの模型から自主設計したオリジナル作品まで多数展示！先着１００名様限定で模型製作体験教室も同時開催！"
+  },
+  {
+    "circle": "技科大祭実行委員会企画局",
+    "title": "技科大ゲーム大会2026",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "70.jpeg",
+    "comment": "みんなで楽しめるゲーム大会！優勝を目指して熱い戦いに挑もう!"
+  },
+  {
+    "circle": "Tech4系",
+    "title": "スライム作り体験",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "71.jpg",
+    "comment": "好きな色やラメを選んで，自分だけのオリジナルスライムを作ろう！!子供から大人まで気軽に体験できます！！"
+  },
+  {
+    "circle": "企画局　Tech5系",
+    "title": "",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "72.png",
+    "comment": "Tech5系のイベントとして開催！パスタと紐を使い、マシュマロをどれだけ高く配置できるかを競うコンペティションです！"
+  },
+  {
+    "circle": "Tech 3系",
+    "title": "VRの世界へ！！",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "73.jpeg",
+    "comment": "VRを使用し、仮想の世界へ飛び込んでもらいます！！実際に研究で使用するVRを使用し、現実世界では味わえない体験ができるのでぜひ無料で遊びに来てください！！"
+  },
+  {
+    "circle": "ロボコン同好会　Tech　1系",
+    "title": "ロボット操縦体験＆展示",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "74.png",
+    "comment": "世界大会優勝ロボット操縦体験！ お子様から大人まで、ロボコンの魅力をぜひ体感してください！"
+  },
+  {
+    "circle": "技科大祭実行委員",
+    "title": "Tech2系",
+    "place": "屋内",
+    "category": "科学体験（Techフェス）",
+    "location": "",
+    "img": "75.png",
+    "comment": "LEDキーホルダーを作りながら、技科大２系（電気電子系）の学びを楽しく体験しよう！"
+  },
+  {
+    "circle": "カーボンニュートラル研究会",
+    "title": "SDGs交流ブース ゲームやモルックをしよう！",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "76.png",
+    "comment": "カーボンニュートラル研究会では、SDGsとモルックを掛け合わせた、SDGsモルックを出店します！ぜひお越しください！"
+  },
+  {
+    "circle": "ギカじかクラブ（技科大事務職員)",
+    "title": "ギカじかと遊ぼう！",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "77.png",
+    "comment": "ゲームやクイズを体験して、大学公式マスコットキャラクターギカじかのグッズを手に入れよう！"
+  },
+  {
+    "circle": "個人",
+    "title": "ここみんの占いの館",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "78.jpg",
+    "comment": "占いを、信じますか？恋愛、学業、人間関係、明日の運勢まで。密かな悩みの答えは、すべてタロットカードに描かれています。　そして、当たります。信じるか信じないかは、貴方次第。"
+  },
+  {
+    "circle": "なぞわし軍団",
+    "title": "リアル謎解きゲーム ― 怪盗Nからの挑戦状 ―",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "82.png",
+    "comment": "―この予告状には、裏がある― あなた達は探偵となり、怪盗が仕掛けた難解なナゾを解き明かしていく。怪盗の真の狙いとは…？隠された真実にたどり着け。"
+  },
+  {
+    "circle": "三大学連携企画グループB",
+    "title": "１００gピッタリ測りチャレンジ",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "79.png",
+    "comment": "頼れるものは自分の感覚のみ！！用意された物を自分なりに組み合わせてピッタリ１００gを目指そう！！"
+  },
+  {
+    "circle": "実行委員会　遊戯企画1",
+    "title": "紙飛行機ターゲットチャレンジ！！",
+    "place": "屋内",
+    "category": "遊戯模擬店",
+    "location": "",
+    "img": "80.jpeg",
+    "comment": "折り方は自由、狙うはリング！大人も子どもも自分で作った紙飛行機でターゲットを撃ち抜き、景品を手に入れよう！"
   }
 ]
