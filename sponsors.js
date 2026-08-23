@@ -42,6 +42,11 @@ const sponsors = [
         url: "https://www.kobelco-kenki.co.jp/",
         type: "website",
       },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp3862/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -73,6 +78,11 @@ const sponsors = [
         url: "https://www.loisir-toyohashi.com/",
         type: "website",
       },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp214416/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -93,6 +103,11 @@ const sponsors = [
         label: "採用Instagram",
         url: "https://www.instagram.com/sankyo.recruit/",
         type: "instagram",
+      },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp254676/outline.html",
+        type: "website",
       },
     ],
   },
@@ -122,6 +137,11 @@ const sponsors = [
         url: "https://yutaka-ds.jp/toyohashi/",
         type: "website",
       },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp105039/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -134,7 +154,7 @@ const sponsors = [
       { label: "公式HP", url: "https://www.toyo-shin.co.jp/", type: "website" },
       {
         label: "採用HP",
-        url: "https://www.toyo-shin.co.jp/recruit/",
+        url: "https://job.mynavi.jp/28/pc/search/corp95926/outline.html",
         type: "website",
       },
       {
@@ -152,6 +172,11 @@ const sponsors = [
       "愛知県明海町で200ｍクラスの自動車運搬船やばら積み船を建造しています。特に自動車運搬船は当社の主力船型で、国内でも数社しか建造していません。2020年の国内初LNG（液化天然ガス）燃料自動車運搬船の竣工を皮切りに、軸発電や自律航行システムなど最新技術にも果敢にチャレンジしています。\n2基の大型クレーンや全長380ｍのドライドック等の建造設備、職人達の技術と建造ノウハウを駆使し、世界の貿易を支える船を造り上げていきます。",
     links: [
       { label: "公式HP", url: "https://www.toyozo.jp/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp85471/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -164,11 +189,6 @@ const sponsors = [
       { label: "公式HP", url: "https://www.honda-el.co.jp/", type: "website" },
       {
         label: "採用HP",
-        url: "https://www.honda-el.co.jp/recruit",
-        type: "website",
-      },
-      {
-        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp55227/outline.html",
         type: "website",
       },
@@ -196,6 +216,11 @@ const sponsors = [
     description: "",
     links: [
       { label: "公式HP", url: "https://www.sinto.co.jp/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp2058/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -243,6 +268,11 @@ const sponsors = [
       "日本リーテックは、鉄道電気設備・道路設備・屋内外電気設備・送電線設備等さまざまな電気・土木工事を通じて、安全で豊かな暮らしを支えている総合設備工事会社です。誰かの何気ない日常が、「安全」に支えられることを何よりも大事にしています。世の中の「安全」を保つための技術は常に変化し、現場は一人では決して完結しません。そのために、私たちは最先端の技術力に誇りを持ちながらも、そこに甘んじることなく、知識やスキルの向上に向けた教育体制・サポート体制の充実に力を入れています。",
     links: [
       { label: "公式HP", url: "https://www.j-rietec.co.jp/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp57790/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -254,7 +284,7 @@ const sponsors = [
     links: [
       {
         label: "採用HP",
-        url: "https://www.tiis.global/recruit",
+        url: "https://job.mynavi.jp/28/pc/search/corp81816/outline.html",
         type: "website",
       },
     ],
@@ -280,7 +310,11 @@ const sponsors = [
       "トピー工業は豊橋市の明海町（あけみちょう）で1958年より、建設・土木や機械に使用される鉄鋼（てっこう）製品、建設機械用足回り部品、化粧品の原料、ロボットを製造しています。\n「鉄をつくり、鉄をこなす」\n二酸化炭素の排出量を抑制する電気炉で、社会活動を終えた鉄鋼製品をリサイクルすることにより持続可能な循環型社会の構築に貢献します。\nこれからも地域社会と連携し、良き企業市民として社会と人々の快適で豊かな暮らしを支えてまいります。",
     links: [
       { label: "公式HP", url: "https://www.topy.co.jp/", type: "website" },
-      { label: "採用HP", url: "https://recruit-topy.jp/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp223244/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -291,6 +325,11 @@ const sponsors = [
       "1969年に東三河の4市6町と4商工会議所、地元有力企業80社の出資により、地元豊橋にて設立された会社です。\n情報システムの開発・運用から、開発プログラム、サーバの保守・管理、アウトソーシングまでをトータルに提案する総合情報サービス企業として発展しました。\n規模、会社イメージともに、IT・システム業界では全国にも知られる中堅企業になるよう、さまざまな挑戦を続けていきます。",
     links: [
       { label: "公式HP", url: "https://www.himika.co.jp", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp95980/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -301,6 +340,11 @@ const sponsors = [
       "創業90年超のオノコムは、設計・施工から維持管理まで一気通貫で手がける「建築プロデュース企業」です。「たてものがかり」として、DXによるスマートな施工管理や最新技術の導入に注力しています。若手から挑戦できる風土があり、建物の完成後も生涯寄り添い続ける建築のプロを目指せる環境です。歴史だけ見れば『老舗』ですが、中身は驚くほど「ベンチャー気質」です。 最新のBIMを現場で使いこなし、デザインにはプロとしてとことんこだわる。「面白そう！」と思えば、不動産やITの領域まで境界を超え踏み込んでいく。全ては、お客様の「やりたい」に一番近くで寄り添う「たてものがかり」であり続けるため。現在、私たちは共に挑戦する仲間を募集中です。オノコム流の「境界（BORDER）を超えていく瞬間」を特等席で体感しませんか。",
     links: [
       { label: "公式HP", url: "https://www.onocom.co.jp/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/28/pc/search/corp287553/outline.html",
+        type: "website",
+      },
     ],
   },
   {
@@ -348,6 +392,11 @@ const sponsors = [
       "株式会社トヨテックは、愛知県豊川市に本社を置くオプトメカトロニクスの総合メーカーです。光学（オプト）、精密機械（メカ）、電子技術（エレクトロニクス）の3つの専門技術を融合し、お客様のニーズに合わせて設計開発から製品化までを一貫して行っています。\n\n「光あふれる世の中を創ろう」を合言葉に、自動運転車やロボット、医療機器など、現代の暮らしや産業に欠かせない最先端の「レンズ」やセンサー部品を開発・製造しています。\n\n創業80年以上の歴史と確かな技術力を持ち、経済産業省の「新グローバルニッチトップ企業100選」にも選出されました。これからも「見える」を支える技術で、社会の未来づくりに貢献してまいります。",
     links: [
       { label: "公式HP", url: "https://www.toyotec.com/ja/", type: "website" },
+      {
+        label: "採用HP",
+        url: "https://job.mynavi.jp/27/pc/search/corp70492/outline.html",
+        type: "website",
+      },
     ],
   },
   {
