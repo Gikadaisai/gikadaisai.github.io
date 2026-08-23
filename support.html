@@ -1469,6 +1469,25 @@
       .sponsor-wrapper {
         margin: calc(-1 * var(--global-space, 0px));
       }
+
+      /* --- position: sticky 修正 ---
+           html, body の overflow-x: hidden（css/style.css）が
+           .marquee-sticky (position: sticky) の基準をビューポートから
+           ずらしてしまい、スクロールしても貼り付かず wall の一番上の
+           スポンサーが見切れる原因だった（ヘッドレスChromeでのバイナリ
+           サーチにより特定）。overflow-x: visible にすると今度はセクションの
+           左右はみ出し（main section の margin-left/right 負値によるフルブリード
+           演出）で横スクロールバーが出てしまうため、overflow-x: clip を使う。
+           hidden と異なり clip はスクロールコンテナを作らないため sticky を
+           壊さず、かつはみ出しはきちんと切り取られる。 */
+      html,
+      body,
+      #contents,
+      #container,
+      .sponsor-wrapper {
+        overflow-x: clip;
+        overflow-y: visible;
+      }
     </style>
   </head>
 
@@ -2144,6 +2163,21 @@
               const AUTO_SPEED = 0.65;
 
               /* =========================================================
+   WALL SNAP (少しでもスクロールしたらwallが揃った位置まで一気に移動する)
+========================================================= */
+
+              let wallSnapArmed = true;
+
+              function snapToWall() {
+                const rect = section.getBoundingClientRect();
+                const total = section.offsetHeight - window.innerHeight;
+                const sectionTopAbsolute = window.scrollY + rect.top;
+                const targetY = sectionTopAbsolute + WALL_START * total;
+
+                window.scrollTo({ top: targetY, behavior: "smooth" });
+              }
+
+              /* =========================================================
    CLAMP
 ========================================================= */
 
@@ -2234,6 +2268,17 @@
                 if (topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
                 if (counterEl) counterEl.style.opacity = marqueeOpacity;
                 if (scrollHintEl) scrollHintEl.style.opacity = marqueeOpacity;
+
+                /* =====================================================
+       WALL SNAP（少しでもスクロールしたらwallが揃うところまで移動）
+    ===================================================== */
+
+                if (progress <= 0.001) {
+                  wallSnapArmed = true;
+                } else if (progress < WALL_START && wallSnapArmed) {
+                  wallSnapArmed = false;
+                  snapToWall();
+                }
 
                 /* =====================================================
        WALL (12-COLUMN TIERED GRID)
