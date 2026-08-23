@@ -500,87 +500,6 @@
       }
 
       /* =========================================================
-   FINAL CENTER (PLAN A: OFFICIAL 50TH LOGO + FROSTED PANEL)
-========================================================= */
-
-      .center {
-        position: absolute;
-
-        left: 50%;
-        top: 50%;
-
-        z-index: 80;
-
-        text-align: center;
-
-        white-space: nowrap;
-
-        pointer-events: none;
-
-        opacity: 0;
-
-        transform: translate(-50%, -50%) scale(0.9);
-
-        padding: 30px 52px 26px;
-
-        background: rgba(255, 255, 255, 0.94);
-
-        backdrop-filter: blur(14px);
-
-        -webkit-backdrop-filter: blur(14px);
-
-        border: 1px solid rgba(0, 0, 0, 0.08);
-
-        border-radius: 12px;
-
-        box-shadow:
-          0 24px 70px rgba(0, 0, 0, 0.12),
-          0 4px 12px rgba(0, 0, 0, 0.04);
-
-        transition:
-          opacity 0.75s ease,
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .center.active {
-        opacity: 1;
-
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      .center-logo-wrap {
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-
-        margin-bottom: 12px;
-      }
-
-      .center-logo-img {
-        width: clamp(160px, 20vw, 240px);
-
-        height: auto;
-
-        object-fit: contain;
-
-        display: block;
-
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
-      }
-
-      .center-festival {
-        font-size: clamp(13px, 1.25vw, 16px);
-
-        color: #111;
-
-        font-weight: 850;
-
-        letter-spacing: 0.15em;
-      }
-
-      /* =========================================================
    SCROLL HINT
 ========================================================= */
 
@@ -1630,22 +1549,6 @@
                 <div class="wall" id="wall"></div>
 
                 <!-- =====================================================
-         FINAL CENTER (PLAN A: OFFICIAL 50TH LOGO)
-    ===================================================== -->
-
-                <div class="center" id="center">
-                  <div class="center-logo-wrap">
-                    <img
-                      src="logos/tut50th_logo.png"
-                      alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
-                      class="center-logo-img"
-                    />
-                  </div>
-
-                  <div class="center-festival">第49回 技科大祭 2026</div>
-                </div>
-
-                <!-- =====================================================
          SCROLL HINT
     ===================================================== -->
 
@@ -2188,8 +2091,6 @@
 
               const wallElement = document.getElementById("wall");
 
-              const center = document.getElementById("center");
-
               const progressFill = document.getElementById("progressFill");
 
               const counter = document.getElementById("counter");
@@ -2216,8 +2117,6 @@
               const FADE_START = 0.1;
               const FADE_END = 0.2;
               const WALL_START = 0.2;
-              const CENTER_START_PC = 0.585; // Wall〜50周年ロゴまでのスクロール量を30%削減 (0.55 -> 0.385)
-              const CENTER_START_MOBILE = 0.55; // スマホでのWall〜50周年ロゴまでのスクロール量を30%削減 (0.50 -> 0.35)
 
               let autoOffset = 0;
               const AUTO_SPEED = 0.65;
@@ -2320,21 +2219,6 @@
                   wallElement.classList.add("active");
                 } else {
                   wallElement.classList.remove("active");
-                }
-
-                /* =====================================================
-       CENTER 50 (RESPONSIVE THRESHOLD)
-    ===================================================== */
-
-                const isMobile = window.innerWidth <= 768;
-                const centerStart = isMobile
-                  ? CENTER_START_MOBILE
-                  : CENTER_START_PC;
-
-                if (progress >= centerStart) {
-                  center.classList.add("active");
-                } else {
-                  center.classList.remove("active");
                 }
               }
 
