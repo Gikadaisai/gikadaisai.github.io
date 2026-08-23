@@ -524,6 +524,8 @@
         white-space: nowrap;
 
         pointer-events: none;
+
+        transition: opacity 0.3s ease;
       }
 
       .scroll-line {
@@ -2208,8 +2210,10 @@
 
                 const topLabelEl = document.querySelector(".top-label");
                 const counterEl = document.querySelector(".counter");
+                const scrollHintEl = document.querySelector(".scroll-hint");
                 if (topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
                 if (counterEl) counterEl.style.opacity = marqueeOpacity;
+                if (scrollHintEl) scrollHintEl.style.opacity = marqueeOpacity;
 
                 /* =====================================================
        WALL (12-COLUMN TIERED GRID)
