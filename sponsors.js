@@ -107,7 +107,7 @@ const sponsors = [
         type: "instagram",
       },
       {
-        label: "採用HP",
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp254676/outline.html",
         type: "website",
       },
@@ -150,7 +150,7 @@ const sponsors = [
     links: [
       { label: "公式HP", url: "https://www.toyo-shin.co.jp/", type: "website" },
       {
-        label: "採用HP",
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp95926/outline.html",
         type: "website",
       },
@@ -180,7 +180,7 @@ const sponsors = [
     links: [
       { label: "公式HP", url: "https://www.honda-el.co.jp/", type: "website" },
       {
-        label: "採用HP",
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp55227/outline.html",
         type: "website",
       },
@@ -210,7 +210,7 @@ const sponsors = [
     links: [
       { label: "公式HP", url: "https://www.sinto.co.jp/", type: "website" },
       {
-        label: "採用HP",
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp2058/outline.html",
         type: "website",
       },
@@ -271,11 +271,6 @@ const sponsors = [
       "トヨタ自動車の源流「豊田自動織機」100%出資のグループ唯一のIT企業、それが豊田自動織機ITソリューションズ（TIIS）です！\n\n私たちは単なる開発会社ではなく、豊田自動織機の全事業部をITで支え、DXを牽引する役割を担っています。情報システム部門と連携し、システムの企画・構想という「超上流工程」から深く参画。\n\n社内システムやグローバルなITインフラ構築に加え、世界トップシェアのフォークリフト等の「製品組込みソフト」、ノウハウを活かした「外販ソリューション」まで事業は多岐にわたります。\n\nモノづくり×ITの最前線で、世界にインパクトを与える挑戦をしませんか？",
     links: [
       {
-        label: "採用HP",
-        url: "https://www.tiis.global/recruit",
-        type: "website",
-      },
-      {
         label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp81816/outline.html",
         type: "website",
@@ -320,7 +315,7 @@ const sponsors = [
     links: [
       { label: "公式HP", url: "https://www.topy.co.jp/", type: "website" },
       {
-        label: "採用HP",
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp223244/outline.html",
         type: "website",
       },
