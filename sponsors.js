@@ -100,11 +100,6 @@ const sponsors = [
         type: "instagram",
       },
       {
-        label: "採用Instagram",
-        url: "https://www.instagram.com/sankyo.recruit/",
-        type: "instagram",
-      },
-      {
         label: "採用HP",
         url: "https://job.mynavi.jp/28/pc/search/corp254676/outline.html",
         type: "website",
