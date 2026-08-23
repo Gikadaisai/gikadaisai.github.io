@@ -1834,11 +1834,8 @@
               ];
 
               function getSponsorTier(sponsor) {
-                // キャリアナビゲーション特例
-                if (
-                  sponsor.name &&
-                  sponsor.name.includes("キャリアナビゲーション")
-                ) {
+                // 名古屋TONKAN・ドボプロ・理系就活研究所特例（旧キャリアナビゲーション）
+                if (sponsor.name && sponsor.name.includes("名古屋TONKAN")) {
                   return TIERS.find((t) => t.key === "premium");
                 }
 

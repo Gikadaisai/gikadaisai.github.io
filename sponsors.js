@@ -50,7 +50,7 @@ const sponsors = [
     ],
   },
   {
-    name: "キャリアナビゲーション",
+    name: "名古屋TONKAN・ドボプロ・理系就活研究所",
     amount: 10000,
     logo: "logos/career_navigation.png",
     description: "",
@@ -70,7 +70,7 @@ const sponsors = [
   {
     name: "ロワジールホテル豊橋",
     amount: 100000,
-    logo: "logos/loisir.png",
+    logo: "logos/loisir.jpg",
     description: "",
     links: [
       {
@@ -212,7 +212,7 @@ const sponsors = [
   {
     name: "新東工業株式会社",
     amount: 100000,
-    logo: "logos/sinto.png",
+    logo: "logos/sinto.jpg",
     description: "",
     links: [
       { label: "公式HP", url: "https://www.sinto.co.jp/", type: "website" },
@@ -278,7 +278,7 @@ const sponsors = [
   {
     name: "株式会社豊田自動織機ITソリューションズ",
     amount: 50000,
-    logo: "logos/toyota_shokki_it.png",
+    logo: "logos/toyota_shokki_it.jpg",
     description:
       "トヨタ自動車の源流「豊田自動織機」100%出資のグループ唯一のIT企業、それが豊田自動織機ITソリューションズ（TIIS）です！\n\n私たちは単なる開発会社ではなく、豊田自動織機の全事業部をITで支え、DXを牽引する役割を担っています。情報システム部門と連携し、システムの企画・構想という「超上流工程」から深く参画。\n\n社内システムやグローバルなITインフラ構築に加え、世界トップシェアのフォークリフト等の「製品組込みソフト」、ノウハウを活かした「外販ソリューション」まで事業は多岐にわたります。\n\nモノづくり×ITの最前線で、世界にインパクトを与える挑戦をしませんか？",
     links: [
@@ -363,7 +363,7 @@ const sponsors = [
     ],
   },
   {
-    name: "OGK",
+    name: "オージーケー技研株式会社",
     amount: 30000,
     logo: "logos/ogk.png",
     description:
