@@ -42,28 +42,34 @@ const sponsors = [
         url: "https://www.kobelco-kenki.co.jp/",
         type: "website",
       },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp3862/outline.html",
-        type: "website",
-      },
     ],
   },
   {
     name: "名古屋TONKAN・ドボプロ・理系就活研究所",
-    amount: 10000,
+    amount: 200000,
     logo: "logos/career_navigation.png",
-    description: "",
+    description:
+      "建築土木、機械電気に特化したキャリア支援サービス会社。\n\n情報発信、就活マッチングイベントのみならず、「実践」をテーマに、理系学生にありとあらゆる実践の場を提供している。\n建築学生がカフェの設計施工をする「TONKAN」\n土木学生が海外でインフラ整備、国内でBBQ場をつくり実際にまちづくりをする「ドボプロ」\n機電学生が実際に現場を視察、体験し、全国にその魅力を発信する「理系就活研究所」\n\n入社という社会人の入口だけではなく、その先の人生のキャリアを考え、実践経験を提供している会社です。",
     links: [
       {
         label: "公式HP",
-        url: "https://career-navigation.co.jp/",
+        url: "https://const-career.com/",
         type: "website",
       },
       {
-        label: "建設キャリア",
-        url: "https://const-career.com/tonkan/",
-        type: "website",
+        label: "TONKAN Instagram",
+        url: "https://www.instagram.com/tonkan_nagoya/",
+        type: "instagram",
+      },
+      {
+        label: "ドボプロ Instagram",
+        url: "https://www.instagram.com/dobo_pro/",
+        type: "instagram",
+      },
+      {
+        label: "理系就活研究所 TikTok",
+        url: "https://www.tiktok.com/@rikei_syukatsu_kenkyujo",
+        type: "tiktok",
       },
     ],
   },
@@ -71,7 +77,8 @@ const sponsors = [
     name: "ロワジールホテル豊橋",
     amount: 100000,
     logo: "logos/loisir.jpg",
-    description: "",
+    description:
+      "ロワジールホテル豊橋は、宿泊、レストラン、婚礼、宴会事業を展開する東三河最大級のシティホテルです。地上30階のランドマークタワーや充実したコンベンション施設を備え、ビジネスや観光の拠点として上質なホスピタリティを提供しています。「地域に寄り添うおもてなし」を大切に、心地よい空間づくりと地域の魅力発信に取り組んでいます。また、豊橋技術科学大学との連携を通じて地域社会と学術をつなぐ交流拠点としての役割も担い、学生や教職員が集い新たな活力を育む場づくりをサポートしながら、地域とともに歩む持続可能な未来づくりに貢献してまいります。",
     links: [
       {
         label: "公式HP",
@@ -79,9 +86,9 @@ const sponsors = [
         type: "website",
       },
       {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp214416/outline.html",
-        type: "website",
+        label: "Instagram",
+        url: "https://www.instagram.com/loisir_hotel_toyohashi/?utm_source=ig_web_button_share_sheet",
+        type: "instagram",
       },
     ],
   },
@@ -132,11 +139,6 @@ const sponsors = [
         url: "https://yutaka-ds.jp/toyohashi/",
         type: "website",
       },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp105039/outline.html",
-        type: "website",
-      },
     ],
   },
   {
@@ -167,11 +169,6 @@ const sponsors = [
       "愛知県明海町で200ｍクラスの自動車運搬船やばら積み船を建造しています。特に自動車運搬船は当社の主力船型で、国内でも数社しか建造していません。2020年の国内初LNG（液化天然ガス）燃料自動車運搬船の竣工を皮切りに、軸発電や自律航行システムなど最新技術にも果敢にチャレンジしています。\n2基の大型クレーンや全長380ｍのドライドック等の建造設備、職人達の技術と建造ノウハウを駆使し、世界の貿易を支える船を造り上げていきます。",
     links: [
       { label: "公式HP", url: "https://www.toyozo.jp/", type: "website" },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp85471/outline.html",
-        type: "website",
-      },
     ],
   },
   {
@@ -208,7 +205,8 @@ const sponsors = [
     name: "新東工業株式会社",
     amount: 100000,
     logo: "logos/sinto.jpg",
-    description: "",
+    description:
+      "当社は、世界トップシェアの鋳造技術や表面処理技術を強みに、自動車や航空機、電子機器などのものづくりを支える東証プライム上場メーカーです。そのほかには環境分野、IoTやロボット、材料やセラミックス、EV関連分野などにも事業を拡大し、世界中の産業の発展に貢献しています。東三河から世界へ技術を発信する企業として、豊橋技術科学大学の学生の皆さまのチャレンジを応援しています。",
     links: [
       { label: "公式HP", url: "https://www.sinto.co.jp/", type: "website" },
       {
@@ -263,11 +261,6 @@ const sponsors = [
       "日本リーテックは、鉄道電気設備・道路設備・屋内外電気設備・送電線設備等さまざまな電気・土木工事を通じて、安全で豊かな暮らしを支えている総合設備工事会社です。誰かの何気ない日常が、「安全」に支えられることを何よりも大事にしています。世の中の「安全」を保つための技術は常に変化し、現場は一人では決して完結しません。そのために、私たちは最先端の技術力に誇りを持ちながらも、そこに甘んじることなく、知識やスキルの向上に向けた教育体制・サポート体制の充実に力を入れています。",
     links: [
       { label: "公式HP", url: "https://www.j-rietec.co.jp/", type: "website" },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp57790/outline.html",
-        type: "website",
-      },
     ],
   },
   {
@@ -279,21 +272,42 @@ const sponsors = [
     links: [
       {
         label: "採用HP",
+        url: "https://www.tiis.global/recruit",
+        type: "website",
+      },
+      {
+        label: "マイナビ",
         url: "https://job.mynavi.jp/28/pc/search/corp81816/outline.html",
         type: "website",
       },
     ],
   },
   {
-    name: "松井商事株式会社",
+    name: "松井商事株式会社（サンワ／サンワーク）",
     amount: 50000,
     logo: "logos/matsui_shoji.png",
-    description: "",
+    description:
+      "松井商事株式会社は、働く人を応援する会社です。\n\n作業服・安全靴等で県下最大級・全国トップクラスの品揃えを誇り、実店舗「作業服のサンワ」4店舗を展開するほか、楽天・Yahoo!・Amazonなど複数のモールと自社サイトでECサイト「サンワーク」を運営しています。\n\n豊富なブランドを取り揃え、業種や現場環境に応じた安全性と快適性を備えた商品をご提案し、現場で最大限の力を発揮できるようサポートしています。\n\nさらに、自社でのオリジナル刺繍・プリント加工や裾直しサービスも提供しており、社名やロゴを入れたユニフォーム作成を通じて、企業のブランド価値向上にも貢献しています。働く皆様のニーズにぴったりの一着が、きっと見つかります。",
     links: [
       {
         label: "公式HP",
         url: "https://xn--3kqta352c86u.com/",
         type: "website",
+      },
+      {
+        label: "作業服のサンワ",
+        url: "https://sanwa.pro/",
+        type: "website",
+      },
+      {
+        label: "YouTube",
+        url: "https://www.youtube.com/@user-qt3js9iw8l",
+        type: "youtube",
+      },
+      {
+        label: "Instagram",
+        url: "https://www.instagram.com/sanwa.maeda/",
+        type: "instagram",
       },
     ],
   },
@@ -320,11 +334,6 @@ const sponsors = [
       "1969年に東三河の4市6町と4商工会議所、地元有力企業80社の出資により、地元豊橋にて設立された会社です。\n情報システムの開発・運用から、開発プログラム、サーバの保守・管理、アウトソーシングまでをトータルに提案する総合情報サービス企業として発展しました。\n規模、会社イメージともに、IT・システム業界では全国にも知られる中堅企業になるよう、さまざまな挑戦を続けていきます。",
     links: [
       { label: "公式HP", url: "https://www.himika.co.jp", type: "website" },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp95980/outline.html",
-        type: "website",
-      },
     ],
   },
   {
@@ -335,11 +344,6 @@ const sponsors = [
       "創業90年超のオノコムは、設計・施工から維持管理まで一気通貫で手がける「建築プロデュース企業」です。「たてものがかり」として、DXによるスマートな施工管理や最新技術の導入に注力しています。若手から挑戦できる風土があり、建物の完成後も生涯寄り添い続ける建築のプロを目指せる環境です。歴史だけ見れば『老舗』ですが、中身は驚くほど「ベンチャー気質」です。 最新のBIMを現場で使いこなし、デザインにはプロとしてとことんこだわる。「面白そう！」と思えば、不動産やITの領域まで境界を超え踏み込んでいく。全ては、お客様の「やりたい」に一番近くで寄り添う「たてものがかり」であり続けるため。現在、私たちは共に挑戦する仲間を募集中です。オノコム流の「境界（BORDER）を超えていく瞬間」を特等席で体感しませんか。",
     links: [
       { label: "公式HP", url: "https://www.onocom.co.jp/", type: "website" },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/28/pc/search/corp287553/outline.html",
-        type: "website",
-      },
     ],
   },
   {
@@ -362,8 +366,8 @@ const sponsors = [
     amount: 30000,
     logo: "logos/ogk.png",
     description:
-      "オージーケー技研株式会社（OGK）は、1948年に東大阪市で創業した自転車部品メーカーです。現在は自転車用チャイルドシートをはじめ、バスケットやレインカバーなど「家族の移動」を支える製品を多数手がけています。\n\nOGKの製品は金属を使わず、軽くて衝撃に強く、サビない樹脂（プラスチック）で作られているのが特徴です。この独自技術により、これまでに世界中で700万人以上の子どもたちの命と安全を守ってきました。\n\n私たちは単なる移動手段をつくるのではなく、家族が一緒に過ごす時間に“安心”と“感動”をお届けする「家族の移動創造企業」を目指しています。これからも創意工夫を重ね、皆様の快適な自転車ライフをサポートいたします。",
-    links: [],
+      "オージーケー技研株式会社（OGK）は、1948年に設立した自転車部品メーカーです。現在は、自転車用チャイルドシートをはじめ、バスケットやレインカバーなど、「家族の移動」を支えるさまざまな製品を手がけています。\n\nOGKの強みは、長年培ってきた独自のプラスチック成型技術です。軽さと強度を両立した、サビにくく扱いやすい製品を生み出し、これまで世界中で700万人以上の子どもたちの安全を支えてきました。\n\n私たちは、単に移動のための製品をつくるのではなく、家族が一緒に過ごす時間に「安心」と「感動」を届ける「家族の移動創造企業」を目指しています。これからも創意工夫を重ね、皆さまの快適で楽しい自転車ライフを支えてまいります。",
+    links: [{ label: "公式HP", url: "https://ogk.co.jp/", type: "website" }],
   },
   {
     name: "おにぎり　転",
@@ -387,11 +391,6 @@ const sponsors = [
       "株式会社トヨテックは、愛知県豊川市に本社を置くオプトメカトロニクスの総合メーカーです。光学（オプト）、精密機械（メカ）、電子技術（エレクトロニクス）の3つの専門技術を融合し、お客様のニーズに合わせて設計開発から製品化までを一貫して行っています。\n\n「光あふれる世の中を創ろう」を合言葉に、自動運転車やロボット、医療機器など、現代の暮らしや産業に欠かせない最先端の「レンズ」やセンサー部品を開発・製造しています。\n\n創業80年以上の歴史と確かな技術力を持ち、経済産業省の「新グローバルニッチトップ企業100選」にも選出されました。これからも「見える」を支える技術で、社会の未来づくりに貢献してまいります。",
     links: [
       { label: "公式HP", url: "https://www.toyotec.com/ja/", type: "website" },
-      {
-        label: "採用HP",
-        url: "https://job.mynavi.jp/27/pc/search/corp70492/outline.html",
-        type: "website",
-      },
     ],
   },
   {
