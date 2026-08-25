@@ -222,7 +222,6 @@
                   <a href="#Date" class="rlx-nav-link">開催日</a>
                   <a href="#Guest" class="rlx-nav-link">ゲスト</a>
                   <a href="#Access" class="rlx-nav-link">アクセス</a>
-                  <a href="#Sponsors" class="rlx-nav-link">ご協賛・ご寄付</a>
                 </div>
                 <img src="images/library.png" alt="" class="sidebar-mascot" />
               </aside>
@@ -625,84 +624,14 @@
                   </h2>
 
                   <div class="cta-container">
-                    <div class="cta-message">
-                      <p>
-                        技科大祭は豊橋技術科学大学の学生が主体となって企画・運営する大学祭です。<br />
-                        皆様に過去最大のイベントをお届けするため、ご支援を心よりお願いしております。
-                      </p>
-                      <p>
-                        いただいたご寄付は、ステージ設営・装飾・企画運営費など、技科大祭の開催に必要な費用として大切に活用させていただきます。<br />
-                        少額からのご支援も大変ありがたく、皆様のご厚意が学生たちの活動を支える大きな力となります。
+                    <div class="cta-message" style="text-align: center">
+                      <p style="font-size: 1.15em; line-height: 2">
+                        ご協賛・ご寄付の募集は終了いたしました。<br />
+                        多くの皆様から温かいご支援を賜り、心より感謝申し上げます。<br />
+                        いただいたご厚意は、技科大祭の運営に大切に活用させていただきます。<br />
+                        誠にありがとうございました。
                       </p>
                     </div>
-
-                    <div class="cta-cards">
-                      <!-- ご協賛（団体向け） -->
-                      <div class="cta-card cta-card--sponsor">
-                        <div class="cta-card-header">
-                          <i class="fas fa-building"></i>
-                          <h3>
-                            ご協賛<span class="cta-card-sub">（団体向け）</span>
-                          </h3>
-                        </div>
-                        <div class="cta-card-actions">
-                          <a
-                            href="https://drive.google.com/file/d/1-mPSpP1sCtMCyTWOUJHBlgJgblsIcP9M/view?usp=drive_link"
-                            class="cta-btn cta-btn--outline"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >プランの詳細</a
-                          >
-                          <a
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSdLSp2VjwMjkiS8ePOrO1tOZrOFSugx96MJHr6amTSygyZS9w/viewform"
-                            class="cta-btn cta-btn--filled cta-btn--gold"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >お申込み</a
-                          >
-                        </div>
-                      </div>
-                      <!-- ご寄付（個人向け） -->
-                      <div class="cta-card cta-card--donation">
-                        <div class="cta-card-header">
-                          <i class="fas fa-user"></i>
-                          <h3>
-                            ご寄付<span class="cta-card-sub">（個人向け）</span>
-                          </h3>
-                        </div>
-                        <div class="cta-card-actions">
-                          <a
-                            href="https://docs.google.com/presentation/d/15koDFsxh6fDrLjPWgeG1JBRzC5ZcxjHgExnQD3-B57Q/present?slide=id.g3de7692f301_0_0"
-                            class="cta-btn cta-btn--outline cta-btn--outline-red"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >プランの詳細</a
-                          >
-                          <a
-                            href="https://www.tut.ac.jp/kikin/kifu/"
-                            class="cta-btn cta-btn--filled cta-btn--red"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >お申込み</a
-                          >
-                        </div>
-                      </div>
-                    </div>
-
-                    <p class="cta-note">
-                      ご協賛、ご寄付に関するご質問・ご相談は、<a
-                        href="contact.html"
-                        >お問い合わせページ</a
-                      >よりメールにてお受けしております。<br />お気軽にご連絡ください。
-                    </p>
-
-                    <a
-                      href="mailto:tut.festival@gmail.com"
-                      class="cta-email-btn"
-                    >
-                      <i class="fas fa-envelope"></i>
-                      tut.festival@gmail.com
-                    </a>
                   </div>
                   <style>
                     #Support {
@@ -813,9 +742,9 @@
             </div>
           </section>
 
-          <!-- ご協賛企業・ご寄付者セクションは js/site-config.json の sections で管理 -->
-          <div data-include="sponsors"></div>
-          <div data-include="supporters"></div>
+          <!-- ご協賛企業・ご寄付者セクション（募集終了のため非表示） -->
+          <!-- <div data-include="sponsors"></div> -->
+          <!-- <div data-include="supporters"></div> -->
         </main>
 
         <!-- Floating Action Button for Section Navigation (Mobile Only) -->
@@ -857,9 +786,6 @@
               >
               <a href="#Access" class="rlx-mobile-nav-item"
                 ><i class="fas fa-location-dot"></i>アクセス</a
-              >
-              <a href="#Sponsors" class="rlx-mobile-nav-item"
-                ><i class="fas fa-building"></i>ご協賛</a
               >
             </div>
           </div>
@@ -984,14 +910,17 @@
         var nav = document.querySelector(".rlx-sidebar-nav");
         var mascot = document.querySelector(".sidebar-mascot");
         var sidebar = document.querySelector(".rlx-sidebar");
-        var supporters = document.getElementById("Supporters"); // 表示終了の基準点
+        var supporters =
+          document.getElementById("Supporters") ||
+          document.getElementById("Sponsors") ||
+          document.querySelector("main > section:last-of-type"); // 表示終了の基準点
         var highlights = document.getElementById("Highlights");
         if (!nav || !sidebar || !highlights) return;
         var hideTimer = null;
         function updateSidebar() {
           var hr = highlights.getBoundingClientRect();
           var sectionVisible = hr.top < 80;
-          // Supporters セクションの底が画面内にあるうちは表示を維持
+          // 基準セクションの底が画面内にあるうちは表示を維持
           var pastSupporters = supporters
             ? supporters.getBoundingClientRect().bottom < 80 + nav.offsetHeight
             : true;
