@@ -178,7 +178,7 @@
   "pageVisibility": {
     "index": true,
     "events": false,
-    "shops": false,
+    "shops": true,
     "timetable": false,
     "painting-contest": true,
     "support": true,
