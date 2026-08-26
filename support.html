@@ -2,19 +2,16 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する
-         ※ クリックジャッキング対策(frame-ancestors)は meta 経由では
-            ブラウザに無視されるため、ここには書かない。
-            Webサーバーのレスポンスヘッダーで設定する(UPDATE_MANUAL.md 参照)。 -->
+    <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
     />
-    <title>ご協賛・ご寄付のお願い｜第--回技科大祭</title>
+    <title>スポンサー｜第49回技科大祭</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="第--回技科大祭へのご協賛・ご寄付のお願い。皆様からのご支援が学生主体の学園祭をより豊かなものにします。豊橋技術科学大学の学園祭。"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学の学園祭をご支援いただいているスポンサー情報をご覧いただけます。"
     />
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,14 +36,11 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- OGP / SNSシェア用 -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="第--回技科大祭" />
-    <meta
-      property="og:title"
-      content="ご協賛・ご寄付のお願い｜第--回技科大祭"
-    />
+    <meta property="og:site_name" content="第49回技科大祭" />
+    <meta property="og:title" content="スポンサー｜第49回技科大祭" />
     <meta
       property="og:description"
-      content="第--回技科大祭へのご協賛・ご寄付のお願い。皆様からのご支援が学生主体の学園祭をより豊かなものにします。"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学にて開催。"
     />
     <meta
       property="og:url"
@@ -60,18 +54,1452 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@tut_festival" />
-    <meta
-      name="twitter:title"
-      content="ご協賛・ご寄付のお願い｜第--回技科大祭"
-    />
+    <meta name="twitter:title" content="スポンサー｜第49回技科大祭" />
     <meta
       name="twitter:description"
-      content="第--回技科大祭へのご協賛・ご寄付のお願い。皆様からのご支援が学生主体の学園祭をより豊かなものにします。"
+      content="第49回技科大祭の協賛企業・団体一覧。豊橋技術科学大学にて開催。"
     />
     <meta
       name="twitter:image"
       content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
     />
+
+    <style>
+      /* =========================================================
+   RESET
+========================================================= */
+
+      .sponsor-wrapper * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .sponsor-wrapper {
+        overflow-x: hidden;
+        color: #111;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans JP",
+          sans-serif;
+      }
+
+      /* =========================================================
+   MAIN MARQUEE EXPERIENCE
+========================================================= */
+
+      .marquee-section {
+        /*
+        自動ループアニメーション + スクロールによるWall & 50周年ロゴへのスムーズな移行
+    */
+        height: 280vh;
+
+        position: relative;
+      }
+
+      .marquee-sticky {
+        position: sticky;
+
+        top: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        overflow: hidden;
+
+        background: #fff;
+      }
+
+      /* =========================================================
+   SUBTLE GRID
+========================================================= */
+
+      .background-grid {
+        position: absolute;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        opacity: 0.55;
+
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+
+        background-size: 40px 40px;
+      }
+
+      /* =========================================================
+   HEADER
+========================================================= */
+
+      .top-label {
+        position: absolute;
+
+        top: 32px;
+        left: 36px;
+
+        z-index: 100;
+
+        pointer-events: none;
+
+        transition: opacity 0.35s ease;
+      }
+
+      .top-label-small {
+        font-size: 10px;
+
+        font-weight: 750;
+
+        color: #777;
+
+        letter-spacing: 0.25em;
+
+        margin-bottom: 8px;
+      }
+
+      .top-label-title {
+        font-size: clamp(22px, 2.5vw, 34px);
+
+        font-weight: 900;
+
+        line-height: 1.28;
+
+        letter-spacing: -0.03em;
+
+        color: #111;
+      }
+
+      /* =========================================================
+   SPONSOR COUNT
+========================================================= */
+
+      .counter {
+        position: absolute;
+
+        top: 32px;
+        right: 36px;
+
+        z-index: 100;
+
+        text-align: right;
+
+        pointer-events: none;
+
+        transition: opacity 0.35s ease;
+      }
+
+      .counter-number {
+        font-size: clamp(32px, 3.5vw, 44px);
+
+        line-height: 1;
+
+        font-weight: 900;
+
+        letter-spacing: -0.05em;
+
+        color: #111;
+      }
+
+      .counter-label {
+        margin-top: 6px;
+
+        font-size: 9.5px;
+
+        font-weight: 800;
+
+        color: #888;
+
+        letter-spacing: 0.22em;
+      }
+
+      /* =========================================================
+   MARQUEE
+========================================================= */
+
+      .marquee {
+        position: absolute;
+
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        white-space: nowrap;
+
+        z-index: 10;
+
+        will-change: transform, opacity;
+
+        transition: opacity 0.4s ease;
+      }
+
+      /*
+    4段を均等配置
+*/
+
+      .marquee-row-1 {
+        top: 19%;
+      }
+
+      .marquee-row-2 {
+        top: 37%;
+      }
+
+      .marquee-row-3 {
+        top: 55%;
+      }
+
+      .marquee-row-4 {
+        top: 73%;
+      }
+
+      /* =========================================================
+   TRACK
+========================================================= */
+
+      .track {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        width: max-content;
+
+        will-change: transform;
+      }
+
+      /* =========================================================
+   LOGO CARD (ASPECT RATIO 1:2.3)
+========================================================= */
+
+      .logo-card {
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        width: 184px;
+
+        height: 80px;
+
+        aspect-ratio: 2.3 / 1;
+
+        padding: 4px 8px;
+
+        background: #fff;
+
+        border: 1px solid #e0e0e0;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        letter-spacing: -0.02em;
+
+        user-select: none;
+
+        cursor: pointer;
+
+        border-radius: 4px;
+
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .logo-card:hover {
+        background: #fff;
+
+        border-color: #111;
+
+        transform: translateY(-4px);
+
+        box-shadow:
+          0 14px 28px rgba(0, 0, 0, 0.08),
+          0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+
+      .logo-card img {
+        max-width: 96%;
+        max-height: 88%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .logo-name {
+        display: block;
+        word-break: break-word;
+        line-height: 1.35;
+      }
+
+      /* =========================================================
+   CENTER WALL (12-COLUMN TIERED GRID)
+========================================================= */
+
+      .wall {
+        position: absolute;
+
+        inset: 8.5% 3.5% 8.5% 3.5%;
+
+        display: grid;
+
+        grid-template-columns: repeat(12, 1fr);
+
+        grid-auto-rows: minmax(44px, 1fr);
+
+        gap: 6px;
+
+        z-index: 50;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform: scale(0.95);
+
+        pointer-events: none;
+
+        transition:
+          opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .wall.active {
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: scale(1);
+
+        pointer-events: auto;
+      }
+
+      /* =========================================================
+   WALL CARDS
+========================================================= */
+
+      .wall-card {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        border: 1px solid #e0e0e0;
+
+        background: #fff;
+
+        font-weight: 800;
+
+        padding: 3px 6px;
+
+        border-radius: 4px;
+
+        opacity: 0;
+
+        transform: translateY(15px) scale(0.97);
+
+        cursor: pointer;
+
+        transition:
+          opacity 0.5s ease,
+          transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .wall.active .wall-card {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+      }
+
+      .wall-card:hover {
+        background: #fff;
+
+        border-color: #111;
+
+        transform: translateY(-3px) scale(1.025) !important;
+
+        z-index: 15;
+
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.1),
+          0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+
+      .wall-card img {
+        max-width: 96%;
+        max-height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      /* Wall Rank Sizes */
+      .w-top {
+        grid-column: span 12;
+        grid-row: span 2;
+        font-size: 18px;
+        font-weight: 900;
+        border: 2px solid #111;
+        background: #fff;
+      }
+
+      .w-premium {
+        grid-column: span 6;
+        grid-row: span 2;
+        font-size: 15px;
+        font-weight: 850;
+        border: 2px solid #222;
+        background: #fff;
+      }
+
+      .w-gold {
+        grid-column: span 4;
+        grid-row: span 1;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .w-silver {
+        grid-column: span 4;
+        grid-row: span 1;
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .w-bronze {
+        grid-column: span 2;
+        grid-row: span 1;
+        font-size: 10.5px;
+        font-weight: 700;
+      }
+
+      .w-supporter {
+        grid-column: span 2;
+        grid-row: span 1;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      /* =========================================================
+   SCROLL HINT
+========================================================= */
+
+      .scroll-hint {
+        position: absolute;
+
+        left: 50%;
+        bottom: 24px;
+
+        transform: translateX(-50%);
+
+        z-index: 100;
+
+        font-size: 8.5px;
+
+        font-weight: 750;
+
+        color: #777;
+
+        letter-spacing: 0.3em;
+
+        white-space: nowrap;
+
+        pointer-events: none;
+
+        transition: opacity 0.3s ease;
+      }
+
+      .scroll-line {
+        width: 1px;
+
+        height: 35px;
+
+        background: #111;
+
+        margin: 9px auto 0;
+
+        transform-origin: top;
+      }
+
+      /* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+      .progress {
+        position: absolute;
+
+        right: 20px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 2px;
+        height: 120px;
+
+        background: #e5e5e5;
+
+        z-index: 100;
+      }
+
+      .progress-fill {
+        width: 100%;
+        height: 0%;
+
+        background: #111;
+      }
+
+      /* =========================================================
+   SPONSOR LIST (TIERED SECTIONS)
+========================================================= */
+
+      .sponsors {
+        padding: 120px 25px 80px;
+
+        background: #fff;
+      }
+
+      .sponsor-inner {
+        max-width: 1300px;
+
+        margin: 0 auto;
+      }
+
+      .sponsor-heading {
+        display: flex;
+
+        align-items: flex-end;
+
+        justify-content: space-between;
+
+        padding-bottom: 30px;
+
+        margin-bottom: 60px;
+
+        border-bottom: 2px solid #111;
+      }
+
+      .sponsor-heading h2 {
+        font-size: clamp(48px, 7vw, 96px);
+
+        line-height: 0.9;
+
+        font-weight: 950;
+
+        letter-spacing: -0.06em;
+      }
+
+      .sponsor-heading p {
+        font-size: 12px;
+
+        color: #444;
+
+        line-height: 1.7;
+
+        letter-spacing: 0.15em;
+        font-weight: 700;
+      }
+
+      /* Tier Group Layout */
+      .sponsor-tier-group {
+        margin-bottom: 50px;
+      }
+
+      .sponsor-tier-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .tier-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .tier-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        background: #111;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        border-radius: 3px;
+      }
+
+      .tier-name-ja {
+        font-size: 15px;
+        font-weight: 850;
+        letter-spacing: 0.04em;
+        color: #111;
+      }
+
+      /* Tier Grids */
+      .tier-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .grid-top {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      .grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-gold {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-silver {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-bronze {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .grid-supporter {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      /* Sponsor List Card Base (PURE WHITE BG) */
+      .sponsor-list-card {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        background: #fff;
+
+        border: 1px solid #e0e0e0;
+
+        padding: 8px 12px;
+
+        cursor: pointer;
+
+        border-radius: 4px;
+
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .sponsor-list-card:hover {
+        background: #fff;
+
+        border-color: #111;
+
+        transform: translateY(-5px);
+
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.08),
+          0 2px 8px rgba(0, 0, 0, 0.03);
+      }
+
+      .sponsor-list-card img {
+        max-width: 96%;
+        max-height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      /* List Card Heights & Typography by Tier */
+      .grid-top .sponsor-list-card {
+        min-height: 160px;
+        font-size: 18px;
+        font-weight: 900;
+        border: 1.5px solid #111;
+        background: #fff;
+        padding: 12px 24px;
+      }
+
+      .grid-premium .sponsor-list-card {
+        min-height: 140px;
+        font-size: 16px;
+        font-weight: 850;
+        border: 1.5px solid #222;
+        background: #fff;
+        padding: 10px 20px;
+      }
+
+      .grid-gold .sponsor-list-card {
+        min-height: 115px;
+        font-size: 14px;
+        font-weight: 800;
+        padding: 8px 14px;
+      }
+
+      .grid-silver .sponsor-list-card {
+        min-height: 100px;
+        font-size: 12.5px;
+        font-weight: 750;
+        padding: 6px 12px;
+      }
+
+      .grid-bronze .sponsor-list-card {
+        min-height: 85px;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 8px;
+      }
+
+      .grid-supporter .sponsor-list-card {
+        min-height: 75px;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 4px 6px;
+      }
+
+      /* =========================================================
+   INDIVIDUAL DONORS (PERSONAL SPONSORS)
+========================================================= */
+
+      .individual-section {
+        margin-top: 70px;
+
+        padding-top: 50px;
+
+        border-top: 1px dashed #dedede;
+      }
+
+      .individual-header-wrap {
+        display: flex;
+
+        align-items: flex-end;
+
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+        margin-bottom: 8px;
+      }
+
+      .individual-title-group {
+        display: flex;
+
+        align-items: center;
+
+        gap: 14px;
+      }
+
+      .individual-fund-title {
+        font-size: 16px;
+
+        font-weight: 850;
+
+        color: #111;
+
+        letter-spacing: 0.03em;
+      }
+
+      .individual-subtitle {
+        font-size: 12.5px;
+
+        color: #555;
+
+        font-weight: 600;
+
+        margin-bottom: 28px;
+      }
+
+      .individual-kana-container {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 20px;
+      }
+
+      .individual-kana-group {
+        display: grid;
+
+        grid-template-columns: 72px 1fr;
+
+        gap: 16px;
+
+        align-items: start;
+      }
+
+      .individual-kana-label {
+        font-size: 11px;
+
+        font-weight: 800;
+
+        color: #444;
+
+        padding: 8px 6px;
+
+        background: #f4f4f4;
+
+        border: 1px solid #e5e5e5;
+
+        border-radius: 4px;
+
+        text-align: center;
+
+        letter-spacing: 0.1em;
+
+        user-select: none;
+      }
+
+      .individual-names-grid {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+
+        gap: 8px;
+      }
+
+      .individual-name-card {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        background: #fff;
+
+        border: 1px solid #e0e0e0;
+
+        border-radius: 4px;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+
+        font-weight: 750;
+
+        color: #222;
+
+        letter-spacing: 0.02em;
+
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .individual-name-card:hover {
+        border-color: #111;
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      .individual-anonymous-wrap {
+        margin-top: 28px;
+
+        padding: 14px 20px;
+
+        background: #f9f9f9;
+
+        border: 1px dashed #d0d0d0;
+
+        border-radius: 6px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+
+        font-size: 12.5px;
+
+        font-weight: 700;
+
+        color: #444;
+      }
+
+      /* =========================================================
+   THANKS (APPRECIATION & 50TH LOGO)
+========================================================= */
+
+      .thanks {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 80px 24px 110px;
+
+        background: #fff;
+
+        border-top: 1px solid #e5e5e5;
+      }
+
+      .thanks-logo-wrap {
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-bottom: 20px;
+      }
+
+      .thanks-logo-img {
+        width: clamp(130px, 16vw, 190px);
+
+        height: auto;
+
+        object-fit: contain;
+
+        display: block;
+
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+      }
+
+      .thanks-subtitle {
+        font-size: 10.5px;
+
+        font-weight: 850;
+
+        color: #777;
+
+        letter-spacing: 0.26em;
+
+        margin-bottom: 12px;
+      }
+
+      .thanks-title {
+        font-size: clamp(24px, 3.2vw, 40px);
+
+        font-weight: 900;
+
+        line-height: 1.45;
+
+        letter-spacing: -0.02em;
+
+        color: #111;
+      }
+
+      .thanks-text {
+        max-width: 680px;
+
+        margin: 22px auto 0;
+
+        font-size: 14.5px;
+
+        line-height: 2.3;
+
+        color: #444;
+
+        font-weight: 500;
+      }
+
+      /* =========================================================
+   SPONSOR LOCAL FOOTER (disabled — using common footer)
+========================================================= */
+
+      /* =========================================================
+   MODAL
+========================================================= */
+
+      .modal {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 999;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background: rgba(0, 0, 0, 0.5);
+
+        backdrop-filter: blur(10px);
+
+        -webkit-backdrop-filter: blur(10px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+
+      .modal.active {
+        opacity: 1;
+
+        visibility: visible;
+      }
+
+      .modal-card {
+        position: relative;
+
+        width: 90%;
+
+        max-width: 640px;
+
+        max-height: 88vh;
+
+        overflow-y: auto;
+
+        background: #fff;
+
+        border-radius: 12px;
+
+        padding: 44px 36px 36px;
+
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.22);
+
+        transform: translateY(16px) scale(0.97);
+
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .modal.active .modal-card {
+        transform: translateY(0) scale(1);
+      }
+
+      .modal-close {
+        position: absolute;
+
+        top: 16px;
+
+        right: 16px;
+
+        width: 36px;
+
+        height: 36px;
+
+        border: none;
+
+        background: #f0f0f0;
+
+        border-radius: 50%;
+
+        font-size: 20px;
+
+        line-height: 1;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .modal-close:hover {
+        background: #e0e0e0;
+
+        transform: scale(1.08);
+      }
+
+      .modal-tier-badge {
+        display: inline-block;
+
+        font-size: 10.5px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.1em;
+
+        padding: 4px 10px;
+
+        background: #111;
+
+        color: #fff;
+
+        border-radius: 3px;
+
+        margin-bottom: 18px;
+      }
+
+      .modal-logo-wrap {
+        max-height: 110px;
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin-bottom: 20px;
+
+        padding: 14px;
+
+        background: #fff;
+
+        border: 1px solid #e0e0e0;
+
+        border-radius: 8px;
+      }
+
+      .modal-logo-wrap.active {
+        display: flex;
+      }
+
+      .modal-logo-wrap img {
+        max-height: 85px;
+
+        max-width: 100%;
+
+        object-fit: contain;
+      }
+
+      .modal-name {
+        font-size: clamp(22px, 3vw, 30px);
+
+        font-weight: 900;
+
+        line-height: 1.35;
+
+        letter-spacing: -0.02em;
+
+        color: #111;
+
+        margin-bottom: 16px;
+      }
+
+      .modal-line {
+        width: 100%;
+
+        height: 1px;
+
+        background: #e5e5e5;
+
+        margin-bottom: 20px;
+      }
+
+      .modal-message {
+        font-size: 14.5px;
+
+        line-height: 2;
+
+        color: #333;
+
+        font-weight: 500;
+
+        white-space: pre-wrap;
+
+        margin-bottom: 28px;
+      }
+
+      .modal-links {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+      }
+
+      .modal-link-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding: 10px 18px;
+
+        border-radius: 6px;
+
+        font-size: 12.5px;
+
+        font-weight: 750;
+
+        letter-spacing: 0.02em;
+
+        text-decoration: none;
+
+        border-radius: 3px;
+
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .modal-link-btn:hover {
+        background: #333;
+
+        transform: translateY(-2px);
+      }
+
+      .modal-link-btn.btn-website {
+        background: #111;
+        color: #fff;
+      }
+
+      .modal-link-btn.btn-instagram {
+        background: #e1306c;
+        border-color: #e1306c;
+        color: #fff;
+      }
+
+      .modal-link-btn.btn-instagram:hover {
+        background: #c1275b;
+        border-color: #c1275b;
+      }
+
+      .modal-link-btn.btn-x {
+        background: #000;
+        border-color: #000;
+        color: #fff;
+      }
+
+      .modal-link-btn.btn-x:hover {
+        background: #222;
+        border-color: #222;
+      }
+
+      .modal-link-btn.btn-youtube {
+        background: #ff0000;
+        border-color: #ff0000;
+        color: #fff;
+      }
+
+      .modal-link-btn.btn-youtube:hover {
+        background: #cc0000;
+        border-color: #cc0000;
+      }
+
+      .modal-link-btn.btn-tiktok {
+        background: #000;
+        border-color: #000;
+        color: #fff;
+      }
+
+      .modal-link-btn.btn-tiktok:hover {
+        background: #222;
+        border-color: #222;
+      }
+
+      .modal-link-btn svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+
+      /* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
+      @media (max-width: 768px) {
+        .marquee-section {
+          height: 240vh;
+        }
+
+        .top-label {
+          top: 18px;
+          left: 18px;
+        }
+
+        .counter {
+          top: 18px;
+          right: 18px;
+        }
+
+        .marquee-row-1 {
+          top: 22%;
+        }
+
+        .marquee-row-2 {
+          top: 40%;
+        }
+
+        .marquee-row-3 {
+          top: 58%;
+        }
+
+        .marquee-row-4 {
+          top: 76%;
+        }
+
+        .wall {
+          inset: 7% 2% 5% 2%;
+
+          grid-template-columns: repeat(12, 1fr);
+
+          grid-auto-rows: minmax(0, 1fr);
+
+          gap: 3px;
+        }
+
+        .wall-card {
+          padding: 1px 2px;
+
+          border-radius: 2px;
+        }
+
+        .wall-card img {
+          max-width: 98%;
+
+          max-height: 92%;
+
+          width: 100%;
+
+          height: 100%;
+
+          object-fit: contain;
+        }
+
+        .w-top {
+          grid-column: span 12;
+          grid-row: span 1;
+          font-size: 13px;
+        }
+
+        .w-premium {
+          grid-column: span 6;
+          grid-row: span 1;
+          font-size: 11px;
+        }
+
+        .w-gold {
+          grid-column: span 4;
+          grid-row: span 1;
+          font-size: 10px;
+        }
+
+        .w-silver {
+          grid-column: span 4;
+          grid-row: span 1;
+          font-size: 9.5px;
+        }
+
+        .w-bronze {
+          grid-column: span 3;
+          grid-row: span 1;
+          font-size: 8.5px;
+        }
+
+        .w-supporter {
+          grid-column: span 3;
+          grid-row: span 1;
+          font-size: 8px;
+        }
+
+        .grid-top {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-premium {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-gold {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-silver {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-bronze {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-supporter {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .individual-kana-group {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .individual-kana-label {
+          display: inline-block;
+          width: fit-content;
+          padding: 4px 10px;
+          font-size: 11px;
+        }
+
+        .individual-names-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6px;
+        }
+
+        .individual-name-card {
+          font-size: 12px;
+          padding: 9px 6px;
+        }
+
+        .modal-card {
+          padding: 35px 22px;
+        }
+      }
+
+      /* --- Negate #contents padding so sponsor marquee reaches edges --- */
+      .sponsor-wrapper {
+        margin: calc(-1 * var(--global-space, 0px));
+      }
+
+      /* --- position: sticky 修正 ---
+           html, body の overflow-x: hidden（css/style.css）が
+           .marquee-sticky (position: sticky) の基準をビューポートから
+           ずらしてしまい、スクロールしても貼り付かず wall の一番上の
+           スポンサーが見切れる原因だった（ヘッドレスChromeでのバイナリ
+           サーチにより特定）。overflow-x: visible にすると今度はセクションの
+           左右はみ出し（main section の margin-left/right 負値によるフルブリード
+           演出）で横スクロールバーが出てしまうため、overflow-x: clip を使う。
+           hidden と異なり clip はスクロールコンテナを作らないため sticky を
+           壊さず、かつはみ出しはきちんと切り取られる。 */
+      html,
+      body,
+      #contents,
+      #container,
+      .sponsor-wrapper {
+        overflow-x: clip;
+        overflow-y: visible;
+      }
+    </style>
   </head>
 
   <body>
@@ -82,111 +1510,819 @@
 
       <div id="contents">
         <main>
-          <section style="position: relative">
-            <div
-              class="deco-circle deco-circle--dashed deco-circle--xl"
-              style="top: -80px; right: -120px"
-            ></div>
-            <div
-              class="deco-circle deco-circle--filled deco-circle--lg"
-              style="top: 200px; left: -60px"
-            ></div>
-            <div
-              class="deco-circle deco-circle--solid deco-circle--sm"
-              style="bottom: 80px; right: 10%"
-            ></div>
-            <h1 style="font-size: clamp(2rem, 5vw, 3rem)">
-              <span>Sponsorship & Donation</span
-              ><span class="hosoku">ご協賛・ご寄付のお願い</span>
-            </h1>
+          <div class="sponsor-wrapper">
+            <!-- =========================================================
+     MARQUEE SECTION
+========================================================= -->
 
-            <div class="contact-container">
-              <p class="c">
-                技科大祭は豊橋技術科学大学の学生が主体となって企画・運営する大学祭です。<br />
-                より充実したイベントをお届けするため、皆様からのご協賛およびご寄付によるご支援を心よりお願いしております。
-              </p>
+            <section class="marquee-section">
+              <div class="marquee-sticky">
+                <div class="background-grid"></div>
 
-              <div class="action-grid">
-                <a
-                  href="https://drive.google.com/file/d/1FGCp7gXEq1-L-wJ6FV_gHif1qryvUr9p/view?usp=sharing"
-                  class="action-card"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fas fa-file-pdf"></i>
-                  <span class="action-label">ご協賛の詳細資料（団体向け）</span>
-                </a>
-                <a
-                  href="https://drive.google.com/file/d/1Y_k8JmDdboKKbRHF4Vo3il0Ktd-7djnJ/view?usp=drivesdk"
-                  class="action-card"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fas fa-file-pdf"></i>
-                  <span class="action-label">ご寄付の詳細資料（個人向け）</span>
-                </a>
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdLSp2VjwMjkiS8ePOrO1tOZrOFSugx96MJHr6amTSygyZS9w/viewform"
-                  class="action-card action-card-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fas fa-handshake"></i>
-                  <span class="action-label">ご協賛のお手続きはこちら</span>
-                </a>
-                <a
-                  href="https://www.tut.ac.jp/kikin/kifu/"
-                  class="action-card action-card-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fas fa-heart"></i>
-                  <span class="action-label">ご寄付のお手続きはこちら</span>
-                </a>
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSetdaPbUeWI1u3bA1ohxo2yV-B9Q7cezS6jj4wqbSo5sI5ibg/viewform"
-                  class="action-card action-card-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style="
-                    grid-column: 1 / -1;
-                    max-width: calc(50% - 0.75rem);
-                    margin: 0 auto;
-                  "
-                >
-                  <i class="fas fa-image"></i>
-                  <span class="action-label">ポスター掲示協力のお願い</span>
-                </a>
+                <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+                <div class="top-label">
+                  <div class="top-label-small">SPONSORS</div>
+
+                  <div class="top-label-title">
+                    開学50周年の技科大祭を、<br />
+                    ともに創るパートナー。
+                  </div>
+                </div>
+
+                <!-- =====================================================
+         COUNTER
+    ===================================================== -->
+
+                <div class="counter">
+                  <div class="counter-number" id="counter">0</div>
+
+                  <div class="counter-label">SPONSORS</div>
+                </div>
+
+                <!-- =====================================================
+         ROW 1
+    ===================================================== -->
+
+                <div class="marquee marquee-row-1" id="row1">
+                  <div class="track"></div>
+                </div>
+
+                <!-- =====================================================
+         ROW 2
+    ===================================================== -->
+
+                <div class="marquee marquee-row-2" id="row2">
+                  <div class="track"></div>
+                </div>
+
+                <!-- =====================================================
+         ROW 3
+    ===================================================== -->
+
+                <div class="marquee marquee-row-3" id="row3">
+                  <div class="track"></div>
+                </div>
+
+                <!-- =====================================================
+         ROW 4
+    ===================================================== -->
+
+                <div class="marquee marquee-row-4" id="row4">
+                  <div class="track"></div>
+                </div>
+
+                <!-- =====================================================
+         WALL
+    ===================================================== -->
+
+                <div class="wall" id="wall"></div>
+
+                <!-- =====================================================
+         SCROLL HINT
+    ===================================================== -->
+
+                <div class="scroll-hint">
+                  SCROLL
+
+                  <div class="scroll-line"></div>
+                </div>
+
+                <!-- =====================================================
+         PROGRESS
+    ===================================================== -->
+
+                <div class="progress">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
               </div>
+            </section>
 
-              <div class="contact-notes">
-                <h3>
-                  <i class="fas fa-info-circle"></i> ご協賛・ご寄付について
-                </h3>
-                <p>
-                  いただいたご支援は、ステージ設営・装飾・企画運営費など、技科大祭の開催に必要な費用として大切に活用させていただきます。<br />
-                  少額からのご支援も大変ありがたく、皆様のご厚意が学生たちの活動を支える大きな力となります。<br />
-                  お申し込みは上記のボタンより各専用サイト・フォームへお進みください。
+            <!-- =========================================================
+     SPONSOR LIST
+========================================================= -->
+
+            <section class="sponsors">
+              <div class="sponsor-inner">
+                <div class="sponsor-heading">
+                  <h2>SPONSORS</h2>
+
+                  <p>
+                    技科大祭2026<br />
+                    協賛企業・団体
+                  </p>
+                </div>
+
+                <div id="sponsorTiersContainer">
+                  <!-- ランク別に動的生成 -->
+                </div>
+
+                <!-- =====================================================
+         SPECIAL THANKS (ご協力企業)
+    ===================================================== -->
+
+                <div class="sponsor-tier-group">
+                  <div class="tier-title-wrap">
+                    <span class="tier-badge">SPECIAL THANKS</span>
+                    <span class="tier-name-ja">ご協力企業</span>
+                  </div>
+
+                  <div class="individual-names-grid">
+                    <div class="individual-name-card">
+                      株式会社マンナンライフ
+                    </div>
+                    <div class="individual-name-card">株式会社クレハ</div>
+                    <div class="individual-name-card">マルサンアイ株式会社</div>
+                    <div class="individual-name-card">カラオケビックエコー</div>
+                  </div>
+                </div>
+
+                <!-- =====================================================
+         INDIVIDUAL DONORS (PERSONAL SPONSORS)
+    ===================================================== -->
+
+                <div class="individual-section" id="individualSection">
+                  <div class="individual-header-wrap">
+                    <div class="individual-title-group">
+                      <span class="tier-badge">DONATION</span>
+                      <span class="individual-fund-title"
+                        >豊橋技術科学大学基金 寄附者ご芳名</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="individual-subtitle">
+                    技科大祭支援募金 個人（五十音順）
+                  </div>
+
+                  <div
+                    class="individual-kana-container"
+                    id="individualKanaContainer"
+                  >
+                    <!-- あ行、か行... の行グループを動的生成 -->
+                  </div>
+
+                  <div
+                    class="individual-anonymous-wrap"
+                    id="individualAnonymousWrap"
+                  >
+                    <span>掲載を希望されないご寄附者</span>
+                    <span>14名</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- =========================================================
+     THANKS (APPRECIATION & 50TH LOGO)
+========================================================= -->
+
+            <section class="thanks">
+              <div>
+                <div class="thanks-logo-wrap">
+                  <img
+                    src="logos/tut50th_logo.png"
+                    alt="豊橋技術科学大学 開学50周年記念シンボルマーク"
+                    class="thanks-logo-img"
+                  />
+                </div>
+
+                <div class="thanks-subtitle">THANK YOU FOR YOUR SUPPORT</div>
+
+                <div class="thanks-title">
+                  ご協賛・ご寄附をいただいたすべての皆さまへ、<br />心より深く感謝申し上げます。
+                </div>
+
+                <p class="thanks-text">
+                  皆さまからの温かいご支援とご協力が、開学50周年という節目を迎える豊橋技術科学大学において、学生たちの新たな挑戦を支え、一人ひとりの情熱を形にする「第49回
+                  技科大祭」の大きな原動力となっております。
+                  技術の未来、地域の未来をともに創るパートナーとして、多大なるご支援を賜りました協賛企業の皆さま、ならびに温かいご寄附をお寄せいただきました個人の皆さまへ、実行委員会・学生一同、心より深く御礼申し上げます。
                 </p>
               </div>
+            </section>
 
-              <div class="contact-notes">
-                <h3>
-                  <i class="fas fa-question-circle"></i> ご不明な点がある場合
-                </h3>
-                <p>
-                  ご協賛・ご寄付に関するご質問・ご相談は、<a href="contact.html"
-                    >お問い合わせページ</a
-                  >よりメールにてお受けしております。<br />
-                  お気軽にご連絡ください。
-                </p>
+            <!-- common footer is populated by site-loader.js -->
+
+            <!-- =========================================================
+     MODAL
+========================================================= -->
+
+            <div class="modal" id="modal">
+              <div class="modal-card">
+                <button class="modal-close" id="modalClose" aria-label="閉じる">
+                  ×
+                </button>
+
+                <div class="modal-tier-badge" id="modalTierBadge">SPONSOR</div>
+
+                <div class="modal-logo-wrap" id="modalLogoWrap"></div>
+
+                <div class="modal-name" id="modalName"></div>
+
+                <div class="modal-line"></div>
+
+                <div class="modal-message" id="modalMessage"></div>
+
+                <div class="modal-links" id="modalLinks"></div>
               </div>
             </div>
-          </section>
 
-          <!-- ご協賛企業・ご寄付者セクションは js/site-config.json の sections で管理 -->
-          <div data-include="sponsors"></div>
-          <div data-include="supporters"></div>
+            <!-- 協賛企業データファイル -->
+            <script src="sponsors.js"></script>
+
+            <script>
+              /* =========================================================
+   TIER DEFINITIONS & HELPERS
+========================================================= */
+
+              const TIERS = [
+                {
+                  key: "top",
+                  name: "トップスポンサー",
+                  en: "TOP SPONSOR",
+                  order: 1,
+                  wallClass: "w-top",
+                  gridClass: "grid-top",
+                },
+                {
+                  key: "premium",
+                  name: "プレミアムスポンサー",
+                  en: "PREMIUM SPONSOR",
+                  order: 2,
+                  wallClass: "w-premium",
+                  gridClass: "grid-premium",
+                },
+                {
+                  key: "gold",
+                  name: "ゴールドスポンサー",
+                  en: "GOLD SPONSOR",
+                  order: 3,
+                  wallClass: "w-gold",
+                  gridClass: "grid-gold",
+                },
+                {
+                  key: "silver",
+                  name: "シルバースポンサー",
+                  en: "SILVER SPONSOR",
+                  order: 4,
+                  wallClass: "w-silver",
+                  gridClass: "grid-silver",
+                },
+                {
+                  key: "bronze",
+                  name: "ブロンズスポンサー",
+                  en: "BRONZE SPONSOR",
+                  order: 5,
+                  wallClass: "w-bronze",
+                  gridClass: "grid-bronze",
+                },
+                {
+                  key: "supporter",
+                  name: "サポーター",
+                  en: "SUPPORTER",
+                  order: 6,
+                  wallClass: "w-supporter",
+                  gridClass: "grid-supporter",
+                },
+              ];
+
+              function getSponsorTier(sponsor) {
+                // 名古屋TONKAN・ドボプロ・理系就活研究所特例（旧キャリアナビゲーション）
+                if (sponsor.name && sponsor.name.includes("名古屋TONKAN")) {
+                  return TIERS.find((t) => t.key === "premium");
+                }
+
+                if (sponsor.amount >= 500000) {
+                  return TIERS.find((t) => t.key === "top");
+                }
+
+                if (sponsor.amount >= 150000) {
+                  return TIERS.find((t) => t.key === "premium");
+                }
+
+                if (sponsor.amount >= 100000) {
+                  return TIERS.find((t) => t.key === "gold");
+                }
+
+                if (sponsor.amount >= 50000) {
+                  return TIERS.find((t) => t.key === "silver");
+                }
+
+                if (sponsor.amount >= 30000) {
+                  return TIERS.find((t) => t.key === "bronze");
+                }
+
+                return TIERS.find((t) => t.key === "supporter");
+              }
+
+              function getCardInner(sponsor) {
+                if (sponsor.logo && sponsor.logo.trim() !== "") {
+                  return `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
+                }
+
+                return `<span class="logo-name">${sponsor.name}</span>`;
+              }
+
+              /* =========================================================
+   SORTED SPONSORS BY TIER
+========================================================= */
+
+              const sortedSponsors = [...sponsors].sort((a, b) => {
+                const tierA = getSponsorTier(a);
+                const tierB = getSponsorTier(b);
+                return tierA.order - tierB.order;
+              });
+
+              /* =========================================================
+   CREATE MARQUEE CARD (4 ROWS)
+========================================================= */
+
+              function createMarqueeCard(sponsor) {
+                const card = document.createElement("div");
+
+                card.className = "logo-card";
+
+                card.innerHTML = getCardInner(sponsor);
+
+                card.addEventListener("click", () => {
+                  openModal(sponsor);
+                });
+
+                return card;
+              }
+
+              const ROW_COUNT = 4;
+              const itemsPerRow = Math.ceil(sponsors.length / ROW_COUNT); // 28社 / 4 = 7社ずつ均等
+              const rowSponsors = [];
+
+              for (let r = 0; r < ROW_COUNT; r++) {
+                rowSponsors.push(
+                  sponsors.slice(r * itemsPerRow, (r + 1) * itemsPerRow),
+                );
+              }
+
+              const tracks = [
+                document.querySelector("#row1 .track"),
+                document.querySelector("#row2 .track"),
+                document.querySelector("#row3 .track"),
+                document.querySelector("#row4 .track"),
+              ];
+
+              tracks.forEach((track, rowIndex) => {
+                const list = rowSponsors[rowIndex];
+
+                /*
+            10セット複製して2.2周スクロールしても途切れないようにする
+        */
+                for (let repeat = 0; repeat < 10; repeat++) {
+                  list.forEach((sponsor) => {
+                    track.appendChild(createMarqueeCard(sponsor));
+                  });
+                }
+              });
+
+              /* =========================================================
+   CREATE WALL (SORTED BY TIER & SIZED ACCORDINGLY)
+========================================================= */
+
+              const wall = document.getElementById("wall");
+
+              sortedSponsors.forEach((sponsor, index) => {
+                const tier = getSponsorTier(sponsor);
+
+                const card = document.createElement("div");
+
+                card.className = `wall-card ${tier.wallClass}`;
+
+                card.style.transitionDelay = `${0.02 + index * 0.015}s`;
+
+                card.innerHTML = getCardInner(sponsor);
+
+                card.addEventListener("click", () => {
+                  openModal(sponsor);
+                });
+
+                wall.appendChild(card);
+              });
+
+              /* =========================================================
+   SPONSOR LIST (TIER SECTIONS)
+========================================================= */
+
+              const sponsorTiersContainer = document.getElementById(
+                "sponsorTiersContainer",
+              );
+
+              TIERS.forEach((tier) => {
+                const tierSponsors = sortedSponsors.filter(
+                  (s) => getSponsorTier(s).key === tier.key,
+                );
+
+                if (tierSponsors.length === 0) return;
+
+                const group = document.createElement("div");
+
+                group.className = "sponsor-tier-group";
+
+                // 見出し
+                const titleWrap = document.createElement("div");
+
+                titleWrap.className = "tier-title-wrap";
+
+                titleWrap.innerHTML = `
+        <span class="tier-badge">${tier.en}</span>
+        <span class="tier-name-ja">${tier.name}</span>
+    `;
+
+                group.appendChild(titleWrap);
+
+                // グリッド
+                const grid = document.createElement("div");
+
+                grid.className = `tier-grid ${tier.gridClass}`;
+
+                tierSponsors.forEach((sponsor) => {
+                  const card = document.createElement("div");
+
+                  card.className = "sponsor-list-card";
+
+                  card.innerHTML = getCardInner(sponsor);
+
+                  card.addEventListener("click", () => {
+                    openModal(sponsor);
+                  });
+
+                  grid.appendChild(card);
+                });
+
+                group.appendChild(grid);
+
+                sponsorTiersContainer.appendChild(group);
+              });
+
+              /* =========================================================
+   INDIVIDUAL DONORS RENDERING (KANA GROUPS & ANONYMOUS)
+========================================================= */
+
+              const individualKanaContainer = document.getElementById(
+                "individualKanaContainer",
+              );
+
+              const individualAnonymousWrap = document.getElementById(
+                "individualAnonymousWrap",
+              );
+
+              if (
+                individualKanaContainer &&
+                typeof individualDonorsData !== "undefined"
+              ) {
+                // 日付反映
+                const dateEl = document.querySelector(".individual-date");
+                if (dateEl && individualDonorsData.date) {
+                  dateEl.textContent = individualDonorsData.date;
+                }
+
+                // 匿名希望の反映
+                if (individualAnonymousWrap && individualDonorsData.anonymous) {
+                  individualAnonymousWrap.innerHTML = `
+            <span>掲載を希望されないご寄附者</span>
+            <span>${individualDonorsData.anonymous.replace("掲載を希望されないご寄附者", "").trim()}</span>
+        `;
+                }
+
+                // 五十音別グループの生成
+                if (Array.isArray(individualDonorsData.sections)) {
+                  individualDonorsData.sections.forEach((section) => {
+                    if (!section.names || section.names.length === 0) return;
+
+                    const group = document.createElement("div");
+                    group.className = "individual-kana-group";
+
+                    // 行ラベル（あ行、か行...）
+                    const label = document.createElement("div");
+                    label.className = "individual-kana-label";
+                    label.textContent = section.kana;
+                    group.appendChild(label);
+
+                    // ネームグリッド
+                    const namesGrid = document.createElement("div");
+                    namesGrid.className = "individual-names-grid";
+
+                    section.names.forEach((name) => {
+                      const card = document.createElement("div");
+                      card.className = "individual-name-card";
+                      card.textContent = name;
+                      namesGrid.appendChild(card);
+                    });
+
+                    group.appendChild(namesGrid);
+                    individualKanaContainer.appendChild(group);
+                  });
+                }
+              }
+
+              /* =========================================================
+   MODAL
+========================================================= */
+
+              const modal = document.getElementById("modal");
+
+              const modalTierBadge = document.getElementById("modalTierBadge");
+
+              const modalLogoWrap = document.getElementById("modalLogoWrap");
+
+              const modalName = document.getElementById("modalName");
+
+              const modalMessage = document.getElementById("modalMessage");
+
+              const modalLinks = document.getElementById("modalLinks");
+
+              function openModal(sponsor) {
+                const tier = getSponsorTier(sponsor);
+
+                modalTierBadge.textContent = `${tier.en} ｜ ${tier.name}`;
+
+                modalName.textContent = sponsor.name;
+
+                // ロゴ画像
+                if (sponsor.logo && sponsor.logo.trim() !== "") {
+                  modalLogoWrap.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
+                  modalLogoWrap.classList.add("active");
+                } else {
+                  modalLogoWrap.innerHTML = "";
+                  modalLogoWrap.classList.remove("active");
+                }
+
+                // 企業紹介文 / メッセージ
+                if (
+                  sponsor.description &&
+                  sponsor.description.trim() !== "" &&
+                  sponsor.description !== "後で挿入"
+                ) {
+                  modalMessage.textContent = sponsor.description;
+                } else {
+                  modalMessage.innerHTML = `技科大祭2026をご支援いただいています。<br><br>皆さまのご協力によって、開学50周年を迎える豊橋技術科学大学の技科大祭を、さらに大きな祭りへ。`;
+                }
+
+                // Webサイト / SNSリンクボタン
+                modalLinks.innerHTML = "";
+
+                if (sponsor.links && Array.isArray(sponsor.links)) {
+                  sponsor.links.forEach((link) => {
+                    if (!link.url || link.url.trim() === "") return;
+
+                    const btn = document.createElement("a");
+                    btn.href = link.url;
+                    btn.target = "_blank";
+                    btn.rel = "noopener noreferrer";
+
+                    let iconSvg = "";
+                    let btnClass = "btn-website";
+
+                    if (
+                      link.type === "instagram" ||
+                      link.url.includes("instagram.com")
+                    ) {
+                      btnClass = "btn-instagram";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+                    } else if (
+                      link.type === "youtube" ||
+                      link.url.includes("youtube.com") ||
+                      link.url.includes("youtu.be")
+                    ) {
+                      btnClass = "btn-youtube";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+                    } else if (
+                      link.type === "x" ||
+                      link.url.includes("x.com") ||
+                      link.url.includes("twitter.com")
+                    ) {
+                      btnClass = "btn-x";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+                    } else if (
+                      link.type === "tiktok" ||
+                      link.url.includes("tiktok.com")
+                    ) {
+                      btnClass = "btn-tiktok";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>`;
+                    } else {
+                      btnClass = "btn-website";
+                      iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
+                    }
+
+                    btn.className = `modal-link-btn ${btnClass}`;
+                    btn.innerHTML = `${iconSvg} ${link.label || "Webサイト"}`;
+                    modalLinks.appendChild(btn);
+                  });
+                }
+
+                modal.classList.add("active");
+              }
+
+              function closeModal() {
+                modal.classList.remove("active");
+              }
+
+              document
+                .getElementById("modalClose")
+                .addEventListener("click", closeModal);
+
+              modal.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                  closeModal();
+                }
+              });
+
+              document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                  closeModal();
+                }
+              });
+
+              /* =========================================================
+   ANIMATION & SCROLL ENGINE
+========================================================= */
+
+              const section = document.querySelector(".marquee-section");
+
+              const wallElement = document.getElementById("wall");
+
+              const progressFill = document.getElementById("progressFill");
+
+              const counter = document.getElementById("counter");
+
+              // 初期カウントアップアニメーション (0 -> 全社数)
+              let currentCount = 0;
+              const totalSponsorsCount = sponsors.length;
+
+              function animateCounter() {
+                if (currentCount < totalSponsorsCount) {
+                  currentCount++;
+                  counter.textContent = currentCount;
+                  setTimeout(animateCounter, 45);
+                } else {
+                  counter.textContent = totalSponsorsCount;
+                }
+              }
+              setTimeout(animateCounter, 200);
+
+              /* =========================================================
+   SCROLL TIMING SETTINGS
+========================================================= */
+
+              const FADE_START = 0.1;
+              const FADE_END = 0.2;
+              const WALL_START = 0.2;
+
+              let autoOffset = 0;
+              const AUTO_SPEED = 0.65;
+
+              /* =========================================================
+   WALL SNAP (少しでもスクロールしたらwallが揃った位置まで一気に移動する)
+========================================================= */
+
+              let wallSnapArmed = true;
+
+              function snapToWall() {
+                const rect = section.getBoundingClientRect();
+                const total = section.offsetHeight - window.innerHeight;
+                const sectionTopAbsolute = window.scrollY + rect.top;
+                const targetY = sectionTopAbsolute + WALL_START * total;
+
+                window.scrollTo({ top: targetY, behavior: "smooth" });
+              }
+
+              /* =========================================================
+   CLAMP
+========================================================= */
+
+              function clamp(value, min, max) {
+                return Math.max(min, Math.min(max, value));
+              }
+
+              /* =========================================================
+   CONTINUOUS ANIMATION LOOP (AUTO-FLOWING MARQUEE)
+========================================================= */
+
+              function animateMarquee() {
+                autoOffset += AUTO_SPEED;
+
+                tracks.forEach((track, index) => {
+                  const totalWidth = track.scrollWidth;
+
+                  // 10セット複製しているため、1セット分の幅は totalWidth / 10
+                  const oneSetWidth = totalWidth / 10;
+
+                  const offset = autoOffset % oneSetWidth;
+
+                  let currentX = 0;
+
+                  if (index % 2 === 0) {
+                    // 1・3段目（左方向へ自動で流れる）
+                    currentX = -(oneSetWidth * 2) - offset;
+                  } else {
+                    // 2・4段目（右方向へ自動で流れる）
+                    currentX = -(oneSetWidth * 6) + offset;
+                  }
+
+                  track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+                });
+
+                updateScroll();
+
+                requestAnimationFrame(animateMarquee);
+              }
+
+              /* =========================================================
+   SCROLL UPDATE (TRANSITION TO WALL & 50TH LOGO)
+========================================================= */
+
+              function updateScroll() {
+                const rect = section.getBoundingClientRect();
+
+                const total = section.offsetHeight - window.innerHeight;
+
+                let progress = -rect.top / total;
+
+                progress = clamp(progress, 0, 1);
+
+                /* =====================================================
+       PROGRESS BAR
+    ===================================================== */
+
+                if (progressFill) {
+                  progressFill.style.height = progress * 100 + "%";
+                }
+
+                /* =====================================================
+       FADE MARQUEE & HEADERS
+    ===================================================== */
+
+                let fade = 0;
+
+                if (progress > FADE_START) {
+                  fade = clamp(
+                    (progress - FADE_START) / (FADE_END - FADE_START),
+                    0,
+                    1,
+                  );
+                }
+
+                const marqueeOpacity = 1 - fade;
+
+                document.querySelectorAll(".marquee").forEach((marquee) => {
+                  marquee.style.opacity = marqueeOpacity;
+
+                  marquee.style.pointerEvents =
+                    marqueeOpacity < 0.1 ? "none" : "auto";
+                });
+
+                const topLabelEl = document.querySelector(".top-label");
+                const counterEl = document.querySelector(".counter");
+                const scrollHintEl = document.querySelector(".scroll-hint");
+                if (topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
+                if (counterEl) counterEl.style.opacity = marqueeOpacity;
+                if (scrollHintEl) scrollHintEl.style.opacity = marqueeOpacity;
+
+                /* =====================================================
+       WALL SNAP（少しでもスクロールしたらwallが揃うところまで移動）
+    ===================================================== */
+
+                if (progress <= 0.001) {
+                  wallSnapArmed = true;
+                } else if (progress < WALL_START && wallSnapArmed) {
+                  wallSnapArmed = false;
+                  snapToWall();
+                }
+
+                /* =====================================================
+       WALL (12-COLUMN TIERED GRID)
+    ===================================================== */
+
+                if (progress >= WALL_START) {
+                  wallElement.classList.add("active");
+                } else {
+                  wallElement.classList.remove("active");
+                }
+              }
+
+              /* =========================================================
+   EVENTS & START
+========================================================= */
+
+              window.addEventListener("scroll", updateScroll, {
+                passive: true,
+              });
+
+              window.addEventListener("resize", updateScroll);
+
+              // 自動アニメーションループ開始
+              requestAnimationFrame(animateMarquee);
+            </script>
+          </div>
+          <!-- /.sponsor-wrapper -->
         </main>
       </div>
       <footer></footer>
@@ -197,11 +2333,13 @@
       integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
       crossorigin="anonymous"
     ></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"
       integrity="sha384-pd7qbPsmTJfjFiks31ehUn6A68yiF8HXwV4anhaOf8icgDte+6V3PCNNYs933QCg"
       crossorigin="anonymous"
     ></script>
+
     <script src="js/escape-html.js"></script>
     <script src="js/main.js"></script>
     <script src="js/site-loader.js"></script>
