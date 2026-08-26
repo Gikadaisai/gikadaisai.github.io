@@ -448,7 +448,9 @@ const individualDonorsData = {
         "上田 敏史 様",
         "内山 直樹 様",
         "大村 浩志 様",
+        "岡野 哲也 様",
         "小川 裕行 様",
+        "小口 達夫 様",
       ],
     },
     {
@@ -480,5 +482,5 @@ const individualDonorsData = {
       names: ["安福 英俊 様", "山道 一樹 様", "横手 啓紀 様"],
     },
   ],
-  anonymous: "掲載を希望されないご寄附者 14名",
+  anonymous: "掲載を希望されないご寄附者 15名",
 };
