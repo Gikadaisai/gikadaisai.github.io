@@ -105,8 +105,16 @@
                   <label for="filter-type">絞り込み:</label>
                   <select id="filter-type">
                     <option value="all" selected>すべて</option>
-                    <option value="indoor">屋内企画</option>
-                    <option value="tent">屋外企画</option>
+                    <option value="ご当地・屋内飲食模擬店">
+                      ご当地・屋内飲食模擬店
+                    </option>
+                    <option value="キッチンカー">キッチンカー</option>
+                    <option value="遊戯模擬店">遊戯模擬店</option>
+                    <option value="科学体験（Techフェス）">
+                      科学体験（Techフェス）
+                    </option>
+                    <option value="サークル体験">サークル体験</option>
+                    <option value="サークル展示">サークル展示</option>
                   </select>
                 </div>
                 <div class="control-group">
@@ -218,12 +226,13 @@
           try {
             const filterValue = filterSelect.value;
             let filteredShops;
-            if (filterValue === "indoor") {
-              filteredShops = allShops.filter((shop) => shop.place === "室内");
-            } else if (filterValue === "tent") {
-              filteredShops = allShops.filter((shop) => shop.place === "屋外");
-            } else {
+
+            if (filterValue === "all") {
               filteredShops = [...allShops];
+            } else {
+              filteredShops = allShops.filter(
+                (shop) => shop.category === filterValue,
+              );
             }
             const sortKey = sortKeySelect.value;
             const sortOrder = sortOrderSelect.value;
@@ -265,24 +274,146 @@
               const safeTitle = escapeHtml(shop.title);
               const safeCircle = escapeHtml(shop.circle);
               const safeLocation = escapeHtml(shop.location);
-              const img = safeIconName(shop.img);
-              return `
-                <div class="shop-card">
-                    <div class="shop-card-image">
-                        <img src="data/shop/icon/${img}" alt="${safeCircle} アイコン" onerror="this.onerror=null; this.src='data/shop/icon/default.png';">
-                    </div>
-                    <div class="shop-card-content">
-                        <p class="shop-card-title">${safeTitle}</p>
-                        <div class="shop-card-footer">
-                            <span class="shop-card-circle">${safeCircle}</span>
-                            <span class="shop-card-location">${safeLocation}</span>
+              const safeComment = shop.comment ? escapeHtml(shop.comment) : "";
+              const imgData = shop.img;
+              let imgHtml = "";
+              if (Array.isArray(imgData) && imgData.length >= 2) {
+                // 複数画像: multi-img スライダー
+                const first = safeIconName(imgData[0] || "");
+                // data-imgs にJSON文字列で全画像を保存
+                const imgsJson = JSON.stringify(
+                  imgData.map((n) => safeIconName(n)),
+                ).replace(/"/g, "&quot;");
+                const dots = imgData
+                  .map(
+                    (_, i) =>
+                      `<span class="dot${i === 0 ? " active" : ""}"></span>`,
+                  )
+                  .join("");
+                imgHtml = `
+                    <div class="shop-card-image multi-img" data-idx="0" data-imgs="${imgsJson}">
+                      <img src="data/shop/icon/${first}" alt="${safeCircle} アイコン" onerror="this.onerror=null; this.src='data/shop/icon/default.png';">
+                      <div class="img-dots">${dots}</div>
+                    </div>`;
+              } else {
+                const src = safeIconName(
+                  Array.isArray(imgData) ? imgData[0] : imgData,
+                );
+                imgHtml = `<div class="shop-card-image"><img src="data/shop/icon/${src}" alt="${safeCircle} アイコン" onerror="this.onerror=null; this.src='data/shop/icon/default.png';"></div>`;
+              }
+              const commentHtml = safeComment
+                ? `
+                      <div class="shop-card-comment">
+                        <button type="button" class="shop-card-comment-toggle" aria-expanded="false">
+                          <i class="fas fa-comment"></i>
+                          <span>コメント</span>
+                          <i class="fas fa-chevron-down shop-card-comment-chevron"></i>
+                        </button>
+                        <div class="shop-card-comment-body">
+                          <p class="shop-card-comment-text">${safeComment}</p>
                         </div>
+                      </div>`
+                : "";
+              return `
+                  <div class="shop-card">
+                    ${imgHtml}
+                    <div class="shop-card-content">
+                      <p class="shop-card-title">${safeTitle}</p>
+                      <div class="shop-card-footer">
+                        <span class="shop-card-circle">${safeCircle}</span>
+                        <span class="shop-card-location">${safeLocation}</span>
+                      </div>
+                      ${commentHtml}
                     </div>
-                </div>
-            `;
+                  </div>`;
             })
             .join("");
         };
+
+        // ---- スライダー：クリック & スワイプ ----
+        // イベントデリゲーションで shopListContainer に一度だけ登録
+        let sliderTouchX = null;
+
+        function switchSlide(card, dir) {
+          const imgs = JSON.parse(card.dataset.imgs.replace(/&quot;/g, '"'));
+          let idx = parseInt(card.dataset.idx, 10);
+          const nextIdx = (idx + dir + imgs.length) % imgs.length;
+          card.dataset.idx = nextIdx;
+
+          const currentImg = card.querySelector("img");
+          if (!currentImg) return;
+
+          // 現在の img をアウト方向にアニメーション
+          const outClass = dir > 0 ? "anim-out-left" : "anim-out-right";
+          currentImg.classList.add(outClass);
+
+          // 新しい img を生成してインアニメーション
+          const newImg = document.createElement("img");
+          newImg.src = `data/shop/icon/${imgs[nextIdx]}`;
+          newImg.alt = currentImg.alt;
+          newImg.onerror = function () {
+            this.onerror = null;
+            this.src = "data/shop/icon/default.png";
+          };
+          const inClass = dir > 0 ? "anim-in-right" : "anim-in-left";
+          newImg.classList.add(inClass);
+          card.insertBefore(newImg, card.querySelector(".img-dots"));
+
+          // アウト完了後に古い img を削除
+          currentImg.addEventListener(
+            "animationend",
+            () => {
+              currentImg.remove();
+              newImg.classList.remove(inClass);
+            },
+            { once: true },
+          );
+
+          // ドット更新
+          card.querySelectorAll(".dot").forEach((d, i) => {
+            d.classList.toggle("active", i === nextIdx);
+          });
+        }
+
+        if (shopListContainer) {
+          // クリックで次の画像へ
+          shopListContainer.addEventListener("click", (e) => {
+            const toggle = e.target.closest(".shop-card-comment-toggle");
+            if (toggle) {
+              const wrapper = toggle.closest(".shop-card-comment");
+              const isOpen = wrapper.classList.toggle("is-open");
+              toggle.setAttribute("aria-expanded", String(isOpen));
+              return;
+            }
+            const card = e.target.closest(".multi-img");
+            if (card) switchSlide(card, 1);
+          });
+
+          // タッチ開始
+          shopListContainer.addEventListener(
+            "touchstart",
+            (e) => {
+              if (e.target.closest(".multi-img")) {
+                sliderTouchX = e.touches[0].clientX;
+              }
+            },
+            { passive: true },
+          );
+
+          // タッチ終了（フリック方向で切り替え）
+          shopListContainer.addEventListener(
+            "touchend",
+            (e) => {
+              const card = e.target.closest(".multi-img");
+              if (!card || sliderTouchX === null) return;
+              const dx = e.changedTouches[0].clientX - sliderTouchX;
+              sliderTouchX = null;
+              if (Math.abs(dx) < 25) return; // 小さすぎる動きは無視
+              switchSlide(card, dx < 0 ? 1 : -1);
+            },
+            { passive: true },
+          );
+        }
 
         if (filterSelect && sortKeySelect && sortOrderSelect) {
           filterSelect.addEventListener("change", renderList);

@@ -1110,10 +1110,90 @@ p.next-bus-info {
   overflow: hidden;
 }
 
+/* ===== 複数画像スライダー ===== */
+.shop-card-image.multi-img {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* スライドアニメーション */
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-to-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.shop-card-image.multi-img img.anim-out-left {
+  position: absolute;
+  inset: 0;
+  animation: slide-to-left 0.28s ease forwards;
+}
+.shop-card-image.multi-img img.anim-out-right {
+  position: absolute;
+  inset: 0;
+  animation: slide-to-right 0.28s ease forwards;
+}
+.shop-card-image.multi-img img.anim-in-right {
+  animation: slide-from-right 0.28s ease forwards;
+}
+.shop-card-image.multi-img img.anim-in-left {
+  animation: slide-from-left 0.28s ease forwards;
+}
+
+/* ドットインジケーター */
+.img-dots {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  pointer-events: none;
+}
+.img-dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  transition: background 0.2s;
+}
+.img-dots .dot.active {
+  background: #fff;
+}
+
 .shop-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .shop-card-content {
@@ -1161,6 +1241,61 @@ p.next-bus-info {
   border: 1px solid var(--border-color);
 }
 
+/* ===== 店舗コメント（開閉式） ===== */
+.shop-card-comment {
+  margin-top: 0.5rem;
+}
+
+.shop-card-comment-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.4rem 0;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.shop-card-comment-toggle i.fa-comment {
+  color: var(--primary-color);
+}
+
+.shop-card-comment-chevron {
+  margin-left: auto;
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+}
+
+.shop-card-comment.is-open .shop-card-comment-chevron {
+  transform: rotate(180deg);
+}
+
+.shop-card-comment-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.shop-card-comment.is-open .shop-card-comment-body {
+  grid-template-rows: 1fr;
+}
+
+.shop-card-comment-text {
+  min-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding-right: 0.2rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #555;
+  white-space: pre-wrap;
+}
+
 /* ========== Contact Page ========== */
 .contact-container {
   max-width: 800px;
@@ -1169,12 +1304,18 @@ p.next-bus-info {
 }
 
 .contact-button-wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
   margin: 2rem 0 3rem;
+  flex-wrap: wrap;
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   color: var(--primary-color);
   padding: 1rem 2.5rem;
@@ -1185,6 +1326,9 @@ p.next-bus-info {
   font-size: 1.1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 107, 94, 0.15);
+  white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cta-button:hover {
@@ -1196,6 +1340,7 @@ p.next-bus-info {
 
 .cta-button .fas {
   margin-right: 0.8em;
+  flex-shrink: 0;
 }
 
 .contact-notes {
@@ -1221,6 +1366,19 @@ p.next-bus-info {
 .contact-notes p {
   margin: 0;
   line-height: 1.8;
+}
+
+/* スマホ: ボタンを縦並びにし、画面幅に収める */
+.small-screen .contact-button-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-screen .cta-button {
+  width: 100%;
+  max-width: 360px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
 }
 
 /* ========== Feature Blocks (Theme & Guest) ========== */
