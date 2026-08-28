@@ -184,6 +184,6 @@
     "support": true,
     "access": true,
     "contact": true,
-    "guest": false
+    "guest": true
   }
 }
