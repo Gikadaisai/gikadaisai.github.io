@@ -136,7 +136,7 @@
       .top-label {
         position: absolute;
 
-        top: 32px;
+        top: 14px;
         left: 36px;
 
         z-index: 100;
@@ -155,15 +155,15 @@
 
         letter-spacing: 0.25em;
 
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .top-label-title {
-        font-size: clamp(22px, 2.5vw, 34px);
+        font-size: clamp(18px, 2vw, 25px);
 
         font-weight: 900;
 
-        line-height: 1.28;
+        line-height: 1.22;
 
         letter-spacing: -0.03em;
 
@@ -177,7 +177,7 @@
       .counter {
         position: absolute;
 
-        top: 32px;
+        top: 14px;
         right: 36px;
 
         z-index: 100;
@@ -190,7 +190,7 @@
       }
 
       .counter-number {
-        font-size: clamp(32px, 3.5vw, 44px);
+        font-size: clamp(28px, 3vw, 40px);
 
         line-height: 1;
 
@@ -202,7 +202,7 @@
       }
 
       .counter-label {
-        margin-top: 6px;
+        margin-top: 4px;
 
         font-size: 9.5px;
 
@@ -352,7 +352,10 @@
       .wall {
         position: absolute;
 
-        inset: 8.5% 3.5% 8.5% 3.5%;
+        top: 82px;
+        bottom: 25px;
+        left: 3.5%;
+        right: 3.5%;
 
         display: grid;
 
@@ -444,7 +447,7 @@
       }
 
       .wall-card img {
-        max-width: 96%;
+        max-width: 95%;
         max-height: 90%;
         width: 100%;
         height: 100%;
@@ -571,9 +574,15 @@
    SPONSOR LIST (TIERED SECTIONS)
 ========================================================= */
 
-      .sponsors {
-        padding: 120px 25px 80px;
-
+      .sponsor-wrapper section.sponsors,
+      main .sponsor-wrapper section.sponsors {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        border: none;
+        box-shadow: none;
+        padding: 100px 24px 80px;
         background: #fff;
       }
 
@@ -623,10 +632,6 @@
         margin-bottom: 50px;
       }
 
-      .sponsor-tier-group:last-child {
-        margin-bottom: 0;
-      }
-
       .tier-title-wrap {
         display: flex;
         align-items: center;
@@ -657,6 +662,7 @@
       /* Tier Grids */
       .tier-grid {
         display: grid;
+        grid-auto-rows: 1fr;
         gap: 12px;
       }
 
@@ -700,7 +706,10 @@
 
         border: 1px solid #e0e0e0;
 
-        padding: 8px 12px;
+        padding: 6px 12px;
+
+        width: 100%;
+        height: 100%;
 
         cursor: pointer;
 
@@ -725,8 +734,8 @@
       }
 
       .sponsor-list-card img {
-        max-width: 96%;
-        max-height: 90%;
+        max-width: 93%;
+        max-height: 88%;
         width: 100%;
         height: 100%;
         object-fit: contain;
@@ -735,47 +744,53 @@
 
       /* List Card Heights & Typography by Tier */
       .grid-top .sponsor-list-card {
-        min-height: 160px;
-        font-size: 18px;
+        min-height: 135px;
+        height: 135px;
+        font-size: 17px;
         font-weight: 900;
         border: 1.5px solid #111;
-        background: #fff;
-        padding: 12px 24px;
-      }
-
-      .grid-premium .sponsor-list-card {
-        min-height: 140px;
-        font-size: 16px;
-        font-weight: 850;
-        border: 1.5px solid #222;
         background: #fff;
         padding: 10px 20px;
       }
 
-      .grid-gold .sponsor-list-card {
+      .grid-premium .sponsor-list-card {
         min-height: 115px;
-        font-size: 14px;
-        font-weight: 800;
-        padding: 8px 14px;
+        height: 115px;
+        font-size: 15px;
+        font-weight: 850;
+        border: 1.5px solid #222;
+        background: #fff;
+        padding: 8px 16px;
       }
 
-      .grid-silver .sponsor-list-card {
-        min-height: 100px;
-        font-size: 12.5px;
-        font-weight: 750;
+      .grid-gold .sponsor-list-card {
+        min-height: 96px;
+        height: 96px;
+        font-size: 13.5px;
+        font-weight: 800;
         padding: 6px 12px;
       }
 
+      .grid-silver .sponsor-list-card {
+        min-height: 86px;
+        height: 86px;
+        font-size: 12px;
+        font-weight: 750;
+        padding: 5px 10px;
+      }
+
       .grid-bronze .sponsor-list-card {
-        min-height: 85px;
+        min-height: 76px;
+        height: 76px;
         font-size: 11px;
         font-weight: 700;
         padding: 4px 8px;
       }
 
       .grid-supporter .sponsor-list-card {
-        min-height: 75px;
-        font-size: 10.5px;
+        min-height: 76px;
+        height: 76px;
+        font-size: 11px;
         font-weight: 700;
         padding: 4px 6px;
       }
@@ -874,12 +889,66 @@
         user-select: none;
       }
 
+      .special-thanks-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        width: 100%;
+      }
+
+      .special-thanks-card {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        background: #fff;
+
+        border: 1px solid #e0e0e0;
+
+        border-radius: 4px;
+
+        padding: 14px 10px;
+
+        font-size: 13.5px;
+
+        font-weight: 750;
+
+        color: #222;
+
+        letter-spacing: 0.02em;
+
+        white-space: nowrap !important;
+
+        word-break: keep-all !important;
+
+        min-width: 0;
+
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .special-thanks-card:hover {
+        border-color: #111;
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      }
+
       .individual-names-grid {
         display: grid;
 
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
 
         gap: 8px;
+
+        width: 100%;
       }
 
       .individual-name-card {
@@ -897,7 +966,7 @@
 
         border-radius: 4px;
 
-        padding: 9px 10px;
+        padding: 9px 8px;
 
         font-size: 13px;
 
@@ -906,6 +975,16 @@
         color: #222;
 
         letter-spacing: 0.02em;
+
+        white-space: nowrap !important;
+
+        word-break: keep-all !important;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        min-width: 0;
 
         transition:
           transform 0.2s ease,
@@ -953,6 +1032,8 @@
    THANKS (APPRECIATION & 50TH LOGO)
 ========================================================= */
 
+      .sponsor-wrapper section.thanks,
+      main .sponsor-wrapper section.thanks,
       .thanks {
         display: flex;
 
@@ -962,7 +1043,14 @@
 
         text-align: center;
 
-        padding: 80px 24px 110px;
+        padding: 90px 24px 120px;
+
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        box-sizing: border-box;
 
         background: #fff;
 
@@ -976,11 +1064,11 @@
 
         align-items: center;
 
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
 
       .thanks-logo-img {
-        width: clamp(130px, 16vw, 190px);
+        width: clamp(140px, 15vw, 180px);
 
         height: auto;
 
@@ -992,19 +1080,19 @@
       }
 
       .thanks-subtitle {
-        font-size: 10.5px;
+        font-size: 11px;
 
         font-weight: 850;
 
         color: #777;
 
-        letter-spacing: 0.26em;
+        letter-spacing: 0.28em;
 
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
 
       .thanks-title {
-        font-size: clamp(24px, 3.2vw, 40px);
+        font-size: clamp(24px, 2.6vw, 36px);
 
         font-weight: 900;
 
@@ -1018,15 +1106,23 @@
       .thanks-text {
         max-width: 680px;
 
-        margin: 22px auto 0;
+        width: 100%;
 
-        font-size: 14.5px;
+        margin: 26px auto 0;
 
-        line-height: 2.3;
+        font-size: 15px;
+
+        line-height: 2.25;
+
+        letter-spacing: 0.02em;
 
         color: #444;
 
         font-weight: 500;
+
+        text-align: justify;
+
+        text-justify: inter-ideograph;
       }
 
       /* =========================================================
@@ -1336,33 +1432,36 @@
         }
 
         .top-label {
-          top: 18px;
-          left: 18px;
+          top: 8px;
+          left: 16px;
         }
 
         .counter {
-          top: 18px;
-          right: 18px;
+          top: 8px;
+          right: 16px;
         }
 
         .marquee-row-1 {
-          top: 22%;
+          top: 18%;
         }
 
         .marquee-row-2 {
-          top: 40%;
+          top: 36%;
         }
 
         .marquee-row-3 {
-          top: 58%;
+          top: 54%;
         }
 
         .marquee-row-4 {
-          top: 76%;
+          top: 72%;
         }
 
         .wall {
-          inset: 7% 2% 5% 2%;
+          top: 76px;
+          bottom: 18px;
+          left: 2%;
+          right: 2%;
 
           grid-template-columns: repeat(12, 1fr);
 
@@ -1378,9 +1477,9 @@
         }
 
         .wall-card img {
-          max-width: 98%;
+          max-width: 95%;
 
-          max-height: 92%;
+          max-height: 90%;
 
           width: 100%;
 
@@ -1425,50 +1524,153 @@
           font-size: 8px;
         }
 
+        .sponsor-wrapper section.sponsors,
+        main .sponsor-wrapper section.sponsors {
+          padding: 50px 20px 60px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        .sponsor-tier-group {
+          margin-bottom: 45px;
+        }
+
+        .tier-grid {
+          grid-auto-rows: 1fr;
+          gap: 10px;
+        }
+
         .grid-top {
           grid-template-columns: 1fr;
         }
 
+        .grid-top .sponsor-list-card {
+          min-height: 110px;
+          height: 110px;
+          padding: 6px 12px;
+        }
+
         .grid-premium {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-premium .sponsor-list-card {
+          min-height: 90px;
+          height: 90px;
+          padding: 5px 10px;
         }
 
         .grid-gold {
           grid-template-columns: repeat(2, 1fr);
         }
 
+        .grid-gold .sponsor-list-card {
+          min-height: 82px;
+          height: 82px;
+          padding: 5px 8px;
+        }
+
         .grid-silver {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-silver .sponsor-list-card {
+          min-height: 75px;
+          height: 75px;
+          padding: 4px 6px;
         }
 
         .grid-bronze {
           grid-template-columns: repeat(3, 1fr);
         }
 
+        .grid-bronze .sponsor-list-card {
+          min-height: 68px;
+          height: 68px;
+          padding: 3px 5px;
+        }
+
         .grid-supporter {
           grid-template-columns: repeat(3, 1fr);
         }
 
+        .grid-supporter .sponsor-list-card {
+          min-height: 68px;
+          height: 68px;
+          padding: 3px 5px;
+        }
+
         .individual-kana-group {
-          grid-template-columns: 1fr;
-          gap: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
         }
 
         .individual-kana-label {
           display: inline-block;
           width: fit-content;
-          padding: 4px 10px;
+          padding: 3px 10px;
           font-size: 11px;
         }
 
+        .special-thanks-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 8px;
+        }
+
+        .special-thanks-card {
+          font-size: 11.5px;
+          padding: 10px 4px;
+          min-height: 44px;
+          white-space: nowrap !important;
+          word-break: keep-all !important;
+        }
+
         .individual-names-grid {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
           gap: 6px;
         }
 
         .individual-name-card {
-          font-size: 12px;
-          padding: 9px 6px;
+          font-size: 11px;
+          padding: 8px 4px;
+          min-height: 44px;
+          height: 44px;
+          white-space: nowrap !important;
+          word-break: keep-all !important;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          min-width: 0;
+        }
+
+        .sponsor-wrapper section.thanks,
+        main .sponsor-wrapper section.thanks,
+        .thanks {
+          padding: 50px 24px 70px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+          box-sizing: border-box;
+        }
+
+        .thanks-title {
+          font-size: clamp(19px, 5.2vw, 24px);
+          line-height: 1.4;
+          padding: 0 10px;
+          box-sizing: border-box;
+        }
+
+        .thanks-text {
+          font-size: 13.5px;
+          line-height: 2.1;
+          margin-top: 16px;
+          padding: 0 16px;
+          box-sizing: border-box;
+          text-align: justify;
+          text-justify: inter-ideograph;
         }
 
         .modal-card {
@@ -1629,13 +1831,13 @@
                     <span class="tier-name-ja">ご協力企業</span>
                   </div>
 
-                  <div class="individual-names-grid">
-                    <div class="individual-name-card">
+                  <div class="special-thanks-grid">
+                    <div class="special-thanks-card">
                       株式会社マンナンライフ
                     </div>
-                    <div class="individual-name-card">株式会社クレハ</div>
-                    <div class="individual-name-card">マルサンアイ株式会社</div>
-                    <div class="individual-name-card">カラオケビッグエコー</div>
+                    <div class="special-thanks-card">株式会社クレハ</div>
+                    <div class="special-thanks-card">マルサンアイ株式会社</div>
+                    <div class="special-thanks-card">カラオケビッグエコー</div>
                   </div>
                 </div>
 
@@ -2180,21 +2382,6 @@
               const AUTO_SPEED = 0.65;
 
               /* =========================================================
-   WALL SNAP (少しでもスクロールしたらwallが揃った位置まで一気に移動する)
-========================================================= */
-
-              let wallSnapArmed = true;
-
-              function snapToWall() {
-                const rect = section.getBoundingClientRect();
-                const total = section.offsetHeight - window.innerHeight;
-                const sectionTopAbsolute = window.scrollY + rect.top;
-                const targetY = sectionTopAbsolute + WALL_START * total;
-
-                window.scrollTo({ top: targetY, behavior: "smooth" });
-              }
-
-              /* =========================================================
    CLAMP
 ========================================================= */
 
@@ -2285,17 +2472,6 @@
                 if (topLabelEl) topLabelEl.style.opacity = marqueeOpacity;
                 if (counterEl) counterEl.style.opacity = marqueeOpacity;
                 if (scrollHintEl) scrollHintEl.style.opacity = marqueeOpacity;
-
-                /* =====================================================
-       WALL SNAP（少しでもスクロールしたらwallが揃うところまで移動）
-    ===================================================== */
-
-                if (progress <= 0.001) {
-                  wallSnapArmed = true;
-                } else if (progress < WALL_START && wallSnapArmed) {
-                  wallSnapArmed = false;
-                  snapToWall();
-                }
 
                 /* =====================================================
        WALL (12-COLUMN TIERED GRID)
