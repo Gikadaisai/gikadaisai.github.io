@@ -30,7 +30,10 @@ $(function () {
   });
 
   // ハンバーガーメニューのクリックイベント
-  $("#menubar_hdr").on("click", function (e) {
+  // #menubar_hdr は site-loader.js が非同期で動的生成するため、
+  // 直接バインドでは要素が未生成で登録されないことがある。
+  // イベント委譲にすることで生成タイミングに依存しない。
+  $(document).on("click", "#menubar_hdr", function (e) {
     e.stopPropagation();
     $(this).toggleClass("ham");
     $("#menubar").toggleClass("is-open");
