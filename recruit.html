@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Content Security Policy: 外部オリジンを許可済みCDNに限定する
+         ※ クリックジャッキング対策(frame-ancestors)は meta 経由では
+            ブラウザに無視されるため、ここには書かない。
+            Webサーバーのレスポンスヘッダーで設定する(UPDATE_MANUAL.md 参照)。 -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; form-action 'self'"
+    />
+    <title>学際Techフェス・応募企画｜第--回技科大祭</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="第--回技科大祭の学際Techフェス・応募企画一覧。作って触って遊べる体験企画や、実力を披露できる応募企画を掲載。豊橋技術科学大学にて開催。"
+    />
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <!-- Favicon -->
+    <link rel="icon" href="images/TUTFESlogo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="images/TUTFESlogo.png" />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+      crossorigin="anonymous"
+    />
+    <!-- Site stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/recruit.css" />
+    <!-- OGP / SNSシェア用 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="第--回技科大祭" />
+    <meta
+      property="og:title"
+      content="学際Techフェス・応募企画｜第--回技科大祭"
+    />
+    <meta
+      property="og:description"
+      content="第--回技科大祭の学際Techフェス・応募企画一覧。作って触って遊べる体験企画や、実力を披露できる応募企画を掲載。"
+    />
+    <meta
+      property="og:url"
+      content="https://sea.tut.ac.jp/gikadaisai/recruit.html"
+    />
+    <meta
+      property="og:image"
+      content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
+    />
+    <meta property="og:locale" content="ja_JP" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tut_festival" />
+    <meta
+      name="twitter:title"
+      content="学際Techフェス・応募企画｜第--回技科大祭"
+    />
+    <meta
+      name="twitter:description"
+      content="第--回技科大祭の学際Techフェス・応募企画一覧。作って触って遊べる体験企画や、実力を披露できる応募企画を掲載。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://sea.tut.ac.jp/gikadaisai/data/poster.png"
+    />
+  </head>
+
+  <body>
+    <!-- 準備中スクリーン（FOUC防止: js/site-loader.js が解除する） -->
+    <div class="site-prerender-screen"></div>
+    <div id="container">
+      <header></header>
+
+      <div id="contents">
+        <main>
+          <!-- ①学際Techフェス -->
+          <section id="techfest" style="position: relative">
+            <div
+              class="deco-circle deco-circle--dashed deco-circle--xl"
+              style="top: -60px; left: -100px"
+            ></div>
+            <div
+              class="deco-circle deco-circle--filled-blue deco-circle--lg"
+              style="top: 100px; right: -40px"
+            ></div>
+            <div
+              class="deco-circle deco-circle--dashed deco-circle--sm"
+              style="top: 300px; left: 10%"
+            ></div>
+            <h2 class="c">
+              <span>Tech Fes</span><span class="hosoku">学際Techフェス</span>
+            </h2>
+            <p class="recruit-section-lead">
+              作って触って遊ぼう！！<br />小さい子から大人まで楽しめる！！
+            </p>
+
+            <div id="techfest-list" class="recruit-list-container"></div>
+          </section>
+
+          <!-- ②応募企画 -->
+          <section id="boshu" class="bg1" style="position: relative">
+            <div
+              class="deco-circle deco-circle--solid deco-circle--md"
+              style="top: -30px; right: -40px"
+            ></div>
+            <h2 class="c">
+              <span>Entry</span><span class="hosoku">応募企画</span>
+            </h2>
+            <p class="recruit-section-lead">お前の実力を見せてくれ！</p>
+
+            <div id="boshu-list" class="recruit-list-container"></div>
+          </section>
+        </main>
+      </div>
+
+      <footer></footer>
+    </div>
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"
+      integrity="sha384-pd7qbPsmTJfjFiks31ehUn6A68yiF8HXwV4anhaOf8icgDte+6V3PCNNYs933QCg"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/escape-html.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site-loader.js"></script>
+    <script src="js/page-visibility.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const techfestContainer = document.getElementById("techfest-list");
+        const boshuContainer = document.getElementById("boshu-list");
+
+        const DEFAULT_CTA_LABEL = {
+          techfest: "ここから予約！",
+          boshu: "ここから応募！",
+        };
+
+        // アイコンのファイル名は URL に直接埋まるため、
+        // エスケープではなく想定形式そのものを検証し、外れたら既定画像に落とす。
+        const SAFE_IMG_NAME = /^[A-Za-z0-9_-]+\.(png|jpe?g|webp|gif)$/;
+        const safeImgName = (name) =>
+          SAFE_IMG_NAME.test(String(name || "")) ? String(name) : "";
+
+        // フォームURLは https の外部リンクのみ許可する（javascript: 等の混入防止）。
+        const SAFE_FORM_URL = /^https:\/\//i;
+        const safeFormUrl = (url) =>
+          SAFE_FORM_URL.test(String(url || "")) ? String(url) : "";
+
+        const generateCardHtml = (item) => {
+          const safeTitle = escapeHtml(item.title);
+          const safeCircle = item.circle ? escapeHtml(item.circle) : "";
+          const safeDesc = escapeHtml(item.description);
+          const imgName = safeImgName(item.img);
+          const imgHtml = imgName
+            ? `<div class="recruit-card-image"><img src="images/recruit/${imgName}" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null; this.src='images/TUTFESlogo.png';"></div>`
+            : `<div class="recruit-card-image"><img src="images/TUTFESlogo.png" alt="${safeTitle}" loading="lazy"></div>`;
+
+          const formUrl = safeFormUrl(item.formUrl);
+          const ctaLabel = escapeHtml(
+            item.ctaLabel || DEFAULT_CTA_LABEL[item.category] || "詳しく見る",
+          );
+          const ctaHtml = formUrl
+            ? `<a class="recruit-card-cta" href="${formUrl}" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i>${ctaLabel}</a>`
+            : `<span class="recruit-card-cta recruit-card-cta--disabled"><i class="fas fa-hourglass-half"></i>近日公開</span>`;
+
+          const circleHtml = safeCircle
+            ? `<span class="recruit-card-circle">${safeCircle}</span>`
+            : "";
+
+          return `
+            <div class="recruit-card">
+              ${imgHtml}
+              <div class="recruit-card-content">
+                ${circleHtml}
+                <h3 class="recruit-card-title">${safeTitle}</h3>
+                <p class="recruit-card-desc">${safeDesc}</p>
+                ${ctaHtml}
+              </div>
+            </div>`;
+        };
+
+        const renderGroup = (container, items) => {
+          if (!container) return;
+          container.innerHTML = items.length
+            ? items.map(generateCardHtml).join("")
+            : '<p class="recruit-empty">現在準備中です。近日公開予定！</p>';
+        };
+
+        (async () => {
+          try {
+            const response = await fetch("js/recruit.json");
+            if (!response.ok)
+              throw new Error("recruit.jsonの読み込みに失敗しました。");
+            const allItems = await response.json();
+            renderGroup(
+              techfestContainer,
+              allItems.filter((item) => item.category === "techfest"),
+            );
+            renderGroup(
+              boshuContainer,
+              allItems.filter((item) => item.category === "boshu"),
+            );
+          } catch (error) {
+            console.error(error);
+            const errorHtml =
+              '<p class="recruit-empty">企画情報の読み込み中にエラーが発生しました。</p>';
+            if (techfestContainer) techfestContainer.innerHTML = errorHtml;
+            if (boshuContainer) boshuContainer.innerHTML = errorHtml;
+          }
+        })();
+      });
+    </script>
+  </body>
+</html>
