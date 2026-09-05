@@ -10,17 +10,19 @@
   line-height: 1.8;
 }
 
-/* 1行2ブロックのグリッド（キッチンカー一覧の1行5列より大きく見せる） */
+/* 画面幅に応じて1行あたりの数が自動で変わるグリッド
+   （キッチンカー一覧の1行5列より少なく・大きく見せる。目安: 狭い画面=1列、通常=2列、広い画面=3列） */
 .recruit-list-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 480px) {
   .recruit-list-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
