@@ -1,15 +1,5 @@
 [
   {
-    "id": "techfest-sample-01",
-    "category": "techfest",
-    "circle": "【サンプル】〇〇サークル",
-    "title": "（サンプル）光る電子工作を作ろう！",
-    "img": "sample1.jpg",
-    "description": "はんだ付けなしでピカピカ光るオリジナル工作を作ってみよう！小さなお子さんでも保護者の方と一緒に楽しく参加できます。",
-    "formUrl": "",
-    "ctaLabel": ""
-  },
-  {
     "id": "techfest-sample-02",
     "category": "techfest",
     "circle": "【サンプル】〇〇研究室",
@@ -20,22 +10,42 @@
     "ctaLabel": ""
   },
   {
-    "id": "boshu-sample-01",
+    "id": "boshu-01",
     "category": "boshu",
-    "circle": "【サンプル】〇〇団体",
-    "title": "（サンプル）ステージパフォーマンス出演者募集",
-    "img": "sample3.jpg",
-    "description": "ダンス・バンド・大道芸・お笑いなどジャンルは問いません！技科大祭のステージであなたの実力を存分に見せつけよう。",
+    "circle": "技科大祭実行委員ステージ企画",
+    "title": "TUTグランプリ",
+    "img": "guranpuri.png",
+    "description": "自慢の特技を持った出演者たちがステージに登場✨\n個性あふれるパフォーマンスを披露します！",
     "formUrl": "",
     "ctaLabel": ""
   },
   {
-    "id": "boshu-sample-02",
+    "id": "boshu-02",
     "category": "boshu",
-    "circle": "【サンプル】〇〇団体",
-    "title": "（サンプル）技術・作品コンテスト参加者募集",
-    "img": "sample4.jpg",
-    "description": "自作の作品や技術を展示・発表してみませんか？審査員や来場者から直接フィードバックがもらえるチャンスです。",
+    "circle": "技科大祭実行委員ステージ企画",
+    "title": "カラオケ大会",
+    "img": "karaoke.png",
+    "description": "会場を盛り上げる熱い歌声を、ぜひ会場でお楽しみください！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "boshu-03",
+    "category": "boshu",
+    "circle": "技科大祭実行委員ステージ企画",
+    "title": "ビンゴ大会",
+    "img": "bingo.png",
+    "description": "豪華景品をかけて今年もビンゴ大会を実施します。\n来場者どなたでも参加可能です！\nお友達やご家族と一緒に、ぜひ参加してください！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "boshu-04",
+    "category": "boshu",
+    "circle": "技科大祭実行委員ステージ企画",
+    "title": "大抽選会",
+    "img": "chusen.png",
+    "description": "技科大祭の定番企画であり大人気の大抽選会を今年も開催！\nぜひ豪華景品が当たるチャンスに挑戦してください！",
     "formUrl": "",
     "ctaLabel": ""
   }
