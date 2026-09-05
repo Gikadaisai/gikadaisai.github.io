@@ -58,24 +58,6 @@
       }
     ]
   },
-  "sections": {
-    "sponsors": {
-      "titleEn": "Sponsors",
-      "titleJa": "ご協賛企業",
-      "lead": "今年度の技科大祭開催にあたり、多くの企業の皆様にご支援、ご協力を賜りました。\n心より感謝申し上げます。（敬称略）",
-      "emptyText": "本年度のご協賛企業様を募集しております。",
-      "errorText": "協賛企業情報の読み込み中にエラーが発生しました。"
-    },
-    "supporters": {
-      "titleEn": "Supporters",
-      "titleJa": "ご寄付いただいた皆様",
-      "lead": "今年度の技科大祭開催に際し、寄付サイト等を通じてご支援いただいた皆様をご紹介いたします。\n皆様のご厚志に心より御礼申し上げます。（50音順、敬称略）",
-      "emptyText": "皆様からのご支援を引き続きお待ちしております。",
-      "errorText": "寄付者情報の読み込み中にエラーが発生しました。",
-      "registryUrl": "https://www.tut.ac.jp/kikin/download/houmei_gikadaisai.pdf",
-      "registryLabel": "芳名帳（PDF）はこちら"
-    }
-  },
   "comingSoon": {
     "label": "Coming Soon",
     "title": "準備中",
