@@ -1,11 +1,61 @@
 [
   {
-    "id": "techfest-sample-02",
+    "id": "techfest-01",
     "category": "techfest",
-    "circle": "【サンプル】〇〇研究室",
-    "title": "（サンプル）ミニロボット操縦体験",
-    "img": "sample2.jpg",
-    "description": "自分の手でコントローラーを動かしてロボットをゴールまで導こう！大人も本気になれるチャレンジコースを用意しています。",
+    "circle": "ロボコン同好会 Tech 1系",
+    "title": "ロボット操縦体験＆展示",
+    "img": "robocon.png",
+    "description": "世界大会優勝ロボット操縦体験！お子様から大人まで、ロボコンの魅力をぜひ体感してください！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-02",
+    "category": "techfest",
+    "circle": "技科大祭実行委員",
+    "title": "Tech2系",
+    "img": "Tech2.png",
+    "description": "LEDキーホルダーを作りながら、技科大２系（電気電子系）の学びを楽しく体験しよう！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-03",
+    "category": "techfest",
+    "circle": "Tech 3系",
+    "title": "VRの世界へ！！",
+    "img": "VR.png",
+    "description": "VRを使用し、仮想の世界へ飛び込んでもらいます！！実際に研究で使用するVRを使用し、現実世界では味わえない体験ができるのでぜひ無料で遊びに来てください！！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-04",
+    "category": "techfest",
+    "circle": "Tech4系",
+    "title": "スライム作り体験",
+    "img": "slime.png",
+    "description": "好きな色やラメを選んで，自分だけのオリジナルスライムを作ろう！！子供から大人まで気軽に体験できます！！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-05",
+    "category": "techfest",
+    "circle": "Tech5系",
+    "title": "マシュマロタワーコンペティション",
+    "img": "tower.png",
+    "description": "Tech5系のイベントとして開催！パスタと紐を使い、マシュマロをどれだけ高く配置できるかを競うコンペティションです！",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-",
+    "category": "techfest",
+    "circle": "技科大祭実行委員会企画局",
+    "title": "技科大ゲーム大会2026",
+    "img": "game.png",
+    "description": "みんなで楽しめるゲーム大会！優勝を目指して熱い戦いに挑もう！",
     "formUrl": "",
     "ctaLabel": ""
   },
