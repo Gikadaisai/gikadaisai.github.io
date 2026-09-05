@@ -1,0 +1,42 @@
+[
+  {
+    "id": "techfest-sample-01",
+    "category": "techfest",
+    "circle": "【サンプル】〇〇サークル",
+    "title": "（サンプル）光る電子工作を作ろう！",
+    "img": "sample1.jpg",
+    "description": "はんだ付けなしでピカピカ光るオリジナル工作を作ってみよう！小さなお子さんでも保護者の方と一緒に楽しく参加できます。",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "techfest-sample-02",
+    "category": "techfest",
+    "circle": "【サンプル】〇〇研究室",
+    "title": "（サンプル）ミニロボット操縦体験",
+    "img": "sample2.jpg",
+    "description": "自分の手でコントローラーを動かしてロボットをゴールまで導こう！大人も本気になれるチャレンジコースを用意しています。",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "boshu-sample-01",
+    "category": "boshu",
+    "circle": "【サンプル】〇〇団体",
+    "title": "（サンプル）ステージパフォーマンス出演者募集",
+    "img": "sample3.jpg",
+    "description": "ダンス・バンド・大道芸・お笑いなどジャンルは問いません！技科大祭のステージであなたの実力を存分に見せつけよう。",
+    "formUrl": "",
+    "ctaLabel": ""
+  },
+  {
+    "id": "boshu-sample-02",
+    "category": "boshu",
+    "circle": "【サンプル】〇〇団体",
+    "title": "（サンプル）技術・作品コンテスト参加者募集",
+    "img": "sample4.jpg",
+    "description": "自作の作品や技術を展示・発表してみませんか？審査員や来場者から直接フィードバックがもらえるチャンスです。",
+    "formUrl": "",
+    "ctaLabel": ""
+  }
+]

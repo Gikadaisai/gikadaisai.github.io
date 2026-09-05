@@ -105,7 +105,11 @@
         { "href": "events.html", "label": "予定イベント" },
         { "href": "shops.html", "label": "模擬店・キッチンカー" },
         { "href": "timetable.html", "label": "タイムテーブル" },
-        { "href": "painting-contest.html", "label": "絵画コンテスト" }
+        { "href": "painting-contest.html", "label": "絵画コンテスト" },
+        {
+          "href": "recruit.html",
+          "label": "学際Techフェス・応募企画"
+        }
       ]
     },
     {
@@ -149,6 +153,10 @@
       "label": "絵画コンテスト"
     },
     {
+      "href": "recruit.html",
+      "label": "学際Techフェス・応募企画"
+    },
+    {
       "href": "support.html",
       "label": "ご協賛・ご寄付"
     },
@@ -181,6 +189,7 @@
     "shops": true,
     "timetable": false,
     "painting-contest": true,
+    "recruit": true,
     "support": true,
     "access": true,
     "contact": true,
