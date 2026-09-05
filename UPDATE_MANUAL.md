@@ -34,6 +34,7 @@ gikadaisai/
 ├── shops.html            ← 模擬店・キッチンカー
 ├── timetable.html        ← タイムテーブル
 ├── painting-contest.html ← アイデア・デザインコンテスト
+├── recruit.html          ← 学際Techフェス・応募企画
 ├── support.html          ← ご協賛・ご寄付
 ├── access.html           ← アクセス
 ├── contact.html          ← お問い合わせ
@@ -42,6 +43,7 @@ gikadaisai/
 │   ├── site-config.json    ★ サイト全体の設定（最重要・毎年ここから始める）
 │   ├── guest.json          ★ ゲスト情報
 │   ├── shop.json           ★ 模擬店・キッチンカー情報
+│   ├── recruit.json        ★ 学際Techフェス・応募企画情報
 │   ├── sponsors.json       ★ 協賛企業情報
 │   ├── supporters.json     ★ ご寄付者情報
 │   ├── timetable.json      ★ バス時刻表
@@ -67,6 +69,8 @@ gikadaisai/
 │   └── kyousan/            △ 協賛企業ロゴ画像（現在は未使用・後述）
 │
 ├── images/                 ← サイトのデザインで使う画像（通常は変更不要）
+│   └── recruit/            ★ 学際Techフェス・応募企画の企画写真
+│
 └── sitemap.xml             ← 検索エンジン向けのページ一覧
 ```
 
@@ -85,6 +89,7 @@ gikadaisai/
 - [ ] `js/site-config.json` — 回数・日程・テーマ・メールアドレス等（**最初にここ**）
 - [ ] `js/guest.json` — ゲスト情報
 - [ ] `js/shop.json` — 模擬店・キッチンカーのデータ
+- [ ] `js/recruit.json` / `images/recruit/` — 学際Techフェス・応募企画のデータと写真
 - [ ] `js/sponsors.json` — 協賛企業の情報
 - [ ] `js/supporters.json` — ご寄付者の情報
 - [ ] `js/timetable.json` — バス時刻表（ダイヤ改正があった場合のみ）
@@ -347,7 +352,34 @@ index.html / support.html / 準備中ページの**すべて**に反映されま
 - `place` は `"室内"` か `"屋外"` のいずれか。ページ上の絞り込み（屋内企画／屋外企画）で使われます
 - キッチンカーのアイコンは `A.png`〜`D.png` のようにアルファベットを使っています
 
-### 4-4. sponsors.json（協賛企業）
+### 4-4. recruit.json（学際Techフェス・応募企画）
+
+```json
+[
+  {
+    "id": "techfest-01",                        ← 半角英数字の一意なID（重複不可）
+    "category": "techfest",                     ← "techfest"（学際Techフェス）または "boshu"（応募企画）
+    "circle": "○○サークル",                     ← 団体名（省略可）
+    "title": "光る電子工作を作ろう！",            ← 企画名
+    "img": "denshi-kousaku.jpg",                 ← 写真ファイル名（images/recruit/ 内）
+    "description": "説明文をここに書きます。",
+    "formUrl": "https://forms.gle/xxxxxxxx",     ← 予約・応募フォームのURL
+    "ctaLabel": ""                               ← ボタンの文言（省略可）
+  }
+]
+```
+
+**ポイント**
+
+- **並び順は配列に書いた順**です。同じ `category` のものが上から順に表示されます
+- `img` は `images/recruit/` 内のファイル名だけを書きます（拡張子込み）。詳しくは
+  `images/recruit/README.md` を参照してください
+- `formUrl` が空文字 `""` の間は、ボタンが「近日公開」の押せない状態で表示されます。
+  フォームが完成したら URL を入れるだけでボタンが有効になります
+- `formUrl` は **`https://` から始まるURLのみ**有効です（それ以外は無効化されます）
+- `ctaLabel` を省略すると、`category` に応じて「ここから予約！」（techfest）／「ここから応募！」（boshu）が自動で入ります
+
+### 4-5. sponsors.json（協賛企業）
 
 **金額のランクごとに3つのグループ（tier）に分けて、企業名を文字で表示します。**
 tier1 が最も大きく表示され、tier3 が最も小さく表示されます。
@@ -378,7 +410,7 @@ tier1 が最も大きく表示され、tier3 が最も小さく表示されま�
 > （実行委員会内のスプレッドシート等）で行ってください。
 > 以前は `amount` という項目がありましたが、同じ理由で廃止しました。
 
-### 4-5. supporters.json（ご寄付者）
+### 4-6. supporters.json（ご寄付者）
 
 ```json
 [{ "name": "技科 太郎" }, { "name": "豊橋 花子" }]
@@ -392,7 +424,7 @@ tier1 が最も大きく表示され、tier3 が最も小さく表示されま�
 - 寄付者が0人のときは `sections.supporters.emptyText` の文が表示されます
 - 芳名帳PDFへのボタンは常に先頭に表示されます（URLは `site-config.json` の `registryUrl`）
 
-### 4-6. timetable.json（バス時刻表）
+### 4-7. timetable.json（バス時刻表）
 
 ```json
 {
@@ -512,18 +544,21 @@ tier1 が最も大きく表示され、tier3 が最も小さく表示されま�
 
 画像は**同じファイル名で上書き**すれば、HTMLやJSONの変更は不要です。
 
-| 画像             | パス                   | 推奨事項                        |
-| ---------------- | ---------------------- | ------------------------------- |
-| テーマポスター   | `data/poster.png`      | できるだけ軽量化（1MB以下推奨） |
-| イベントポスター | `data/poster_live.png` | 同上                            |
-| タイムテーブル   | `data/timetable.png`   | 同上                            |
-| 屋外マップ       | `data/map/outside.png` | -                               |
-| 屋内マップ       | `data/map/inside.png`  | -                               |
-| 模擬店アイコン   | `data/shop/icon/{img}` | shop.json の `img` と一致させる |
+| 画像             | パス                   | 推奨事項                                          |
+| ---------------- | ---------------------- | ------------------------------------------------- |
+| テーマポスター   | `data/poster.png`      | できるだけ軽量化（1MB以下推奨）                   |
+| イベントポスター | `data/poster_live.png` | 同上                                              |
+| タイムテーブル   | `data/timetable.png`   | 同上                                              |
+| 屋外マップ       | `data/map/outside.png` | -                                                 |
+| 屋内マップ       | `data/map/inside.png`  | -                                                 |
+| 模擬店アイコン   | `data/shop/icon/{img}` | shop.json の `img` と一致させる                   |
+| 応募企画の写真   | `images/recruit/{img}` | recruit.json の `img` と一致させる（1MB以下推奨） |
 
 **ファイル名を変更した場合**は、対応するJSONのパスも更新してください。
 
-`images/` フォルダはサイトのデザインで使う画像（ロゴ・マスコット・花火の装飾など）です。通常は変更しません。
+`images/` フォルダはサイトのデザインで使う画像（ロゴ・マスコット・花火の装飾など）で、通常は変更しません。
+ただし `images/recruit/` だけは例外で、学際Techフェス・応募企画の写真を置くための専用フォルダです
+（詳しくは `images/recruit/README.md` 参照）。
 
 ---
 
@@ -765,22 +800,26 @@ git config user.email "（GitHubのnoreplyアドレス）"
    → 模擬店データをすべて来年度のものに差し替え
    → data/shop/icon/ にアイコン画像を配置
 
-4. js/sponsors.json / js/supporters.json を開く
+4. js/recruit.json を開く
+   → 学際Techフェス・応募企画のデータを来年度のものに差し替え
+   → images/recruit/ に企画写真を配置、formUrl に予約・応募フォームのURLを設定
+
+5. js/sponsors.json / js/supporters.json を開く
    → 協賛企業・寄付者を来年度のものに差し替え
 
-5. js/timetable.json を確認
+6. js/timetable.json を確認
    → バスダイヤに変更があれば更新
 
-6. data/ フォルダの画像を差し替え
+7. data/ フォルダの画像を差し替え
    → poster.png, poster_live.png, timetable.png, map/
 
-7. index.html と painting-contest.html の本文を更新（第6章参照）
+8. index.html と painting-contest.html の本文を更新（第6章参照）
 
-8. ローカルサーバーで動作確認（第9章参照）
+9. ローカルサーバーで動作確認（第9章参照）
 
-9. デプロイ
+10. デプロイ
 
-10. 情報解禁のタイミングに合わせて pageVisibility を順次 true に変更・再デプロイ
+11. 情報解禁のタイミングに合わせて pageVisibility を順次 true に変更・再デプロイ
 ```
 
 **共通部分（ヘッダー・フッター・アクセス案内・協賛/寄付セクション）は `js/site-config.json` の1箇所を直すだけで全ページに反映されます。**

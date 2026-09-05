@@ -168,7 +168,7 @@
           const safeDesc = escapeHtml(item.description);
           const imgName = safeImgName(item.img);
           const imgHtml = imgName
-            ? `<div class="recruit-card-image"><img src="data/recruit/icon/${imgName}" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null; this.src='images/TUTFESlogo.png';"></div>`
+            ? `<div class="recruit-card-image"><img src="images/recruit/${imgName}" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null; this.src='images/TUTFESlogo.png';"></div>`
             : `<div class="recruit-card-image"><img src="images/TUTFESlogo.png" alt="${safeTitle}" loading="lazy"></div>`;
 
           const formUrl = safeFormUrl(item.formUrl);
