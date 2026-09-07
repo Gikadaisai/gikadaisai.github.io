@@ -3,13 +3,13 @@
  * site-config.json を読み込み、全ページ共通の要素を動的に生成・注入する。
  *
  * このファイルと js/site-config.json が「全ページ共通部分の唯一の管理場所」です。
- * ヘッダー / フッター / ページトップボタン / アクセス案内 / 協賛・寄付セクションは
+ * ヘッダー / フッター / ページトップボタン / アクセス案内は
  * すべてここで組み立てられ、各HTMLには置き場所を示す目印だけが書かれています。
  *
  *   <div data-include="access-methods"></div>  → アクセス手段の説明
  *   <div data-include="access-map"></div>      → Google Map 経路ボタン
- *   <div data-include="sponsors"></div>        → ご協賛企業セクション
- *   <div data-include="supporters"></div>      → ご寄付者セクション
+ *
+ * ご協賛企業・ご寄付者の紹介は support.html に集約したため、ここでは扱わない。
  */
 
 /**
@@ -161,159 +161,9 @@ window.siteSections = (function () {
     );
   }
 
-  /** ご協賛企業セクション（中身は renderSupportGrids が後から埋める） */
-  function sponsors(config) {
-    return (
-      '<section id="Sponsors" class="bg1">' +
-      decoCircle("dashed", "xl", "top: -80px; left: -100px") +
-      decoCircle("solid", "md", "bottom: 20px; right: 5%") +
-      decoCircle("dashed", "sm", "top: 40%; right: -20px") +
-      sectionHeading(config.sections.sponsors) +
-      '<div id="sponsor-grid" class="sponsor-grid"></div>' +
-      "</section>"
-    );
-  }
-
-  /** ご寄付者セクション（中身は renderSupportGrids が後から埋める） */
-  function supporters(config) {
-    return (
-      '<section id="Supporters" class="bg1">' +
-      decoCircle("filled", "md", "top: 150px; left: -40px") +
-      decoCircle("solid", "sm", "bottom: 100px; right: 8%") +
-      sectionHeading(config.sections.supporters) +
-      '<div id="supporter-grid" class="supporter-grid"></div>' +
-      "</section>"
-    );
-  }
-
   return {
     "access-methods": accessMethods,
     "access-map": accessMap,
-    sponsors: sponsors,
-    supporters: supporters,
-  };
-})();
-
-/**
- * 協賛企業・ご寄付者の一覧をグリッドに描画する。
- *
- * グリッドは2通りの経路で現れる:
- *   1. 通常ページ … site-loader.js が data-include を展開したとき
- *   2. 準備中ページ … page-visibility.js が <main> を差し替えたとき
- * どちらが先に起きても描画されるよう、両方から呼べる関数として公開する。
- * JSON は一度だけ取得し、2回目以降の呼び出しでは取得結果を使い回す。
- */
-window.renderSupportGrids = (function () {
-  "use strict";
-
-  var dataPromise = null;
-
-  function loadData() {
-    if (!dataPromise) {
-      dataPromise = Promise.all([
-        fetch("js/sponsors.json").then(function (r) {
-          if (!r.ok)
-            throw new Error("sponsors.json の読み込みに失敗しました。");
-          return r.json();
-        }),
-        fetch("js/supporters.json").then(function (r) {
-          if (!r.ok)
-            throw new Error("supporters.json の読み込みに失敗しました。");
-          return r.json();
-        }),
-      ]);
-    }
-    return dataPromise;
-  }
-
-  function renderSponsors(grid, section, data) {
-    var html = "";
-
-    // tier1, tier2, tier3 の順番で描画
-    ["tier1", "tier2", "tier3"].forEach(function (tierKey) {
-      var tierItems = data[tierKey];
-      if (tierItems && tierItems.length > 0) {
-        var tierNum = tierKey.replace("tier", "");
-        // ティアの前に横棒を入れる
-        html += '<div class="sponsor-tier-divider"></div>';
-        html += '<div class="sponsor-tier sponsor-tier-' + tierNum + '">';
-        // 表示順・文字サイズは tier(1〜3)と配列順だけで決まる。
-        // 協賛金額は非公開情報のため、ページには一切出力しない
-        // （HTMLコメントであってもソース表示で読めてしまうため）。
-        tierItems.forEach(function (s) {
-          html +=
-            '<span class="sponsor-item">' + escapeHtml(s.name) + "</span>";
-        });
-        html += "</div>";
-      }
-    });
-
-    if (html) {
-      // 最後に締めの横棒
-      html += '<div class="sponsor-tier-divider"></div>';
-      grid.classList.add("text-only-sponsors");
-    } else {
-      html =
-        '<p class="c" style="width: 100%;">' +
-        escapeHtml(section.emptyText) +
-        "</p>";
-    }
-    grid.innerHTML = html;
-  }
-
-  function renderSupporters(grid, section, data) {
-    var valid = data.filter(function (sp) {
-      return !sp._memo;
-    });
-
-    // 芳名帳（PDF）リンクを先頭に一元管理で追加
-    var html =
-      '<div class="c supporter-registry"><a href="' +
-      escapeHtml(section.registryUrl) +
-      '" target="_blank" rel="noopener noreferrer" class="supporter-registry-btn">' +
-      '<i class="fas fa-file-pdf"></i> ' +
-      escapeHtml(section.registryLabel) +
-      "</a></div>";
-
-    if (valid.length > 0) {
-      valid.forEach(function (sp) {
-        var safeName = escapeHtml(typeof sp === "string" ? sp : sp.name);
-        if (safeName)
-          html += '<div class="supporter-chip">' + safeName + "</div>";
-      });
-    } else {
-      html +=
-        '<p class="c" style="width: 100%;">' +
-        escapeHtml(section.emptyText) +
-        "</p>";
-    }
-    grid.innerHTML = html;
-  }
-
-  return async function renderSupportGrids(config) {
-    var sponsorGrid = document.getElementById("sponsor-grid");
-    var supporterGrid = document.getElementById("supporter-grid");
-    if (!sponsorGrid && !supporterGrid) return;
-
-    try {
-      var result = await loadData();
-      if (sponsorGrid)
-        renderSponsors(sponsorGrid, config.sections.sponsors, result[0]);
-      if (supporterGrid)
-        renderSupporters(supporterGrid, config.sections.supporters, result[1]);
-    } catch (error) {
-      console.error(error);
-      if (sponsorGrid)
-        sponsorGrid.innerHTML =
-          '<p class="c">' +
-          escapeHtml(config.sections.sponsors.errorText) +
-          "</p>";
-      if (supporterGrid)
-        supporterGrid.innerHTML =
-          '<p class="c">' +
-          escapeHtml(config.sections.supporters.errorText) +
-          "</p>";
-    }
   };
 })();
 
@@ -738,9 +588,6 @@ window.renderSupportGrids = (function () {
   document.dispatchEvent(
     new CustomEvent("siteConfigLoaded", { detail: config }),
   );
-
-  // --- 協賛・寄付者の一覧を描画 ---
-  await window.renderSupportGrids(config);
 
   // --- すべての処理が完了したのでプリレンダースクリーンを解除 ---
   dismissPrerender();

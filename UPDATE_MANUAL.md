@@ -39,13 +39,14 @@ gikadaisai/
 ├── access.html           ← アクセス
 ├── contact.html          ← お問い合わせ
 │
+├── sponsors.js           ★ 協賛企業・個人寄附者データ（support.html 専用）
+├── logos/                ★ 協賛企業ロゴ画像
+│
 ├── js/
 │   ├── site-config.json    ★ サイト全体の設定（最重要・毎年ここから始める）
 │   ├── guest.json          ★ ゲスト情報
 │   ├── shop.json           ★ 模擬店・キッチンカー情報
 │   ├── recruit.json        ★ 学際Techフェス・応募企画情報
-│   ├── sponsors.json       ★ 協賛企業情報
-│   ├── supporters.json     ★ ご寄付者情報
 │   ├── timetable.json      ★ バス時刻表
 │   │
 │   ├── site-loader.js      ← 共通部分の生成（編集不要）
@@ -66,7 +67,7 @@ gikadaisai/
 │   ├── timetable.png       ★ タイムテーブル画像
 │   ├── map/                ★ 会場マップ画像（inside.png / outside.png）
 │   ├── shop/icon/          ★ 模擬店アイコン画像
-│   └── kyousan/            △ 協賛企業ロゴ画像（現在は未使用・後述）
+│   └── kyousan/            △ 旧・協賛企業ロゴ画像（未使用・後述）
 │
 ├── images/                 ← サイトのデザインで使う画像（通常は変更不要）
 │   └── recruit/            ★ 学際Techフェス・応募企画の企画写真
@@ -77,8 +78,8 @@ gikadaisai/
 **★ マークのファイルが毎年の更新対象です。**
 
 > **`data/kyousan/` について**
-> 現在、協賛企業は**ロゴ画像ではなく企業名テキスト**で表示しています（`sponsors.json` 参照）。
-> そのため `data/kyousan/` の画像は今は使われていませんが、将来ロゴ表示に戻す可能性を考慮して残してあります。
+> 協賛企業のロゴは `logos/` フォルダのものを `sponsors.js` から参照しています。
+> `data/kyousan/` は以前使っていた画像置き場で、現在はどこからも参照されていません。
 
 ---
 
@@ -90,8 +91,7 @@ gikadaisai/
 - [ ] `js/guest.json` — ゲスト情報
 - [ ] `js/shop.json` — 模擬店・キッチンカーのデータ
 - [ ] `js/recruit.json` / `images/recruit/` — 学際Techフェス・応募企画のデータと写真
-- [ ] `js/sponsors.json` — 協賛企業の情報
-- [ ] `js/supporters.json` — ご寄付者の情報
+- [ ] `sponsors.js` — 協賛企業・個人寄附者の情報（`logos/` のロゴ画像も合わせて）
 - [ ] `js/timetable.json` — バス時刻表（ダイヤ改正があった場合のみ）
 - [ ] `data/poster.png` — テーマポスター画像の差し替え
 - [ ] `data/poster_live.png` — イベントポスター画像の差し替え
@@ -106,7 +106,7 @@ gikadaisai/
 
 ## 3. 全ページ共通部分のしくみ
 
-**ヘッダー・フッター・ページトップボタン・アクセス案内・協賛/寄付セクションは、HTMLには書かれていません。**
+**ヘッダー・フッター・ページトップボタン・アクセス案内は、HTMLには書かれていません。**
 `js/site-config.json` の内容をもとに `js/site-loader.js` が組み立て、全ページに差し込んでいます。
 
 そのため、**1箇所（site-config.json）を直すだけで全ページに反映されます。**
@@ -121,8 +121,6 @@ gikadaisai/
 | `<footer></footer>`                         | フッター（住所・リンク集） |
 | `<div data-include="access-methods"></div>` | アクセス手段の説明         |
 | `<div data-include="access-map"></div>`     | Google Map の経路ボタン    |
-| `<div data-include="sponsors"></div>`       | ご協賛企業セクション       |
-| `<div data-include="supporters"></div>`     | ご寄付者セクション         |
 
 ページトップへ戻るボタンは目印すら不要で、全ページに自動で追加されます。
 
@@ -239,31 +237,6 @@ index.html と access.html の**両方**に同じ内容が表示されます。
 
 移動手段を増やしたい場合は `methods` にオブジェクトを追加してください。
 
-#### sections（協賛・寄付セクションの文章）
-
-index.html / support.html / 準備中ページの**すべて**に反映されます。
-
-```json
-"sections": {
-  "sponsors": {
-    "titleEn": "Sponsors",
-    "titleJa": "ご協賛企業",
-    "lead": "説明文（\n で改行）",
-    "emptyText": "協賛企業が0件のときに表示する文",
-    "errorText": "読み込みに失敗したときに表示する文"
-  },
-  "supporters": {
-    "titleEn": "Supporters",
-    "titleJa": "ご寄付いただいた皆様",
-    "lead": "説明文",
-    "emptyText": "…",
-    "errorText": "…",
-    "registryUrl": "https://www.tut.ac.jp/kikin/download/houmei_gikadaisai.pdf",
-    "registryLabel": "芳名帳（PDF）はこちら"
-  }
-}
-```
-
 #### headerNav / headerActions / footerNav / footerLinks（ナビゲーション）
 
 ヘッダーとフッターのメニューです。ここを直すと全ページのメニューが変わります。
@@ -379,52 +352,72 @@ index.html / support.html / 準備中ページの**すべて**に反映されま
 - `formUrl` は **`https://` から始まるURLのみ**有効です（それ以外は無効化されます）
 - `ctaLabel` を省略すると、`category` に応じて「ここから予約！」（techfest）／「ここから応募！」（boshu）が自動で入ります
 
-### 4-5. sponsors.json（協賛企業）
+### 4-5. sponsors.js（協賛企業・個人寄附者）
 
-**金額のランクごとに3つのグループ（tier）に分けて、企業名を文字で表示します。**
-tier1 が最も大きく表示され、tier3 が最も小さく表示されます。
+**データはリポジトリ直下の `sponsors.js` 1ファイルだけで管理します。**
+このファイルを、次の2箇所が読み込んで表示します。
 
-```json
-{
-  "tier1": [{ "name": "株式会社ワイエムジー" }],
-  "tier2": [
-    { "name": "株式会社新来島豊橋造船" },
-    { "name": "本多電子株式会社" }
-  ],
-  "tier3": [{ "name": "株式会社金トビ志賀" }]
-}
+| ページ         | 表示内容                                                                     |
+| -------------- | ---------------------------------------------------------------------------- |
+| `support.html` | ロゴウォール・ランク別一覧・企業モーダル・個人寄附者の五十音別一覧（フル版） |
+| `index.html`   | ランク別ロゴのみの簡易版＋芳名帳PDFボタン（`#Sponsors` セクション）          |
+
+準備中ページ（`pageVisibility` が `false`）には一覧を出しません。
+
+#### 協賛企業（`sponsors` 配列）
+
+```js
+const sponsors = [
+  {
+    name: "株式会社ワイエムジー",
+    amount: 500000,
+    logo: "logos/ymg.png",
+    description: "モーダルに表示する紹介文・応援メッセージ",
+    links: [{ label: "公式HP", url: "https://example.com/", type: "website" }],
+  },
+];
 ```
 
 **ポイント**
 
-- `name` がページに表示されます
-- **表示順・文字サイズは tier(1〜3)と配列内の並び順だけで決まります。**
-  tier1 が最も大きく、tier3 が最も小さく表示されます
-- 企業が1社もいない tier は、その行ごと空配列 `[]` にするか、キーごと消してかまいません
-- 全体が空の場合は `sections.sponsors.emptyText` の文が表示されます
+- `name` は必須です
+- `amount`（協賛金額）で表示ランクが自動的に決まります
+  （50万〜 トップ / 15万〜 プレミアム / 10万〜 ゴールド / 5万〜 シルバー /
+  3万〜 ブロンズ / それ未満 サポーター）
+- `logo` は `logos/` フォルダに画像を置いてそのパスを書きます。
+  `""` にすると社名テキストで表示されます
+- `links` の `type` は `website` / `instagram` / `youtube` / `tiktok` などを指定します
+- 追加・削除は配列に要素を足し引きするだけで、ロゴウォール・ランク別一覧・
+  モーダルのすべてに自動で反映されます
 
-> **⚠️ 協賛金額をこのファイルに書かないでください**
-> このJSONは公開サーバー上に置かれるため、`https://（サイトURL）/js/sponsors.json`
-> を開けば**誰でも中身を読めます**。GitHubリポジトリも公開されています。
-> 企業ごとの協賛金額は非公開情報のため、金額の管理はリポジトリの外
-> （実行委員会内のスプレッドシート等）で行ってください。
-> 以前は `amount` という項目がありましたが、同じ理由で廃止しました。
+> **⚠️ `amount` はページに一切出力していません**
+> ランクの判定にだけ使い、金額そのものは HTML にも HTML コメントにも出しません。
+> ただし `sponsors.js` 自体は公開ファイルなので、
+> `https://（サイトURL）/sponsors.js` を開けば**誰でも金額を読めます**。
+> 金額を公開したくない年は、`amount` の代わりに
+> ランクだけを表す値に置き換える等の対応を検討してください。
 
-### 4-6. supporters.json（ご寄付者）
+#### 個人寄附者（`individualDonorsData`）
 
-```json
-[{ "name": "技科 太郎" }, { "name": "豊橋 花子" }]
+```js
+const individualDonorsData = {
+  title: "豊橋技術科学大学基金 寄附者ご芳名",
+  subtitle: "技科大祭支援募金 個人（五十音順）",
+  sections: [{ kana: "あ行", names: ["技科 太郎 様", "豊橋 花子 様"] }],
+  anonymous: "掲載を希望されないご寄附者 15名",
+};
 ```
 
 **ポイント**
 
-- 文字列だけの配列 `["技科 太郎"]` でも動作します
-- `_memo` を持つ要素は表示されません（メモ書き用）。初期状態は
-  `[{ "_memo": "ここに寄付個人名を追加していく" }]` になっています
-- 寄付者が0人のときは `sections.supporters.emptyText` の文が表示されます
-- 芳名帳PDFへのボタンは常に先頭に表示されます（URLは `site-config.json` の `registryUrl`）
+- `sections` は五十音の行ごとにグループを作ります。`names` が空の行は表示されません
+- `anonymous` は掲載を希望されない方の人数です
+- 個人寄附者の五十音別一覧は `support.html` のみに表示されます（`index.html` は芳名帳PDFボタンだけ）
+- 大学公式の芳名帳（PDF）へのリンクURLは **2箇所**に直接書いてあります。変わったら両方直してください
+  - `support.html` の `.individual-registry-btn`
+  - `index.html` の `.support-registry-btn`（`#Sponsors` セクション内）
 
-### 4-7. timetable.json（バス時刻表）
+### 4-6. timetable.json（バス時刻表）
 
 ```json
 {
@@ -658,13 +651,14 @@ npx serve .
 **対処法**: `js/site-config.json` の `pageVisibility` の該当キーを `false` → `true` に変更して保存してください。
 キー名がファイル名（`.html` を除く）と一致しているかも確認してください。
 
-### 「協賛企業／寄付者が表示されない」
+### 「協賛企業／寄附者が表示されない」
 
-**原因**: `sponsors.json` / `supporters.json` の文法エラー、または中身が空です。
+**原因**: `sponsors.js` の文法エラーです（カンマ抜け・カッコの閉じ忘れなど）。
 
-**対処法**: JSONLintでチェックしてください。データが空の場合は「募集しております」等の案内文が出るのが正常です。
+**対処法**: ブラウザの検証ツール（F12）のコンソールにエラーが出ていないか確認してください。
+ロゴだけ出ない場合は `logo` に書いたパスと `logos/` 内の実際のファイル名を照合してください。
 
-### 「アクセス案内や協賛セクションが出てこない」
+### 「アクセス案内のブロックが出てこない」
 
 **原因**: HTMLから `<div data-include="…"></div>` の目印が消えている可能性があります。
 
@@ -719,8 +713,8 @@ npx serve .
 
 ### 12-1. 公開ファイルに非公開情報を書かない
 
-`js/` フォルダのJSONは、そのまま公開サーバーに置かれます。
-つまり `https://（サイトURL）/js/sponsors.json` を開けば**誰でも中身を全部読めます**。
+`js/` フォルダのJSONや `sponsors.js` は、そのまま公開サーバーに置かれます。
+つまり `https://（サイトURL）/sponsors.js` を開けば**誰でも中身を全部読めます**。
 GitHubリポジトリも公開されているため、そちらからも読めます。
 
 したがって、以下は**絶対にJSONやHTMLに書かないでください**。
@@ -804,8 +798,9 @@ git config user.email "（GitHubのnoreplyアドレス）"
    → 学際Techフェス・応募企画のデータを来年度のものに差し替え
    → images/recruit/ に企画写真を配置、formUrl に予約・応募フォームのURLを設定
 
-5. js/sponsors.json / js/supporters.json を開く
-   → 協賛企業・寄付者を来年度のものに差し替え
+5. sponsors.js を開く
+   → 協賛企業・個人寄附者を来年度のものに差し替え
+   → logos/ に企業ロゴ画像を配置
 
 6. js/timetable.json を確認
    → バスダイヤに変更があれば更新
@@ -822,5 +817,5 @@ git config user.email "（GitHubのnoreplyアドレス）"
 11. 情報解禁のタイミングに合わせて pageVisibility を順次 true に変更・再デプロイ
 ```
 
-**共通部分（ヘッダー・フッター・アクセス案内・協賛/寄付セクション）は `js/site-config.json` の1箇所を直すだけで全ページに反映されます。**
+**共通部分（ヘッダー・フッター・アクセス案内）は `js/site-config.json` の1箇所を直すだけで全ページに反映されます。**
 「第--回」や `{{THEME}}` などのプレースホルダー、SNSシェア時の見え方（OGP）、Google検索用の構造化データ（JSON-LD）も自動で最新化されます。

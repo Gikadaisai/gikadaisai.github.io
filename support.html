@@ -849,6 +849,56 @@
         margin-bottom: 28px;
       }
 
+      /* 大学公式の芳名帳（PDF）へのリンク */
+      .individual-registry-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding: 9px 16px;
+
+        background: #fff;
+
+        border: 1px solid #111;
+
+        border-radius: 4px;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.04em;
+
+        color: #111;
+
+        text-decoration: none;
+
+        white-space: nowrap;
+
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .individual-registry-btn i {
+        font-size: 13px;
+      }
+
+      .individual-registry-btn:hover,
+      .individual-registry-btn:focus-visible {
+        background: #111;
+
+        color: #fff;
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      }
+
       .individual-kana-container {
         display: flex;
 
@@ -1602,6 +1652,13 @@
           padding: 3px 5px;
         }
 
+        .individual-registry-btn {
+          width: 100%;
+          justify-content: center;
+          font-size: 11.5px;
+          padding: 10px 12px;
+        }
+
         .individual-kana-group {
           display: flex;
           flex-direction: column;
@@ -1853,6 +1910,14 @@
                         >豊橋技術科学大学基金 寄附者ご芳名</span
                       >
                     </div>
+
+                    <a
+                      href="https://www.tut.ac.jp/kikin/download/houmei_gikadaisai.pdf"
+                      class="individual-registry-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><i class="fas fa-file-pdf"></i>芳名帳（PDF）はこちら</a
+                    >
                   </div>
 
                   <div class="individual-subtitle">
@@ -1871,7 +1936,7 @@
                     id="individualAnonymousWrap"
                   >
                     <span>掲載を希望されないご寄附者</span>
-                    <span>14名</span>
+                    <span>15名</span>
                   </div>
                 </div>
               </div>

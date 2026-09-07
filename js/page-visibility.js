@@ -3,8 +3,8 @@
  * site-config.json の pageVisibility 設定に基づき、false に設定されたページを
  * 「準備中」画面に切り替える。
  *
- * 準備中画面に並べるリンクボタンと、その下に続く協賛・寄付セクションは
- * site-config.json / site-loader.js 側で一元管理されているものを使う。
+ * 準備中画面に並べるリンクボタンは site-config.json / site-loader.js 側で
+ * 一元管理されているものを使う。
  *
  * site-loader.js が発行する siteConfigLoaded イベントを利用する。
  * 既に window.siteConfig が設定済みの場合は即時実行する。
@@ -70,18 +70,12 @@
       "の情報は<br>ただいま準備中です。<br>今しばらくお待ちください。</p>" +
       linksHtml +
       "</div>" +
-      "</section>" +
-      window.siteSections.sponsors(config) +
-      window.siteSections.supporters(config);
+      "</section>";
 
     // site-loader.js は <body> 末尾で読み込まれるため <main> は必ず存在する
     var main = document.querySelector("main");
     if (!main) return;
     main.innerHTML = html;
-
-    // site-loader.js の描画が先に走り終えている場合があるため、
-    // 差し替えた直後のグリッドに対してもう一度描画を依頼する。
-    window.renderSupportGrids(config);
   }
 
   // site-loader.js がすでに config を設定済みなら即時実行、そうでなければイベント待ち
