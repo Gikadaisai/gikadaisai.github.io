@@ -2,7 +2,7 @@
   {
     "id": "techfest-01",
     "category": "techfest",
-    "circle": "ロボコン同好会 Tech 1系",
+    "circle": "Tech1系",
     "title": "ロボット操縦体験＆展示",
     "img": "robocon.png",
     "description": "世界大会優勝ロボット操縦体験！お子様から大人まで、ロボコンの魅力をぜひ体感してください！",
@@ -12,8 +12,8 @@
   {
     "id": "techfest-02",
     "category": "techfest",
-    "circle": "技科大祭実行委員",
-    "title": "Tech2系",
+    "circle": "Tech2系",
+    "title": "LEDキーホルダー作り！",
     "img": "Tech2.png",
     "description": "LEDキーホルダーを作りながら、技科大２系（電気電子系）の学びを楽しく体験しよう！",
     "formUrl": "",
@@ -22,7 +22,7 @@
   {
     "id": "techfest-03",
     "category": "techfest",
-    "circle": "Tech 3系",
+    "circle": "Tech3系",
     "title": "VRの世界へ！！",
     "img": "VR.png",
     "description": "VRを使用し、仮想の世界へ飛び込んでもらいます！！実際に研究で使用するVRを使用し、現実世界では味わえない体験ができるのでぜひ無料で遊びに来てください！！",
@@ -50,16 +50,6 @@
     "ctaLabel": ""
   },
   {
-    "id": "techfest-",
-    "category": "techfest",
-    "circle": "技科大祭実行委員会企画局",
-    "title": "技科大ゲーム大会2026",
-    "img": "game.png",
-    "description": "みんなで楽しめるゲーム大会！優勝を目指して熱い戦いに挑もう！",
-    "formUrl": "",
-    "ctaLabel": ""
-  },
-  {
     "id": "boshu-01",
     "category": "boshu",
     "circle": "技科大祭実行委員ステージ企画",
@@ -82,20 +72,10 @@
   {
     "id": "boshu-03",
     "category": "boshu",
-    "circle": "技科大祭実行委員ステージ企画",
-    "title": "ビンゴ大会",
-    "img": "bingo.png",
-    "description": "豪華景品をかけて今年もビンゴ大会を実施します。\n来場者どなたでも参加可能です！\nお友達やご家族と一緒に、ぜひ参加してください！",
-    "formUrl": "",
-    "ctaLabel": ""
-  },
-  {
-    "id": "boshu-04",
-    "category": "boshu",
-    "circle": "技科大祭実行委員ステージ企画",
-    "title": "大抽選会",
-    "img": "chusen.png",
-    "description": "技科大祭の定番企画であり大人気の大抽選会を今年も開催！\nぜひ豪華景品が当たるチャンスに挑戦してください！",
+    "circle": "技科大祭実行委員会企画局",
+    "title": "技科大ゲーム大会2026",
+    "img": "game.png",
+    "description": "みんなで楽しめるゲーム大会！優勝を目指して熱い戦いに挑もう！",
     "formUrl": "",
     "ctaLabel": ""
   }
