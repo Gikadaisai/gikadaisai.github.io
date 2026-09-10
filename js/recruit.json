@@ -6,6 +6,7 @@
     "title": "ロボット操縦体験＆展示",
     "img": "robocon.png",
     "description": "世界大会優勝ロボット操縦体験！お子様から大人まで、ロボコンの魅力をぜひ体感してください！",
+    "requiresReservation": false,
     "formUrl": "",
     "ctaLabel": ""
   },
@@ -16,6 +17,7 @@
     "title": "LEDキーホルダー作り！",
     "img": "Tech2.png",
     "description": "LEDキーホルダーを作りながら、技科大２系（電気電子系）の学びを楽しく体験しよう！",
+    "requiresReservation": true,
     "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfoqTrNj6eFAd8wSP4qZUUhw34xz9wjZwtYdiLkoKaf1OtlaQ/viewform?usp=dialog",
     "ctaLabel": ""
   },
@@ -26,6 +28,7 @@
     "title": "VRの世界へ！！",
     "img": "VR.png",
     "description": "VRを使用し、仮想の世界へ飛び込んでもらいます！！実際に研究で使用するVRを使用し、現実世界では味わえない体験ができるのでぜひ無料で遊びに来てください！！",
+    "requiresReservation": false,
     "formUrl": "",
     "ctaLabel": ""
   },
@@ -36,6 +39,7 @@
     "title": "スライム作り体験",
     "img": "slime.png",
     "description": "好きな色やラメを選んで，自分だけのオリジナルスライムを作ろう！！子供から大人まで気軽に体験できます！！",
+    "requiresReservation": false,
     "formUrl": "",
     "ctaLabel": ""
   },
@@ -46,6 +50,7 @@
     "title": "マシュマロタワーコンペティション",
     "img": "tower.png",
     "description": "Tech5系のイベントとして開催！パスタと紐を使い、マシュマロをどれだけ高く配置できるかを競うコンペティションです！",
+    "requiresReservation": true,
     "formUrl": "https://docs.google.com/forms/d/10OMZefPa-hLpWJ9ru2Dy34sM1M7yMHPaejjUrX_gVrs/edit?usp=drivesdk",
     "ctaLabel": ""
   },
@@ -56,6 +61,7 @@
     "title": "TUTグランプリ",
     "img": "guranpuri.png",
     "description": "自慢の特技を持った出演者たちがステージに登場✨\n個性あふれるパフォーマンスを披露します！",
+    "requiresReservation": true,
     "formUrl": "https://forms.gle/btneRLoRjUyByMyz5",
     "ctaLabel": ""
   },
@@ -66,6 +72,7 @@
     "title": "カラオケ大会",
     "img": "karaoke.png",
     "description": "会場を盛り上げる熱い歌声を、ぜひ会場でお楽しみください！",
+    "requiresReservation": true,
     "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfFWv_kMnUm1Mv1W3-h0_-Zquf_J9faAUfAggAg4U-Iz7rXEw/viewform?usp=dialog",
     "ctaLabel": ""
   },
@@ -76,6 +83,7 @@
     "title": "技科大ゲーム大会2026",
     "img": "game.png",
     "description": "みんなで楽しめるゲーム大会！優勝を目指して熱い戦いに挑もう！",
+    "requiresReservation": true,
     "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfohZ8wNJ7yRcUsE_5nlzDwB3PRAZnu5TdTVtwmM8HBcGjPaA/viewform?usp=dialog",
     "ctaLabel": ""
   }
