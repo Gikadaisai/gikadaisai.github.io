@@ -83,6 +83,16 @@
 
       <div id="contents">
         <main>
+          <!-- ページ内ジャンプボタン -->
+          <div class="recruit-jump-nav">
+            <a href="#techfest" class="recruit-jump-btn">
+              <i class="fas fa-flask"></i> 学際Techフェスへ
+            </a>
+            <a href="#boshu" class="recruit-jump-btn">
+              <i class="fas fa-bullhorn"></i> 応募企画へ
+            </a>
+          </div>
+
           <!-- ①学際Techフェス -->
           <section id="techfest" style="position: relative">
             <div
@@ -175,9 +185,14 @@
           const ctaLabel = escapeHtml(
             item.ctaLabel || DEFAULT_CTA_LABEL[item.category] || "詳しく見る",
           );
-          const ctaHtml = formUrl
-            ? `<a class="recruit-card-cta" href="${formUrl}" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i>${ctaLabel}</a>`
-            : `<span class="recruit-card-cta recruit-card-cta--disabled"><i class="fas fa-hourglass-half"></i>近日公開</span>`;
+          let ctaHtml;
+          if (item.requiresReservation === false) {
+            ctaHtml = `<span class="recruit-card-cta recruit-card-cta--no-reservation"><i class="fas fa-check-circle"></i>予約不要！！</span>`;
+          } else if (formUrl) {
+            ctaHtml = `<a class="recruit-card-cta" href="${formUrl}" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i>${ctaLabel}</a>`;
+          } else {
+            ctaHtml = `<span class="recruit-card-cta recruit-card-cta--disabled"><i class="fas fa-hourglass-half"></i>近日公開</span>`;
+          }
 
           const circleHtml = safeCircle
             ? `<span class="recruit-card-circle">${safeCircle}</span>`
