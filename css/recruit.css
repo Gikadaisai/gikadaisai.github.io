@@ -171,12 +171,12 @@
 
 /* 予約不要の見た目 */
 .recruit-card-cta--no-reservation {
-  background: #e8f5e9;
-  color: #2e7d32 !important;
-  border: 2px solid #66bb6a;
+  background: #ffffff;
+  color: #555 !important;
+  border: 2px solid #ddd;
   cursor: default;
   pointer-events: none;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .recruit-card-cta--no-reservation:hover {
